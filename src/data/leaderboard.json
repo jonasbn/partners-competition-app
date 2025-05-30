@@ -1,0 +1,42 @@
+{
+  "players": [
+    {
+      "id": 1,
+      "name": "Jonas",
+      "cumulativeScore": 0,
+      "games": []
+    },
+    {
+      "id": 2,
+      "name": "Torben",
+      "cumulativeScore": 0,
+      "games": []
+    },
+    {
+      "id": 3,
+      "name": "Gitte",
+      "cumulativeScore": 0,
+      "games": []
+    },
+    {
+      "id": 4,
+      "name": "Anette",
+      "cumulativeScore": 0,
+      "games": []
+    },
+    {
+      "id": 5,
+      "name": "Lotte",
+      "cumulativeScore": 0,
+      "games": []
+    },
+    {
+      "id": 6,
+      "name": "Peter",
+      "cumulativeScore": 0,
+      "games": []
+    }
+  ],
+  "teams": [],
+  "games": []
+}
