@@ -1,18 +1,16 @@
-import React, { Suspense, lazy } from 'react';
+import React from 'react';
 import './App.css';
 import Leaderboard from './components/Leaderboard';
 import GamesList from './components/GamesList';
 import TeamStatistics from './components/TeamStatistics';
 import ThemeToggle from './components/ThemeToggle';
 import LanguageSelector from './components/LanguageSelector';
-import FallbackChart from './components/FallbackChart';
 import SummaryCards from './components/SummaryCards';
+import PlayerStatsChart from './components/PlayerStatsChart';
+import PlayerPerformanceChart from './components/PlayerPerformanceChart';
+import GamesCalendarChart from './components/GamesCalendarChart';
+import TeamCombinationChart from './components/TeamCombinationChart';
 import { useTranslation } from 'react-i18next';
-
-// Lazy load chart components to handle potential loading issues
-const PlayerStatsChart = lazy(() => import('./components/PlayerStatsChart').catch(() => ({ default: ({ t }) => <FallbackChart title={t('charts.playerStats.title')} message={t('charts.playerStats.unavailable')} /> })));
-const PlayerPerformanceChart = lazy(() => import('./components/PlayerPerformanceChart').catch(() => ({ default: ({ t }) => <FallbackChart title={t('charts.playerPerformance.title')} message={t('charts.playerPerformance.unavailable')} /> })));
-const GamesCalendarChart = lazy(() => import('./components/GamesCalendarChart').catch(() => ({ default: ({ t }) => <FallbackChart title={t('charts.gamesCalendar.title')} message={t('charts.gamesCalendar.unavailable')} /> })));
 
 function App() {
   const { t } = useTranslation();
@@ -40,28 +38,28 @@ function App() {
         
         <div className="row mb-4">
           <div className="col-md-6">
-            <Suspense fallback={<FallbackChart title={t('charts.playerStats.title')} message={t('charts.playerStats.loading')} />}>
-              <PlayerStatsChart t={t} />
-            </Suspense>
+            <PlayerStatsChart t={t} />
           </div>
           <div className="col-md-6">
-            <Suspense fallback={<FallbackChart title={t('charts.gamesCalendar.title')} message={t('charts.gamesCalendar.loading')} />}>
-              <GamesCalendarChart t={t} />
-            </Suspense>
+            <GamesCalendarChart t={t} />
           </div>
         </div>
         
         <div className="row mb-4">
           <div className="col-md-12">
-            <Suspense fallback={<FallbackChart title={t('charts.playerPerformance.title')} message={t('charts.playerPerformance.loading')} />}>
-              <PlayerPerformanceChart t={t} />
-            </Suspense>
+            <PlayerPerformanceChart t={t} />
           </div>
         </div>
         
         <div className="row mb-4">
           <div className="col-md-12">
             <TeamStatistics />
+          </div>
+        </div>
+        
+        <div className="row mb-4">
+          <div className="col-md-12">
+            <TeamCombinationChart t={t} />
           </div>
         </div>
         

@@ -134,12 +134,65 @@ export const getTeamStatistics = () => {
   return sortedTeams;
 };
 
+// Calculate team combination statistics - shows how many times each possible team combination has played
+export const getTeamCombinationStatistics = () => {
+  const allPlayers = ['Jonas', 'Torben', 'Gitte', 'Anette', 'Lotte', 'Peter'];
+  const processedGames = processGamesData().games;
+  
+  // Generate all possible team combinations (2 players each)
+  const allPossibleTeams = [];
+  for (let i = 0; i < allPlayers.length; i++) {
+    for (let j = i + 1; j < allPlayers.length; j++) {
+      const teamKey = [allPlayers[i], allPlayers[j]].sort().join(' & ');
+      allPossibleTeams.push({
+        teamKey,
+        players: [allPlayers[i], allPlayers[j]],
+        count: 0,
+        lastPlayed: null
+      });
+    }
+  }
+  
+  // Count actual team occurrences
+  const teamCounts = {};
+  processedGames.forEach(game => {
+    game.teams.forEach(team => {
+      const teamKey = [...team.players].sort().join(' & ');
+      if (!teamCounts[teamKey]) {
+        teamCounts[teamKey] = {
+          count: 0,
+          lastPlayed: null
+        };
+      }
+      teamCounts[teamKey].count += 1;
+      teamCounts[teamKey].lastPlayed = game.gameDate;
+    });
+  });
+  
+  // Update the possible teams with actual counts
+  allPossibleTeams.forEach(team => {
+    if (teamCounts[team.teamKey]) {
+      team.count = teamCounts[team.teamKey].count;
+      team.lastPlayed = teamCounts[team.teamKey].lastPlayed;
+    }
+  });
+  
+  // Sort by count (descending), then by team name
+  allPossibleTeams.sort((a, b) => {
+    if (b.count !== a.count) return b.count - a.count;
+    return a.teamKey.localeCompare(b.teamKey);
+  });
+  
+  return allPossibleTeams;
+};
+
 // Export as a single default object
 const dataUtils = {
   getLeaderboardData,
   getGames,
   getPlayerById,
-  getTeamStatistics
+  getTeamStatistics,
+  getTeamCombinationStatistics
 };
 
 export default dataUtils;

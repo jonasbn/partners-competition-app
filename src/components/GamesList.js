@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { getGames } from '../utils/dataUtils';
 import { getAvatarColor, getInitials } from '../utils/avatarUtils';
 import { useTranslation } from 'react-i18next';
 
 const GamesList = () => {
   const { t } = useTranslation();
-  const [sortDirection, setSortDirection] = useState('desc'); // Default to show newest games first
+  const [sortDirection, setSortDirection] = React.useState('desc'); // Default to show newest games first
   const games = getGames();
   
   // Sort games based on current sortDirection

@@ -82,6 +82,21 @@
       "legend": {
         "games": "Games"
       }
+    },
+    "teamCombinations": {
+      "title": "Team Combination Statistics",
+      "loading": "Loading chart...",
+      "unavailable": "Team combinations chart is currently unavailable",
+      "description": "This chart shows how many times each possible team combination has played together, including combinations that have never been formed (shown with 0 games).",
+      "axisLabels": {
+        "team": "Team",
+        "games": "Games Played"
+      },
+      "tooltip": {
+        "gamesPlayed": "Games: {{count}}",
+        "lastPlayed": "Last played: {{date}}",
+        "neverPlayed": "Never played together"
+      }
     }
   },
   "leaderboard": {

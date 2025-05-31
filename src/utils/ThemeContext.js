@@ -1,7 +1,7 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React from 'react';
 
 // Create a context for theme management
-export const ThemeContext = createContext();
+export const ThemeContext = React.createContext();
 
 // Theme provider component
 export const ThemeProvider = ({ children }) => {
@@ -18,7 +18,7 @@ export const ThemeProvider = ({ children }) => {
     return prefersDark ? 'dark' : 'light';
   };
 
-  const [theme, setTheme] = useState(getInitialTheme);
+  const [theme, setTheme] = React.useState(getInitialTheme);
 
   // Toggle theme function
   const toggleTheme = () => {
@@ -26,7 +26,7 @@ export const ThemeProvider = ({ children }) => {
   };
 
   // Save theme preference to localStorage when it changes
-  useEffect(() => {
+  React.useEffect(() => {
     localStorage.setItem('theme', theme);
     
     // Apply theme class to the document body

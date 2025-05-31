@@ -70,7 +70,14 @@ const SummaryCards = () => {
   
   const teamCoverage = calculateRequiredGames();
   
-  // Style for the avatar circle
+  // Function to get player's happy avatar image
+  const getPlayerHappyAvatar = (playerName) => {
+    const playerNameLower = playerName.toLowerCase();
+    // Use public assets path that will be accessible after build
+    return `/assets/${playerNameLower}/happy.png`;
+  };
+  
+  // Style for the avatar circle (kept for other components that might still use it)
   const avatarStyle = (name) => ({
     width: '60px',
     height: '60px',
@@ -85,6 +92,17 @@ const SummaryCards = () => {
     margin: '0 auto 1rem auto'
   });
 
+  // Style for the player avatar image
+  const avatarImageStyle = {
+    width: '80px',
+    height: '80px',
+    borderRadius: '50%',
+    margin: '0 auto 1rem auto',
+    border: '3px solid var(--bs-warning, #ffc107)', // Theme-aware warning color border
+    objectFit: 'cover',
+    display: 'block'
+  };
+
   return (
     <div className="row mb-4">
       {/* Card 1: Leading Player */}
@@ -96,7 +114,28 @@ const SummaryCards = () => {
           <div className="card-body text-center">
             {leadingPlayer && (
               <>
-                <div style={avatarStyle(leadingPlayer.name)} className="avatar">
+                {(() => {
+                  const avatarSrc = getPlayerHappyAvatar(leadingPlayer.name);
+                  return avatarSrc ? (
+                    <img 
+                      src={avatarSrc} 
+                      alt={`${leadingPlayer.name} happy avatar`}
+                      style={avatarImageStyle}
+                      onError={(e) => {
+                        // Fallback to avatar circle if image fails to load
+                        e.target.style.display = 'none';
+                        e.target.nextElementSibling.style.display = 'flex';
+                      }}
+                    />
+                  ) : null;
+                })()}
+                <div 
+                  style={{
+                    ...avatarStyle(leadingPlayer.name), 
+                    display: getPlayerHappyAvatar(leadingPlayer.name) ? 'none' : 'flex'
+                  }} 
+                  className="avatar"
+                >
                   {getInitials(leadingPlayer.name)}
                 </div>
                 <h4 className="card-title">{leadingPlayer.name}</h4>

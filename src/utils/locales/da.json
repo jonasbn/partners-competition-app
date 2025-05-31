@@ -82,6 +82,21 @@
       "legend": {
         "games": "Spil"
       }
+    },
+    "teamCombinations": {
+      "title": "Holdkombination Statistik",
+      "loading": "Indlæser diagram...",
+      "unavailable": "Holdkombinationsdiagram er ikke tilgængeligt i øjeblikket",
+      "description": "Dette diagram viser hvor mange gange hver mulig holdkombination har spillet sammen, inklusive kombinationer der aldrig har været dannet (vist med 0 spil).",
+      "axisLabels": {
+        "team": "Hold",
+        "games": "Spillede spil"
+      },
+      "tooltip": {
+        "gamesPlayed": "Spil: {{count}}",
+        "lastPlayed": "Sidst spillet: {{date}}",
+        "neverPlayed": "Aldrig spillet sammen"
+      }
     }
   },
   "leaderboard": {
