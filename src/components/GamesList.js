@@ -1,7 +1,7 @@
 import React from 'react';
 import { getGames } from '../utils/dataUtils';
-import { getAvatarColor, getInitials } from '../utils/avatarUtils';
 import { useTranslation } from 'react-i18next';
+import AvatarWithHover from './AvatarWithHover';
 
 const GamesList = () => {
   const { t } = useTranslation();
@@ -20,20 +20,21 @@ const GamesList = () => {
     setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
   };
 
-  // Style for the avatar circle
-  const avatarStyle = (name) => ({
-    width: '30px',
-    height: '30px',
-    borderRadius: '50%',
-    backgroundColor: getAvatarColor(name),
-    color: 'white',
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontWeight: 'bold',
-    marginRight: '5px',
-    fontSize: '0.8rem'
-  });
+  // Function to get player's avatar image based on team score
+  const getPlayerAvatarByScore = (playerName, teamScore) => {
+    const playerNameLower = playerName.toLowerCase();
+    let emotion;
+    
+    if (teamScore === 3) {
+      emotion = 'happy'; // 1st place (3 points) gets happy
+    } else if (teamScore === 2) {
+      emotion = 'ok'; // 2nd place (2 points) gets ok
+    } else {
+      emotion = 'sad'; // 3rd place (1 point) gets sad
+    }
+    
+    return `/assets/${playerNameLower}/${emotion}.png`;
+  };
 
   return (
     <div className="card">
@@ -66,9 +67,13 @@ const GamesList = () => {
                       <strong className="me-2">{t('gamesList.team')}</strong>
                       {team.players.map((player, playerIdx) => (
                         <div key={playerIdx} className="d-flex align-items-center me-2">
-                          <div style={avatarStyle(player)} className="avatar">
-                            {getInitials(player)}
-                          </div>
+                          <AvatarWithHover
+                            playerName={player}
+                            avatarSrc={getPlayerAvatarByScore(player, team.score)}
+                            size={30}
+                            borderColor="var(--bs-success, #198754)"
+                            style={{ marginRight: '5px' }}
+                          />
                           {player}{playerIdx < team.players.length - 1 ? " &" : ""}
                         </div>
                       ))}

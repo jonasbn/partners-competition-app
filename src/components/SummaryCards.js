@@ -1,7 +1,7 @@
 import React from 'react';
 import { getLeaderboardData, getGames, getTeamStatistics } from '../utils/dataUtils';
-import { getAvatarColor, getInitials } from '../utils/avatarUtils';
 import { useTranslation } from 'react-i18next';
+import AvatarWithHover from './AvatarWithHover';
 
 const SummaryCards = () => {
   const { t } = useTranslation();
@@ -76,32 +76,6 @@ const SummaryCards = () => {
     // Use public assets path that will be accessible after build
     return `/assets/${playerNameLower}/happy.png`;
   };
-  
-  // Style for the avatar circle (kept for other components that might still use it)
-  const avatarStyle = (name) => ({
-    width: '60px',
-    height: '60px',
-    borderRadius: '50%',
-    backgroundColor: getAvatarColor(name),
-    color: 'white',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontWeight: 'bold',
-    fontSize: '1.5rem',
-    margin: '0 auto 1rem auto'
-  });
-
-  // Style for the player avatar image
-  const avatarImageStyle = {
-    width: '80px',
-    height: '80px',
-    borderRadius: '50%',
-    margin: '0 auto 1rem auto',
-    border: '3px solid var(--bs-warning, #ffc107)', // Theme-aware warning color border
-    objectFit: 'cover',
-    display: 'block'
-  };
 
   return (
     <div className="row mb-4">
@@ -114,30 +88,16 @@ const SummaryCards = () => {
           <div className="card-body text-center">
             {leadingPlayer && (
               <>
-                {(() => {
-                  const avatarSrc = getPlayerHappyAvatar(leadingPlayer.name);
-                  return avatarSrc ? (
-                    <img 
-                      src={avatarSrc} 
-                      alt={`${leadingPlayer.name} happy avatar`}
-                      style={avatarImageStyle}
-                      onError={(e) => {
-                        // Fallback to avatar circle if image fails to load
-                        e.target.style.display = 'none';
-                        e.target.nextElementSibling.style.display = 'flex';
-                      }}
-                    />
-                  ) : null;
-                })()}
-                <div 
-                  style={{
-                    ...avatarStyle(leadingPlayer.name), 
-                    display: getPlayerHappyAvatar(leadingPlayer.name) ? 'none' : 'flex'
-                  }} 
-                  className="avatar"
-                >
-                  {getInitials(leadingPlayer.name)}
-                </div>
+                <AvatarWithHover
+                  playerName={leadingPlayer.name}
+                  avatarSrc={getPlayerHappyAvatar(leadingPlayer.name)}
+                  size={80}
+                  borderColor="var(--bs-warning, #ffc107)"
+                  style={{ 
+                    margin: '0 auto 1rem auto',
+                    display: 'block'
+                  }}
+                />
                 <h4 className="card-title">{leadingPlayer.name}</h4>
                 <p className="card-text">
                   {t('summary.leadingPlayer.score')}: <strong>{leadingPlayer.cumulativeScore}</strong> / {maxPossibleScore}
@@ -175,19 +135,16 @@ const SummaryCards = () => {
                 <div className="d-flex justify-content-center mb-3">
                   {mostWinningTeam.players.map((playerName, index) => (
                     <div key={index} className="position-relative" style={{ marginLeft: index > 0 ? '-15px' : '0' }}>
-                      <div 
+                      <AvatarWithHover
+                        playerName={playerName}
+                        avatarSrc={getPlayerHappyAvatar(playerName)}
+                        size={50}
+                        borderColor="white"
                         style={{
-                          ...avatarStyle(playerName), 
-                          width: '50px', 
-                          height: '50px', 
-                          fontSize: '1.2rem',
-                          border: '2px solid white',
-                          zIndex: 2 - index
-                        }} 
-                        className="avatar"
-                      >
-                        {getInitials(playerName)}
-                      </div>
+                          zIndex: 2 - index,
+                          border: '2px solid white'
+                        }}
+                      />
                     </div>
                   ))}
                 </div>

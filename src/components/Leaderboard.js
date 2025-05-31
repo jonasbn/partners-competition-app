@@ -1,25 +1,27 @@
 import React from 'react';
 import { getLeaderboardData } from '../utils/dataUtils';
-import { getAvatarColor, getInitials } from '../utils/avatarUtils';
 import { useTranslation } from 'react-i18next';
+import AvatarWithHover from './AvatarWithHover';
 
 const Leaderboard = () => {
   const { t } = useTranslation();
   const { players } = getLeaderboardData();
 
-  // Style for the avatar circle
-  const avatarStyle = (name) => ({
-    width: '40px',
-    height: '40px',
-    borderRadius: '50%',
-    backgroundColor: getAvatarColor(name),
-    color: 'white',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontWeight: 'bold',
-    marginRight: '10px'
-  });
+  // Function to get player's avatar image based on ranking
+  const getPlayerAvatarByRank = (playerName, rank) => {
+    const playerNameLower = playerName.toLowerCase();
+    let emotion;
+    
+    if (rank === 1) {
+      emotion = 'happy'; // 1st place gets happy
+    } else if (rank === 2 || rank === 3) {
+      emotion = 'ok'; // 2nd and 3rd place get ok
+    } else {
+      emotion = 'sad'; // 4th, 5th, 6th place get sad
+    }
+    
+    return `/assets/${playerNameLower}/${emotion}.png`;
+  };
 
   return (
     <div className="card mb-4">
@@ -51,9 +53,13 @@ const Leaderboard = () => {
                   </td>
                   <td>
                     <div className="d-flex align-items-center">
-                      <div style={avatarStyle(player.name)} className="avatar">
-                        {getInitials(player.name)}
-                      </div>
+                      <AvatarWithHover
+                        playerName={player.name}
+                        avatarSrc={getPlayerAvatarByRank(player.name, index + 1)}
+                        size={40}
+                        borderColor="var(--bs-primary, #0d6efd)"
+                        style={{ marginRight: '10px' }}
+                      />
                       {player.name}
                     </div>
                   </td>

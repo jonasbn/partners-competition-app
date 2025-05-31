@@ -33,10 +33,30 @@ footer {
 /* Avatar styles */
 .avatar {
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .avatar:hover {
   transform: scale(1.1);
+}
+
+/* Avatar hover effect styles */
+.avatar-container {
+  transition: all 0.2s ease;
+}
+
+.avatar-container:hover {
+  z-index: 1000;
+}
+
+/* Ensure avatar popup appears above all other content */
+.avatar-popup {
+  z-index: 10000 !important;
+}
+
+/* Smooth transitions for avatar images */
+.avatar img, .avatar-fallback {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .table td {

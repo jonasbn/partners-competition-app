@@ -1,26 +1,25 @@
 import React from 'react';
 import { getTeamStatistics } from '../utils/dataUtils';
-import { getAvatarColor, getInitials } from '../utils/avatarUtils';
 import { useTranslation } from 'react-i18next';
+import AvatarWithHover from './AvatarWithHover';
 
 const TeamStatistics = () => {
   const { t } = useTranslation();
   const teamStats = getTeamStatistics();
   
-  // Style for the avatar circle
-  const avatarStyle = (name) => ({
-    width: '30px',
-    height: '30px',
-    borderRadius: '50%',
-    backgroundColor: getAvatarColor(name),
-    color: 'white',
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontWeight: 'bold',
-    marginRight: '5px',
-    fontSize: '0.8rem'
-  });
+  // Function to get player's avatar image based on team ranking
+  const getPlayerAvatarByTeamRank = (playerName, teamRank) => {
+    const playerNameLower = playerName.toLowerCase();
+    let emotion;
+    
+    if (teamRank === 1) {
+      emotion = 'happy'; // 1st place team gets happy
+    } else {
+      emotion = 'ok'; // All other teams get ok
+    }
+    
+    return `/assets/${playerNameLower}/${emotion}.png`;
+  };
 
   return (
     <div className="card">
@@ -50,9 +49,13 @@ const TeamStatistics = () => {
                     <div className="d-flex align-items-center">
                       {team.players.map((player, playerIdx) => (
                         <div key={playerIdx} className="d-flex align-items-center me-2">
-                          <div style={avatarStyle(player)} className="avatar">
-                            {getInitials(player)}
-                          </div>
+                          <AvatarWithHover
+                            playerName={player}
+                            avatarSrc={getPlayerAvatarByTeamRank(player, index + 1)}
+                            size={30}
+                            borderColor="var(--bs-primary, #0d6efd)"
+                            style={{ marginRight: '5px' }}
+                          />
                           <span className="ms-1">{player}</span>
                           {playerIdx < team.players.length - 1 && <span className="ms-1">&</span>}
                         </div>
