@@ -43,8 +43,24 @@ footer {
   vertical-align: middle;
 }
 
+/* Chart styles */
+.chart-container {
+  height: 400px;
+  position: relative;
+}
+
+.card-header h2 {
+  margin-bottom: 0;
+  font-size: 1.5rem;
+}
+
+/* Make charts responsive */
 @media (max-width: 768px) {
   .container {
     padding: 0 15px;
+  }
+  
+  .chart-container {
+    height: 300px;
   }
 }
