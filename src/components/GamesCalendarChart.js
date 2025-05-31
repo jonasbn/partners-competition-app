@@ -51,6 +51,20 @@ const GamesCalendarChart = ({ t }) => {
             monthBorderColor="#ffffff"
             dayBorderWidth={2}
             dayBorderColor="#ffffff"
+            theme={{
+              labels: {
+                text: {
+                  fill: 'var(--text-color)'
+                }
+              },
+              tooltip: {
+                container: {
+                  background: 'var(--card-bg)',
+                  color: 'var(--text-color)',
+                  boxShadow: '0 3px 9px rgba(0, 0, 0, 0.5)'
+                }
+              }
+            }}
             legends={[
               {
                 anchor: 'bottom-right',
@@ -67,10 +81,10 @@ const GamesCalendarChart = ({ t }) => {
               <div
                 style={{
                   padding: 12,
-                  background: '#fff',
+                  background: 'var(--card-bg)',
                   borderRadius: 4,
                   boxShadow: '0 3px 8px rgba(0, 0, 0, 0.15)',
-                  color: '#333'
+                  color: 'var(--text-color)'
                 }}
               >
                 <strong>{tFunc('charts.gamesCalendar.tooltip.date', { date: day })}</strong>

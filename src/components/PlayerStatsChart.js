@@ -1,5 +1,5 @@
 import React from 'react';
-// Modified import to ensure compatibility
+// Import the bar chart component from nivo
 import { ResponsiveBar } from '@nivo/bar';
 import { getLeaderboardData } from '../utils/dataUtils';
 import { useTranslation } from 'react-i18next';
@@ -16,6 +16,34 @@ const PlayerStatsChart = ({ t }) => {
     score: player.cumulativeScore,
     color: `hsl(${Math.floor(Math.random() * 360)}, 70%, 50%)`,
   }));
+
+  // Define theme for chart based on current app theme
+  const chartTheme = {
+    axis: {
+      ticks: {
+        text: {
+          fill: 'var(--text-color)'
+        }
+      },
+      legend: {
+        text: {
+          fill: 'var(--text-color)'
+        }
+      }
+    },
+    legends: {
+      text: {
+        fill: 'var(--text-color)'
+      }
+    },
+    tooltip: {
+      container: {
+        background: 'var(--card-bg)',
+        color: 'var(--text-color)',
+        boxShadow: '0 3px 9px rgba(0, 0, 0, 0.5)'
+      }
+    }
+  };
 
   return (
     <div className="card mb-4">
@@ -83,16 +111,17 @@ const PlayerStatsChart = ({ t }) => {
               <div
                 style={{
                   padding: 12,
-                  background: '#fff',
+                  background: 'var(--card-bg)',
                   borderRadius: 4,
                   boxShadow: '0 3px 8px rgba(0, 0, 0, 0.15)',
-                  color: '#333'
+                  color: 'var(--text-color)'
                 }}
               >
                 <strong>{indexValue}</strong>
                 <div>{tFunc('charts.playerStats.tooltip.score', { score: value })}</div>
               </div>
             )}
+            theme={chartTheme}
             animate={true}
             motionStiffness={90}
             motionDamping={15}

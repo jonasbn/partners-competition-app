@@ -32,6 +32,47 @@ const PlayerPerformanceChart = ({ t }) => {
     };
   }).filter(series => series.data.length > 0); // Only include players who participated in at least one game
 
+  // Define theme for chart based on current app theme
+  const chartTheme = {
+    axis: {
+      ticks: {
+        text: {
+          fill: 'var(--text-color)'
+        }
+      },
+      legend: {
+        text: {
+          fill: 'var(--text-color)'
+        }
+      }
+    },
+    grid: {
+      line: {
+        stroke: 'var(--card-border)',
+        strokeOpacity: 0.15
+      }
+    },
+    crosshair: {
+      line: {
+        stroke: 'var(--text-color)',
+        strokeOpacity: 0.5,
+        strokeWidth: 1
+      }
+    },
+    legends: {
+      text: {
+        fill: 'var(--text-color)'
+      }
+    },
+    tooltip: {
+      container: {
+        background: 'var(--card-bg)',
+        color: 'var(--text-color)',
+        boxShadow: '0 3px 9px rgba(0, 0, 0, 0.5)'
+      }
+    }
+  };
+
   return (
     <div className="card mb-4">
       <div className="card-header bg-warning text-white">
@@ -105,6 +146,7 @@ const PlayerPerformanceChart = ({ t }) => {
                 ]
               }
             ]}
+            theme={chartTheme}
           />
         </div>
         <div className="text-center mt-3">

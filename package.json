@@ -1,10 +1,10 @@
 {
-  "name": "frontend",
+  "name": "partners-competition-app",
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "20.x",
-    "npm": "10.x"
+    "node": "20.17.0",
+    "npm": "11.0.0"
   },
   "dependencies": {
     "@nivo/bar": "^0.80.0",

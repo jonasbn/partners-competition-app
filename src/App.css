@@ -89,26 +89,88 @@ body.dark-theme {
   --navbar-color: #ffffff;
   --footer-bg: #212121;
   --footer-color: #adb5bd;
+  --link-color: #6ea8fe;
+  --muted-text: #adb5bd;
   background-color: var(--bg-color);
   color: var(--text-color);
   transition: all 0.3s ease;
+}
+
+/* For badges and other text elements in dark mode */
+.dark-theme .text-muted {
+  color: var(--muted-text) !important;
+}
+
+.dark-theme a {
+  color: var(--link-color);
+}
+
+.dark-theme .card-body {
+  color: var(--text-color);
 }
 
 /* Apply theme to elements */
 .card {
   background-color: var(--card-bg);
   border-color: var(--card-border);
+  color: var(--text-color);
 }
 
-.card-header:not(.bg-primary):not(.bg-success):not(.bg-warning):not(.bg-danger) {
+.card-header:not(.bg-primary):not(.bg-success):not(.bg-warning):not(.bg-danger):not(.bg-info):not(.bg-secondary) {
   background-color: var(--card-border);
   color: var(--text-color);
+}
+
+/* Dark mode adjustments for colored headers */
+.dark-theme .card-header.bg-info {
+  background-color: #0d6efd !important;
+  color: white;
+}
+
+.dark-theme .card-header.bg-secondary {
+  background-color: #6c757d !important;
+  color: white;
+}
+
+.dark-theme .card-header.bg-warning {
+  background-color: #fd7e14 !important;
+  color: white;
 }
 
 .list-group-item {
   background-color: var(--card-bg);
   color: var(--text-color);
   border-color: var(--card-border);
+}
+
+.dark-theme .list-group-item-action:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .badge.bg-primary {
+  background-color: #0d6efd !important;
+}
+
+.dark-theme .badge.bg-secondary {
+  background-color: #6c757d !important;
+}
+
+.dark-theme .badge.bg-success {
+  background-color: #198754 !important;
+}
+
+.dark-theme .badge.bg-danger {
+  background-color: #dc3545 !important;
+}
+
+.dark-theme .badge.bg-warning {
+  background-color: #fd7e14 !important;
+  color: #000;
+}
+
+.dark-theme .badge.bg-info {
+  background-color: #0dcaf0 !important;
+  color: #000;
 }
 
 .table {
@@ -121,6 +183,16 @@ body.dark-theme {
 
 .dark-theme .table-striped tbody tr:nth-of-type(odd) {
   background-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme .table-hover tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .table thead.table-dark th {
+  background-color: #212529 !important;
+  color: #f8f9fa !important;
+  border-color: #373b3e !important;
 }
 
 .navbar.bg-dark {
@@ -163,4 +235,69 @@ footer.bg-light {
 .navbar-controls {
   display: flex;
   align-items: center;
+}
+
+/* Chart-specific dark mode adjustments */
+.dark-theme .chart-container text {
+  fill: var(--text-color) !important;
+}
+
+.dark-theme .chart-container line {
+  stroke: var(--card-border) !important;
+}
+
+.dark-theme .chart-container path {
+  stroke: var(--card-border) !important;
+}
+
+/* Chart axis text specific adjustments */
+.dark-theme [data-testid="axis-bottom"] text,
+.dark-theme [data-testid="axis-left"] text,
+.dark-theme [data-testid="axis-top"] text,
+.dark-theme [data-testid="axis-right"] text {
+  fill: var(--text-color) !important;
+}
+
+.dark-theme [data-testid="axis-legend"] text {
+  fill: var(--text-color) !important;
+  font-weight: bold;
+}
+
+/* Player stats chart specific styles */
+.dark-theme [data-testid="bar-label"] {
+  fill: white !important;
+  font-weight: bold;
+}
+
+/* Calendar chart text */
+.dark-theme [data-testid="calendar-label"] text {
+  fill: var(--text-color) !important;
+}
+
+.dark-theme [data-testid="calendar-month"] text {
+  fill: var(--text-color) !important;
+  font-weight: bold;
+}
+
+/* Line chart legends */
+.dark-theme [data-testid="legend-item"] text {
+  fill: var(--text-color) !important;
+}
+
+/* Better contrast for fallback chart messages */
+.dark-theme .alert-warning {
+  background-color: #332701;
+  color: #ffda6a;
+  border-color: #4d3b02;
+}
+
+/* Ensure buttons have proper contrast in dark mode */
+.dark-theme .btn-outline-secondary {
+  color: #adb5bd;
+  border-color: #495057;
+}
+
+.dark-theme .btn-outline-secondary:hover {
+  background-color: #495057;
+  color: #f8f9fa;
 }
