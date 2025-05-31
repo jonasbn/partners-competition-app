@@ -2,8 +2,12 @@ import React from 'react';
 // Modified import to ensure compatibility
 import { ResponsiveBar } from '@nivo/bar';
 import { getLeaderboardData } from '../utils/dataUtils';
+import { useTranslation } from 'react-i18next';
 
-const PlayerStatsChart = () => {
+const PlayerStatsChart = ({ t }) => {
+  const { t: translate } = useTranslation();
+  // Use provided t function if available, otherwise use local translate
+  const tFunc = t || translate;
   const { players } = getLeaderboardData();
   
   // Prepare data for the chart
@@ -16,7 +20,7 @@ const PlayerStatsChart = () => {
   return (
     <div className="card mb-4">
       <div className="card-header bg-info text-white">
-        <h2>📊 Player Statistics</h2>
+        <h2>📊 {tFunc('charts.playerStats.title')}</h2>
       </div>
       <div className="card-body">
         <div style={{ height: '400px' }}>
@@ -36,7 +40,7 @@ const PlayerStatsChart = () => {
               tickSize: 5,
               tickPadding: 5,
               tickRotation: 0,
-              legend: 'Player',
+              legend: tFunc('charts.playerStats.axisLabels.player'),
               legendPosition: 'middle',
               legendOffset: 32
             }}
@@ -44,7 +48,7 @@ const PlayerStatsChart = () => {
               tickSize: 5,
               tickPadding: 5,
               tickRotation: 0,
-              legend: 'Score',
+              legend: tFunc('charts.playerStats.axisLabels.score'),
               legendPosition: 'middle',
               legendOffset: -40
             }}
@@ -75,6 +79,20 @@ const PlayerStatsChart = () => {
                 ]
               }
             ]}
+            tooltip={({ indexValue, value }) => (
+              <div
+                style={{
+                  padding: 12,
+                  background: '#fff',
+                  borderRadius: 4,
+                  boxShadow: '0 3px 8px rgba(0, 0, 0, 0.15)',
+                  color: '#333'
+                }}
+              >
+                <strong>{indexValue}</strong>
+                <div>{tFunc('charts.playerStats.tooltip.score', { score: value })}</div>
+              </div>
+            )}
             animate={true}
             motionStiffness={90}
             motionDamping={15}

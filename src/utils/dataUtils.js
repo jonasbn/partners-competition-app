@@ -81,11 +81,65 @@ export const getPlayerById = (playerId) => {
   return players.find(player => player.id === parseInt(playerId, 10));
 };
 
+// Calculate team statistics - find winning teams and their performance
+export const getTeamStatistics = () => {
+  const processedGames = processGamesData().games;
+  const teamStats = {};
+  
+  // Process each game to find teams
+  processedGames.forEach(game => {
+    game.teams.forEach(team => {
+      // Create a consistent team key by sorting player names alphabetically
+      const teamKey = [...team.players].sort().join('-');
+      
+      // Initialize team stats if not already done
+      if (!teamStats[teamKey]) {
+        teamStats[teamKey] = {
+          players: team.players,
+          gamesPlayed: 0,
+          wins: 0,        // score = 3
+          seconds: 0,     // score = 2
+          thirds: 0,      // score = 1
+          totalPoints: 0,
+          winRate: 0
+        };
+      }
+      
+      // Update team stats
+      teamStats[teamKey].gamesPlayed += 1;
+      teamStats[teamKey].totalPoints += team.score;
+      
+      // Update placement stats
+      if (team.score === 3) {
+        teamStats[teamKey].wins += 1;
+      } else if (team.score === 2) {
+        teamStats[teamKey].seconds += 1;
+      } else if (team.score === 1) {
+        teamStats[teamKey].thirds += 1;
+      }
+    });
+  });
+  
+  // Calculate win rate for each team
+  Object.values(teamStats).forEach(team => {
+    team.winRate = team.gamesPlayed > 0 ? (team.wins / team.gamesPlayed) * 100 : 0;
+  });
+  
+  // Convert to array and sort by wins, then by win rate
+  const sortedTeams = Object.values(teamStats).sort((a, b) => {
+    if (b.wins !== a.wins) return b.wins - a.wins;
+    return b.winRate - a.winRate;
+  });
+  
+  return sortedTeams;
+};
+
 // Export as a single default object
 const dataUtils = {
   getLeaderboardData,
   getGames,
-  getPlayerById
+  getPlayerById,
+  getTeamStatistics
 };
 
 export default dataUtils;

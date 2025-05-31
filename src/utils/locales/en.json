@@ -1,0 +1,122 @@
+{
+  "app": {
+    "title": "Partners Competition App",
+    "footer": "Partners Competition App © {{year}}",
+    "createdWith": "Created with GitHub Copilot and Claude Sonnet 3.7"
+  },
+  "language": {
+    "en": "English",
+    "da": "Danish"
+  },
+  "summary": {
+    "leadingPlayer": {
+      "title": "Leading Player",
+      "score": "Current Score",
+      "maxScore": "Maximum possible: {{score}} ({{games}} games)"
+    },
+    "mostWinningTeam": {
+      "title": "Most Winning Team",
+      "stats": "Won {{wins}} out of {{games}} games ({{rate}}%)",
+      "combinations": "Out of {{count}} possible team combinations"
+    },
+    "teamCoverage": {
+      "title": "Team Coverage",
+      "formed": "{{formed}} of {{total}} possible teams formed",
+      "remaining": "{{games}} more games needed to form {{teams}} remaining teams",
+      "minimum": "Minimum {{games}} games needed for complete coverage"
+    }
+  },
+  "theme": {
+    "light": "Light Mode",
+    "dark": "Dark Mode",
+    "toggle": "Switch to {{mode}} mode"
+  },
+  "charts": {
+    "default": {
+      "title": "Chart"
+    },
+    "unavailable": {
+      "header": "Chart Temporarily Unavailable",
+      "message": "The chart visualization is currently loading or unavailable."
+    },
+    "fallback": {
+      "description": "This is a placeholder for a data visualization that would normally show:",
+      "item1": "Player performance data over time",
+      "item2": "Score distribution",
+      "item3": "Game history"
+    },
+    "playerStats": {
+      "title": "Player Statistics",
+      "loading": "Loading chart...",
+      "unavailable": "Player stats visualization is currently unavailable",
+      "axisLabels": {
+        "player": "Player",
+        "score": "Score"
+      },
+      "tooltip": {
+        "score": "Score: {{score}}"
+      }
+    },
+    "playerPerformance": {
+      "title": "Player Performance Points",
+      "loading": "Loading chart...",
+      "unavailable": "Performance chart is currently unavailable",
+      "description": "This chart shows points earned by each player in each game. Players only appear in games they participated in.",
+      "axisLabels": {
+        "games": "Games",
+        "points": "Points"
+      },
+      "tooltip": {
+        "game": "Game",
+        "points": "Points: {{points}}"
+      }
+    },
+    "gamesCalendar": {
+      "title": "Games Calendar",
+      "loading": "Loading chart...",
+      "unavailable": "Games calendar visualization is currently unavailable",
+      "tooltip": {
+        "games": "{{count}} games",
+        "date": "Date: {{date}}"
+      },
+      "legend": {
+        "games": "Games"
+      }
+    }
+  },
+  "leaderboard": {
+    "title": "Leaderboard",
+    "rank": "Rank",
+    "player": "Player",
+    "games": "Games",
+    "points": "Points",
+    "avg": "Avg. Points"
+  },
+  "teamStats": {
+    "title": "Team Performance",
+    "rank": "Rank",
+    "team": "Team",
+    "gamesPlayed": "Games Played",
+    "wins": "Wins (🥇)",
+    "seconds": "Second Place (🥈)",
+    "thirds": "Third Place (🥉)",
+    "winRate": "Win Rate",
+    "totalPoints": "Total Points",
+    "bestTeam": "Most Successful Team: {{team}}",
+    "bestTeamStats": "This team has won {{wins}} out of {{games}} games, with a win rate of {{rate}}%."
+  },
+  "gamesList": {
+    "title": "Games History",
+    "game": "Game #{{number}} - {{date}}",
+    "teamsScores": "Teams and Scores:",
+    "team": "Team:",
+    "sort": "Sort",
+    "points": {
+      "one": "point",
+      "other": "points",
+      "first": "1st place",
+      "second": "2nd place",
+      "third": "3rd place"
+    }
+  }
+}

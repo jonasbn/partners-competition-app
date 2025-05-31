@@ -2,8 +2,12 @@ import React from 'react';
 // Modified import to ensure compatibility
 import { ResponsiveCalendar } from '@nivo/calendar';
 import { getGames } from '../utils/dataUtils';
+import { useTranslation } from 'react-i18next';
 
-const GamesCalendarChart = () => {
+const GamesCalendarChart = ({ t }) => {
+  const { t: translate } = useTranslation();
+  // Use provided t function if available, otherwise use local translate
+  const tFunc = t || translate;
   const games = getGames();
   
   // Prepare data for the calendar chart
@@ -32,7 +36,7 @@ const GamesCalendarChart = () => {
   return (
     <div className="card mb-4">
       <div className="card-header text-white" style={{ backgroundColor: '#20B2AA' }}>
-        <h2>📆 Games Calendar</h2>
+        <h2>📆 {tFunc('charts.gamesCalendar.title')}</h2>
       </div>
       <div className="card-body">
         <div style={{ height: '200px' }}>
@@ -59,6 +63,20 @@ const GamesCalendarChart = () => {
                 itemDirection: 'right-to-left'
               }
             ]}
+            tooltip={({ day, value }) => (
+              <div
+                style={{
+                  padding: 12,
+                  background: '#fff',
+                  borderRadius: 4,
+                  boxShadow: '0 3px 8px rgba(0, 0, 0, 0.15)',
+                  color: '#333'
+                }}
+              >
+                <strong>{tFunc('charts.gamesCalendar.tooltip.date', { date: day })}</strong>
+                <div>{tFunc('charts.gamesCalendar.tooltip.games', { count: value })}</div>
+              </div>
+            )}
           />
         </div>
       </div>

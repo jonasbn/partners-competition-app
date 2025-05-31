@@ -118,5 +118,95 @@
         "score": 3
       }
     ]
+  },
+  {
+    "gameId": 5,
+    "gameDate": "2025-05-03",
+    "players": [
+      {
+        "name": "Torben",
+        "score": 3
+      },
+      {
+        "name": "Gitte",
+        "score": 3
+      },
+      {
+        "name": "Jonas",
+        "score": 1
+      },
+      {
+        "name": "Peter",
+        "score": 1
+      },
+      {
+        "name": "Lotte",
+        "score": 2
+      },
+      {
+        "name": "Anette",
+        "score": 2
+      }
+    ]
+  },
+  {
+    "gameId": 6,
+    "gameDate": "2025-05-03",
+    "players": [
+      {
+        "name": "Torben",
+        "score": 3
+      },
+      {
+        "name": "Lotte",
+        "score": 3
+      },
+      {
+        "name": "Jonas",
+        "score": 2
+      },
+      {
+        "name": "Gitte",
+        "score": 2
+      },
+      {
+        "name": "Anette",
+        "score": 1
+      },
+      {
+        "name": "Peter",
+        "score": 1
+      }
+    ]
+  },
+  {
+    "gameId": 7,
+    "gameDate": "2025-05-03",
+    "players": [
+      {
+        "name": "Torben",
+        "score": 3
+      },
+      {
+        "name": "Jonas",
+        "score": 3
+      },
+      {
+        "name": "Anette",
+        "score": 2
+      },
+      {
+        "name": "Gitte",
+        "score": 2
+      },
+      {
+        "name": "Peter",
+        "score": 1
+      },
+      {
+        "name": "Lotte",
+        "score": 1
+      }
+    ]
   }
 ]

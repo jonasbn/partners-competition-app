@@ -64,3 +64,103 @@ footer {
     height: 300px;
   }
 }
+
+/* Theme styles */
+body.light-theme {
+  --bg-color: #f8f9fa;
+  --text-color: #212529;
+  --card-bg: #ffffff;
+  --card-border: #dee2e6;
+  --navbar-bg: #343a40;
+  --navbar-color: #ffffff;
+  --footer-bg: #f8f9fa;
+  --footer-color: #6c757d;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+body.dark-theme {
+  --bg-color: #121212;
+  --text-color: #f8f9fa;
+  --card-bg: #1e1e1e;
+  --card-border: #2d2d2d;
+  --navbar-bg: #212121;
+  --navbar-color: #ffffff;
+  --footer-bg: #212121;
+  --footer-color: #adb5bd;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+/* Apply theme to elements */
+.card {
+  background-color: var(--card-bg);
+  border-color: var(--card-border);
+}
+
+.card-header:not(.bg-primary):not(.bg-success):not(.bg-warning):not(.bg-danger) {
+  background-color: var(--card-border);
+  color: var(--text-color);
+}
+
+.list-group-item {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-color: var(--card-border);
+}
+
+.table {
+  color: var(--text-color);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark-theme .table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.navbar.bg-dark {
+  background-color: var(--navbar-bg) !important;
+}
+
+footer.bg-light {
+  background-color: var(--footer-bg) !important;
+  color: var(--footer-color);
+}
+
+/* Theme toggle button */
+.theme-toggle-btn {
+  background-color: transparent;
+  color: var(--navbar-color);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.25rem 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  border-radius: 0.25rem;
+}
+
+.theme-toggle-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--navbar-color);
+}
+
+/* Language selector */
+.language-selector {
+  margin-right: 10px;
+}
+
+.language-selector .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.5rem;
+}
+
+.navbar-controls {
+  display: flex;
+  align-items: center;
+}

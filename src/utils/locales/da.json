@@ -1,0 +1,122 @@
+{
+  "app": {
+    "title": "Partners Konkurrence App",
+    "footer": "Partners Konkurrence App © {{year}}",
+    "createdWith": "Lavet med GitHub Copilot og Claude Sonnet 3.7"
+  },
+  "language": {
+    "en": "Engelsk",
+    "da": "Dansk"
+  },
+  "summary": {
+    "leadingPlayer": {
+      "title": "Førende Spiller",
+      "score": "Nuværende Score",
+      "maxScore": "Maksimalt muligt: {{score}} ({{games}} spil)"
+    },
+    "mostWinningTeam": {
+      "title": "Mest Vindende Hold",
+      "stats": "Vundet {{wins}} ud af {{games}} spil ({{rate}}%)",
+      "combinations": "Ud af {{count}} mulige holdkombinationer"
+    },
+    "teamCoverage": {
+      "title": "Holddækning",
+      "formed": "{{formed}} af {{total}} mulige hold er dannet",
+      "remaining": "{{games}} flere spil nødvendigt for at danne {{teams}} resterende hold",
+      "minimum": "Minimum {{games}} spil nødvendigt for komplet dækning"
+    }
+  },
+  "theme": {
+    "light": "Lys tilstand",
+    "dark": "Mørk tilstand",
+    "toggle": "Skift til {{mode}} tilstand"
+  },
+  "charts": {
+    "default": {
+      "title": "Diagram"
+    },
+    "unavailable": {
+      "header": "Diagram Midlertidigt Utilgængeligt",
+      "message": "Diagramvisualiseringen indlæses i øjeblikket eller er utilgængelig."
+    },
+    "fallback": {
+      "description": "Dette er en pladsholder for en datavisualisering, der normalt ville vise:",
+      "item1": "Spillerpræstationsdata over tid",
+      "item2": "Pointfordeling",
+      "item3": "Spilhistorik"
+    },
+    "playerStats": {
+      "title": "Spillerstatistik",
+      "loading": "Indlæser diagram...",
+      "unavailable": "Spillerstatistik visualisering er ikke tilgængelig i øjeblikket",
+      "axisLabels": {
+        "player": "Spiller",
+        "score": "Score"
+      },
+      "tooltip": {
+        "score": "Point: {{score}}"
+      }
+    },
+    "playerPerformance": {
+      "title": "Spillerpræstation Points",
+      "loading": "Indlæser diagram...",
+      "unavailable": "Præstationsdiagrammet er ikke tilgængeligt i øjeblikket",
+      "description": "Dette diagram viser point optjent af hver spiller i hvert spil. Spillere vises kun i spil, de har deltaget i.",
+      "axisLabels": {
+        "games": "Spil",
+        "points": "Point"
+      },
+      "tooltip": {
+        "game": "Spil",
+        "points": "Point: {{points}}"
+      }
+    },
+    "gamesCalendar": {
+      "title": "Spilkalender",
+      "loading": "Indlæser diagram...",
+      "unavailable": "Spilkalender visualisering er ikke tilgængelig i øjeblikket",
+      "tooltip": {
+        "games": "{{count}} spil",
+        "date": "Dato: {{date}}"
+      },
+      "legend": {
+        "games": "Spil"
+      }
+    }
+  },
+  "leaderboard": {
+    "title": "Resultattavle",
+    "rank": "Placering",
+    "player": "Spiller",
+    "games": "Spil",
+    "points": "Point",
+    "avg": "Gns. Point"
+  },
+  "teamStats": {
+    "title": "Holdpræstation",
+    "rank": "Placering",
+    "team": "Hold",
+    "gamesPlayed": "Spillede spil",
+    "wins": "Sejre (🥇)",
+    "seconds": "Andenplads (🥈)",
+    "thirds": "Tredjeplads (🥉)",
+    "winRate": "Sejrsrate",
+    "totalPoints": "Samlede point",
+    "bestTeam": "Mest succesfulde hold: {{team}}",
+    "bestTeamStats": "Dette hold har vundet {{wins}} ud af {{games}} spil, med en sejrsrate på {{rate}}%."
+  },
+  "gamesList": {
+    "title": "Spilhistorik",
+    "game": "Spil #{{number}} - {{date}}",
+    "teamsScores": "Hold og scorer:",
+    "team": "Hold:",
+    "sort": "Sortér",
+    "points": {
+      "one": "point",
+      "other": "point",
+      "first": "1. plads",
+      "second": "2. plads",
+      "third": "3. plads"
+    }
+  }
+}
