@@ -151,8 +151,7 @@ const PlayerPerformanceChart = ({ t }) => {
         </div>
         <div className="text-center mt-3">
           <small className="text-muted">
-            This chart shows points earned by each player in each game.
-            Players only appear in games they participated in.
+            {tFunc('charts.playerPerformance.description')}
           </small>
         </div>
       </div>
