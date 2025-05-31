@@ -1,0 +1,122 @@
+[
+  {
+    "gameId": 1,
+    "gameDate": "2024-04-12",
+    "players": [
+      {
+        "name": "Gitte",
+        "score": 3
+      },
+      {
+        "name": "Anette",
+        "score": 3
+      },
+      {
+        "name": "Lotte",
+        "score": 2
+      },
+      {
+        "name": "Peter",
+        "score": 2
+      },
+      {
+        "name": "Jonas",
+        "score": 1
+      },
+      {
+        "name": "Torben",
+        "score": 1
+      }
+    ]
+  },
+  {
+    "gameId": 2,
+    "gameDate": "2024-04-12",
+    "players": [
+      {
+        "name": "Gitte",
+        "score": 1
+      },
+      {
+        "name": "Anette",
+        "score": 2
+      },
+      {
+        "name": "Lotte",
+        "score": 3
+      },
+      {
+        "name": "Peter",
+        "score": 2
+      },
+      {
+        "name": "Jonas",
+        "score": 1
+      },
+      {
+        "name": "Torben",
+        "score": 3
+      }
+    ]
+  },
+  {
+    "gameId": 3,
+    "gameDate": "2024-04-12",
+    "players": [
+      {
+        "name": "Gitte",
+        "score": 3
+      },
+      {
+        "name": "Anette",
+        "score": 2
+      },
+      {
+        "name": "Lotte",
+        "score": 3
+      },
+      {
+        "name": "Peter",
+        "score": 1
+      },
+      {
+        "name": "Jonas",
+        "score": 1
+      },
+      {
+        "name": "Torben",
+        "score": 2
+      }
+    ]
+  },
+  {
+    "gameId": 4,
+    "gameDate": "2024-04-12",
+    "players": [
+      {
+        "name": "Gitte",
+        "score": 3
+      },
+      {
+        "name": "Anette",
+        "score": 1
+      },
+      {
+        "name": "Lotte",
+        "score": 1
+      },
+      {
+        "name": "Peter",
+        "score": 2
+      },
+      {
+        "name": "Jonas",
+        "score": 2
+      },
+      {
+        "name": "Torben",
+        "score": 3
+      }
+    ]
+  }
+]
