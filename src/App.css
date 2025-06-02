@@ -465,3 +465,38 @@ footer.bg-light {
 .row {
   overflow: visible !important;
 }
+
+/* Table Cell Avatar Positioning - Fix for Leaderboard and Team Statistics */
+.table td .d-flex.align-items-center .avatar-container {
+  position: relative;
+  z-index: 1;
+}
+
+.table td .d-flex.align-items-center .avatar-container:hover {
+  z-index: 10006 !important; /* High z-index for table cell avatar popups */
+}
+
+/* Ensure table cells don't clip popups */
+.table td {
+  position: relative;
+  overflow: visible !important;
+}
+
+.table tbody tr td {
+  overflow: visible !important;
+}
+
+/* Make sure table containers allow popup overflow */
+.table-responsive {
+  overflow: visible !important;
+}
+
+.table-responsive .table {
+  overflow: visible !important;
+}
+
+/* Fix for flex alignment in table cells to ensure proper popup positioning */
+.table td .d-flex.align-items-center {
+  position: relative;
+  overflow: visible;
+}

@@ -20,7 +20,18 @@ transform: 'translate(-50%, -50%)', // Center popup on avatar
 zIndex: 10007
 ```
 
-### 2. Summary Card Avatar Hover - **10005**
+### 2. Table Cell Avatar Hover - **10006**
+**Location**: `App.css` - Table cell avatar containers on hover  
+**Purpose**: Ensures avatar popups in table cells (Leaderboard, TeamStatistics) appear centered on avatars  
+**Scope**: Applied to avatar containers within table cell flex layouts during hover state
+
+```css
+.table td .d-flex.align-items-center .avatar-container:hover {
+  z-index: 10006 !important;
+}
+```
+
+### 3. Summary Card Avatar Hover - **10005**
 **Location**: `App.css` - Summary card avatar containers on hover  
 **Purpose**: Ensures summary card avatars appear above card content when hovered  
 **Scope**: Applied to avatar containers in summary cards during hover state
@@ -31,7 +42,7 @@ zIndex: 10007
 }
 ```
 
-### 3. Avatar Popup Fallback - **10004**
+### 4. Avatar Popup Fallback - **10004**
 **Location**: `App.css` - Backup popup styling  
 **Purpose**: Alternative popup styling with high z-index  
 **Scope**: General avatar popup containers
@@ -43,7 +54,7 @@ zIndex: 10007
 }
 ```
 
-### 4. Nested Card Avatar Hover - **10003**
+### 5. Nested Card Avatar Hover - **10003**
 **Location**: `App.css` - Avatar containers in nested card structures  
 **Purpose**: Ensures visibility in complex nested layouts (games list)  
 **Scope**: Avatar containers within list group items in cards
@@ -54,7 +65,7 @@ zIndex: 10007
 }
 ```
 
-### 5. List Group Avatar Hover - **10002**
+### 6. List Group Avatar Hover - **10002**
 **Location**: `App.css` - List group item avatar hover state  
 **Purpose**: Higher z-index for avatar interactions in list contexts  
 **Scope**: Avatar containers in list group items during hover
@@ -65,7 +76,7 @@ zIndex: 10007
 }
 ```
 
-### 6. Avatar Container Hover - **10001**
+### 7. Avatar Container Hover - **10001**
 **Location**: `App.css` - General avatar hover state  
 **Purpose**: Standard hover z-index for avatar containers  
 **Scope**: General avatar hover interactions
@@ -76,7 +87,7 @@ zIndex: 10007
 }
 ```
 
-### 7. Avatar Popup Base - **10000**
+### 8. Avatar Popup Base - **10000**
 **Location**: `App.css` - Base avatar popup styling  
 **Purpose**: Base z-index for avatar popup elements  
 **Scope**: General avatar popup positioning
@@ -87,22 +98,22 @@ zIndex: 10007
 }
 ```
 
-### 8. Bootstrap Modal Backdrop - **1055** (Bootstrap default)
+### 9. Bootstrap Modal Backdrop - **1055** (Bootstrap default)
 **Location**: Bootstrap framework  
 **Purpose**: Modal overlay backgrounds  
 **Scope**: Framework-managed z-index for modal dialogs
 
-### 9. Bootstrap Modal - **1050** (Bootstrap default)
+### 10. Bootstrap Modal - **1050** (Bootstrap default)
 **Location**: Bootstrap framework  
 **Purpose**: Modal dialog content  
 **Scope**: Framework-managed z-index for modal content
 
-### 10. Bootstrap Dropdown - **1000** (Bootstrap default)
+### 11. Bootstrap Dropdown - **1000** (Bootstrap default)
 **Location**: Bootstrap framework  
 **Purpose**: Dropdown menu overlays  
 **Scope**: Framework-managed z-index for dropdown components
 
-### 11. Card Elements - **2**
+### 12. Card Elements - **2**
 **Location**: `App.css` - Card components and list group avatar containers  
 **Purpose**: Standard stacking for main content cards  
 **Scope**: Card components and structured list elements
@@ -117,7 +128,7 @@ zIndex: 10007
 }
 ```
 
-### 12. List Group Items & Badge Elements - **1**
+### 13. List Group Items & Badge Elements - **1**
 **Location**: `App.css` - List items and badge positioning  
 **Purpose**: Standard stacking for list content  
 **Scope**: List group items, badges, and flex containers
@@ -140,7 +151,7 @@ zIndex: 10007
 }
 ```
 
-### 13. Standard Content - **Auto/Default**
+### 14. Standard Content - **Auto/Default**
 **Location**: All other components  
 **Purpose**: Normal document flow stacking  
 **Scope**: Charts, navigation, most UI elements
@@ -241,10 +252,9 @@ zIndex: 10007
 
 ### Changes from Previous Version
 - **Enhanced z-index hierarchy**: Expanded from single popup level to layered system
-- **Improved avatar interactions**: Better handling of complex nested layouts
 - **Updated popup positioning**: Changed from mouse-following to avatar-centered popups
-- **Maintained simplicity**: Clean side-by-side avatar layouts preserved
-- **Added specificity**: Higher CSS specificity for Bootstrap overrides
+- **Added table cell positioning**: Fixed leaderboard and team statistics popup alignment with z-index 10006
+- **Improved cross-component consistency**: All avatar popups now center on their respective avatars
 
 ### Performance Benefits
 - **Optimized stacking**: Appropriate z-index levels for different contexts
