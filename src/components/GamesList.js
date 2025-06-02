@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { getGames } from '../utils/dataUtils';
 import { useTranslation } from 'react-i18next';
 import AvatarWithHover from './AvatarWithHover';
+import Logger from '../utils/logger';
 
 const GamesList = () => {
   const { t } = useTranslation();
   const [sortDirection, setSortDirection] = React.useState('desc'); // Default to show newest games first
-  const games = getGames();
+  
+  let games = [];
+  try {
+    games = getGames();
+    Logger.performance('games_data_load', games.length, { 
+      component: 'GamesList',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    Logger.error('Failed to load games data', error, { component: 'GamesList' });
+    games = [];
+  }
   
   // Sort games based on current sortDirection
   const sortedGames = [...games].sort((a, b) => {
@@ -17,8 +29,21 @@ const GamesList = () => {
 
   // Toggle sort direction
   const toggleSort = () => {
-    setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
+    const newDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+    Logger.userAction('games_sort_toggle', {
+      fromDirection: sortDirection,
+      toDirection: newDirection,
+      gamesCount: games.length
+    });
+    setSortDirection(newDirection);
   };
+
+  useEffect(() => {
+    Logger.event('games_list_mounted', {
+      gamesCount: games.length,
+      sortDirection
+    });
+  }, [games.length, sortDirection]);
 
   // Function to get player's avatar image based on team score
   const getPlayerAvatarByScore = (playerName, teamScore) => {

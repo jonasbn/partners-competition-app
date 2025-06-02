@@ -11,6 +11,12 @@ footer {
 .card {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
+  background-color: var(--card-bg);
+  border-color: var(--card-border);
+  color: var(--text-color);
+  position: relative;
+  z-index: 2;
+  overflow: visible; /* Allow popups to extend outside cards */
 }
 
 .card:hover {
@@ -40,23 +46,56 @@ footer {
   transform: scale(1.1);
 }
 
-/* Avatar hover effect styles */
+/* Avatar hover effects */
 .avatar-container {
-  transition: all 0.2s ease;
+  position: relative;
+  display: inline-block;
+  z-index: 1;
 }
 
 .avatar-container:hover {
-  z-index: 1000;
+  z-index: 10001;
 }
 
-/* Ensure avatar popup appears above all other content */
+/* Avatar popup animations */
 .avatar-popup {
-  z-index: 10000 !important;
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out;
+  transform-origin: center bottom;
+}
+
+.avatar-popup.show {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+.avatar-popup.hide {
+  opacity: 0;
+  transform: translateX(-50%) scale(0.9);
+}
+
+/* Ensure popups don't get clipped by viewport edges */
+.avatar-popup {
+  max-width: calc(100vw - 20px);
+  max-height: calc(100vh - 20px);
 }
 
 /* Smooth transitions for avatar images */
 .avatar img, .avatar-fallback {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.avatar-container img,
+.avatar-container .avatar-fallback {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.avatar-container:hover img,
+.avatar-container:hover .avatar-fallback {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .table td {
@@ -130,12 +169,6 @@ body.dark-theme {
 }
 
 /* Apply theme to elements */
-.card {
-  background-color: var(--card-bg);
-  border-color: var(--card-border);
-  color: var(--text-color);
-}
-
 .card-header:not(.bg-primary):not(.bg-success):not(.bg-warning):not(.bg-danger):not(.bg-info):not(.bg-secondary) {
   background-color: var(--card-border);
   color: var(--text-color);
@@ -161,6 +194,26 @@ body.dark-theme {
   background-color: var(--card-bg);
   color: var(--text-color);
   border-color: var(--card-border);
+  position: relative;
+  z-index: 1;
+  overflow: visible; /* Ensure popups can extend outside the container */
+}
+
+.list-group-item .avatar-container {
+  position: relative;
+  z-index: 2;
+}
+
+.list-group-item .avatar-container:hover {
+  z-index: 10002; /* Higher than the default popup z-index */
+}
+
+.list-group {
+  overflow: visible;
+}
+
+.card-body {
+  overflow: visible;
 }
 
 .dark-theme .list-group-item-action:hover {
@@ -320,4 +373,94 @@ footer.bg-light {
 .dark-theme .btn-outline-secondary:hover {
   background-color: #495057;
   color: #f8f9fa;
+}
+
+/* Ensure cards don't interfere with avatar popups */
+/* Games list specific styling */
+.card .card-body .card {
+  overflow: visible;
+}
+
+.d-flex.align-items-center {
+  position: relative;
+}
+
+/* Make sure overlapping elements don't hide avatars */
+.list-group-item .d-flex {
+  position: relative;
+  z-index: 1;
+}
+
+.list-group-item .badge {
+  position: relative;
+  z-index: 1;
+}
+
+/* Create a new stacking context for avatar popups in games list */
+.card .card-body .list-group-item .avatar-container:hover {
+  position: relative;
+  z-index: 10003; /* Even higher to ensure visibility in nested cards */
+}
+
+/* Ensure the popup appears above all Bootstrap components */
+.avatar-popup,
+.avatar-container .avatar-popup {
+  z-index: 10004 !important;
+}
+
+/* Fix any potential Bootstrap z-index conflicts */
+.list-group-item .d-flex .avatar-container {
+  isolation: isolate; /* Create a new stacking context */
+}
+
+/* Summary Cards Avatar Positioning - Fix for Most Winning Team overlapping avatars */
+.card .card-body .d-flex.justify-content-center .position-relative {
+  z-index: 10; /* Base z-index for overlapping avatar containers */
+}
+
+.card .card-body .d-flex.justify-content-center .position-relative .avatar-container {
+  position: relative;
+  z-index: inherit;
+}
+
+.card .card-body .d-flex.justify-content-center .position-relative .avatar-container:hover {
+  z-index: 10005 !important; /* Highest z-index for summary card avatar popups */
+}
+
+/* Ensure summary card containers don't clip popups */
+.card.border-primary,
+.card.border-success,
+.card.border-warning {
+  overflow: visible !important;
+}
+
+.card.border-primary .card-body,
+.card.border-success .card-body,
+.card.border-warning .card-body {
+  overflow: visible !important;
+}
+
+/* Fix for overlapping avatars in most winning team card */
+.card.border-primary .d-flex.justify-content-center {
+  position: relative;
+  z-index: 10;
+  overflow: visible;
+}
+
+/* Ensure proper stacking for overlapping avatars */
+.card.border-primary .position-relative:nth-child(1) .avatar-container:hover {
+  z-index: 10006 !important;
+}
+
+.card.border-primary .position-relative:nth-child(2) .avatar-container:hover {
+  z-index: 10007 !important; /* Second avatar gets higher z-index when hovered */
+}
+
+/* Specific fix for Bootstrap grid columns that might clip popups */
+.col-md-4 {
+  overflow: visible !important;
+}
+
+.row {
+  overflow: visible !important;
 }

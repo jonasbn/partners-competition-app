@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { getAvatarColor, getInitials } from '../utils/avatarUtils';
+import Logger from '../utils/logger';
 
 const AvatarWithHover = ({
   playerName,
@@ -16,19 +17,47 @@ const AvatarWithHover = ({
 
   // Handle mouse enter
   const handleMouseEnter = (e) => {
-    const rect = e.target.getBoundingClientRect();
-    const x = rect.left + rect.width / 2;
-    const y = rect.top;
+    // Use the actual mouse position instead of element center
+    const x = e.clientX;
+    const y = e.clientY;
     
     setPopupPosition({ x, y });
     setIsHovered(true);
     setShowPopup(true);
+    
+    // Log avatar hover interaction
+    Logger.userAction('avatar_hover', {
+      playerName,
+      avatarSrc: avatarSrc ? 'custom' : 'fallback',
+      size,
+      position: { x, y }
+    });
   };
 
   // Handle mouse leave
   const handleMouseLeave = () => {
     setIsHovered(false);
     setShowPopup(false);
+  };
+
+  // Handle mouse move to update popup position with cursor
+  const handleMouseMove = (e) => {
+    if (showPopup) {
+      const x = e.clientX;
+      const y = e.clientY;
+      setPopupPosition({ x, y });
+    }
+  };
+
+  // Handle click events
+  const handleClick = (e) => {
+    if (onClick) {
+      Logger.userAction('avatar_click', {
+        playerName,
+        avatarSrc: avatarSrc ? 'custom' : 'fallback'
+      });
+      onClick(e);
+    }
   };
 
   // Style for the avatar circle (fallback)
@@ -68,9 +97,9 @@ const AvatarWithHover = ({
   const popupStyle = {
     position: 'fixed',
     left: `${popupPosition.x}px`,
-    top: `${popupPosition.y - 120}px`, // Position above the avatar
-    transform: 'translateX(-50%)',
-    zIndex: 10000,
+    top: `${popupPosition.y - 80}px`, // Position above the mouse cursor with optimal spacing
+    transform: 'translateX(-50%)', // Center horizontally on the cursor
+    zIndex: 10007, // Higher z-index to ensure it appears above all elements
     pointerEvents: 'none',
     opacity: showPopup ? 1 : 0,
     transition: 'opacity 0.2s ease',
@@ -109,8 +138,9 @@ const AvatarWithHover = ({
       <div 
         className={`avatar-container ${className}`}
         onMouseEnter={handleMouseEnter}
+        onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        onClick={onClick}
+        onClick={handleClick}
         style={{ position: 'relative', display: 'inline-block' }}
       >
         {avatarSrc ? (
@@ -166,7 +196,7 @@ const AvatarWithHover = ({
           {/* Player name label */}
           <div style={{
             position: 'absolute',
-            bottom: '-30px',
+            bottom: '-25px',
             left: '50%',
             transform: 'translateX(-50%)',
             background: 'var(--card-bg, white)',
