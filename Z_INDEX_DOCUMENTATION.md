@@ -16,7 +16,22 @@ This document outlines the current z-index hierarchy used in the Partners Compet
 
 ## Current Z-Index Hierarchy (Highest to Lowest)
 
-### 1. GamesList Avatar Hover - **10008**
+### 1. Avatar Hover Popups - **10015**
+**Location**: `AvatarWithHover.js` component  
+**Purpose**: Ensures avatar hover popups appear above avatar containers and all other content  
+**Scope**: Absolute positioning centered on top of avatar  
+**Usage**: Applied to all avatar hover interactions across the application
+
+```javascript
+// AvatarWithHover.js popup style
+position: 'absolute',
+left: '50%',
+top: '50%', 
+transform: 'translate(-50%, -50%)', // Center popup on avatar
+zIndex: 10015
+```
+
+### 2. GamesList Avatar Hover - **10010**
 **Location**: `App.css` - Nested game cards avatar containers on hover  
 **Purpose**: Ensures avatar popups in GamesList component appear above subsequent game rows  
 **Scope**: Applied to avatar containers within nested game card structures during hover state
@@ -27,7 +42,7 @@ This document outlines the current z-index hierarchy used in the Partners Compet
 }
 ```
 
-### 2. Avatar Hover Popups - **10007**
+### 3. Avatar Hover Popups (Legacy) - **10007**
 **Location**: `AvatarWithHover.js` component  
 **Purpose**: Ensures avatar hover popups appear above all other content  
 **Scope**: Absolute positioning centered on top of avatar  
@@ -218,15 +233,15 @@ zIndex: 10007
 
 ### Summary Cards (SummaryCards.js)
 - **Most Winning Team**: Side-by-side layout, avatar hover z-index 10005
-- **Leading Player**: Standard avatar implementation with popup z-index 10007
+- **Leading Player**: Standard avatar implementation with popup z-index 10015
 - **Layout**: Clean flexbox layout without z-index conflicts
 
 ### Leaderboard Component
-- **Avatar interactions**: Uses AvatarWithHover component (z-index 10007)
+- **Avatar interactions**: Uses AvatarWithHover component (z-index 10015)
 - **Table structure**: Natural stacking with hover popups
 
 ### Team Statistics Component
-- **Chart overlays**: Uses AvatarWithHover component (z-index 10007)
+- **Chart overlays**: Uses AvatarWithHover component (z-index 10015)
 - **Standard layout**: Natural chart layout with avatar overlays
 
 ## Best Practices Implemented
@@ -255,7 +270,7 @@ zIndex: 10007
 ## Future Considerations
 
 ### Adding New Components
-1. **Avatar interactions**: Use AvatarWithHover component (automatic z-index 10007)
+1. **Avatar interactions**: Use AvatarWithHover component (automatic z-index 10015)
 2. **New overlays**: Consider z-index > 10007 if needed above avatar popups
 3. **Standard content**: Use natural stacking (no z-index) when possible
 

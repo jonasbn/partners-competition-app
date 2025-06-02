@@ -504,7 +504,7 @@ footer.bg-light {
 /* GamesList Component Specific Avatar Popup Fixes */
 /* Ensure avatars in nested game cards appear above subsequent rows */
 .card .card-body .card .card-body .list-group-item .avatar-container:hover {
-  z-index: 10008 !important; /* Higher than standard popup z-index to appear above subsequent rows */
+  z-index: 10010 !important; /* Even higher than AvatarWithHover popup to ensure GamesList popups are never blocked */
 }
 
 /* Ensure nested game cards don't create stacking contexts that clip popups */

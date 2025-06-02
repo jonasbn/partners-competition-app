@@ -83,7 +83,7 @@ const AvatarWithHover = ({
     left: '50%',
     top: '50%',
     transform: 'translate(-50%, -50%)', // Center the popup on the avatar
-    zIndex: 10007, // Higher z-index to ensure it appears above all elements
+    zIndex: 10015, // Highest z-index to ensure popups appear above avatar containers and all other elements
     pointerEvents: 'none',
     opacity: showPopup ? 1 : 0,
     transition: 'opacity 0.2s ease',
