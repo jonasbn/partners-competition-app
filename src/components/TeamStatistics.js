@@ -24,7 +24,7 @@ const TeamStatistics = () => {
   return (
     <div className="card">
       <div className="card-header bg-primary text-white">
-        <h2>🤝 {t('teamStats.title')}</h2>
+        <h2>👯 {t('teamStats.title')}</h2>
       </div>
       <div className="card-body">
         <div className="table-responsive">
