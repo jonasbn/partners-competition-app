@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { getAvatarColor, getInitials } from '../utils/avatarUtils';
 import Logger from '../utils/logger';
 
@@ -13,11 +14,22 @@ const AvatarWithHover = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
+  const avatarRef = useRef(null);
 
   // Handle mouse enter
   const handleMouseEnter = (e) => {
     setIsHovered(true);
     setShowPopup(true);
+    
+    // Calculate popup position based on avatar position
+    if (avatarRef.current) {
+      const rect = avatarRef.current.getBoundingClientRect();
+      setPopupPosition({
+        x: rect.left + rect.width / 2,
+        y: rect.top + rect.height / 2
+      });
+    }
     
     // Log avatar hover interaction
     Logger.userAction('avatar_hover', {
@@ -32,6 +44,27 @@ const AvatarWithHover = ({
     setIsHovered(false);
     setShowPopup(false);
   };
+
+  // Update popup position on scroll or resize
+  useEffect(() => {
+    if (showPopup && avatarRef.current) {
+      const updatePosition = () => {
+        const rect = avatarRef.current.getBoundingClientRect();
+        setPopupPosition({
+          x: rect.left + rect.width / 2,
+          y: rect.top + rect.height / 2
+        });
+      };
+
+      window.addEventListener('scroll', updatePosition, true);
+      window.addEventListener('resize', updatePosition);
+      
+      return () => {
+        window.removeEventListener('scroll', updatePosition, true);
+        window.removeEventListener('resize', updatePosition);
+      };
+    }
+  }, [showPopup]);
 
   // Handle click events
   const handleClick = (e) => {
@@ -77,13 +110,13 @@ const AvatarWithHover = ({
     ...style
   };
 
-  // Style for the popup
+  // Style for the popup (using fixed positioning for portal)
   const popupStyle = {
-    position: 'absolute',
-    left: '50%',
-    top: '50%',
+    position: 'fixed',
+    left: `${popupPosition.x}px`,
+    top: `${popupPosition.y}px`,
     transform: 'translate(-50%, -50%)', // Center the popup on the avatar
-    zIndex: 10015, // Highest z-index to ensure popups appear above avatar containers and all other elements
+    zIndex: 999999, // Extremely high z-index to ensure popups appear above everything
     pointerEvents: 'none',
     opacity: showPopup ? 1 : 0,
     transition: 'opacity 0.2s ease',
@@ -120,6 +153,7 @@ const AvatarWithHover = ({
   return (
     <>
       <div 
+        ref={avatarRef}
         className={`avatar-container ${className}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -152,8 +186,8 @@ const AvatarWithHover = ({
         )}
       </div>
 
-      {/* Hover popup */}
-      {showPopup && (
+      {/* Hover popup rendered via portal to ensure it appears above all other elements */}
+      {showPopup && createPortal(
         <div style={popupStyle}>
           {avatarSrc ? (
             <img 
@@ -194,7 +228,8 @@ const AvatarWithHover = ({
           }}>
             {playerName}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );

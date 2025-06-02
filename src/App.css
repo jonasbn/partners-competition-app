@@ -501,38 +501,7 @@ footer.bg-light {
   overflow: visible;
 }
 
-/* GamesList Component Specific Avatar Popup Fixes */
-/* Ensure avatars in nested game cards appear above subsequent rows */
-.card .card-body .card .card-body .list-group-item .avatar-container:hover {
-  z-index: 10010 !important; /* Even higher than AvatarWithHover popup to ensure GamesList popups are never blocked */
-}
-
-/* Ensure nested game cards don't create stacking contexts that clip popups */
-.card .card-body .card {
-  position: relative;
-  overflow: visible !important;
-  z-index: auto; /* Reset any z-index that might interfere */
-}
-
-.card .card-body .card .card-body {
-  overflow: visible !important;
-  position: relative;
-}
-
-.card .card-body .card .list-group {
-  overflow: visible !important;
-  position: relative;
-}
-
-/* Ensure each game card row doesn't interfere with popups from previous rows */
-.card .card-body .card .list-group-item {
-  position: relative;
-  overflow: visible !important;
-  z-index: 1;
-}
-
-/* Create isolation for avatar containers in GamesList to prevent popup clipping */
-.card .card-body .card .list-group-item .d-flex.align-items-center .avatar-container {
-  isolation: isolate;
-  position: relative;
-}
+/* Avatar Popup Portal-based Solution */
+/* Since popups are now rendered via React Portal to document.body, */
+/* they automatically appear above all other elements regardless of stacking context */
+/* No additional GamesList-specific CSS rules needed */

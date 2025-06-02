@@ -1,54 +1,50 @@
-# Z-Index Document### 1. GamesList Avatar Hover - **10008**
-**Location**: `App.css` - Nested game cards avatar containers on hover  
-**Purpose**: Ensures avatar popups in GamesList component appear above subsequent game rows  
-**Scope**: Applied to avatar containers within nested game card structures during hover state
-
-```css
-.card .card-body .card .card-body .list-group-item .avatar-container:hover {
-  z-index: 10008 !important;
-}
-```
-
-### 2. Avatar Hover Popups - **10007**tion - Updated Implementation
+# Z-Index Documentation - Portal-Based Implementation
 
 ## Overview
-This document outlines the current z-index hierarchy used in the Partners Competition App after the avatar layout improvements. The app uses a simplified approach with minimal z-index values, prioritizing natural document flow while ensuring avatar popups remain consistently visible.
+This document outlines the current z-index approach used in the Partners Competition App after implementing a portal-based solution for avatar popups. The app now uses React Portals to render avatar popups directly to `document.body`, eliminating stacking context issues and the need for complex z-index hierarchies.
 
-## Current Z-Index Hierarchy (Highest to Lowest)
+## Current Implementation
 
-### 1. Avatar Hover Popups - **10015**
+### Avatar Hover Popups - **999999** (Portal-Based)
 **Location**: `AvatarWithHover.js` component  
-**Purpose**: Ensures avatar hover popups appear above avatar containers and all other content  
-**Scope**: Absolute positioning centered on top of avatar  
+**Purpose**: Avatar hover popups rendered via React Portal to `document.body`  
+**Scope**: Fixed positioning based on avatar's screen coordinates  
 **Usage**: Applied to all avatar hover interactions across the application
 
-```javascript
-// AvatarWithHover.js popup style
-position: 'absolute',
-left: '50%',
-top: '50%', 
-transform: 'translate(-50%, -50%)', // Center popup on avatar
-zIndex: 10015
-```
-
-### 2. GamesList Avatar Hover - **10010**
-**Location**: `App.css` - Nested game cards avatar containers on hover  
-**Purpose**: Ensures avatar popups in GamesList component appear above subsequent game rows  
-**Scope**: Applied to avatar containers within nested game card structures during hover state
-
-```css
-.card .card-body .card .card-body .list-group-item .avatar-container:hover {
-  z-index: 10008 !important;
-}
-```
-
-### 3. Avatar Hover Popups (Legacy) - **10007**
-**Location**: `AvatarWithHover.js` component  
-**Purpose**: Ensures avatar hover popups appear above all other content  
-**Scope**: Absolute positioning centered on top of avatar  
-**Usage**: Applied to all avatar hover interactions across the application
+**Key Benefits:**
+- Popups render outside normal document flow via `createPortal(popup, document.body)`
+- Fixed positioning ensures popups appear at correct screen coordinates
+- Automatic layering above all other content regardless of parent stacking contexts
+- No need for complex CSS z-index rules or GamesList-specific overrides
 
 ```javascript
+// AvatarWithHover.js portal implementation
+{showPopup && createPortal(
+  <div style={{
+    position: 'fixed',
+    left: `${popupPosition.x}px`,
+    top: `${popupPosition.y}px`,
+    transform: 'translate(-50%, -50%)',
+    zIndex: 999999,
+    // ... other styles
+  }}>
+    {/* Popup content */}
+  </div>,
+  document.body // Render to document.body instead of local DOM
+)}
+```
+
+## Removed CSS Rules
+The following GamesList-specific CSS rules are no longer needed due to the portal implementation:
+- `.card .card-body .card .card-body .list-group-item .avatar-container:hover`
+- Complex overflow and stacking context management rules
+- GamesList row z-index overrides
+
+## Technical Notes
+- Popup position is calculated using `getBoundingClientRect()` for accurate screen coordinates
+- Position updates automatically on scroll/resize events
+- Portal approach eliminates all stacking context conflicts
+- Simplified CSS maintenance with fewer z-index rules
 // AvatarWithHover.js popup style
 position: 'absolute',
 left: '50%',
