@@ -13,15 +13,9 @@ const AvatarWithHover = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
-  const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
 
   // Handle mouse enter
   const handleMouseEnter = (e) => {
-    // Use the actual mouse position instead of element center
-    const x = e.clientX;
-    const y = e.clientY;
-    
-    setPopupPosition({ x, y });
     setIsHovered(true);
     setShowPopup(true);
     
@@ -29,8 +23,7 @@ const AvatarWithHover = ({
     Logger.userAction('avatar_hover', {
       playerName,
       avatarSrc: avatarSrc ? 'custom' : 'fallback',
-      size,
-      position: { x, y }
+      size
     });
   };
 
@@ -38,15 +31,6 @@ const AvatarWithHover = ({
   const handleMouseLeave = () => {
     setIsHovered(false);
     setShowPopup(false);
-  };
-
-  // Handle mouse move to update popup position with cursor
-  const handleMouseMove = (e) => {
-    if (showPopup) {
-      const x = e.clientX;
-      const y = e.clientY;
-      setPopupPosition({ x, y });
-    }
   };
 
   // Handle click events
@@ -95,10 +79,10 @@ const AvatarWithHover = ({
 
   // Style for the popup
   const popupStyle = {
-    position: 'fixed',
-    left: `${popupPosition.x}px`,
-    top: `${popupPosition.y - 80}px`, // Position above the mouse cursor with optimal spacing
-    transform: 'translateX(-50%)', // Center horizontally on the cursor
+    position: 'absolute',
+    left: '50%',
+    top: '50%',
+    transform: 'translate(-50%, -50%)', // Center the popup on the avatar
     zIndex: 10007, // Higher z-index to ensure it appears above all elements
     pointerEvents: 'none',
     opacity: showPopup ? 1 : 0,
@@ -138,7 +122,6 @@ const AvatarWithHover = ({
       <div 
         className={`avatar-container ${className}`}
         onMouseEnter={handleMouseEnter}
-        onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         onClick={handleClick}
         style={{ position: 'relative', display: 'inline-block' }}
