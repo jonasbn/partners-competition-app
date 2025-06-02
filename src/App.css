@@ -500,3 +500,39 @@ footer.bg-light {
   position: relative;
   overflow: visible;
 }
+
+/* GamesList Component Specific Avatar Popup Fixes */
+/* Ensure avatars in nested game cards appear above subsequent rows */
+.card .card-body .card .card-body .list-group-item .avatar-container:hover {
+  z-index: 10008 !important; /* Higher than standard popup z-index to appear above subsequent rows */
+}
+
+/* Ensure nested game cards don't create stacking contexts that clip popups */
+.card .card-body .card {
+  position: relative;
+  overflow: visible !important;
+  z-index: auto; /* Reset any z-index that might interfere */
+}
+
+.card .card-body .card .card-body {
+  overflow: visible !important;
+  position: relative;
+}
+
+.card .card-body .card .list-group {
+  overflow: visible !important;
+  position: relative;
+}
+
+/* Ensure each game card row doesn't interfere with popups from previous rows */
+.card .card-body .card .list-group-item {
+  position: relative;
+  overflow: visible !important;
+  z-index: 1;
+}
+
+/* Create isolation for avatar containers in GamesList to prevent popup clipping */
+.card .card-body .card .list-group-item .d-flex.align-items-center .avatar-container {
+  isolation: isolate;
+  position: relative;
+}

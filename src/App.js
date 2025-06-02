@@ -95,12 +95,15 @@ function App() {
         </div>
         
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-12">
             <ErrorBoundary name="TeamStatistics">
               <TeamStatistics />
             </ErrorBoundary>
           </div>
-          <div className="col-md-6">
+        </div>
+        
+        <div className="row">
+          <div className="col-md-12">
             <ErrorBoundary name="GamesList">
               <GamesList />
             </ErrorBoundary>

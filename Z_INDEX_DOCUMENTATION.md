@@ -1,11 +1,33 @@
-# Z-Index Documentation - Updated Implementation
+# Z-Index Document### 1. GamesList Avatar Hover - **10008**
+**Location**: `App.css` - Nested game cards avatar containers on hover  
+**Purpose**: Ensures avatar popups in GamesList component appear above subsequent game rows  
+**Scope**: Applied to avatar containers within nested game card structures during hover state
+
+```css
+.card .card-body .card .card-body .list-group-item .avatar-container:hover {
+  z-index: 10008 !important;
+}
+```
+
+### 2. Avatar Hover Popups - **10007**tion - Updated Implementation
 
 ## Overview
 This document outlines the current z-index hierarchy used in the Partners Competition App after the avatar layout improvements. The app uses a simplified approach with minimal z-index values, prioritizing natural document flow while ensuring avatar popups remain consistently visible.
 
 ## Current Z-Index Hierarchy (Highest to Lowest)
 
-### 1. Avatar Hover Popups - **10007**
+### 1. GamesList Avatar Hover - **10008**
+**Location**: `App.css` - Nested game cards avatar containers on hover  
+**Purpose**: Ensures avatar popups in GamesList component appear above subsequent game rows  
+**Scope**: Applied to avatar containers within nested game card structures during hover state
+
+```css
+.card .card-body .card .card-body .list-group-item .avatar-container:hover {
+  z-index: 10008 !important;
+}
+```
+
+### 2. Avatar Hover Popups - **10007**
 **Location**: `AvatarWithHover.js` component  
 **Purpose**: Ensures avatar hover popups appear above all other content  
 **Scope**: Absolute positioning centered on top of avatar  
@@ -20,7 +42,7 @@ transform: 'translate(-50%, -50%)', // Center popup on avatar
 zIndex: 10007
 ```
 
-### 2. Table Cell Avatar Hover - **10006**
+### 3. Table Cell Avatar Hover - **10006**
 **Location**: `App.css` - Table cell avatar containers on hover  
 **Purpose**: Ensures avatar popups in table cells (Leaderboard, TeamStatistics) appear centered on avatars  
 **Scope**: Applied to avatar containers within table cell flex layouts during hover state
@@ -31,7 +53,7 @@ zIndex: 10007
 }
 ```
 
-### 3. Summary Card Avatar Hover - **10005**
+### 4. Summary Card Avatar Hover - **10005**
 **Location**: `App.css` - Summary card avatar containers on hover  
 **Purpose**: Ensures summary card avatars appear above card content when hovered  
 **Scope**: Applied to avatar containers in summary cards during hover state
@@ -42,7 +64,7 @@ zIndex: 10007
 }
 ```
 
-### 4. Avatar Popup Fallback - **10004**
+### 5. Avatar Popup Fallback - **10004**
 **Location**: `App.css` - Backup popup styling  
 **Purpose**: Alternative popup styling with high z-index  
 **Scope**: General avatar popup containers
@@ -54,7 +76,7 @@ zIndex: 10007
 }
 ```
 
-### 5. Nested Card Avatar Hover - **10003**
+### 6. Nested Card Avatar Hover - **10003**
 **Location**: `App.css` - Avatar containers in nested card structures  
 **Purpose**: Ensures visibility in complex nested layouts (games list)  
 **Scope**: Avatar containers within list group items in cards
