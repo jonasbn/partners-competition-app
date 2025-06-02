@@ -132,17 +132,23 @@ const SummaryCards = () => {
           <div className="card-body text-center">
             {mostWinningTeam && (
               <>
-                <div className="d-flex justify-content-center mb-3">
+                <div 
+                  className="d-flex justify-content-center align-items-center mb-3" 
+                  style={{ 
+                    gap: '1.5rem',
+                    flexWrap: 'nowrap'
+                  }}
+                >
                   {mostWinningTeam.players.map((playerName, index) => (
-                    <div key={index} className="position-relative" style={{ marginLeft: index > 0 ? '-15px' : '0' }}>
+                    <div key={index} style={{ flex: 'none' }}>
                       <AvatarWithHover
                         playerName={playerName}
                         avatarSrc={getPlayerHappyAvatar(playerName)}
                         size={50}
                         borderColor="white"
                         style={{
-                          zIndex: 2 - index,
-                          border: '2px solid white'
+                          border: '2px solid white',
+                          display: 'block'
                         }}
                       />
                     </div>

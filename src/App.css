@@ -413,18 +413,13 @@ footer.bg-light {
   isolation: isolate; /* Create a new stacking context */
 }
 
-/* Summary Cards Avatar Positioning - Fix for Most Winning Team overlapping avatars */
-.card .card-body .d-flex.justify-content-center .position-relative {
-  z-index: 10; /* Base z-index for overlapping avatar containers */
-}
-
+/* Summary Cards Avatar Positioning */
 .card .card-body .d-flex.justify-content-center .position-relative .avatar-container {
   position: relative;
-  z-index: inherit;
 }
 
 .card .card-body .d-flex.justify-content-center .position-relative .avatar-container:hover {
-  z-index: 10005 !important; /* Highest z-index for summary card avatar popups */
+  z-index: 10005 !important; /* High z-index for summary card avatar popups */
 }
 
 /* Ensure summary card containers don't clip popups */
@@ -440,20 +435,26 @@ footer.bg-light {
   overflow: visible !important;
 }
 
-/* Fix for overlapping avatars in most winning team card */
+/* Fix for most winning team card - side by side avatars */
 .card.border-primary .d-flex.justify-content-center {
   position: relative;
-  z-index: 10;
   overflow: visible;
 }
 
-/* Ensure proper stacking for overlapping avatars */
-.card.border-primary .position-relative:nth-child(1) .avatar-container:hover {
-  z-index: 10006 !important;
+/* Force side by side avatar spacing with higher specificity */
+.card.border-primary .card-body .d-flex.justify-content-center {
+  gap: 1rem !important;
 }
 
-.card.border-primary .position-relative:nth-child(2) .avatar-container:hover {
-  z-index: 10007 !important; /* Second avatar gets higher z-index when hovered */
+.card.border-primary .card-body .d-flex.justify-content-center .position-relative {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+@media (max-width: 576px) {
+  .card.border-primary .card-body .d-flex.justify-content-center {
+    gap: 0.5rem !important;
+  }
 }
 
 /* Specific fix for Bootstrap grid columns that might clip popups */
