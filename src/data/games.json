@@ -1,7 +1,7 @@
 [
   {
     "gameId": 1,
-    "gameDate": "2024-04-12",
+    "gameDate": "2025-04-12",
     "players": [
       {
         "name": "Gitte",
@@ -31,7 +31,7 @@
   },
   {
     "gameId": 2,
-    "gameDate": "2024-04-12",
+    "gameDate": "2025-04-12",
     "players": [
       {
         "name": "Gitte",
@@ -61,7 +61,7 @@
   },
   {
     "gameId": 3,
-    "gameDate": "2024-04-12",
+    "gameDate": "2025-04-12",
     "players": [
       {
         "name": "Gitte",
@@ -91,7 +91,7 @@
   },
   {
     "gameId": 4,
-    "gameDate": "2024-04-12",
+    "gameDate": "2025-04-12",
     "players": [
       {
         "name": "Gitte",
@@ -205,6 +205,126 @@
       },
       {
         "name": "Lotte",
+        "score": 1
+      }
+    ]
+  },
+  {
+    "gameId": 8,
+    "gameDate": "2025-06-14",
+    "players": [
+      {
+        "name": "Torben",
+        "score": 3
+      },
+      {
+        "name": "Peter",
+        "score": 3
+      },
+      {
+        "name": "Anette",
+        "score": 1
+      },
+      {
+        "name": "Jonas",
+        "score": 1
+      },
+      {
+        "name": "Gitte",
+        "score": 2
+      },
+      {
+        "name": "Lotte",
+        "score": 2
+      }
+    ]
+  },
+  {
+    "gameId": 9,
+    "gameDate": "2025-06-14",
+    "players": [
+      {
+        "name": "Peter",
+        "score": 3
+      },
+      {
+        "name": "Gitte",
+        "score": 3
+      },
+      {
+        "name": "Lotte",
+        "score": 2
+      },
+      {
+        "name": "Jonas",
+        "score": 2
+      },
+      {
+        "name": "Torben",
+        "score": 1
+      },
+      {
+        "name": "Anette",
+        "score": 1
+      }
+    ]
+  },
+  {
+    "gameId": 10,
+    "gameDate": "2025-06-14",
+    "players": [
+      {
+        "name": "Jonas",
+        "score": 3
+      },
+      {
+        "name": "Anette",
+        "score": 3
+      },
+      {
+        "name": "Peter",
+        "score": 2
+      },
+      {
+        "name": "Lotte",
+        "score": 2
+      },
+      {
+        "name": "Gitte",
+        "score": 1
+      },
+      {
+        "name": "Torben",
+        "score": 1
+      }
+    ]
+  },
+  {
+    "gameId": 11,
+    "gameDate": "2025-06-14",
+    "players": [
+      {
+        "name": "Lotte",
+        "score": 3
+      },
+      {
+        "name": "Peter",
+        "score": 3
+      },
+      {
+        "name": "Anette",
+        "score": 2
+      },
+      {
+        "name": "Gitte",
+        "score": 2
+      },
+      {
+        "name": "Jonas",
+        "score": 1
+      },
+      {
+        "name": "Torben",
         "score": 1
       }
     ]
