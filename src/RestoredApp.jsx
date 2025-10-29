@@ -6,6 +6,14 @@ import './App.css';
 import SimpleLeaderboard from './components/SimpleLeaderboard';
 import SimpleGamesList from './components/SimpleGamesList';
 import SimpleThemeToggle from './components/SimpleThemeToggle';
+import SimpleSummaryCards from './components/SimpleSummaryCards';
+import SimpleTeamStatistics from './components/SimpleTeamStatistics';
+import SimplePlayerPerformance from './components/SimplePlayerPerformance';
+import SimpleGamesCalendar from './components/SimpleGamesCalendar';
+import SimplePointsDistribution from './components/SimplePointsDistribution';
+import SimplePlayerPerformanceChart from './components/SimplePlayerPerformanceChart';
+import SimpleTeamCombinationChart from './components/SimpleTeamCombinationChart';
+import SimplePlayerStatsChart from './components/SimplePlayerStatsChart';
 import { SimpleThemeProvider } from './utils/SimpleThemeContext';
 
 function RestoredApp() {
@@ -30,9 +38,36 @@ function RestoredApp() {
       
       <div className="container">
         <div className="alert alert-success">
-          <h4>🎉 Application Fully Restored!</h4>
-          <p>The white page issue has been resolved with proper error handling, data validation, and theme support added!</p>
-          <small>💡 <strong>Try the theme toggle</strong> in the top-right corner!</small>
+          <h4>🎉 Application Fully Restored & Enhanced!</h4>
+          <p>The white page issue has been resolved with comprehensive features restored: analytics, team statistics, player insights, and more!</p>
+          <div className="mt-2">
+            <small>💡 <strong>Try the theme toggle</strong> in the top-right corner!</small><br />
+            <small>👤 <strong>Hover over player avatars</strong> to see larger versions!</small><br />
+            <small>🏆 <strong>Avatars reflect ranking:</strong> 1st=😊, 2nd-3rd=😐, 4th-6th=😢</small><br />
+            <small>📊 <strong>Scroll down</strong> to explore analytics and team statistics!</small>
+          </div>
+        </div>
+
+        {/* Summary Cards */}
+        <SimpleSummaryCards />
+        
+        <div className="row">
+          <div className="col-md-12">
+            <div className="mb-4">
+              {(() => {
+                try {
+                  return <SimplePlayerPerformance />;
+                } catch (error) {
+                  console.error('SimplePlayerPerformance error:', error);
+                  return (
+                    <div className="alert alert-warning">
+                      <strong>Player Performance:</strong> {error.message}
+                    </div>
+                  );
+                }
+              })()}
+            </div>
+          </div>
         </div>
 
         <div className="row">
@@ -46,6 +81,120 @@ function RestoredApp() {
                   return (
                     <div className="alert alert-danger">
                       <strong>Leaderboard Error:</strong> {error.message}
+                    </div>
+                  );
+                }
+              })()}
+            </div>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-md-12">
+            <div className="mb-4">
+              {(() => {
+                try {
+                  return <SimplePointsDistribution />;
+                } catch (error) {
+                  console.error('SimplePointsDistribution error:', error);
+                  return (
+                    <div className="alert alert-warning">
+                      <strong>Points Distribution:</strong> {error.message}
+                    </div>
+                  );
+                }
+              })()}
+            </div>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-md-12">
+            <div className="mb-4">
+              {(() => {
+                try {
+                  return <SimpleGamesCalendar />;
+                } catch (error) {
+                  console.error('SimpleGamesCalendar error:', error);
+                  return (
+                    <div className="alert alert-warning">
+                      <strong>Games Calendar:</strong> {error.message}
+                    </div>
+                  );
+                }
+              })()}
+            </div>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-md-12">
+            <div className="mb-4">
+              {(() => {
+                try {
+                  return <SimplePlayerPerformanceChart />;
+                } catch (error) {
+                  console.error('SimplePlayerPerformanceChart error:', error);
+                  return (
+                    <div className="alert alert-warning">
+                      <strong>Player Performance Chart:</strong> {error.message}
+                    </div>
+                  );
+                }
+              })()}
+            </div>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-md-12">
+            <div className="mb-4">
+              {(() => {
+                try {
+                  return <SimpleTeamCombinationChart />;
+                } catch (error) {
+                  console.error('SimpleTeamCombinationChart error:', error);
+                  return (
+                    <div className="alert alert-warning">
+                      <strong>Team Combination Chart:</strong> {error.message}
+                    </div>
+                  );
+                }
+              })()}
+            </div>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-md-12">
+            <div className="mb-4">
+              {(() => {
+                try {
+                  return <SimplePlayerStatsChart />;
+                } catch (error) {
+                  console.error('SimplePlayerStatsChart error:', error);
+                  return (
+                    <div className="alert alert-warning">
+                      <strong>Player Stats Chart:</strong> {error.message}
+                    </div>
+                  );
+                }
+              })()}
+            </div>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-md-12">
+            <div className="mb-4">
+              {(() => {
+                try {
+                  return <SimpleTeamStatistics />;
+                } catch (error) {
+                  console.error('SimpleTeamStatistics error:', error);
+                  return (
+                    <div className="alert alert-warning">
+                      <strong>Team Statistics:</strong> {error.message}
                     </div>
                   );
                 }
@@ -73,38 +222,7 @@ function RestoredApp() {
           </div>
         </div>
 
-        <div className="row">
-          <div className="col-md-12">
-            <div className="card">
-              <div className="card-header bg-success text-white">
-                <h3>✅ Bug Fix Summary</h3>
-              </div>
-              <div className="card-body">
-                <h5>Root Cause Identified:</h5>
-                <p>The <code>SimpleLeaderboard</code> component was causing runtime errors due to unsafe property access and missing error handling.</p>
-                
-                <h5>Issues Fixed:</h5>
-                <ul>
-                  <li>✅ <strong>Error Handling:</strong> Added try-catch blocks for data loading</li>
-                  <li>✅ <strong>Safe Property Access:</strong> Added default values for all player properties</li>
-                  <li>✅ <strong>Division by Zero:</strong> Protected mathematical operations</li>
-                  <li>✅ <strong>Data Validation:</strong> Proper checks for data structure integrity</li>
-                  <li>✅ <strong>Better Logging:</strong> Enhanced console output for debugging</li>
-                </ul>
 
-                <h5>Systematic Debugging Process:</h5>
-                <ol>
-                  <li>✅ <strong>Step 0:</strong> Confirmed React basics work</li>
-                  <li>✅ <strong>Step 4:</strong> Confirmed Bootstrap integration works</li>
-                  <li>✅ <strong>Step 5:</strong> Confirmed data utilities work</li>
-                  <li>❌ <strong>Step 6A:</strong> Identified SimpleLeaderboard as the culprit</li>
-                  <li>🔧 <strong>Step 6A-Fixed:</strong> Applied comprehensive fixes</li>
-                  <li>🎉 <strong>Restored:</strong> Full application now working!</li>
-                </ol>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
       
       <footer className="bg-light text-center text-muted py-3 mt-4">

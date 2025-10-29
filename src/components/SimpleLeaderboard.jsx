@@ -1,5 +1,7 @@
 import React from 'react';
 import { getLeaderboardData } from '../utils/dataUtils';
+import SimpleAvatarWithHover from './SimpleAvatarWithHover';
+import { getRankBasedAvatar } from '../utils/simpleAvatarUtils';
 
 // Simple Leaderboard without i18n or external dependencies
 const SimpleLeaderboard = () => {
@@ -104,12 +106,32 @@ const SimpleLeaderboard = () => {
                     </td>
                     <td>
                       <div className="d-flex align-items-center">
-                        <div 
-                          className="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-2"
-                          style={{ width: '32px', height: '32px', fontSize: '12px' }}
-                        >
-                          {getPlayerInitials(name)}
-                        </div>
+                        {(() => {
+                          try {
+                            const currentRank = index + 1; // Convert 0-based index to 1-based rank
+                            const avatarSrc = getRankBasedAvatar(name, currentRank);
+                            console.log('Avatar for', name, 'at rank', currentRank, ':', avatarSrc);
+                            return (
+                              <SimpleAvatarWithHover
+                                playerName={name}
+                                avatarSrc={avatarSrc}
+                                size={32}
+                                className="me-2"
+                              />
+                            );
+                          } catch (error) {
+                            console.error('Error rendering avatar for', name, ':', error);
+                            // Fallback to simple initials
+                            return (
+                              <div 
+                                className="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-2"
+                                style={{ width: '32px', height: '32px', fontSize: '12px' }}
+                              >
+                                {getPlayerInitials(name)}
+                              </div>
+                            );
+                          }
+                        })()}
                         <strong>{name}</strong>
                       </div>
                     </td>
@@ -133,10 +155,22 @@ const SimpleLeaderboard = () => {
         </div>
         
         <div className="mt-3">
-          <small className="text-muted">
-            Total players: {players.length} | 
-            Total games tracked: {Math.floor(players.reduce((sum, p) => sum + (p.gamesPlayed || 0), 0) / 2)}
-          </small>
+          <div className="row">
+            <div className="col-md-6">
+              <small className="text-muted">
+                Total players: {players.length} | 
+                Total games tracked: {Math.floor(players.reduce((sum, p) => sum + (p.gamesPlayed || 0), 0) / 2)}
+              </small>
+            </div>
+            <div className="col-md-6 text-end">
+              <small className="text-muted">
+                <strong>Avatar Legend:</strong> 
+                <span className="ms-2">🥇😊</span>
+                <span className="ms-2">🥈🥉😐</span>
+                <span className="ms-2">4-6😢</span>
+              </small>
+            </div>
+          </div>
         </div>
       </div>
     </div>
