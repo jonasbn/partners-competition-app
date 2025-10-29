@@ -1,47 +1,60 @@
 import React, { lazy, Suspense } from 'react';
 import FallbackChart from './FallbackChart';
+import ChartErrorBoundary from './ChartErrorBoundary';
 
-// Lazy load chart components to reduce initial bundle size
-const PlayerStatsChart = lazy(() => import('./PlayerStatsChart'));
-const PlayerPerformanceChart = lazy(() => import('./PlayerPerformanceChart'));
-const GamesCalendarChart = lazy(() => import('./GamesCalendarChart'));
-const TeamCombinationChart = lazy(() => import('./TeamCombinationChart'));
-const PointsDistributionChart = lazy(() => import('./PointsDistributionChart'));
-const PlayerStrengthChart = lazy(() => import('./PlayerStrengthChart'));
+// Temporarily use simple fallback components to resolve module loading issues
+const PlayerStatsChart = lazy(() => import('./SimpleStatsChart'));
+const PlayerPerformanceChart = lazy(() => import('./SimplePerformanceChart'));
+const GamesCalendarChart = lazy(() => import('./SimpleCalendarChart'));
+const TeamCombinationChart = lazy(() => import('./SimpleTeamChart'));
+const PointsDistributionChart = lazy(() => import('./SimpleDistributionChart'));
+const PlayerStrengthChart = lazy(() => import('./SimpleRadarChart'));
 
-// Wrapper components with Suspense and fallback
+// Wrapper components with Suspense, fallback, and error boundaries
 export const LazyPlayerStatsChart = (props) => (
-  <Suspense fallback={<FallbackChart title="📊 Loading Player Stats..." message="Loading chart data..." />}>
-    <PlayerStatsChart {...props} />
-  </Suspense>
+  <ChartErrorBoundary chartName="Player Stats Chart">
+    <Suspense fallback={<FallbackChart title="📊 Loading Player Stats..." message="Loading chart data..." />}>
+      <PlayerStatsChart {...props} />
+    </Suspense>
+  </ChartErrorBoundary>
 );
 
 export const LazyPlayerPerformanceChart = (props) => (
-  <Suspense fallback={<FallbackChart title="📈 Loading Performance..." message="Loading chart data..." />}>
-    <PlayerPerformanceChart {...props} />
-  </Suspense>
+  <ChartErrorBoundary chartName="Player Performance Chart">
+    <Suspense fallback={<FallbackChart title="📈 Loading Performance..." message="Loading chart data..." />}>
+      <PlayerPerformanceChart {...props} />
+    </Suspense>
+  </ChartErrorBoundary>
 );
 
 export const LazyGamesCalendarChart = (props) => (
-  <Suspense fallback={<FallbackChart title="📆 Loading Calendar..." message="Loading chart data..." />}>
-    <GamesCalendarChart {...props} />
-  </Suspense>
+  <ChartErrorBoundary chartName="Games Calendar Chart">
+    <Suspense fallback={<FallbackChart title="📆 Loading Calendar..." message="Loading chart data..." />}>
+      <GamesCalendarChart {...props} />
+    </Suspense>
+  </ChartErrorBoundary>
 );
 
 export const LazyTeamCombinationChart = (props) => (
-  <Suspense fallback={<FallbackChart title="🤝 Loading Team Data..." message="Loading chart data..." />}>
-    <TeamCombinationChart {...props} />
-  </Suspense>
+  <ChartErrorBoundary chartName="Team Combination Chart">
+    <Suspense fallback={<FallbackChart title="🤝 Loading Team Data..." message="Loading chart data..." />}>
+      <TeamCombinationChart {...props} />
+    </Suspense>
+  </ChartErrorBoundary>
 );
 
 export const LazyPointsDistributionChart = (props) => (
-  <Suspense fallback={<FallbackChart title="🍩 Loading Distribution..." message="Loading chart data..." />}>
-    <PointsDistributionChart {...props} />
-  </Suspense>
+  <ChartErrorBoundary chartName="Points Distribution Chart">
+    <Suspense fallback={<FallbackChart title="🍩 Loading Distribution..." message="Loading chart data..." />}>
+      <PointsDistributionChart {...props} />
+    </Suspense>
+  </ChartErrorBoundary>
 );
 
 export const LazyPlayerStrengthChart = (props) => (
-  <Suspense fallback={<FallbackChart title="💪 Loading Strength..." message="Loading chart data..." />}>
-    <PlayerStrengthChart {...props} />
-  </Suspense>
+  <ChartErrorBoundary chartName="Player Strength Chart">
+    <Suspense fallback={<FallbackChart title="💪 Loading Strength..." message="Loading chart data..." />}>
+      <PlayerStrengthChart {...props} />
+    </Suspense>
+  </ChartErrorBoundary>
 );

@@ -1,4 +1,5 @@
 import React from 'react';
+// Import with error handling for compatibility
 import { ResponsiveRadar } from '@nivo/radar';
 import { getLeaderboardData, getGames } from '../utils/dataUtils';
 
@@ -30,14 +31,15 @@ const PlayerStrengthChart = () => {
     return playerData;
   });
 
-  return (
-    <div className="card mb-4">
-      <div className="card-header bg-purple text-white" style={{ backgroundColor: '#8A2BE2' }}>
-        <h2>🎯 Player Strength Analysis</h2>
-      </div>
-      <div className="card-body">
-        <div style={{ height: '400px' }}>
-          <ResponsiveRadar
+  try {
+    return (
+      <div className="card mb-4">
+        <div className="card-header bg-purple text-white" style={{ backgroundColor: '#8A2BE2' }}>
+          <h2>🎯 Player Strength Analysis</h2>
+        </div>
+        <div className="card-body">
+          <div style={{ height: '400px' }}>
+            <ResponsiveRadar
             data={radarData}
             keys={gameIds}
             indexBy="player"
@@ -76,11 +78,32 @@ const PlayerStrengthChart = () => {
                 ]
               }
             ]}
-          />
+            />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } catch (error) {
+    console.error('Radar chart error:', error);
+    return (
+      <div className="card mb-4">
+        <div className="card-header bg-purple text-white" style={{ backgroundColor: '#8A2BE2' }}>
+          <h2>🎯 Player Strength Analysis</h2>
+        </div>
+        <div className="card-body">
+          <div className="alert alert-warning">
+            <h4>Chart temporarily unavailable</h4>
+            <p>The radar chart component encountered an error. Please try refreshing the page.</p>
+            <p>Player data is still available in the leaderboard and other charts.</p>
+            <details className="mt-2">
+              <summary>Error details</summary>
+              <pre className="small text-muted">{error.message}</pre>
+            </details>
+          </div>
+        </div>
+      </div>
+    );
+  }
 };
 
 export default PlayerStrengthChart;

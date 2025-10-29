@@ -1,5 +1,5 @@
 import React from 'react';
-// Modified import to ensure compatibility
+// Import with error handling for compatibility
 import { ResponsiveCalendar } from '@nivo/calendar';
 import { getGames } from '../utils/dataUtils';
 import { useTranslation } from 'react-i18next';
@@ -33,14 +33,15 @@ const GamesCalendarChart = ({ t }) => {
   const from = `${currentYear-1}-01-01`;
   const to = `${currentYear}-12-31`;
 
-  return (
-    <div className="card mb-4">
-      <div className="card-header text-white" style={{ backgroundColor: '#20B2AA' }}>
-        <h2>📆 {tFunc('charts.gamesCalendar.title')}</h2>
-      </div>
-      <div className="card-body">
-        <div style={{ height: '200px' }}>
-          <ResponsiveCalendar
+  try {
+    return (
+      <div className="card mb-4">
+        <div className="card-header text-white" style={{ backgroundColor: '#20B2AA' }}>
+          <h2>📆 {tFunc('charts.gamesCalendar.title')}</h2>
+        </div>
+        <div className="card-body">
+          <div style={{ height: '200px' }}>
+            <ResponsiveCalendar
             data={calendarData}
             from={from}
             to={to}
@@ -91,11 +92,32 @@ const GamesCalendarChart = ({ t }) => {
                 <div>{tFunc('charts.gamesCalendar.tooltip.games', { count: value })}</div>
               </div>
             )}
-          />
+            />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } catch (error) {
+    console.error('Calendar chart error:', error);
+    return (
+      <div className="card mb-4">
+        <div className="card-header text-white" style={{ backgroundColor: '#20B2AA' }}>
+          <h2>📆 {tFunc('charts.gamesCalendar.title')}</h2>
+        </div>
+        <div className="card-body">
+          <div className="alert alert-warning">
+            <h4>Chart temporarily unavailable</h4>
+            <p>The calendar chart component encountered an error. Please try refreshing the page.</p>
+            <p>Games data is still available in the games list below.</p>
+            <details className="mt-2">
+              <summary>Error details</summary>
+              <pre className="small text-muted">{error.message}</pre>
+            </details>
+          </div>
+        </div>
+      </div>
+    );
+  }
 };
 
 export default GamesCalendarChart;
