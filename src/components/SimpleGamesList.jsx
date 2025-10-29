@@ -3,7 +3,25 @@ import { getGames } from '../utils/dataUtils';
 
 // Simple GamesList without i18n or external dependencies
 const SimpleGamesList = () => {
-  const games = getGames();
+  console.log('SimpleGamesList rendering...');
+  
+  let games = [];
+  let dataError = null;
+
+  try {
+    const gamesData = getGames();
+    console.log('Games data received:', gamesData);
+    
+    if (gamesData && Array.isArray(gamesData)) {
+      games = gamesData;
+      console.log('Games loaded:', games.length);
+    } else {
+      throw new Error('Invalid games data structure');
+    }
+  } catch (error) {
+    console.error('Error in SimpleGamesList:', error);
+    dataError = error.message;
+  }
 
   const getResultBadge = (score1, score2) => {
     if (score1 > score2) return { class: 'bg-success', text: 'Win' };
@@ -13,11 +31,27 @@ const SimpleGamesList = () => {
 
   const formatDate = (dateString) => {
     try {
+      if (!dateString) return 'Unknown Date';
       return new Date(dateString).toLocaleDateString();
     } catch {
-      return dateString;
+      return dateString || 'Invalid Date';
     }
   };
+
+  if (dataError) {
+    return (
+      <div className="card">
+        <div className="card-header bg-danger text-white">
+          <h2>❌ Games History Error</h2>
+        </div>
+        <div className="card-body">
+          <div className="alert alert-danger">
+            <strong>Error:</strong> {dataError}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="card">
