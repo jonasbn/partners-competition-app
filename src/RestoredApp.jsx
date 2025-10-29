@@ -5,27 +5,34 @@ import './App.css';
 // Import fixed components
 import SimpleLeaderboard from './components/SimpleLeaderboard';
 import SimpleGamesList from './components/SimpleGamesList';
+import SimpleThemeToggle from './components/SimpleThemeToggle';
+import { SimpleThemeProvider } from './utils/SimpleThemeContext';
 
 function RestoredApp() {
-  console.log('RestoredApp is rendering - full application restored with fixes!');
+  console.log('RestoredApp is rendering - full application restored with fixes and theme support!');
 
   return (
-    <div className="App">
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-        <div className="container">
-          <span className="navbar-brand">🏓 Partners Competition App</span>
-          <div className="navbar-nav ms-auto">
-            <span className="navbar-text text-success">
-              ✅ Fully Restored & Fixed
-            </span>
+    <SimpleThemeProvider>
+      <div className="App">
+        <nav className="navbar navbar-expand-lg navbar-dark mb-4" style={{backgroundColor: 'var(--navbar-bg)'}}>
+          <div className="container">
+            <span className="navbar-brand">🏓 Partners Competition App</span>
+            <div className="navbar-nav ms-auto">
+              <div className="d-flex align-items-center">
+                <SimpleThemeToggle />
+                <span className="navbar-text text-success ms-3">
+                  ✅ Fully Restored & Fixed
+                </span>
+              </div>
+            </div>
           </div>
-        </div>
-      </nav>
+        </nav>
       
       <div className="container">
         <div className="alert alert-success">
           <h4>🎉 Application Fully Restored!</h4>
-          <p>The white page issue has been resolved with proper error handling and data validation.</p>
+          <p>The white page issue has been resolved with proper error handling, data validation, and theme support added!</p>
+          <small>💡 <strong>Try the theme toggle</strong> in the top-right corner!</small>
         </div>
 
         <div className="row">
@@ -105,7 +112,8 @@ function RestoredApp() {
           <small>Partners Competition App - Fully Restored & Bug-Free! 🚀</small>
         </div>
       </footer>
-    </div>
+      </div>
+    </SimpleThemeProvider>
   );
 }
 

@@ -1,22 +1,50 @@
+/* Root CSS variables for theming */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #212529;
+  --card-bg: #ffffff;
+  --card-border: #dee2e6;
+  --navbar-bg: #343a40;
+  --footer-bg: #f8f9fa;
+}
+
+[data-bs-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+  --card-bg: #1e1e1e;
+  --card-border: #373b3e;
+  --navbar-bg: #000000;
+  --footer-bg: #1e1e1e;
+}
+
 .App {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 footer {
   margin-top: auto;
+  background-color: var(--footer-bg) !important;
+  transition: background-color 0.3s ease;
 }
 
 .card {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
+  transition: transform 0.3s, background-color 0.3s ease, border-color 0.3s ease;
   background-color: var(--card-bg);
   border-color: var(--card-border);
   color: var(--text-color);
   position: relative;
   z-index: 2;
   overflow: visible; /* Allow popups to extend outside cards */
+}
+
+[data-bs-theme="dark"] .card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .card:hover {
