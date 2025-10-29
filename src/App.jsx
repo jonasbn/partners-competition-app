@@ -6,10 +6,12 @@ import TeamStatistics from './components/TeamStatistics';
 import ThemeToggle from './components/ThemeToggle';
 import LanguageSelector from './components/LanguageSelector';
 import SummaryCards from './components/SummaryCards';
-import PlayerStatsChart from './components/PlayerStatsChart';
-import PlayerPerformanceChart from './components/PlayerPerformanceChart';
-import GamesCalendarChart from './components/GamesCalendarChart';
-import TeamCombinationChart from './components/TeamCombinationChart';
+import { 
+  LazyPlayerStatsChart, 
+  LazyPlayerPerformanceChart, 
+  LazyGamesCalendarChart, 
+  LazyTeamCombinationChart 
+} from './components/LazyCharts';
 import ErrorBoundary from './components/ErrorBoundary';
 import { useTranslation } from 'react-i18next';
 import Logger from './utils/logger';
@@ -71,12 +73,12 @@ function App() {
         <div className="row">
           <div className="col-md-6">
             <ErrorBoundary name="PlayerStatsChart">
-              <PlayerStatsChart />
+              <LazyPlayerStatsChart />
             </ErrorBoundary>
           </div>
           <div className="col-md-6">
             <ErrorBoundary name="PlayerPerformanceChart">
-              <PlayerPerformanceChart />
+              <LazyPlayerPerformanceChart />
             </ErrorBoundary>
           </div>
         </div>
@@ -84,12 +86,12 @@ function App() {
         <div className="row">
           <div className="col-md-6">
             <ErrorBoundary name="GamesCalendarChart">
-              <GamesCalendarChart />
+              <LazyGamesCalendarChart />
             </ErrorBoundary>
           </div>
           <div className="col-md-6">
             <ErrorBoundary name="TeamCombinationChart">
-              <TeamCombinationChart />
+              <LazyTeamCombinationChart />
             </ErrorBoundary>
           </div>
         </div>
