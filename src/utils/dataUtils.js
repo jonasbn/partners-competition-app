@@ -56,6 +56,21 @@ export const processGamesData = () => {
     return processedGame;
   });
 
+  // Calculate additional player statistics (games played, wins, win rate)
+  players.forEach(player => {
+    // Count games played
+    player.gamesPlayed = player.games.length;
+    
+    // Count wins (games where player scored 3 points)
+    player.wins = player.games.filter(game => game.score === 3).length;
+    
+    // Calculate win rate
+    player.winRate = player.gamesPlayed > 0 ? (player.wins / player.gamesPlayed) * 100 : 0;
+    
+    // Calculate average score per game
+    player.avgScore = player.gamesPlayed > 0 ? (player.cumulativeScore / player.gamesPlayed) : 0;
+  });
+
   // Sort players by cumulative score (descending)
   players.sort((a, b) => b.cumulativeScore - a.cumulativeScore);
 

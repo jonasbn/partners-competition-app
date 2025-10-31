@@ -1,20 +1,14 @@
 import React from 'react';
 import { getGames } from '../utils/dataUtils';
 
-// Simple GamesList without i18n or external dependencies
 const SimpleGamesList = () => {
-  console.log('SimpleGamesList rendering...');
-  
   let games = [];
   let dataError = null;
 
   try {
     const gamesData = getGames();
-    console.log('Games data received:', gamesData);
-    
     if (gamesData && Array.isArray(gamesData)) {
       games = gamesData;
-      console.log('Games loaded:', games.length);
     } else {
       throw new Error('Invalid games data structure');
     }
@@ -23,12 +17,6 @@ const SimpleGamesList = () => {
     dataError = error.message;
   }
 
-  const getResultBadge = (score1, score2) => {
-    if (score1 > score2) return { class: 'bg-success', text: 'Win' };
-    if (score1 < score2) return { class: 'bg-danger', text: 'Loss' };
-    return { class: 'bg-secondary', text: 'Tie' };
-  };
-
   const formatDate = (dateString) => {
     try {
       if (!dateString) return 'Unknown Date';
@@ -36,6 +24,13 @@ const SimpleGamesList = () => {
     } catch {
       return dateString || 'Invalid Date';
     }
+  };
+
+  const getPlaceInfo = (score) => {
+    if (score === 3) return { place: '1st', emoji: '🥇', class: 'success' };
+    if (score === 2) return { place: '2nd', emoji: '🥈', class: 'warning' };
+    if (score === 1) return { place: '3rd', emoji: '🥉', class: 'secondary' };
+    return { place: '?', emoji: '❓', class: 'secondary' };
   };
 
   if (dataError) {
@@ -75,63 +70,58 @@ const SimpleGamesList = () => {
               </span>
             </div>
 
-            <div className="table-responsive">
-              <table className="table table-sm table-hover">
-                <thead className="table-dark">
-                  <tr>
-                    <th>Game</th>
-                    <th>Date</th>
-                    <th>Team 1</th>
-                    <th>Score</th>
-                    <th>Team 2</th>
-                    <th>Score</th>
-                    <th>Result</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {games.slice().reverse().map((game) => {
-                    const team1 = game.teams[0];
-                    const team2 = game.teams[1];
-                    const result = getResultBadge(team1.score, team2.score);
+            <div className="row">
+              {games.slice().reverse().map((game) => {
+                const sortedTeams = [...game.teams].sort((a, b) => b.score - a.score);
 
-                    return (
-                      <tr key={game.gameId}>
-                        <td>
-                          <strong>#{game.gameId}</strong>
-                        </td>
-                        <td>
+                return (
+                  <div key={game.gameId} className="col-lg-6 mb-4">
+                    <div className="card h-100 border-primary">
+                      <div className="card-header bg-primary text-white">
+                        <div className="d-flex justify-content-between align-items-center">
+                          <h6 className="mb-0">🎮 Game #{game.gameId}</h6>
                           <small>{formatDate(game.gameDate)}</small>
-                        </td>
-                        <td>
-                          <small>
-                            {team1.players.join(' & ')}
+                        </div>
+                      </div>
+                      <div className="card-body">
+                        <div className="row">
+                          {sortedTeams.map((team, index) => {
+                            const placeInfo = getPlaceInfo(team.score);
+                            return (
+                              <div key={index} className="col-12 mb-3">
+                                <div className={`card border-${placeInfo.class}`}>
+                                  <div className={`card-header bg-${placeInfo.class} text-white py-2`}>
+                                    <div className="d-flex justify-content-between align-items-center">
+                                      <small>
+                                        <strong>{placeInfo.emoji} {placeInfo.place} Place</strong>
+                                      </small>
+                                      <span className="badge bg-light text-dark">
+                                        {team.score} points
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="card-body py-2">
+                                    <div className="text-center">
+                                      <strong>{team.players.join(' & ')}</strong>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                        
+                        <div className="mt-2 pt-2 border-top">
+                          <small className="text-muted">
+                            <strong>Winner:</strong> {sortedTeams[0].players.join(' & ')} 
+                            <span className="badge bg-success ms-2">{sortedTeams[0].score} pts</span>
                           </small>
-                        </td>
-                        <td>
-                          <span className={`badge ${team1.score > team2.score ? 'bg-success' : 'bg-secondary'}`}>
-                            {team1.score}
-                          </span>
-                        </td>
-                        <td>
-                          <small>
-                            {team2.players.join(' & ')}
-                          </small>
-                        </td>
-                        <td>
-                          <span className={`badge ${team2.score > team1.score ? 'bg-success' : 'bg-secondary'}`}>
-                            {team2.score}
-                          </span>
-                        </td>
-                        <td>
-                          <span className={`badge ${result.class}`}>
-                            {team1.score > team2.score ? 'Team 1' : team2.score > team1.score ? 'Team 2' : 'Tie'}
-                          </span>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
             {games.length > 10 && (

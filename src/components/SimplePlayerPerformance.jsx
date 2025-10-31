@@ -13,6 +13,7 @@ const SimplePlayerPerformance = () => {
     const leaderboardData = getLeaderboardData();
     players = leaderboardData?.players || [];
     console.log('Player performance data loaded:', players.length, 'players');
+    console.log('Sample player data:', players[0]); // Debug: show first player's data
   } catch (error) {
     console.error('Error loading player performance data:', error);
     dataError = error.message;
@@ -78,7 +79,7 @@ const SimplePlayerPerformance = () => {
             const score = player.cumulativeScore || 0;
             const gamesPlayed = player.gamesPlayed || 0;
             const winRate = player.winRate || 0;
-            const avgScore = gamesPlayed > 0 ? (score / gamesPlayed).toFixed(1) : '0.0';
+            const avgScore = player.avgScore ? player.avgScore.toFixed(1) : '0.0';
             
             const performance = getPerformanceLevel(rank, sortedPlayers.length);
             const progressWidth = getProgressBarWidth(score, maxScore);
