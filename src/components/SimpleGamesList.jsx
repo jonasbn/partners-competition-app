@@ -120,7 +120,7 @@ const SimpleGamesList = () => {
                         
                         <div className="mt-2 pt-2 border-top">
                           <small className="text-muted">
-                            <strong>{t('gamesList.winner')}:</strong> {sortedTeams[0].players.join(' & ')} 
+                            <strong>{t('gamesList.winner')}:</strong> <span>{sortedTeams[0].players.join(' & ')}</span>
                             <span className="badge bg-success ms-2">{sortedTeams[0].score} {t('gamesList.points.other')}</span>
                           </small>
                         </div>
