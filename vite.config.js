@@ -38,28 +38,6 @@ export default defineConfig({
             return 'ui-framework';
           }
           
-          // Individual chart libraries for better caching
-          if (id.includes('@nivo/bar')) {
-            return 'chart-bar';
-          }
-          if (id.includes('@nivo/line')) {
-            return 'chart-line';
-          }
-          if (id.includes('@nivo/pie')) {
-            return 'chart-pie';
-          }
-          if (id.includes('@nivo/calendar')) {
-            return 'chart-calendar';
-          }
-          if (id.includes('@nivo/radar')) {
-            return 'chart-radar';
-          }
-          
-          // Other @nivo shared dependencies
-          if (id.includes('@nivo/')) {
-            return 'chart-core';
-          }
-          
           // Internationalization
           if (id.includes('i18next') || id.includes('react-i18next')) {
             return 'i18n';

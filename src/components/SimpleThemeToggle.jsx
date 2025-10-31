@@ -1,15 +1,15 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { SimpleThemeContext } from '../utils/SimpleThemeContext';
+import { ThemeContext } from '../utils/ThemeContext';
 
 const SimpleThemeToggle = () => {
   const { t } = useTranslation();
   console.log('SimpleThemeToggle rendering...');
   
-  const contextValue = React.useContext(SimpleThemeContext);
+  const contextValue = React.useContext(ThemeContext);
   
   if (!contextValue) {
-    console.error('SimpleThemeToggle must be used within SimpleThemeProvider');
+    console.error('SimpleThemeToggle must be used within ThemeProvider');
     return null;
   }
   

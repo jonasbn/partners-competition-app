@@ -3,8 +3,8 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
 // Import translations
-import enTranslation from './locales/en.json';
-import daTranslation from './locales/da.json';
+import enTranslation from './locales/en.js';
+import daTranslation from './locales/da.js';
 
 // Configure i18next
 i18n
@@ -26,7 +26,7 @@ i18n
     // Fallback language
     fallbackLng: 'en',
     // Debug mode in development
-    debug: process.env.NODE_ENV === 'development',
+    debug: false, // Disable debug in production
     // Common namespace
     ns: ['translation'],
     defaultNS: 'translation',

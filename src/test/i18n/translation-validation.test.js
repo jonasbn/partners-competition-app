@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import enTranslations from '../../utils/locales/en.json';
-import daTranslations from '../../utils/locales/da.json';
+import enTranslations from '../../utils/locales/en.js';
+import daTranslations from '../../utils/locales/da.js';
 
 /**
  * Utility function to get all keys from a nested object
