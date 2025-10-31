@@ -7,6 +7,7 @@ This document outlines the recommended testing strategy for your data visualizat
 ## 🚀 Quick Start
 
 Run tests with:
+
 ```bash
 npm test                    # Run all tests in watch mode
 npm run test:run           # Run all tests once
@@ -17,10 +18,12 @@ npm test basic.test.js     # Run specific test file
 ## 📊 Test Categories & Priorities
 
 ### 1. **Data Processing Tests** (🔴 Critical Priority)
+
 **File**: `src/test/dataLogic.test.js`
 **Purpose**: Test the core business logic that powers your charts and statistics.
 
 **What it tests**:
+
 - Player score calculations
 - Leaderboard sorting
 - Team combination logic
@@ -30,6 +33,7 @@ npm test basic.test.js     # Run specific test file
 **Why it's critical**: These tests ensure your visualizations display correct data. Bugs here directly impact user trust.
 
 **Examples**:
+
 ```javascript
 // Testing score calculation
 it('should calculate player scores correctly', () => {
@@ -53,10 +57,12 @@ it('should sort players by score correctly', () => {
 ```
 
 ### 2. **Utility Function Tests** (🟡 Medium Priority)
+
 **File**: `src/test/utilities.test.js`
 **Purpose**: Test helper functions and utilities used throughout the app.
 
 **What it tests**:
+
 - Avatar path generation
 - Color generation for players
 - Date formatting
@@ -64,6 +70,7 @@ it('should sort players by score correctly', () => {
 - Edge case handling
 
 **Examples**:
+
 ```javascript
 // Testing avatar path generation
 it('should generate correct avatar paths', () => {
@@ -80,16 +87,19 @@ it('should generate consistent colors for same player', () => {
 ```
 
 ### 3. **Component Smoke Tests** (🟡 Medium Priority)
+
 **File**: `src/test/componentSmoke.test.jsx`
 **Purpose**: Ensure components render without crashing.
 
 **What it tests**:
+
 - Basic component rendering
 - Bootstrap structure
 - Table structures
 - Card layouts
 
 **Examples**:
+
 ```javascript
 // Testing basic rendering
 it('should render a simple div without crashing', () => {
@@ -112,16 +122,19 @@ it('should render Bootstrap card structure', () => {
 ```
 
 ### 4. **Integration Tests** (🟢 Lower Priority)
+
 **File**: `src/test/integration.test.js`
 **Purpose**: Test that different parts of the application work together.
 
 **What it tests**:
+
 - Data flow through the processing pipeline
 - Multiple games handling
 - Bootstrap integration
 - Theme integration
 
 **Examples**:
+
 ```javascript
 // Testing complete data pipeline
 it('should process game data through the complete pipeline', () => {
@@ -136,7 +149,8 @@ it('should process game data through the complete pipeline', () => {
 
 Since your app is primarily data visualization with minimal interaction:
 
-### ❌ Skip These Tests:
+### ❌ Skip These Tests
+
 - **Heavy User Interaction Tests**: Your app doesn't have complex forms or workflows
 - **Chart Library Internals**: @nivo charts are already tested by their maintainers
 - **Complex State Management**: Your app uses mostly derived state from data
@@ -144,7 +158,8 @@ Since your app is primarily data visualization with minimal interaction:
 - **Authentication/Authorization**: Not applicable to your app
 - **Performance Tests**: Premature for current complexity level
 
-### ❌ Avoid Over-Testing:
+### ❌ Avoid Over-Testing
+
 - Don't test implementation details
 - Don't test third-party library functionality
 - Don't test CSS styling unless it affects functionality
@@ -152,7 +167,7 @@ Since your app is primarily data visualization with minimal interaction:
 
 ## 📁 File Structure
 
-```
+```text
 src/test/
 ├── setup.js                 # Test configuration and mocks
 ├── basic.test.js            # Sanity checks and simple tests
@@ -166,6 +181,7 @@ src/test/
 ## 🔧 Configuration Files
 
 ### `vite.config.js` - Test Configuration
+
 ```javascript
 test: {
   globals: true,
@@ -176,6 +192,7 @@ test: {
 ```
 
 ### `src/test/setup.js` - Mocks and Setup
+
 ```javascript
 import '@testing-library/jest-dom';
 
@@ -193,23 +210,28 @@ vi.mock('../utils/logger', () => ({
 ## 🎨 Testing Best Practices for Your App
 
 ### 1. **Focus on Data Correctness**
+
 Since your app is about displaying data, prioritize tests that ensure data accuracy.
 
 ### 2. **Use Real Data Structures**
+
 Test with data that mirrors your actual JSON structure.
 
 ### 3. **Test Edge Cases**
+
 - Empty data sets
 - Single player games
 - Invalid data formats
 - Missing properties
 
 ### 4. **Keep Tests Fast**
+
 - Mock heavy dependencies (charts, external services)
 - Use minimal test data
 - Avoid complex DOM manipulations
 
 ### 5. **Write Descriptive Test Names**
+
 ```javascript
 // ✅ Good
 it('should calculate team win rate as percentage of wins over total games')
@@ -221,6 +243,7 @@ it('should calculate win rate')
 ## 📈 Coverage Goals
 
 For your app type, aim for:
+
 - **Data Processing Functions**: 90-100% coverage
 - **Utility Functions**: 80-90% coverage
 - **Component Rendering**: 60-80% coverage
@@ -266,6 +289,7 @@ npm run test:coverage
 ## 💡 Remember
 
 For a data visualization app like yours:
+
 - **Quality over Quantity**: Focus on critical data processing logic
 - **Practical Testing**: Test what actually breaks or matters to users
 - **Maintain Simplicity**: Don't over-engineer your test suite

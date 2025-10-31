@@ -1,3 +1,7 @@
 {
-  "MD013": false
+    "default": true,
+    "line-length": false,
+    "first-line-heading": false,
+    "no-emphasis-as-heading": false,
+    "link-fragments": false
 }

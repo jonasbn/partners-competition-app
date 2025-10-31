@@ -53,9 +53,10 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^4.7.0",
     "@vitejs/plugin-react-swc": "^3.11.0",
-    "vite": "^6.4.1",
-    "vitest": "^4.0.5",
     "@vitest/ui": "^4.0.5",
-    "jsdom": "^25.0.1"
+    "jsdom": "^25.0.1",
+    "markdownlint-cli": "^0.45.0",
+    "vite": "^6.4.1",
+    "vitest": "^4.0.5"
   }
 }

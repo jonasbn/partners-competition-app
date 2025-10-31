@@ -15,6 +15,7 @@ The current testing strategy outlined in `TESTING.md` is **well-designed and app
 ### ✅ **Current Test Suite Status - WORKING WELL**
 
 **Test Execution Results**: All 67 tests passing across 13 test files
+
 - **Data Processing Tests**: ✅ Working (dataLogic.test.js, dataUtils.test.js)
 - **Component Tests**: ✅ Working (component smoke tests, integration tests)
 - **Utility Tests**: ✅ Working (avatarUtils.test.js, utilities.test.js)
@@ -27,24 +28,28 @@ The current testing strategy outlined in `TESTING.md` is **well-designed and app
 Current root-level test files and their evaluation:
 
 #### 1. `test-logging.js` - **MIGRATE TO src/test/manual/**
+
 **Status**: Useful for manual testing
 **Content**: Logtail integration testing script
 **Recommendation**: Move to `src/test/manual/logging.test.js`
 **Reason**: Manual testing scripts should be organized but kept separate from automated tests
 
 #### 2. `test-logging-manual.js` - **MIGRATE TO src/test/manual/**
+
 **Status**: Useful browser console testing script
 **Content**: Manual logging verification instructions
 **Recommendation**: Move to `src/test/manual/logging-browser.test.js`
 **Reason**: Browser-specific manual testing documentation should be preserved
 
 #### 3. `test-team-combinations.js` - **MIGRATE TO src/test/development/**
+
 **Status**: Development/debugging utility
 **Content**: Team combination statistics verification
 **Recommendation**: Move to `src/test/development/team-combinations.test.js`
 **Reason**: Useful for debugging data processing logic during development
 
 #### 4. `test-page.html` - **DELETE**
+
 **Status**: Obsolete
 **Content**: Simple HTML troubleshooting page
 **Recommendation**: **REMOVE** - No longer needed since React app is working
@@ -52,7 +57,7 @@ Current root-level test files and their evaluation:
 
 ### 📁 **Recommended New Directory Structure**
 
-```
+```text
 src/test/
 ├── setup.js                    # ✅ Keep - Test configuration
 ├── basic.test.js               # ✅ Keep - Sanity checks
@@ -75,12 +80,14 @@ src/test/
 ## 🔧 **Implementation Plan**
 
 ### Phase 1: Create New Directories
+
 ```bash
 mkdir -p src/test/manual
 mkdir -p src/test/development
 ```
 
 ### Phase 2: Migrate Files
+
 ```bash
 # Migrate logging tests
 mv test-logging.js src/test/manual/logging.test.js
@@ -94,11 +101,13 @@ rm test-page.html
 ```
 
 ### Phase 3: Update File Headers
+
 Add appropriate headers to migrated files to explain their purpose and usage.
 
 ## 📊 **Quality Assessment**
 
 ### ✅ **Strengths of Current Setup**
+
 1. **Comprehensive Coverage**: Tests cover data processing, components, utilities, and integration
 2. **Fast Execution**: Tests complete in ~1.9 seconds
 3. **Appropriate Mocking**: Logger and heavy dependencies properly mocked
@@ -106,11 +115,13 @@ Add appropriate headers to migrated files to explain their purpose and usage.
 5. **CI/CD Ready**: All tests pass consistently
 
 ### ⚠️ **Minor Issues Identified**
+
 1. **Theme Provider Warnings**: Some tests show "SimpleThemeToggle must be used within SimpleThemeProvider"
 2. **i18next Warnings**: Tests show i18n initialization warnings
 3. **Console Verbosity**: Extensive debug logging in tests (not problematic but verbose)
 
 ### 🎯 **Recommendations for Test Improvements**
+
 1. **Fix Theme Provider Context**: Wrap test components in proper providers
 2. **Mock i18n**: Add proper i18n mocking to reduce test warnings
 3. **Consider Snapshot Tests**: For complex data visualization components
@@ -127,8 +138,11 @@ The current `TESTING.md` is excellent and needs minimal updates:
 ## 🎉 **Conclusion**
 
 ### ✅ **Keep Current Strategy**: The testing approach is well-designed and working effectively
+
 ### 🗂️ **Clean Up Repository**: Migrate useful test utilities to organized structure
+
 ### 🚮 **Remove Obsolete Files**: Delete the HTML test page
+
 ### 📚 **Preserve Knowledge**: Maintain manual testing procedures in organized manner
 
 The testing infrastructure is solid and just needs better organization. The current test suite provides excellent coverage for a data visualization application and follows testing best practices appropriately.

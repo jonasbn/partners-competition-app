@@ -5,6 +5,7 @@ This repository contains three GitHub Actions workflows to ensure code quality a
 ## 🚀 Workflows Overview
 
 ### 1. **CI Workflow** (`.github/workflows/ci.yml`)
+
 **Comprehensive CI pipeline with multiple jobs**
 
 - **Test Matrix**: Tests on Node.js 18.x, 20.x, and 22.x
@@ -17,6 +18,7 @@ This repository contains three GitHub Actions workflows to ensure code quality a
 **Triggers**: Push to `main`/`develop`, Pull requests to `main`
 
 ### 2. **Test Workflow** (`.github/workflows/test.yml`)
+
 **Focused testing pipeline**
 
 - **Core Testing**: Runs the complete Vitest test suite (`npm run test:run`)
@@ -27,6 +29,7 @@ This repository contains three GitHub Actions workflows to ensure code quality a
 **Triggers**: Push to `main`/`develop`, Pull requests to `main`
 
 ### 3. **Code Quality Workflow** (`.github/workflows/quality.yml`)
+
 **Code quality and coverage analysis**
 
 - **Test Coverage**: Generates coverage reports using `npm run test:coverage`
@@ -92,10 +95,12 @@ Add these to your README.md to show CI status:
 ## 🛠️ Configuration
 
 ### Required Secrets (Optional)
+
 - `CODECOV_TOKEN` - For coverage reporting integration
 - `LHCI_GITHUB_APP_TOKEN` - For Lighthouse CI integration
 
 ### Node.js Requirements
+
 - **Minimum**: Node.js 16.0.0
 - **Tested On**: Node.js 18.x, 20.x, 22.x
 - **Package Manager**: npm 8.0.0+
