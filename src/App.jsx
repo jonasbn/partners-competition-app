@@ -1,17 +1,13 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import Leaderboard from './components/Leaderboard';
-import GamesList from './components/GamesList';
-import TeamStatistics from './components/TeamStatistics';
-import ThemeToggle from './components/ThemeToggle';
+import SimpleLeaderboard from './components/SimpleLeaderboard';
+import SimpleGamesList from './components/SimpleGamesList';
+import SimpleThemeToggle from './components/SimpleThemeToggle';
+import SimpleSummaryCards from './components/SimpleSummaryCards';
+import SimpleTeamStatistics from './components/SimpleTeamStatistics';
+import SimplePlayerPerformance from './components/SimplePlayerPerformance';
+import SimpleGamesCalendar from './components/SimpleGamesCalendar';
 import LanguageSelector from './components/LanguageSelector';
-import SummaryCards from './components/SummaryCards';
-import { 
-  LazyPlayerStatsChart, 
-  LazyPlayerPerformanceChart, 
-  LazyGamesCalendarChart, 
-  LazyTeamCombinationChart 
-} from './components/LazyCharts';
 import ErrorBoundary from './components/ErrorBoundary';
 import { useTranslation } from 'react-i18next';
 import Logger from './utils/logger';
@@ -51,63 +47,59 @@ function App() {
               <LanguageSelector />
             </ErrorBoundary>
             <ErrorBoundary name="ThemeToggle">
-              <ThemeToggle />
+              <SimpleThemeToggle />
             </ErrorBoundary>
           </div>
         </div>
       </nav>
       
       <div className="container">
+        {/* First row: Summary Cards (Current leader, Best team, Game statistics) */}
         <ErrorBoundary name="SummaryCards">
-          <SummaryCards />
+          <SimpleSummaryCards />
         </ErrorBoundary>
         
+        {/* Second component: Leaderboard */}
         <div className="row">
           <div className="col-md-12">
             <ErrorBoundary name="Leaderboard">
-              <Leaderboard />
+              <SimpleLeaderboard />
             </ErrorBoundary>
           </div>
         </div>
 
+        {/* Third component: Player Performance Analysis */}
         <div className="row">
-          <div className="col-md-6">
-            <ErrorBoundary name="PlayerStatsChart">
-              <LazyPlayerStatsChart />
-            </ErrorBoundary>
-          </div>
-          <div className="col-md-6">
-            <ErrorBoundary name="PlayerPerformanceChart">
-              <LazyPlayerPerformanceChart />
+          <div className="col-md-12">
+            <ErrorBoundary name="PlayerPerformanceAnalysis">
+              <SimplePlayerPerformance />
             </ErrorBoundary>
           </div>
         </div>
         
+        {/* Fourth component: Game Calendar */}
         <div className="row">
-          <div className="col-md-6">
-            <ErrorBoundary name="GamesCalendarChart">
-              <LazyGamesCalendarChart />
-            </ErrorBoundary>
-          </div>
-          <div className="col-md-6">
-            <ErrorBoundary name="TeamCombinationChart">
-              <LazyTeamCombinationChart />
+          <div className="col-md-12">
+            <ErrorBoundary name="GamesCalendar">
+              <SimpleGamesCalendar />
             </ErrorBoundary>
           </div>
         </div>
         
+        {/* Fifth component: Team Statistics */}
         <div className="row">
           <div className="col-md-12">
             <ErrorBoundary name="TeamStatistics">
-              <TeamStatistics />
+              <SimpleTeamStatistics />
             </ErrorBoundary>
           </div>
         </div>
         
+        {/* Sixth component: Recent Game Outcomes */}
         <div className="row">
           <div className="col-md-12">
             <ErrorBoundary name="GamesList">
-              <GamesList />
+              <SimpleGamesList />
             </ErrorBoundary>
           </div>
         </div>

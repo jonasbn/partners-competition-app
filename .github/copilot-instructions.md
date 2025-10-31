@@ -60,6 +60,8 @@ The game and tournament rules are as follows:
 
 - All players are participating in every game, forming different teams each time
 - A player can only be in one team per game
+- teams can be resolved based on the scores in the respective game, since team members have the same score in a game
+- teams can be resolved based on the scores in the respective game, since team members have the same score in a game
 
 The application UI should present the following components all on a single page:
 
