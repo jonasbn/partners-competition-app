@@ -21,10 +21,15 @@ const SimpleGamesList = () => {
 
   const formatDate = (dateString) => {
     try {
-      if (!dateString) return 'Unknown Date';
-      return new Date(dateString).toLocaleDateString();
+      if (!dateString) return t('gamesList.unknownDate');
+      const date = new Date(dateString);
+      // Use simple dd/mm/yyyy format that works for both Danish and English
+      const day = date.getDate().toString().padStart(2, '0');
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const year = date.getFullYear();
+      return `${day}/${month}/${year}`;
     } catch {
-      return dateString || 'Invalid Date';
+      return dateString || t('gamesList.invalidDate');
     }
   };
 
@@ -116,7 +121,7 @@ const SimpleGamesList = () => {
                         <div className="mt-2 pt-2 border-top">
                           <small className="text-muted">
                             <strong>{t('gamesList.winner')}:</strong> {sortedTeams[0].players.join(' & ')} 
-                            <span className="badge bg-success ms-2">{sortedTeams[0].score} pts</span>
+                            <span className="badge bg-success ms-2">{sortedTeams[0].score} {t('gamesList.points.other')}</span>
                           </small>
                         </div>
                       </div>

@@ -1,5 +1,8 @@
 // English translations
 export default {
+  "common": {
+    "unknownPlayer": "Unknown Player"
+  },
   "app": {
     "title": "Partners Competition App",
     "footer": "Partners Competition App © {{year}}",
@@ -25,12 +28,20 @@ export default {
       "totalGames": "Total Games",
       "possibleCombinations": "Team Combinations Available",
       "averageGameScore": "Average Game Score"
+    },
+    "teamCoverage": {
+      "title": "Team Coverage",
+      "formed": "{{used}} of {{total}} team combinations formed",
+      "remaining": "{{remaining}} combinations remaining",
+      "minimum": "Minimum {{games}} games needed for full coverage"
     }
   },
   "theme": {
     "dark": "Dark",
     "light": "Light",
-    "toggle": "Toggle Theme"
+    "toggle": "Toggle Theme",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode"
   },
   "leaderboard": {
     "title": "Leaderboard",
@@ -43,7 +54,13 @@ export default {
     "avgScore": "Avg Score",
     "rank": "Rank",
     "points": "Points",
-    "avg": "Avg"
+    "avg": "Avg",
+    "error": "Leaderboard Error",
+    "noData": "No Leaderboard Data",
+    "noPlayerData": "No player data available.",
+    "totalPlayers": "Total players",
+    "totalGames": "Total games tracked",
+    "avatarLegend": "Avatar Legend"
   },
   "teamStatistics": {
     "title": "Team Statistics",
@@ -55,6 +72,30 @@ export default {
     "thirdPlace": "3rd",
     "winRate": "Win Rate"
   },
+  "teamStats": {
+    "title": "Team Statistics",
+    "error": "Error loading team statistics",
+    "noData": "No team data available",
+    "playGames": "Play some games to see team statistics",
+    "rank": "Rank",
+    "teamName": "Team Name",
+    "team": "Team",
+    "gamesPlayed": "Games Played",
+    "averageScore": "Avg Score",
+    "wins": "Wins",
+    "seconds": "2nd Places",
+    "thirds": "3rd Places",
+    "secondPlace": "2nd Place",
+    "thirdPlace": "3rd Place",
+    "winRate": "Win Rate",
+    "totalPoints": "Total Points",
+    "totalTeams": "Total teams",
+    "totalGamesTracked": "Total games tracked",
+    "ranking": "Ranking",
+    "rankingMethod": "By total points, then win rate",
+    "bestTeam": "Best Team: {{team}}",
+    "bestTeamStats": "{{wins}} wins out of {{games}} games ({{rate}}% win rate)"
+  },
   "playerPerformance": {
     "title": "Player Performance Analysis",
     "totalScore": "Total Score",
@@ -62,7 +103,41 @@ export default {
     "bestScore": "Best Score",
     "worstScore": "Worst Score",
     "consistency": "Consistency",
-    "trend": "Trend"
+    "trend": "Trend",
+    "error": "Player Performance Error",
+    "noData": "No player data available",
+    "playGames": "Play some games to see player performance here!",
+    "totalPoints": "Total Points",
+    "games": "Games",
+    "avgPerGame": "Avg/Game",
+    "winRate": "Win Rate",
+    "performanceLevels": {
+      "excellent": "Excellent",
+      "good": "Good",
+      "average": "Average",
+      "needsWork": "Needs Work"
+    },
+    "winRateMessages": {
+      "excellent": "🏆 Excellent win rate!",
+      "good": "👍 Good performance",
+      "improvement": "💪 Room for improvement",
+      "practice": "📈 Keep practicing!"
+    },
+    "insights": {
+      "title": "📊 Performance Insights",
+      "excellentDesc": "Top performer",
+      "goodDesc": "Above average",
+      "averageDesc": "Middle pack",
+      "needsWorkDesc": "Room to improve",
+      "winAnalysisTitle": "🏆 Win Rate Analysis",
+      "championLevel": "🏆 Champion level",
+      "solidPerformer": "👍 Solid performer",
+      "developing": "💪 Developing",
+      "learningPhase": "📈 Learning phase",
+      "averageWinRate": "Average Win Rate",
+      "bestWinRate": "Best Win Rate",
+      "highPerformers": "High Performers (≥60%)"
+    }
   },
   "gamesList": {
     "title": "Games History",
@@ -92,7 +167,16 @@ export default {
     "noGames": "No games found",
     "loading": "Loading games...",
     "error": "Error loading games",
-    "summary": "{{total}} games played across {{days}} days"
+    "errorLoading": "Error loading",
+    "startPlaying": "Start playing some games to see the history here!",
+    "summary": "{{total}} games played across {{days}} days",
+    "totalGames": "Total Games",
+    "latest": "Latest",
+    "gameNumber": "Game {{number}}",
+    "place": "Place",
+    "showing": "Showing {{count}} games",
+    "unknownDate": "Unknown Date",
+    "invalidDate": "Invalid Date"
   },
   "playerStats": {
     "title": "Player Statistics",
@@ -125,7 +209,19 @@ export default {
   "summaryCards": {
     "currentLeader": {
       "title": "Current Leader",
-      "description": "Leading the competition"
+      "description": "Leading the competition",
+      "totalPoints": "Total Points",
+      "ofMaxScore": "of max score",
+      "gamesPlayed": "games played",
+      "winRate": "win rate",
+      "noGames": "No games played yet"
+    },
+    "gameStats": {
+      "title": "Game Statistics",
+      "totalGames": "Total Games Played",
+      "players": "Players",
+      "totalTeams": "Total Teams",
+      "avgGamesPerPlayer": "{{avg}} avg games per player"
     },
     "gameStatistics": {
       "title": "Game Statistics", 
@@ -135,7 +231,17 @@ export default {
     },
     "bestTeam": {
       "title": "Best Team",
-      "description": "Most successful partnership"
+      "description": "Most successful partnership",
+      "wins": "Total Wins",
+      "gamesPlayed": "games played",
+      "winRate": "win rate",
+      "noTeamData": "No team data available"
+    },
+    "combinations": {
+      "title": "Team Combinations",
+      "ofCombinations": "of {{total}} combinations",
+      "complete": "complete",
+      "remaining": "{{count}} remaining"
     },
     "teamCombinations": {
       "title": "Team Combinations",
@@ -152,24 +258,42 @@ export default {
   },
   "gamesCalendar": {
     "title": "Games Calendar",
+    "timelineTitle": "Activity Timeline",
+    "error": "Games Calendar Error",
     "stats": {
       "totalGames": "Total Games",
       "gameDays": "Game Days", 
+      "activeDays": "Active Days",
       "averagePerDay": "Average per Day",
+      "avgPerDay": "Avg per Day",
+      "maxPerDay": "Max per Day",
       "mostActiveDay": "Most Active Day"
     },
     "timeline": {
       "title": "Activity Timeline",
       "legend": "Activity Level",
       "noActivity": "No Activity",
-      "tooltip": "{{games}} games on {{date}}"
+      "tooltip": "{{games}} games on {{date}}",
+      "game": "game",
+      "games": "games"
     },
     "levels": {
       "none": "None",
       "low": "Low",
       "medium": "Medium", 
       "high": "High",
-      "veryHigh": "Very High"
+      "veryHigh": "Very High",
+      "title": "Activity Levels",
+      "lowDesc": "1-2 games per day",
+      "mediumDesc": "3-4 games per day",
+      "highDesc": "5+ games per day"
+    },
+    "recent": {
+      "title": "Recent Activity",
+      "date": "Date",
+      "games": "Games",
+      "teams": "Teams",
+      "teamsPlayed": "teams played"
     },
     "recentGames": {
       "title": "Recent Games",

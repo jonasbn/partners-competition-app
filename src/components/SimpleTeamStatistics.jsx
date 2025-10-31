@@ -1,10 +1,12 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { getTeamStatistics } from '../utils/dataUtils';
 import SimpleAvatarWithHover from './SimpleAvatarWithHover';
 import { getRankBasedAvatar } from '../utils/simpleAvatarUtils';
 
 const SimpleTeamStatistics = () => {
   console.log('SimpleTeamStatistics rendering...');
+  const { t } = useTranslation();
   
   let teamStats = [];
   let dataError = null;
@@ -21,11 +23,11 @@ const SimpleTeamStatistics = () => {
     return (
       <div className="card">
         <div className="card-header bg-danger text-white">
-          <h2>❌ Team Statistics Error</h2>
+          <h2>❌ {t('teamStats.error')}</h2>
         </div>
         <div className="card-body">
           <div className="alert alert-danger">
-            <strong>Error:</strong> {dataError}
+            <strong>{t('common.error')}:</strong> {dataError}
           </div>
         </div>
       </div>
@@ -36,12 +38,12 @@ const SimpleTeamStatistics = () => {
     return (
       <div className="card">
         <div className="card-header bg-info text-white">
-          <h2>👯 Team Statistics</h2>
+          <h2>👯 {t('teamStats.title')}</h2>
         </div>
         <div className="card-body">
           <div className="alert alert-info">
-            <h4>No team data available</h4>
-            <p>Play some games to see team statistics here!</p>
+            <h4>{t('teamStats.noData')}</h4>
+            <p>{t('teamStats.playGames')}</p>
           </div>
         </div>
       </div>
@@ -65,21 +67,21 @@ const SimpleTeamStatistics = () => {
   return (
     <div className="card mb-4">
       <div className="card-header bg-primary text-white">
-        <h2>👯 Team Statistics</h2>
+        <h2>👯 {t('teamStats.title')}</h2>
       </div>
       <div className="card-body">
         <div className="table-responsive">
           <table className="table table-striped table-hover">
             <thead className="table-dark">
               <tr>
-                <th>Rank</th>
-                <th>Team</th>
-                <th>Games</th>
-                <th>Wins</th>
-                <th>2nd Place</th>
-                <th>3rd Place</th>
-                <th>Win Rate</th>
-                <th>Total Points</th>
+                <th>{t('teamStats.rank')}</th>
+                <th>{t('teamStats.teamName')}</th>
+                <th>{t('teamStats.gamesPlayed')}</th>
+                <th>{t('teamStats.wins')}</th>
+                <th>{t('teamStats.secondPlace')}</th>
+                <th>{t('teamStats.thirdPlace')}</th>
+                <th>{t('teamStats.winRate')}</th>
+                <th>{t('teamStats.totalPoints')}</th>
               </tr>
             </thead>
             <tbody>
@@ -159,13 +161,13 @@ const SimpleTeamStatistics = () => {
           <div className="row">
             <div className="col-md-6">
               <small className="text-muted">
-                <strong>Total teams:</strong> {teamStats.length} | 
-                <strong>Total games tracked:</strong> {teamStats.reduce((sum, team) => sum + (team.gamesPlayed || 0), 0)}
+                <strong>{t('teamStats.totalTeams')}:</strong> {teamStats.length} | 
+                <strong>{t('teamStats.totalGamesTracked')}:</strong> {teamStats.reduce((sum, team) => sum + (team.gamesPlayed || 0), 0)}
               </small>
             </div>
             <div className="col-md-6 text-end">
               <small className="text-muted">
-                <strong>Ranking:</strong> By total points, then win rate
+                <strong>{t('teamStats.ranking')}:</strong> {t('teamStats.rankingMethod')}
               </small>
             </div>
           </div>

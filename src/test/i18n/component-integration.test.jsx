@@ -8,6 +8,7 @@ import '../../utils/i18n';
 import Leaderboard from '../../components/Leaderboard';
 import GamesList from '../../components/GamesList';
 import TeamStatistics from '../../components/TeamStatistics';
+import i18n from '../../utils/i18n';
 
 // Mock data utils to provide consistent test data
 vi.mock('../../utils/dataUtils', () => ({
@@ -106,6 +107,9 @@ const ComponentWithLanguageToggle = ({ component: Component }) => {
 describe('Real Component Translation Integration', () => {
   describe('Leaderboard Component', () => {
     test('should display translated leaderboard information in English', async () => {
+      // Set language to English explicitly for this test
+      await i18n.changeLanguage('en');
+      
       renderWithProviders(<Leaderboard />);
       
       await waitFor(() => {
@@ -135,6 +139,9 @@ describe('Real Component Translation Integration', () => {
 
   describe('GamesList Component', () => {
     test('should display translated game information in English', async () => {
+      // Set language to English explicitly for this test
+      await i18n.changeLanguage('en');
+      
       renderWithProviders(<GamesList />);
       
       await waitFor(() => {

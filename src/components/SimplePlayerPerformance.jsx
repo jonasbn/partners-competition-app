@@ -1,10 +1,12 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { getLeaderboardData } from '../utils/dataUtils';
 import SimpleAvatarWithHover from './SimpleAvatarWithHover';
 import { getRankBasedAvatar } from '../utils/simpleAvatarUtils';
 
 const SimplePlayerPerformance = () => {
   console.log('SimplePlayerPerformance rendering...');
+  const { t } = useTranslation();
   
   let players = [];
   let dataError = null;
@@ -23,7 +25,7 @@ const SimplePlayerPerformance = () => {
     return (
       <div className="card">
         <div className="card-header bg-danger text-white">
-          <h2>❌ Player Performance Error</h2>
+          <h2>❌ {t('playerPerformance.error')}</h2>
         </div>
         <div className="card-body">
           <div className="alert alert-danger">
@@ -38,12 +40,12 @@ const SimplePlayerPerformance = () => {
     return (
       <div className="card">
         <div className="card-header bg-info text-white">
-          <h2>📈 Player Performance</h2>
+          <h2>📈 {t('playerPerformance.title')}</h2>
         </div>
         <div className="card-body">
           <div className="alert alert-info">
-            <h4>No player data available</h4>
-            <p>Play some games to see player performance here!</p>
+            <h4>{t('playerPerformance.noData')}</h4>
+            <p>{t('playerPerformance.playGames')}</p>
           </div>
         </div>
       </div>
@@ -54,10 +56,10 @@ const SimplePlayerPerformance = () => {
   const sortedPlayers = [...players].sort((a, b) => b.cumulativeScore - a.cumulativeScore);
 
   const getPerformanceLevel = (rank, totalPlayers) => {
-    if (rank === 1) return { level: 'Excellent', class: 'success', icon: '🔥' };
-    if (rank <= Math.ceil(totalPlayers * 0.33)) return { level: 'Good', class: 'warning', icon: '👍' };
-    if (rank <= Math.ceil(totalPlayers * 0.67)) return { level: 'Average', class: 'info', icon: '👌' };
-    return { level: 'Needs Work', class: 'secondary', icon: '💪' };
+    if (rank === 1) return { level: t('playerPerformance.performanceLevels.excellent'), class: 'success', icon: '🔥' };
+    if (rank <= Math.ceil(totalPlayers * 0.33)) return { level: t('playerPerformance.performanceLevels.good'), class: 'warning', icon: '👍' };
+    if (rank <= Math.ceil(totalPlayers * 0.67)) return { level: t('playerPerformance.performanceLevels.average'), class: 'info', icon: '👌' };
+    return { level: t('playerPerformance.performanceLevels.needsWork'), class: 'secondary', icon: '💪' };
   };
 
   const getProgressBarWidth = (score, maxScore) => {
@@ -69,13 +71,13 @@ const SimplePlayerPerformance = () => {
   return (
     <div className="card mb-4">
       <div className="card-header bg-primary text-white">
-        <h2>📈 Player Performance Analysis</h2>
+        <h2>📈 {t('playerPerformance.title')}</h2>
       </div>
       <div className="card-body">
         <div className="row">
           {sortedPlayers.map((player, index) => {
             const rank = index + 1;
-            const name = player.name || 'Unknown Player';
+            const name = player.name || t('common.unknownPlayer');
             const score = player.cumulativeScore || 0;
             const gamesPlayed = player.gamesPlayed || 0;
             const winRate = player.winRate || 0;
@@ -104,7 +106,7 @@ const SimplePlayerPerformance = () => {
                     
                     <div className="mb-3">
                       <div className="display-6 text-primary">{score}</div>
-                      <small className="text-muted">Total Points</small>
+                      <small className="text-muted">{t('playerPerformance.totalPoints')}</small>
                     </div>
 
                     <div className="progress mb-3">
@@ -117,17 +119,17 @@ const SimplePlayerPerformance = () => {
                     <div className="row text-center mb-3">
                       <div className="col-4">
                         <div className="h6 text-info">{gamesPlayed}</div>
-                        <small className="text-muted">Games</small>
+                        <small className="text-muted">{t('playerPerformance.games')}</small>
                       </div>
                       <div className="col-4">
                         <div className="h6 text-success">{avgScore}</div>
-                        <small className="text-muted">Avg/Game</small>
+                        <small className="text-muted">{t('playerPerformance.avgPerGame')}</small>
                       </div>
                       <div className="col-4">
                         <div className={`h6 ${winRate >= 60 ? 'text-success' : winRate >= 40 ? 'text-warning' : 'text-danger'}`}>
                           {winRate.toFixed(1)}%
                         </div>
-                        <small className="text-muted">Win Rate</small>
+                        <small className="text-muted">{t('playerPerformance.winRate')}</small>
                       </div>
                     </div>
 
@@ -140,10 +142,10 @@ const SimplePlayerPerformance = () => {
                         />
                       </div>
                       <small className="text-muted">
-                        {winRate >= 60 ? '🏆 Excellent win rate!' : 
-                         winRate >= 40 ? '👍 Good performance' : 
-                         winRate >= 20 ? '💪 Room for improvement' : 
-                         '📈 Keep practicing!'}
+                        {winRate >= 60 ? t('playerPerformance.winRateMessages.excellent') : 
+                         winRate >= 40 ? t('playerPerformance.winRateMessages.good') : 
+                         winRate >= 20 ? t('playerPerformance.winRateMessages.improvement') : 
+                         t('playerPerformance.winRateMessages.practice')}
                       </small>
                     </div>
 
@@ -159,42 +161,42 @@ const SimplePlayerPerformance = () => {
 
         <div className="mt-4">
           <div className="alert alert-light">
-            <h5>📊 Performance Insights</h5>
+            <h5>{t('playerPerformance.insights.title')}</h5>
             <div className="row mb-3">
               <div className="col-md-3">
-                <strong>🔥 Excellent:</strong> Top performer
+                <strong>🔥 {t('playerPerformance.performanceLevels.excellent')}:</strong> {t('playerPerformance.insights.excellentDesc')}
               </div>
               <div className="col-md-3">
-                <strong>👍 Good:</strong> Above average
+                <strong>👍 {t('playerPerformance.performanceLevels.good')}:</strong> {t('playerPerformance.insights.goodDesc')}
               </div>
               <div className="col-md-3">
-                <strong>👌 Average:</strong> Middle pack
+                <strong>👌 {t('playerPerformance.performanceLevels.average')}:</strong> {t('playerPerformance.insights.averageDesc')}
               </div>
               <div className="col-md-3">
-                <strong>💪 Needs Work:</strong> Room to improve
+                <strong>💪 {t('playerPerformance.performanceLevels.needsWork')}:</strong> {t('playerPerformance.insights.needsWorkDesc')}
               </div>
             </div>
             
-            <h6>🏆 Win Rate Analysis</h6>
+            <h6>{t('playerPerformance.insights.winAnalysisTitle')}</h6>
             <div className="row">
               <div className="col-md-3">
                 <div className="text-success">
-                  <strong>≥60%:</strong> 🏆 Champion level
+                  <strong>≥60%:</strong> {t('playerPerformance.insights.championLevel')}
                 </div>
               </div>
               <div className="col-md-3">
                 <div className="text-warning">
-                  <strong>40-59%:</strong> 👍 Solid performer
+                  <strong>40-59%:</strong> {t('playerPerformance.insights.solidPerformer')}
                 </div>
               </div>
               <div className="col-md-3">
                 <div className="text-info">
-                  <strong>20-39%:</strong> 💪 Developing
+                  <strong>20-39%:</strong> {t('playerPerformance.insights.developing')}
                 </div>
               </div>
               <div className="col-md-3">
                 <div className="text-danger">
-                  <strong>&lt;20%:</strong> 📈 Learning phase
+                  <strong>&lt;20%:</strong> {t('playerPerformance.insights.learningPhase')}
                 </div>
               </div>
             </div>
@@ -211,15 +213,15 @@ const SimplePlayerPerformance = () => {
                   <div className="row text-center">
                     <div className="col-md-4">
                       <div className="h5 text-primary">{avgWinRate}%</div>
-                      <small className="text-muted">Average Win Rate</small>
+                      <small className="text-muted">{t('playerPerformance.insights.averageWinRate')}</small>
                     </div>
                     <div className="col-md-4">
                       <div className="h5 text-success">{bestWinRate}%</div>
-                      <small className="text-muted">Best Win Rate</small>
+                      <small className="text-muted">{t('playerPerformance.insights.bestWinRate')}</small>
                     </div>
                     <div className="col-md-4">
                       <div className="h5 text-warning">{highPerformers}</div>
-                      <small className="text-muted">High Performers (≥60%)</small>
+                      <small className="text-muted">{t('playerPerformance.insights.highPerformers')}</small>
                     </div>
                   </div>
                 </div>

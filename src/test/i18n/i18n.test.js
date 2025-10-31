@@ -3,13 +3,13 @@ import i18n from '../../utils/i18n';
 
 describe('I18n Configuration', () => {
   beforeEach(() => {
-    // Reset i18n to English before each test
-    i18n.changeLanguage('en');
+    // Reset i18n to Danish before each test (our new default)
+    i18n.changeLanguage('da');
   });
 
   afterEach(() => {
     // Clean up after each test
-    i18n.changeLanguage('en');
+    i18n.changeLanguage('da');
   });
 
   describe('Language Support', () => {
@@ -20,11 +20,11 @@ describe('I18n Configuration', () => {
       expect(languages).toHaveLength(2);
     });
 
-    it('should default to English as fallback language', () => {
+    it('should default to Danish as fallback language', () => {
       const fallback = i18n.options.fallbackLng;
       // fallbackLng can be a string or array
       const fallbackLang = Array.isArray(fallback) ? fallback[0] : fallback;
-      expect(fallbackLang).toBe('en');
+      expect(fallbackLang).toBe('da');
     });
 
     it('should change language to Danish', async () => {

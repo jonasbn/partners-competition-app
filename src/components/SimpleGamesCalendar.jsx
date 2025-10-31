@@ -68,11 +68,11 @@ const SimpleGamesCalendar = () => {
   const formatDate = (dateStr) => {
     try {
       const date = new Date(dateStr);
-      return date.toLocaleDateString('en-US', { 
-        weekday: 'short', 
-        month: 'short', 
-        day: 'numeric' 
-      });
+      // Use simple dd/mm/yyyy format that works for both Danish and English
+      const day = date.getDate().toString().padStart(2, '0');
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const year = date.getFullYear();
+      return `${day}/${month}/${year}`;
     } catch {
       return dateStr;
     }

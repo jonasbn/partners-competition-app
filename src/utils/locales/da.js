@@ -1,5 +1,8 @@
 // Danish translations
 export default {
+  "common": {
+    "unknownPlayer": "Ukendt Spiller"
+  },
   "app": {
     "title": "Partners Konkurrence App",
     "footer": "Partners Konkurrence App © {{year}}",
@@ -25,12 +28,20 @@ export default {
       "totalGames": "Samlede Spil",
       "possibleCombinations": "Holdkombinationer Tilgængelige",
       "averageGameScore": "Gennemsnitlig Spil Score"
+    },
+    "teamCoverage": {
+      "title": "Hold Dækning",
+      "formed": "{{used}} af {{total}} holdkombinationer dannet",
+      "remaining": "{{remaining}} kombinationer tilbage",
+      "minimum": "Minimum {{games}} spil nødvendige for fuld dækning"
     }
   },
   "theme": {
     "dark": "Mørk",
     "light": "Lys",
-    "toggle": "Skift Tema"
+    "toggle": "Skift Tema",
+    "darkMode": "Mørk Tilstand",
+    "lightMode": "Lys Tilstand"
   },
   "leaderboard": {
     "title": "Resultattavle",
@@ -43,7 +54,13 @@ export default {
     "avgScore": "Gns Score",
     "rank": "Placering",
     "points": "Point",
-    "avg": "Gns"
+    "avg": "Gns",
+    "error": "Resultattavle Fejl",
+    "noData": "Ingen Resultattavle Data",
+    "noPlayerData": "Ingen spillerdata tilgængelig.",
+    "totalPlayers": "Antal spillere",
+    "totalGames": "Samlede spil registreret",
+    "avatarLegend": "Avatar Forklaring"
   },
   "teamStatistics": {
     "title": "Hold Statistikker",
@@ -55,14 +72,72 @@ export default {
     "thirdPlace": "3.",
     "winRate": "Sejrs Rate"
   },
+  "teamStats": {
+    "title": "Hold Statistikker",
+    "error": "Fejl ved indlæsning af hold statistikker",
+    "noData": "Ingen hold data tilgængelig",
+    "playGames": "Spil nogle spil for at se hold statistikker",
+    "rank": "Placering",
+    "teamName": "Hold Navn",
+    "team": "Hold",
+    "gamesPlayed": "Spil Spillet",
+    "averageScore": "Gns Score",
+    "wins": "Sejre",
+    "seconds": "2. Pladser",
+    "thirds": "3. Pladser",
+    "secondPlace": "2. Plads",
+    "thirdPlace": "3. Plads",
+    "winRate": "Sejrs Rate",
+    "totalPoints": "Samlede Point",
+    "totalTeams": "Samlede hold",
+    "totalGamesTracked": "Samlede spil registreret",
+    "ranking": "Rangering",
+    "rankingMethod": "Efter samlede point, derefter sejrs rate",
+    "bestTeam": "Bedste Hold: {{team}}",
+    "bestTeamStats": "{{wins}} sejre ud af {{games}} spil ({{rate}}% sejrs rate)"
+  },
   "playerPerformance": {
-    "title": "Spiller Præstations Analyse",
-    "totalScore": "Total Score",
-    "averageScore": "Gennemsnits Score",
+    "title": "Spillerpræstation Analyse",
+    "totalScore": "Samlet Score",
+    "averageScore": "Gennemsnitsscore",
     "bestScore": "Bedste Score",
     "worstScore": "Værste Score",
     "consistency": "Konsistens",
-    "trend": "Trend"
+    "trend": "Trend",
+    "error": "Spillerpræstation Fejl",
+    "noData": "Ingen spillerdata tilgængelig",
+    "playGames": "Spil nogle spil for at se spillerpræstation her!",
+    "totalPoints": "Samlede Point",
+    "games": "Spil",
+    "avgPerGame": "Gns/Spil",
+    "winRate": "Sejrsprocent",
+    "performanceLevels": {
+      "excellent": "Fremragende",
+      "good": "God",
+      "average": "Gennemsnitlig",
+      "needsWork": "Kan Forbedres"
+    },
+    "winRateMessages": {
+      "excellent": "🏆 Fremragende sejrsprocent!",
+      "good": "👍 God præstation",
+      "improvement": "💪 Plads til forbedring",
+      "practice": "📈 Bliv ved med at øve!"
+    },
+    "insights": {
+      "title": "📊 Præstationsindsigt",
+      "excellentDesc": "Toppræsterer",
+      "goodDesc": "Over gennemsnittet",
+      "averageDesc": "Midterste felt",
+      "needsWorkDesc": "Plads til forbedring",
+      "winAnalysisTitle": "🏆 Sejrsprocent Analyse",
+      "championLevel": "🏆 Mester niveau",
+      "solidPerformer": "👍 Solid præsterer",
+      "developing": "💪 Under udvikling",
+      "learningPhase": "📈 Læringsfase",
+      "averageWinRate": "Gennemsnitlig Sejrsprocent",
+      "bestWinRate": "Bedste Sejrsprocent",
+      "highPerformers": "Højtpræsterende (≥60%)"
+    }
   },
   "gamesList": {
     "title": "Spil Historie",
@@ -92,7 +167,16 @@ export default {
     "noGames": "Ingen spil fundet",
     "loading": "Indlæser spil...",
     "error": "Fejl ved indlæsning af spil",
-    "summary": "{{total}} spil spillet over {{days}} dage"
+    "errorLoading": "Fejl ved indlæsning",
+    "startPlaying": "Start med at spille nogle spil for at se historikken her!",
+    "summary": "{{total}} spil spillet over {{days}} dage",
+    "totalGames": "Samlede Spil",
+    "latest": "Seneste",
+    "gameNumber": "Spil {{number}}",
+    "place": "Plads",
+    "showing": "Viser {{count}} spil",
+    "unknownDate": "Ukendt Dato",
+    "invalidDate": "Ugyldig Dato"
   },
   "playerStats": {
     "title": "Spillerstatistik",
@@ -125,7 +209,19 @@ export default {
   "summaryCards": {
     "currentLeader": {
       "title": "Nuværende Leder",
-      "description": "Fører konkurrencen"
+      "description": "Fører konkurrencen",
+      "totalPoints": "Samlede Point",
+      "ofMaxScore": "af max score",
+      "gamesPlayed": "spil spillet",
+      "winRate": "sejrs rate",
+      "noGames": "Ingen spil spillet endnu"
+    },
+    "gameStats": {
+      "title": "Spil Statistikker",
+      "totalGames": "Samlede Spil Spillet",
+      "players": "Spillere",
+      "totalTeams": "Samlede Hold",
+      "avgGamesPerPlayer": "{{avg}} gns spil pr. spiller"
     },
     "gameStatistics": {
       "title": "Spil Statistikker", 
@@ -135,7 +231,17 @@ export default {
     },
     "bestTeam": {
       "title": "Bedste Hold",
-      "description": "Mest succesfulde partnerskab"
+      "description": "Mest succesfulde partnerskab",
+      "wins": "Samlede Sejre",
+      "gamesPlayed": "spil spillet",
+      "winRate": "sejrs rate",
+      "noTeamData": "Ingen hold data tilgængelig"
+    },
+    "combinations": {
+      "title": "Hold Kombinationer",
+      "ofCombinations": "af {{total}} kombinationer",
+      "complete": "komplet",
+      "remaining": "{{count}} tilbage"
     },
     "teamCombinations": {
       "title": "Hold Kombinationer",
@@ -152,31 +258,49 @@ export default {
   },
   "gamesCalendar": {
     "title": "Spil Kalender",
+    "timelineTitle": "Aktivitets Tidslinje",
+    "error": "Spil Kalender Fejl",
     "stats": {
       "totalGames": "Samlede Spil",
       "gameDays": "Spil Dage", 
+      "activeDays": "Aktive Dage",
       "averagePerDay": "Gennemsnit pr. Dag",
+      "avgPerDay": "Gns pr. Dag",
+      "maxPerDay": "Max pr. Dag",
       "mostActiveDay": "Mest Aktive Dag"
     },
     "timeline": {
       "title": "Aktivitets Tidslinje",
       "legend": "Aktivitets Niveau",
       "noActivity": "Ingen Aktivitet",
-      "tooltip": "{{games}} spil den {{date}}"
+      "tooltip": "{{games}} spil den {{date}}",
+      "game": "spil",
+      "games": "spil"
     },
     "levels": {
       "none": "Ingen",
       "low": "Lav",
       "medium": "Medium", 
       "high": "Høj",
-      "veryHigh": "Meget Høj"
+      "veryHigh": "Meget Høj",
+      "title": "Aktivitets Niveauer",
+      "lowDesc": "1-2 spil pr. dag",
+      "mediumDesc": "3-4 spil pr. dag",
+      "highDesc": "5+ spil pr. dag"
+    },
+    "recent": {
+      "title": "Seneste Aktivitet",
+      "date": "Dato",
+      "games": "Spil",
+      "teams": "Hold",
+      "teamsPlayed": "hold spillede"
     },
     "recentGames": {
       "title": "Seneste Spil",
       "date": "Dato",
       "games": "Spil",
       "winner": "Vinder",
-      "noGames": "Keine seneste spil"
+      "noGames": "Ingen seneste spil"
     }
   },
   "charts": {

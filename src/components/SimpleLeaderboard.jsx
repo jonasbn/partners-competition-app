@@ -1,10 +1,12 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { getLeaderboardData } from '../utils/dataUtils';
 import SimpleAvatarWithHover from './SimpleAvatarWithHover';
 import { getRankBasedAvatar } from '../utils/simpleAvatarUtils';
 
-// Simple Leaderboard without i18n or external dependencies
+// Simple Leaderboard with i18n support
 const SimpleLeaderboard = () => {
+  const { t } = useTranslation();
   console.log('SimpleLeaderboard rendering...');
   
   let players = [];
@@ -47,7 +49,7 @@ const SimpleLeaderboard = () => {
     return (
       <div className="card">
         <div className="card-header bg-danger text-white">
-          <h2>❌ Leaderboard Error</h2>
+          <h2>❌ {t('leaderboard.error')}</h2>
         </div>
         <div className="card-body">
           <div className="alert alert-danger">
@@ -62,10 +64,10 @@ const SimpleLeaderboard = () => {
     return (
       <div className="card">
         <div className="card-header bg-warning text-dark">
-          <h2>⚠️ No Leaderboard Data</h2>
+          <h2>⚠️ {t('leaderboard.noData')}</h2>
         </div>
         <div className="card-body">
-          <p>No player data available.</p>
+          <p>{t('leaderboard.noPlayerData')}</p>
         </div>
       </div>
     );
@@ -74,19 +76,19 @@ const SimpleLeaderboard = () => {
   return (
     <div className="card">
       <div className="card-header bg-primary text-white">
-        <h2>🏆 Leaderboard</h2>
+        <h2>🏆 {t('leaderboard.title')}</h2>
       </div>
       <div className="card-body">
         <div className="table-responsive">
           <table className="table table-striped table-hover">
             <thead className="table-dark">
               <tr>
-                <th>Rank</th>
-                <th>Player</th>
-                <th>Score</th>
-                <th>Games</th>
-                <th>Avg</th>
-                <th>Win Rate</th>
+                <th>{t('leaderboard.rank')}</th>
+                <th>{t('leaderboard.player')}</th>
+                <th>{t('leaderboard.score')}</th>
+                <th>{t('leaderboard.games')}</th>
+                <th>{t('leaderboard.avg')}</th>
+                <th>{t('leaderboard.winRate')}</th>
               </tr>
             </thead>
             <tbody>
@@ -158,13 +160,13 @@ const SimpleLeaderboard = () => {
           <div className="row">
             <div className="col-md-6">
               <small className="text-muted">
-                Total players: {players.length} | 
-                Total games tracked: {Math.floor(players.reduce((sum, p) => sum + (p.gamesPlayed || 0), 0) / 2)}
+                {t('leaderboard.totalPlayers')}: {players.length} | 
+                {t('leaderboard.totalGames')}: {Math.floor(players.reduce((sum, p) => sum + (p.gamesPlayed || 0), 0) / 2)}
               </small>
             </div>
             <div className="col-md-6 text-end">
               <small className="text-muted">
-                <strong>Avatar Legend:</strong> 
+                <strong>{t('leaderboard.avatarLegend')}:</strong> 
                 <span className="ms-2">🥇😊</span>
                 <span className="ms-2">🥈🥉😐</span>
                 <span className="ms-2">4-6😢</span>
