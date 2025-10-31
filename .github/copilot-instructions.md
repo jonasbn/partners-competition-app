@@ -127,3 +127,23 @@ The application UI should present the following components all on a single page:
 - The application should be built using React and Bootstrap
 - The build system is Vite
 - Unit-tests should be implemented using Vitest and React Testing Libraries
+
+# Repository Structure
+
+- `public/`: Static assets including avatar images
+- `src/`: Source code for the React application
+  - `components/`: React components for various UI parts
+  - `utils/`: Utility functions for data processing and other logic
+  - `i18n/`: Localization files for different languages
+  - `test/`: Unit tests for the application
+  - `data/games.json`: JSON file containing game and player data
+
+  - `docs/`: Documentation files
+
+  When generating code, ensure to follow best practices for React development, including component modularity, state management, and proper use of hooks where applicable.
+
+  When generating documentation please create it in the `docs/` directory, so the root directory remains clean and uncluttered.
+
+  Documentation should be written in markdown format (`.md` files) for easy readability and should adhere to Markdown best practices and should pass markdown linting checks, see: `.markdownlint.json` for rules.
+
+  Ensure all code is well-commented to explain the purpose and functionality of complex sections.
