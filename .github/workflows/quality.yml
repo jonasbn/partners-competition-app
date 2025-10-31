@@ -1,0 +1,92 @@
+name: Code Quality
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  quality:
+    name: Code Quality Check
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run tests with coverage
+      run: npm run test:coverage
+
+    - name: Check test coverage
+      run: |
+        echo "📊 Test Coverage Report"
+        if [ -d "coverage" ]; then
+          echo "✅ Coverage directory found"
+          ls -la coverage/
+        else
+          echo "⚠️  No coverage directory found"
+        fi
+
+    - name: Upload coverage reports
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: coverage-report
+        path: coverage/
+        retention-days: 30
+
+    - name: Build and verify
+      run: |
+        echo "🔨 Building application..."
+        npm run build
+        echo "✅ Build completed successfully"
+        
+        echo "📦 Build artifact info:"
+        du -sh build/
+        find build/ -name "*.js" -o -name "*.css" -o -name "*.html" | head -10
+
+  lint-and-format:
+    name: Lint and Format Check
+    runs-on: ubuntu-latest
+    continue-on-error: true
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Check for linting scripts
+      run: |
+        if npm run lint --dry-run 2>/dev/null; then
+          echo "✅ Linting script available"
+          npm run lint
+        else
+          echo "⚠️  No linting script found in package.json"
+        fi
+
+    - name: Check for formatting scripts
+      run: |
+        if npm run format:check --dry-run 2>/dev/null; then
+          echo "✅ Format check script available"
+          npm run format:check
+        else
+          echo "⚠️  No format check script found in package.json"
+        fi

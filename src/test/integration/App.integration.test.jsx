@@ -4,12 +4,13 @@ import { ThemeProvider } from '../../utils/ThemeContext';
 import '../../utils/i18n';
 import App from '../../App';
 
-// Mock heavy chart components for integration tests
-vi.mock('../../components/LazyCharts', () => ({
-  LazyPlayerStatsChart: () => <div data-testid="chart-loaded">Player Stats Loaded</div>,
-  LazyPlayerPerformanceChart: () => <div data-testid="chart-loaded">Performance Loaded</div>,
-  LazyGamesCalendarChart: () => <div data-testid="chart-loaded">Calendar Loaded</div>,
-  LazyTeamCombinationChart: () => <div data-testid="chart-loaded">Team Combinations Loaded</div>,
+// Mock Simple components for integration tests to avoid complex rendering
+vi.mock('../../components/SimpleGamesCalendar', () => ({
+  default: () => <div data-testid="component-loaded">Games Calendar Loaded</div>
+}));
+
+vi.mock('../../components/SimplePlayerPerformance', () => ({
+  default: () => <div data-testid="component-loaded">Player Performance Loaded</div>
 }));
 
 // Use real data utilities for integration test
@@ -32,11 +33,11 @@ describe('App Integration Tests', () => {
       expect(screen.getByRole('navigation')).toBeInTheDocument();
     }, { timeout: 3000 });
     
-    // Check that charts are loading
+    // Check that components are loading
     await waitFor(() => {
-      const chartElements = screen.getAllByTestId('chart-loaded');
-      expect(chartElements.length).toBeGreaterThan(0);
-    }, { timeout: 5000 });
+      const componentElements = screen.getAllByTestId('component-loaded');
+      expect(componentElements.length).toBeGreaterThan(0);
+    }, { timeout: 3000 });
   });
 
   it('handles navigation and layout correctly', () => {
