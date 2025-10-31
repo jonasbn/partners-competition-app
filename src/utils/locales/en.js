@@ -42,7 +42,8 @@ export default {
     "winRate": "Win Rate",
     "avgScore": "Avg Score",
     "rank": "Rank",
-    "points": "Points"
+    "points": "Points",
+    "avg": "Avg"
   },
   "teamStatistics": {
     "title": "Team Statistics",
@@ -64,15 +65,25 @@ export default {
     "trend": "Trend"
   },
   "gamesList": {
-    "title": "Game History",
+    "title": "Games History",
     "date": "Date",
     "teams": "Teams",
     "winner": "Winner",
     "score": "Score",
+    "sort": "Sort",
+    "team": "Team",
+    "teamsScores": "Teams & Scores",
     "place": {
       "1st": "1st",
       "2nd": "2nd", 
       "3rd": "3rd"
+    },
+    "points": {
+      "one": "point",
+      "other": "points",
+      "first": "1st Place",
+      "second": "2nd Place",
+      "third": "3rd Place"
     },
     "game": "Game {{number}}",
     "recent": "Recent Games",
@@ -175,13 +186,15 @@ export default {
         "player": "Player",
         "score": "Score"
       }
-    }
-  },
-  "gamesList": {
-    "points": {
-      "one": "point",
-      "other": "points"
     },
-    "sort": "Sort"
+    "playerPerformance": {
+      "title": "Player Performance"
+    },
+    "gamesCalendar": {
+      "title": "Games Calendar"
+    },
+    "teamCombinations": {
+      "title": "Team Combinations"
+    }
   }
 };

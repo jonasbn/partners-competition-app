@@ -51,26 +51,42 @@ const SimpleAvatarWithHover = ({
 
   // Update popup position on scroll or resize
   useEffect(() => {
+    // Guard against SSR/server-side rendering
+    if (typeof window === 'undefined') {
+      return;
+    }
+    
     if (showPopup && avatarRef.current) {
       const updatePosition = () => {
         try {
-          const rect = avatarRef.current.getBoundingClientRect();
-          setPopupPosition({
-            x: rect.left + rect.width / 2,
-            y: rect.top + rect.height / 2
-          });
+          if (avatarRef.current) {
+            const rect = avatarRef.current.getBoundingClientRect();
+            setPopupPosition({
+              x: rect.left + rect.width / 2,
+              y: rect.top + rect.height / 2
+            });
+          }
         } catch (error) {
           console.error('Error updating popup position:', error);
         }
       };
 
-      window.addEventListener('scroll', updatePosition, true);
-      window.addEventListener('resize', updatePosition);
-      
-      return () => {
-        window.removeEventListener('scroll', updatePosition, true);
-        window.removeEventListener('resize', updatePosition);
-      };
+      try {
+        window.addEventListener('scroll', updatePosition, true);
+        window.addEventListener('resize', updatePosition);
+        
+        return () => {
+          try {
+            window.removeEventListener('scroll', updatePosition, true);
+            window.removeEventListener('resize', updatePosition);
+          } catch (error) {
+            console.error('Error removing event listeners:', error);
+          }
+        };
+      } catch (error) {
+        console.error('Error adding event listeners:', error);
+        return () => {}; // Return empty cleanup function
+      }
     }
   }, [showPopup]);
 
@@ -219,7 +235,7 @@ const SimpleAvatarWithHover = ({
       </div>
 
       {/* Hover popup rendered via portal to ensure it appears above all other elements */}
-      {showPopup && createPortal(
+      {showPopup && typeof document !== 'undefined' && document.body && createPortal(
         <div style={popupStyle}>
           {avatarSrc ? (
             <img 
