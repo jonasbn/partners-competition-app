@@ -34,15 +34,16 @@ export default {
   },
   "leaderboard": {
     "title": "Resultattavle",
-    "position": "Position",
+    "position": "Placering",
     "player": "Spiller",
     "score": "Score",
     "games": "Spil",
     "wins": "Sejre",
     "winRate": "Sejrs Rate",
     "avgScore": "Gns Score",
-    "rank": "Rang",
-    "points": "Point"
+    "rank": "Placering",
+    "points": "Point",
+    "avg": "Gns"
   },
   "teamStatistics": {
     "title": "Hold Statistikker",
@@ -69,10 +70,20 @@ export default {
     "teams": "Hold",
     "winner": "Vinder",
     "score": "Score",
+    "sort": "Sortér",
+    "team": "Hold",
+    "teamsScores": "Hold & Score",
     "place": {
       "1st": "1.",
       "2nd": "2.", 
       "3rd": "3."
+    },
+    "points": {
+      "one": "point",
+      "other": "point",
+      "first": "1. Plads",
+      "second": "2. Plads",
+      "third": "3. Plads"
     },
     "game": "Spil {{number}}",
     "recent": "Seneste Spil",
@@ -84,7 +95,7 @@ export default {
     "summary": "{{total}} spil spillet over {{days}} dage"
   },
   "playerStats": {
-    "title": "Spiller Statistikker",
+    "title": "Spillerstatistik",
     "playerTypes": {
       "rookie": "Rookie",
       "pro": "Pro", 
@@ -170,18 +181,20 @@ export default {
   },
   "charts": {
     "playerStats": {
-      "title": "Spiller Statistikker",
+      "title": "Spillerstatistik",
       "axisLabels": {
         "player": "Spiller",
         "score": "Score"
       }
-    }
-  },
-  "gamesList": {
-    "points": {
-      "one": "point",
-      "other": "point"
     },
-    "sort": "Sorter"
+    "playerPerformance": {
+      "title": "Spiller Præstation"
+    },
+    "gamesCalendar": {
+      "title": "Spil Kalender"
+    },
+    "teamCombinations": {
+      "title": "Hold Kombinationer"
+    }
   }
 };

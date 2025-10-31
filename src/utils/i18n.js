@@ -6,35 +6,33 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import enTranslation from './locales/en.js';
 import daTranslation from './locales/da.js';
 
-// Configure i18next
+// Stable React 18 + i18next configuration
 i18n
-  // Detect user language
   .use(LanguageDetector)
-  // Pass the i18n instance to react-i18next
   .use(initReactI18next)
-  // Initialize i18next
   .init({
-    // Resources with translations
-    resources: {
-      en: {
-        translation: enTranslation
-      },
-      da: {
-        translation: daTranslation
-      }
-    },
-    // Fallback language
+    lng: 'en',
     fallbackLng: 'en',
-    // Debug mode in development
-    debug: false, // Disable debug in production
-    // Common namespace
+    
+    resources: {
+      en: { translation: enTranslation },
+      da: { translation: daTranslation }
+    },
+    
     ns: ['translation'],
     defaultNS: 'translation',
-    // Caching
     keySeparator: '.',
+    
     interpolation: {
-      escapeValue: false // React already safes from XSS
-    }
+      escapeValue: false
+    },
+    
+    // React 18 compatible settings
+    react: {
+      useSuspense: false
+    },
+    
+    debug: false
   });
 
 export default i18n;

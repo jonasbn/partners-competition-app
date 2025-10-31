@@ -17,14 +17,35 @@ function App() {
 
   // Log application startup and lifecycle events
   useEffect(() => {
+    // Guard against SSR/server-side rendering
+    const safeNavigatorAccess = () => {
+      if (typeof navigator === 'undefined') {
+        return { userAgent: 'Unknown', language: 'en' };
+      }
+      return {
+        userAgent: navigator.userAgent || 'Unknown',
+        language: navigator.language || 'en'
+      };
+    };
+
+    const safeWindowAccess = () => {
+      if (typeof window === 'undefined') {
+        return { width: 0, height: 0 };
+      }
+      return {
+        width: window.innerWidth || 0,
+        height: window.innerHeight || 0
+      };
+    };
+
+    const navInfo = safeNavigatorAccess();
+    const viewportInfo = safeWindowAccess();
+
     Logger.info('Partners Competition App started', {
       timestamp: new Date().toISOString(),
-      userAgent: navigator.userAgent,
-      language: navigator.language,
-      viewport: {
-        width: window.innerWidth,
-        height: window.innerHeight
-      }
+      userAgent: navInfo.userAgent,
+      language: navInfo.language,
+      viewport: viewportInfo
     });
 
     // Log when app component mounts

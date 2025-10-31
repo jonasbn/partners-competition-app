@@ -17,12 +17,12 @@ const LoadingFallback = () => (
 );
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// Simple, reliable React 18 rendering
 root.render(
   <React.StrictMode>
-    <Suspense fallback={<LoadingFallback />}>
-      <ThemeProvider>
-        <App />
-      </ThemeProvider>
-    </Suspense>
+    <ThemeProvider>
+      <App />  
+    </ThemeProvider>
   </React.StrictMode>
 );
