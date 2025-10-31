@@ -1,9 +1,11 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { getLeaderboardData, getGames, getTeamStatistics } from '../utils/dataUtils';
 import SimpleAvatarWithHover from './SimpleAvatarWithHover';
 import { getRankBasedAvatar } from '../utils/simpleAvatarUtils';
 
 const SimpleSummaryCards = () => {
+  const { t } = useTranslation();
   console.log('SimpleSummaryCards rendering...');
   
   let players = [];
@@ -24,7 +26,7 @@ const SimpleSummaryCards = () => {
   if (dataError) {
     return (
       <div className="alert alert-danger">
-        <strong>Summary Cards Error:</strong> {dataError}
+        <strong>{t('summaryCards.error')}:</strong> {dataError}
       </div>
     );
   }
@@ -69,7 +71,7 @@ const SimpleSummaryCards = () => {
       <div className="col-md-6 col-lg-3 mb-3">
         <div className="card h-100 border-success">
           <div className="card-header bg-success text-white text-center">
-            <h5 className="mb-0">🏆 Current Leader</h5>
+            <h5 className="mb-0">🏆 {t('summaryCards.currentLeader.title')}</h5>
           </div>
           <div className="card-body text-center">
             {leadingPlayer ? (
@@ -85,7 +87,7 @@ const SimpleSummaryCards = () => {
                 <div className="display-6 text-success mb-2">
                   {leadingPlayer.cumulativeScore}
                 </div>
-                <p className="text-muted mb-1">Total Points</p>
+                <p className="text-muted mb-1">{t('summaryCards.currentLeader.totalPoints')}</p>
                 <div className="progress mb-2">
                   <div 
                     className="progress-bar bg-success" 
@@ -93,13 +95,13 @@ const SimpleSummaryCards = () => {
                   />
                 </div>
                 <small className="text-muted">
-                  {scorePercentage}% of max possible score<br/>
-                  {leadingPlayer.gamesPlayed} games played<br/>
-                  <strong className="text-success">{(leadingPlayer.winRate || 0).toFixed(1)}% win rate</strong>
+                  {scorePercentage}% {t('summaryCards.currentLeader.ofMaxScore')}<br/>
+                  {leadingPlayer.gamesPlayed} {t('summaryCards.currentLeader.gamesPlayed')}<br/>
+                  <strong className="text-success">{(leadingPlayer.winRate || 0).toFixed(1)}% {t('summaryCards.currentLeader.winRate')}</strong>
                 </small>
               </>
             ) : (
-              <p className="text-muted">No games played yet</p>
+              <p className="text-muted">{t('summaryCards.currentLeader.noGames')}</p>
             )}
           </div>
         </div>
@@ -109,26 +111,26 @@ const SimpleSummaryCards = () => {
       <div className="col-md-6 col-lg-3 mb-3">
         <div className="card h-100 border-primary">
           <div className="card-header bg-primary text-white text-center">
-            <h5 className="mb-0">🎮 Game Stats</h5>
+            <h5 className="mb-0">🎮 {t('summaryCards.gameStats.title')}</h5>
           </div>
           <div className="card-body text-center">
             <div className="display-6 text-primary mb-2">{totalGames}</div>
-            <p className="text-muted mb-3">Total Games</p>
+            <p className="text-muted mb-3">{t('summaryCards.gameStats.totalGames')}</p>
             
             <div className="row text-center">
               <div className="col-6">
                 <div className="h5 text-info">{totalPlayers}</div>
-                <small className="text-muted">Players</small>
+                <small className="text-muted">{t('summaryCards.gameStats.players')}</small>
               </div>
               <div className="col-6">
                 <div className="h5 text-warning">{Math.floor(totalGames * 1.5)}</div>
-                <small className="text-muted">Total Teams</small>
+                <small className="text-muted">{t('summaryCards.gameStats.totalTeams')}</small>
               </div>
             </div>
             
             <div className="mt-3">
               <small className="text-muted">
-                Avg: {totalGames > 0 ? (totalGames / totalPlayers * 6).toFixed(1) : '0'} games/player
+                {t('summaryCards.gameStats.avgGamesPerPlayer', { avg: totalGames > 0 ? (totalGames / totalPlayers * 6).toFixed(1) : '0' })}
               </small>
             </div>
           </div>
@@ -139,7 +141,7 @@ const SimpleSummaryCards = () => {
       <div className="col-md-6 col-lg-3 mb-3">
         <div className="card h-100 border-warning">
           <div className="card-header bg-warning text-dark text-center">
-            <h5 className="mb-0">👯 Best Team</h5>
+            <h5 className="mb-0">👯 {t('summaryCards.bestTeam.title')}</h5>
           </div>
           <div className="card-body text-center">
             {mostWinningTeam ? (
@@ -161,14 +163,14 @@ const SimpleSummaryCards = () => {
                 <div className="h4 text-warning mb-2">
                   {mostWinningTeam.wins}
                 </div>
-                <p className="text-muted mb-1">Wins</p>
+                <p className="text-muted mb-1">{t('summaryCards.bestTeam.wins')}</p>
                 <small className="text-muted">
-                  {mostWinningTeam.gamesPlayed} games played<br/>
-                  {(mostWinningTeam.winRate || 0).toFixed(1)}% win rate
+                  {mostWinningTeam.gamesPlayed} {t('summaryCards.bestTeam.gamesPlayed')}<br/>
+                  {(mostWinningTeam.winRate || 0).toFixed(1)}% {t('summaryCards.bestTeam.winRate')}
                 </small>
               </>
             ) : (
-              <p className="text-muted">No team data yet</p>
+              <p className="text-muted">{t('summaryCards.bestTeam.noTeamData')}</p>
             )}
           </div>
         </div>
@@ -178,14 +180,14 @@ const SimpleSummaryCards = () => {
       <div className="col-md-6 col-lg-3 mb-3">
         <div className="card h-100 border-info">
           <div className="card-header bg-info text-white text-center">
-            <h5 className="mb-0">🔄 Combinations</h5>
+            <h5 className="mb-0">🔄 {t('summaryCards.combinations.title')}</h5>
           </div>
           <div className="card-body text-center">
             <div className="display-6 text-info mb-2">
               {completedCombinations}
             </div>
             <p className="text-muted mb-2">
-              of {possibleTeamCombinations} combinations
+              {t('summaryCards.combinations.ofCombinations', { total: possibleTeamCombinations })}
             </p>
             
             <div className="progress mb-3">
@@ -196,11 +198,11 @@ const SimpleSummaryCards = () => {
             </div>
             
             <div className="h5 text-info">{completionPercentage}%</div>
-            <small className="text-muted">Complete</small>
+            <small className="text-muted">{t('summaryCards.combinations.complete')}</small>
             
             <div className="mt-3">
               <small className="text-muted">
-                {possibleTeamCombinations - completedCombinations} combinations remaining
+                {t('summaryCards.combinations.remaining', { count: possibleTeamCombinations - completedCombinations })}
               </small>
             </div>
           </div>

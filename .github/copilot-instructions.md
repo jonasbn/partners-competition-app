@@ -128,6 +128,9 @@ The application UI should present the following components all on a single page:
 - The build system is Vite
 - Unit-tests should be implemented using Vitest and React Testing Libraries
 
+- The application is aimed at running on modern browsers with ES6+ support and on the Digital Ocean App Platform.
+- Logging should be implemented using Logtail for error tracking and debugging.
+
 ## Repository Structure
 
 - `public/`: Static assets including avatar images

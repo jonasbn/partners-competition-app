@@ -27,9 +27,11 @@
     }
   },
   "theme": {
-    "light": "Lys tilstand",
-    "dark": "Mørk tilstand",
-    "toggle": "Skift til {{mode}} tilstand"
+    "light": "Lys",
+    "dark": "Mørk",
+    "lightMode": "Lys tilstand",
+    "darkMode": "Mørk tilstand",
+    "toggle": "Skift til {{mode}}"
   },
   "charts": {
     "default": {
@@ -132,6 +134,130 @@
       "first": "1. plads",
       "second": "2. plads",
       "third": "3. plads"
+    },
+    "totalGames": "Samlede spil",
+    "latest": "Seneste",
+    "gameNumber": "Spil #{{number}}",
+    "place": "Plads",
+    "winner": "Vinder",
+    "noGames": "Ingen spil registreret endnu",
+    "startPlaying": "Start med at spille nogle spil for at se historikken her!",
+    "showing": "Viser alle {{count}} spil (seneste først)",
+    "error": "Spilhistorik fejl",
+    "errorLoading": "Fejl ved indlæsning af spil"
+  },
+  "summaryCards": {
+    "currentLeader": {
+      "title": "Nuværende leder",
+      "totalPoints": "Samlede point",
+      "ofMaxScore": "af maksimal mulig score",
+      "gamesPlayed": "spil spillet",
+      "winRate": "sejrsrate",
+      "noGames": "Ingen spil spillet endnu"
+    },
+    "gameStats": {
+      "title": "Spilstatistik",
+      "totalGames": "Samlede spil",
+      "players": "Spillere",
+      "totalTeams": "Samlede hold",
+      "avgGamesPerPlayer": "Gns: {{avg}} spil/spiller"
+    },
+    "bestTeam": {
+      "title": "Bedste hold",
+      "wins": "Sejre",
+      "gamesPlayed": "spil spillet",
+      "winRate": "sejrsrate",
+      "noTeamData": "Ingen holddata endnu"
+    },
+    "combinations": {
+      "title": "Kombinationer",
+      "ofCombinations": "af {{total}} kombinationer",
+      "complete": "Komplet",
+      "remaining": "{{count}} kombinationer tilbage"
+    },
+    "error": "Sammendragskort fejl"
+  },
+  "playerStats": {
+    "title": "Spillerstatistik analyse",
+    "subtitle": "Omfattende præstationsmålinger og spillerprofiler",
+    "noStats": "Ingen spillerstatistik tilgængelig",
+    "errorLoading": "Fejl ved indlæsning af spillerstatistik",
+    "leagueOverview": {
+      "totalGames": "Samlede spil",
+      "avgPointsGame": "Gns point/spil",
+      "bestWinRate": "Bedste sejrsrate",
+      "mostGames": "Fleste spil"
+    },
+    "playerTypes": {
+      "rookie": "Rookie",
+      "dominator": "Dominator",
+      "competitor": "Konkurrent",
+      "clutchPlayer": "Clutch spiller",
+      "scorer": "Målscorer",
+      "balanced": "Afbalanceret",
+      "developing": "Udvikler sig"
+    },
+    "metrics": {
+      "winRate": "Sejrsrate",
+      "wins": "Sejre",
+      "losses": "Tab",
+      "games": "Spil",
+      "avgScored": "Gns scoret",
+      "avgConceded": "Gns lukket ind",
+      "differential": "Forskel",
+      "shutouts": "Nulspil",
+      "blowouts": "Store sejre",
+      "closeGames": "Tætte spil",
+      "bestWin": "Bedste sejr",
+      "dominance": "Dominans"
+    },
+    "insights": {
+      "title": "Liga indsigt",
+      "bestWinRate": "Bedste sejrsrate",
+      "mostActive": "Mest aktiv",
+      "competitionLevel": "Konkurrenceniveau",
+      "highScoring": "Højt scorende",
+      "defensive": "Defensiv",
+      "strongPlayers": "stærke spillere"
+    }
+  },
+  "errorBoundary": {
+    "title": "Noget gik galt!",
+    "message": "Der opstod en fejl under gengivelse af denne komponent. Fejlen er blevet logget og vores team er blevet underrettet.",
+    "tryAgain": "Prøv igen"
+  },
+  "gamesCalendar": {
+    "title": "Spilkalender",
+    "timelineTitle": "Spilkalender tidslinje",
+    "error": "Spilkalender fejl",
+    "noData": "Ingen kalenderdata tilgængelig",
+    "loading": "Indlæser kalender...",
+    "stats": {
+      "totalGames": "Samlede spil",
+      "activeDays": "Aktive dage",
+      "avgPerDay": "Gns/dag",
+      "maxPerDay": "Maks/dag"
+    },
+    "timeline": {
+      "title": "Aktivitet tidslinje",
+      "game": "spil",
+      "games": "spil"
+    },
+    "levels": {
+      "title": "Aktivitetsniveauer",
+      "low": "Lav",
+      "medium": "Medium",
+      "high": "Høj", 
+      "lowDesc": "1 spil",
+      "mediumDesc": "2-3 spil",
+      "highDesc": "4+ spil"
+    },
+    "recent": {
+      "title": "Seneste spil",
+      "date": "Dato",
+      "games": "Spil",
+      "teams": "Hold",
+      "teamsPlayed": "hold spillede"
     }
   }
 }

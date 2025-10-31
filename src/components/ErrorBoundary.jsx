@@ -1,4 +1,5 @@
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 import Logger from '../utils/logger';
 
 class ErrorBoundary extends React.Component {
@@ -22,14 +23,15 @@ class ErrorBoundary extends React.Component {
   }
 
   render() {
+    const { t } = this.props;
+    
     if (this.state.hasError) {
       // Fallback UI
       return (
         <div className="alert alert-danger" role="alert">
-          <h4 className="alert-heading">Something went wrong!</h4>
+          <h4 className="alert-heading">{t('errorBoundary.title')}</h4>
           <p>
-            An error occurred while rendering this component. The error has been logged 
-            and our team has been notified.
+            {t('errorBoundary.message')}
           </p>
           <hr />
           <p className="mb-0">
@@ -37,7 +39,7 @@ class ErrorBoundary extends React.Component {
               className="btn btn-outline-danger btn-sm"
               onClick={() => this.setState({ hasError: false, error: null })}
             >
-              Try Again
+              {t('errorBoundary.tryAgain')}
             </button>
           </p>
         </div>
@@ -48,4 +50,4 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-export default ErrorBoundary;
+export default withTranslation()(ErrorBoundary);

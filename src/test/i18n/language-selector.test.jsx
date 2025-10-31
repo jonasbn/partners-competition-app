@@ -110,8 +110,8 @@ describe('Multiple Component Translation', () => {
     await waitFor(() => {
       expect(screen.getByTestId('app-title')).toHaveTextContent('Partners Konkurrence App');
       expect(screen.getByTestId('leaderboard-title')).toHaveTextContent('Resultattavle');
-      expect(screen.getByTestId('theme-light')).toHaveTextContent('Lys tilstand');
-      expect(screen.getByTestId('theme-dark')).toHaveTextContent('Mørk tilstand');
+      expect(screen.getByTestId('theme-light')).toHaveTextContent('Lys');
+      expect(screen.getByTestId('theme-dark')).toHaveTextContent('Mørk');
       expect(screen.getByTestId('table-rank')).toHaveTextContent('Placering');
       expect(screen.getByTestId('table-player')).toHaveTextContent('Spiller');
       expect(screen.getByTestId('table-points')).toHaveTextContent('Point');

@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { getGames } from '../utils/dataUtils';
 
 const SimpleGamesCalendar = () => {
+  const { t } = useTranslation();
   console.log('SimpleGamesCalendar rendering...');
   
   let games = [];
@@ -19,11 +21,11 @@ const SimpleGamesCalendar = () => {
     return (
       <div className="card">
         <div className="card-header bg-danger text-white">
-          <h2>❌ Games Calendar Error</h2>
+          <h2>❌ {t('gamesCalendar.error')}</h2>
         </div>
         <div className="card-body">
           <div className="alert alert-danger">
-            <strong>Error:</strong> {dataError}
+            <strong>{t('gamesList.errorLoading')}:</strong> {dataError}
           </div>
         </div>
       </div>
@@ -34,12 +36,12 @@ const SimpleGamesCalendar = () => {
     return (
       <div className="card">
         <div className="card-header bg-info text-white">
-          <h2>📅 Games Calendar</h2>
+          <h2>📅 {t('gamesCalendar.title')}</h2>
         </div>
         <div className="card-body">
           <div className="alert alert-info">
-            <h4>No games scheduled</h4>
-            <p>Start playing games to see the calendar timeline here!</p>
+            <h4>{t('gamesList.noGames')}</h4>
+            <p>{t('gamesList.startPlaying')}</p>
           </div>
         </div>
       </div>
@@ -100,7 +102,7 @@ const SimpleGamesCalendar = () => {
   return (
     <div className="card mb-4">
       <div className="card-header bg-primary text-white">
-        <h2>📅 Games Calendar Timeline</h2>
+        <h2>📅 {t('gamesCalendar.timelineTitle')}</h2>
       </div>
       <div className="card-body">
         {/* Calendar Stats */}
@@ -108,32 +110,32 @@ const SimpleGamesCalendar = () => {
           <div className="col-md-3">
             <div className="text-center">
               <div className="h4 text-primary">{totalGames}</div>
-              <small className="text-muted">Total Games</small>
+              <small className="text-muted">{t('gamesCalendar.stats.totalGames')}</small>
             </div>
           </div>
           <div className="col-md-3">
             <div className="text-center">
               <div className="h4 text-info">{totalDays}</div>
-              <small className="text-muted">Active Days</small>
+              <small className="text-muted">{t('gamesCalendar.stats.activeDays')}</small>
             </div>
           </div>
           <div className="col-md-3">
             <div className="text-center">
               <div className="h4 text-success">{avgGamesPerDay}</div>
-              <small className="text-muted">Avg/Day</small>
+              <small className="text-muted">{t('gamesCalendar.stats.avgPerDay')}</small>
             </div>
           </div>
           <div className="col-md-3">
             <div className="text-center">
               <div className="h4 text-warning">{maxGamesInDay}</div>
-              <small className="text-muted">Max/Day</small>
+              <small className="text-muted">{t('gamesCalendar.stats.maxPerDay')}</small>
             </div>
           </div>
         </div>
 
         {/* Timeline */}
         <div className="mb-4">
-          <h5>📊 Activity Timeline</h5>
+          <h5>📊 {t('gamesCalendar.timeline.title')}</h5>
           <div className="row">
             {sortedDates.map((date, index) => {
               const dayGames = gamesByDate[date];
@@ -149,7 +151,7 @@ const SimpleGamesCalendar = () => {
                       </div>
                       <div className="h5 mb-1">{dayGames.length}</div>
                       <div className="small">
-                        {dayGames.length === 1 ? 'game' : 'games'}
+                        {dayGames.length === 1 ? t('gamesCalendar.timeline.game') : t('gamesCalendar.timeline.games')}
                       </div>
                     </div>
                   </div>
@@ -161,33 +163,33 @@ const SimpleGamesCalendar = () => {
 
         {/* Legend */}
         <div className="alert alert-light">
-          <h6>📈 Activity Levels</h6>
+          <h6>📈 {t('gamesCalendar.levels.title')}</h6>
           <div className="row">
             <div className="col-md-4">
-              <span className="badge bg-info me-2">Low</span>
-              <small>1 game</small>
+              <span className="badge bg-info me-2">{t('gamesCalendar.levels.low')}</span>
+              <small>{t('gamesCalendar.levels.lowDesc')}</small>
             </div>
             <div className="col-md-4">
-              <span className="badge bg-warning me-2">Medium</span>
-              <small>2-3 games</small>
+              <span className="badge bg-warning me-2">{t('gamesCalendar.levels.medium')}</span>
+              <small>{t('gamesCalendar.levels.mediumDesc')}</small>
             </div>
             <div className="col-md-4">
-              <span className="badge bg-success me-2">High</span>
-              <small>4+ games</small>
+              <span className="badge bg-success me-2">{t('gamesCalendar.levels.high')}</span>
+              <small>{t('gamesCalendar.levels.highDesc')}</small>
             </div>
           </div>
         </div>
 
         {/* Recent Activity */}
         <div className="mt-4">
-          <h6>🕒 Recent Games</h6>
+          <h6>🕒 {t('gamesCalendar.recent.title')}</h6>
           <div className="table-responsive">
             <table className="table table-sm">
               <thead>
                 <tr>
-                  <th>Date</th>
-                  <th>Games</th>
-                  <th>Teams</th>
+                  <th>{t('gamesCalendar.recent.date')}</th>
+                  <th>{t('gamesCalendar.recent.games')}</th>
+                  <th>{t('gamesCalendar.recent.teams')}</th>
                 </tr>
               </thead>
               <tbody>
@@ -202,7 +204,7 @@ const SimpleGamesCalendar = () => {
                           {dayGames.length}
                         </span>
                       </td>
-                      <td>{totalTeams} teams played</td>
+                      <td>{totalTeams} {t('gamesCalendar.recent.teamsPlayed')}</td>
                     </tr>
                   );
                 })}

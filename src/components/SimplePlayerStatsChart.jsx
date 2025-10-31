@@ -1,8 +1,11 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { getLeaderboardData, getGames } from '../utils/dataUtils';
 import SimpleAvatarWithHover from './AvatarWithHover';
 
 const SimplePlayerStatsChart = () => {
+  const { t } = useTranslation();
+  
   try {
     const leaderboardData = getLeaderboardData();
     const games = getGames();
@@ -11,10 +14,10 @@ const SimplePlayerStatsChart = () => {
       return (
         <div className="card">
           <div className="card-header">
-            <h3 className="card-title mb-0">Player Statistics Chart</h3>
+            <h3 className="card-title mb-0">{t('playerStats.title')}</h3>
           </div>
           <div className="card-body text-center text-muted">
-            <p>No player statistics available</p>
+            <p>{t('playerStats.noStats')}</p>
           </div>
         </div>
       );
@@ -146,20 +149,20 @@ const SimplePlayerStatsChart = () => {
     };
 
     const getPlayerType = (player) => {
-      if (player.gamesPlayed < 3) return { type: 'Rookie', icon: '🆕', color: 'secondary' };
-      if (player.winRate >= 70 && player.dominanceRatio >= 50) return { type: 'Dominator', icon: '👑', color: 'success' };
-      if (player.winRate >= 60) return { type: 'Competitor', icon: '⚔️', color: 'primary' };
-      if (player.closeGames >= player.gamesPlayed * 0.4) return { type: 'Clutch Player', icon: '🎯', color: 'warning' };
-      if (player.avgPointsScored >= avgPointsPerGame * 1.1) return { type: 'Scorer', icon: '🔥', color: 'danger' };
-      if (player.pointDifferential >= 0) return { type: 'Balanced', icon: '⚖️', color: 'info' };
-      return { type: 'Developing', icon: '📈', color: 'secondary' };
+      if (player.gamesPlayed < 3) return { type: t('playerStats.playerTypes.rookie'), icon: '🆕', color: 'secondary' };
+      if (player.winRate >= 70 && player.dominanceRatio >= 50) return { type: t('playerStats.playerTypes.dominator'), icon: '👑', color: 'success' };
+      if (player.winRate >= 60) return { type: t('playerStats.playerTypes.competitor'), icon: '⚔️', color: 'primary' };
+      if (player.closeGames >= player.gamesPlayed * 0.4) return { type: t('playerStats.playerTypes.clutchPlayer'), icon: '🎯', color: 'warning' };
+      if (player.avgPointsScored >= avgPointsPerGame * 1.1) return { type: t('playerStats.playerTypes.scorer'), icon: '🔥', color: 'danger' };
+      if (player.pointDifferential >= 0) return { type: t('playerStats.playerTypes.balanced'), icon: '⚖️', color: 'info' };
+      return { type: t('playerStats.playerTypes.developing'), icon: '📈', color: 'secondary' };
     };
 
     return (
       <div className="card">
         <div className="card-header">
-          <h3 className="card-title mb-0">Player Statistics Analysis</h3>
-          <small className="text-muted">Comprehensive performance metrics and player profiles</small>
+          <h3 className="card-title mb-0">{t('playerStats.title')}</h3>
+          <small className="text-muted">{t('playerStats.subtitle')}</small>
         </div>
         <div className="card-body">
           {/* League Overview */}
@@ -168,7 +171,7 @@ const SimplePlayerStatsChart = () => {
               <div className="card bg-primary text-white">
                 <div className="card-body text-center">
                   <h4 className="mb-0">{Math.round(totalGames)}</h4>
-                  <small>Total Games</small>
+                  <small>{t('playerStats.leagueOverview.totalGames')}</small>
                 </div>
               </div>
             </div>
@@ -176,7 +179,7 @@ const SimplePlayerStatsChart = () => {
               <div className="card bg-info text-white">
                 <div className="card-body text-center">
                   <h4 className="mb-0">{Math.round(avgPointsPerGame * 10) / 10}</h4>
-                  <small>Avg Points/Game</small>
+                  <small>{t('playerStats.leagueOverview.avgPointsGame')}</small>
                 </div>
               </div>
             </div>
@@ -184,7 +187,7 @@ const SimplePlayerStatsChart = () => {
               <div className="card bg-success text-white">
                 <div className="card-body text-center">
                   <h4 className="mb-0">{bestWinRatePlayer?.winRate || 0}%</h4>
-                  <small>Best Win Rate</small>
+                  <small>{t('playerStats.leagueOverview.bestWinRate')}</small>
                 </div>
               </div>
             </div>
@@ -192,7 +195,7 @@ const SimplePlayerStatsChart = () => {
               <div className="card bg-warning text-white">
                 <div className="card-body text-center">
                   <h4 className="mb-0">{mostActivePlayer?.gamesPlayed || 0}</h4>
-                  <small>Most Games</small>
+                  <small>{t('playerStats.leagueOverview.mostGames')}</small>
                 </div>
               </div>
             </div>
@@ -226,7 +229,7 @@ const SimplePlayerStatsChart = () => {
                       {/* Win Rate */}
                       <div className="mb-3">
                         <div className="d-flex justify-content-between align-items-center mb-1">
-                          <small className="text-muted">Win Rate</small>
+                          <small className="text-muted">{t('playerStats.metrics.winRate')}</small>
                           <span className={`badge bg-${getStatColor(player.winRate, 'winRate')}`}>
                             {player.winRate}%
                           </span>
@@ -244,19 +247,19 @@ const SimplePlayerStatsChart = () => {
                         <div className="col-4">
                           <div className="text-center p-2 bg-light rounded">
                             <div className="fw-bold text-success">{player.wins}</div>
-                            <small className="text-muted">Wins</small>
+                            <small className="text-muted">{t('playerStats.metrics.wins')}</small>
                           </div>
                         </div>
                         <div className="col-4">
                           <div className="text-center p-2 bg-light rounded">
                             <div className="fw-bold text-danger">{player.losses}</div>
-                            <small className="text-muted">Losses</small>
+                            <small className="text-muted">{t('playerStats.metrics.losses')}</small>
                           </div>
                         </div>
                         <div className="col-4">
                           <div className="text-center p-2 bg-light rounded">
                             <div className="fw-bold text-primary">{player.gamesPlayed}</div>
-                            <small className="text-muted">Games</small>
+                            <small className="text-muted">{t('playerStats.metrics.games')}</small>
                           </div>
                         </div>
                       </div>
@@ -264,15 +267,15 @@ const SimplePlayerStatsChart = () => {
                       {/* Scoring Stats */}
                       <div className="mb-3">
                         <div className="d-flex justify-content-between mb-1">
-                          <small className="text-muted">Avg Scored</small>
+                          <small className="text-muted">{t('playerStats.metrics.avgScored')}</small>
                           <span className="fw-bold text-primary">{player.avgPointsScored}</span>
                         </div>
                         <div className="d-flex justify-content-between mb-1">
-                          <small className="text-muted">Avg Conceded</small>
+                          <small className="text-muted">{t('playerStats.metrics.avgConceded')}</small>
                           <span className="fw-bold text-warning">{player.avgPointsConceded}</span>
                         </div>
                         <div className="d-flex justify-content-between">
-                          <small className="text-muted">Differential</small>
+                          <small className="text-muted">{t('playerStats.metrics.differential')}</small>
                           <span className={`fw-bold text-${getStatColor(player.pointDifferential, 'differential')}`}>
                             {player.pointDifferential > 0 ? '+' : ''}{player.pointDifferential}
                           </span>
@@ -286,7 +289,7 @@ const SimplePlayerStatsChart = () => {
                             <div className="col-6">
                               <div className="text-center p-1 bg-success text-white rounded">
                                 <div className="small fw-bold">{player.perfectGames}</div>
-                                <small>Shutouts</small>
+                                <small>{t('playerStats.metrics.shutouts')}</small>
                               </div>
                             </div>
                           )}
@@ -294,7 +297,7 @@ const SimplePlayerStatsChart = () => {
                             <div className="col-6">
                               <div className="text-center p-1 bg-primary text-white rounded">
                                 <div className="small fw-bold">{player.blowouts}</div>
-                                <small>Blowouts</small>
+                                <small>{t('playerStats.metrics.blowouts')}</small>
                               </div>
                             </div>
                           )}
@@ -302,7 +305,7 @@ const SimplePlayerStatsChart = () => {
                             <div className="col-6">
                               <div className="text-center p-1 bg-warning text-white rounded">
                                 <div className="small fw-bold">{player.closeGames}</div>
-                                <small>Close Games</small>
+                                <small>{t('playerStats.metrics.closeGames')}</small>
                               </div>
                             </div>
                           )}
@@ -310,7 +313,7 @@ const SimplePlayerStatsChart = () => {
                             <div className="col-6">
                               <div className="text-center p-1 bg-info text-white rounded">
                                 <div className="small fw-bold">+{player.biggestWin}</div>
-                                <small>Best Win</small>
+                                <small>{t('playerStats.metrics.bestWin')}</small>
                               </div>
                             </div>
                           )}
@@ -321,7 +324,7 @@ const SimplePlayerStatsChart = () => {
                       {player.wins > 0 && (
                         <div className="mb-0">
                           <div className="d-flex justify-content-between align-items-center">
-                            <small className="text-muted">Dominance</small>
+                            <small className="text-muted">{t('playerStats.metrics.dominance')}</small>
                             <span className={`badge bg-${getStatColor(player.dominanceRatio, 'dominance')}`}>
                               {player.dominanceRatio}%
                             </span>
@@ -339,10 +342,10 @@ const SimplePlayerStatsChart = () => {
           <div className="mt-4">
             <div className="card bg-light">
               <div className="card-body">
-                <h6 className="card-title">League Insights</h6>
+                <h6 className="card-title">{t('playerStats.insights.title')}</h6>
                 <div className="row">
                   <div className="col-md-4">
-                    <h6 className="text-success">🏆 Best Win Rate</h6>
+                    <h6 className="text-success">🏆 {t('playerStats.insights.bestWinRate')}</h6>
                     <p className="mb-2">
                       <strong>{bestWinRatePlayer?.name}</strong>
                     </p>
@@ -352,7 +355,7 @@ const SimplePlayerStatsChart = () => {
                     </small>
                   </div>
                   <div className="col-md-4">
-                    <h6 className="text-primary">🔥 Most Active</h6>
+                    <h6 className="text-primary">🔥 {t('playerStats.insights.mostActive')}</h6>
                     <p className="mb-2">
                       <strong>{mostActivePlayer?.name}</strong>
                     </p>
@@ -362,13 +365,13 @@ const SimplePlayerStatsChart = () => {
                     </small>
                   </div>
                   <div className="col-md-4">
-                    <h6 className="text-warning">⚔️ Competition Level</h6>
+                    <h6 className="text-warning">⚔️ {t('playerStats.insights.competitionLevel')}</h6>
                     <p className="mb-2">
-                      <strong>{avgPointsPerGame > 4 ? 'High Scoring' : 'Defensive'}</strong>
+                      <strong>{avgPointsPerGame > 4 ? t('playerStats.insights.highScoring') : t('playerStats.insights.defensive')}</strong>
                     </p>
                     <small className="text-muted">
                       {Math.round(avgPointsPerGame * 10) / 10} avg points per game •
-                      {sortedPlayers.filter(p => p.winRate >= 60 && p.gamesPlayed >= 3).length} strong players
+                      {sortedPlayers.filter(p => p.winRate >= 60 && p.gamesPlayed >= 3).length} {t('playerStats.insights.strongPlayers')}
                     </small>
                   </div>
                 </div>
@@ -384,10 +387,10 @@ const SimplePlayerStatsChart = () => {
     return (
       <div className="card">
         <div className="card-header">
-          <h3 className="card-title mb-0">Player Statistics Analysis</h3>
+          <h3 className="card-title mb-0">{t('playerStats.title')}</h3>
         </div>
         <div className="card-body text-center text-danger">
-          <p>Error loading player statistics</p>
+          <p>{t('playerStats.errorLoading')}</p>
           <small className="text-muted">{error.message}</small>
         </div>
       </div>

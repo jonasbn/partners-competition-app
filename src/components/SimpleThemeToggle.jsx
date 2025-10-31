@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { SimpleThemeContext } from '../utils/SimpleThemeContext';
 
 const SimpleThemeToggle = () => {
+  const { t } = useTranslation();
   console.log('SimpleThemeToggle rendering...');
   
   const contextValue = React.useContext(SimpleThemeContext);
@@ -25,8 +27,8 @@ const SimpleThemeToggle = () => {
   
   const getTooltipText = () => {
     return theme === 'light' 
-      ? 'Switch to dark mode' 
-      : 'Switch to light mode';
+      ? t('theme.toggle', { mode: t('theme.darkMode') })
+      : t('theme.toggle', { mode: t('theme.lightMode') });
   };
   
   const getIcon = () => {
@@ -42,7 +44,7 @@ const SimpleThemeToggle = () => {
     >
       <span className="me-1">{getIcon()}</span>
       <span className="d-none d-md-inline">
-        {theme === 'light' ? 'Dark' : 'Light'}
+        {theme === 'light' ? t('theme.dark') : t('theme.light')}
       </span>
     </button>
   );

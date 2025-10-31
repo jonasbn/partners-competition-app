@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { getGames } from '../utils/dataUtils';
 
 const SimpleGamesList = () => {
+  const { t } = useTranslation();
   let games = [];
   let dataError = null;
 
@@ -27,9 +29,9 @@ const SimpleGamesList = () => {
   };
 
   const getPlaceInfo = (score) => {
-    if (score === 3) return { place: '1st', emoji: '🥇', class: 'success' };
-    if (score === 2) return { place: '2nd', emoji: '🥈', class: 'warning' };
-    if (score === 1) return { place: '3rd', emoji: '🥉', class: 'secondary' };
+    if (score === 3) return { place: t('gamesList.points.first'), emoji: '🥇', class: 'success' };
+    if (score === 2) return { place: t('gamesList.points.second'), emoji: '🥈', class: 'warning' };
+    if (score === 1) return { place: t('gamesList.points.third'), emoji: '🥉', class: 'secondary' };
     return { place: '?', emoji: '❓', class: 'secondary' };
   };
 
@@ -37,11 +39,11 @@ const SimpleGamesList = () => {
     return (
       <div className="card">
         <div className="card-header bg-danger text-white">
-          <h2>❌ Games History Error</h2>
+          <h2>❌ {t('gamesList.error')}</h2>
         </div>
         <div className="card-body">
           <div className="alert alert-danger">
-            <strong>Error:</strong> {dataError}
+            <strong>{t('gamesList.errorLoading')}:</strong> {dataError}
           </div>
         </div>
       </div>
@@ -51,22 +53,22 @@ const SimpleGamesList = () => {
   return (
     <div className="card">
       <div className="card-header bg-success text-white">
-        <h2>🎮 Games History</h2>
+        <h2>🎮 {t('gamesList.title')}</h2>
       </div>
       <div className="card-body">
         {games.length === 0 ? (
           <div className="alert alert-info">
-            <h4>No games recorded yet</h4>
-            <p>Start playing some games to see the history here!</p>
+            <h4>{t('gamesList.noGames')}</h4>
+            <p>{t('gamesList.startPlaying')}</p>
           </div>
         ) : (
           <>
             <div className="mb-3">
               <span className="badge bg-info me-2">
-                Total Games: {games.length}
+                {t('gamesList.totalGames')}: {games.length}
               </span>
               <span className="badge bg-secondary">
-                Latest: {formatDate(games[games.length - 1]?.gameDate)}
+                {t('gamesList.latest')}: {formatDate(games[games.length - 1]?.gameDate)}
               </span>
             </div>
 
@@ -79,7 +81,7 @@ const SimpleGamesList = () => {
                     <div className="card h-100 border-primary">
                       <div className="card-header bg-primary text-white">
                         <div className="d-flex justify-content-between align-items-center">
-                          <h6 className="mb-0">🎮 Game #{game.gameId}</h6>
+                          <h6 className="mb-0">🎮 {t('gamesList.gameNumber', { number: game.gameId })}</h6>
                           <small>{formatDate(game.gameDate)}</small>
                         </div>
                       </div>
@@ -93,10 +95,10 @@ const SimpleGamesList = () => {
                                   <div className={`card-header bg-${placeInfo.class} text-white py-2`}>
                                     <div className="d-flex justify-content-between align-items-center">
                                       <small>
-                                        <strong>{placeInfo.emoji} {placeInfo.place} Place</strong>
+                                        <strong>{placeInfo.emoji} {placeInfo.place} {t('gamesList.place')}</strong>
                                       </small>
                                       <span className="badge bg-light text-dark">
-                                        {team.score} points
+                                        {team.score} {t('gamesList.points.other')}
                                       </span>
                                     </div>
                                   </div>
@@ -113,7 +115,7 @@ const SimpleGamesList = () => {
                         
                         <div className="mt-2 pt-2 border-top">
                           <small className="text-muted">
-                            <strong>Winner:</strong> {sortedTeams[0].players.join(' & ')} 
+                            <strong>{t('gamesList.winner')}:</strong> {sortedTeams[0].players.join(' & ')} 
                             <span className="badge bg-success ms-2">{sortedTeams[0].score} pts</span>
                           </small>
                         </div>
@@ -127,7 +129,7 @@ const SimpleGamesList = () => {
             {games.length > 10 && (
               <div className="mt-3">
                 <small className="text-muted">
-                  Showing all {games.length} games (most recent first)
+                  {t('gamesList.showing', { count: games.length })}
                 </small>
               </div>
             )}
