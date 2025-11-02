@@ -99,4 +99,15 @@ describe('App Component', () => {
     const footer = screen.getByRole('contentinfo');
     expect(footer).toBeInTheDocument();
   });
+
+  it('renders footer with current year', () => {
+    renderWithProviders(<App />);
+    
+    const currentYear = new Date().getFullYear();
+    const footer = screen.getByRole('contentinfo');
+    
+    // Should contain the current year instead of {{year}}
+    expect(footer).toHaveTextContent(currentYear.toString());
+    expect(footer).not.toHaveTextContent('{{year}}');
+  });
 });

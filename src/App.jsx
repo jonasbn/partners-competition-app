@@ -128,7 +128,7 @@ function App() {
       
       <footer className="bg-light text-center text-muted py-3 mt-4">
         <div className="container">
-          <small>{t('app.footer')}</small>
+          <small>{t('app.footer', { year: new Date().getFullYear() })}</small>
         </div>
       </footer>
     </div>
