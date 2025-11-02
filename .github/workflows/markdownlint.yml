@@ -1,5 +1,11 @@
 name: Linting of Markdown files
-on: push
+on:
+  push:
+    paths:
+      - '**/*.md'
+  pull_request:
+    paths:
+      - '**/*.md'
 
 jobs:
   build:
