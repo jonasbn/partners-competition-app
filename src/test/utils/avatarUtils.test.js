@@ -1,14 +1,14 @@
 import { describe, it, expect, vi } from 'vitest';
 
-// Mock the avatarUtils module since we might not have the actual implementation
-vi.mock('../../utils/avatarUtils', () => ({
+// Mock the simpleAvatarUtils module since we might not have the actual implementation
+vi.mock('../../utils/simpleAvatarUtils', () => ({
   getPlayerAvatarPath: (playerName, emotion = 'ok') => {
     if (!playerName) return `/assets/${playerName || ''}/${emotion}.png`;
     return `/assets/${playerName.toLowerCase()}/${emotion}.png`;
   }
 }));
 
-import { getPlayerAvatarPath } from '../../utils/avatarUtils';
+import { getPlayerAvatarPath } from '../../utils/simpleAvatarUtils';
 
 describe('Avatar Utils', () => {
   describe('getPlayerAvatarPath', () => {
