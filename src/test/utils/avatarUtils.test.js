@@ -5,10 +5,22 @@ vi.mock('../../utils/simpleAvatarUtils', () => ({
   getPlayerAvatarPath: (playerName, emotion = 'ok') => {
     if (!playerName) return `/assets/${playerName || ''}/${emotion}.png`;
     return `/assets/${playerName.toLowerCase()}/${emotion}.png`;
+  },
+  getAvatarColor: (name) => {
+    // Simple hash function to generate a color based on the name
+    let hash = 0;
+    for (let i = 0; i < name.length; i++) {
+      hash = name.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    const hue = Math.abs(hash % 360);
+    return `hsl(${hue}, 70%, 60%)`;
+  },
+  getInitials: (name) => {
+    return name.substring(0, 2).toUpperCase();
   }
 }));
 
-import { getPlayerAvatarPath } from '../../utils/simpleAvatarUtils';
+import { getPlayerAvatarPath, getAvatarColor, getInitials } from '../../utils/simpleAvatarUtils';
 
 describe('Avatar Utils', () => {
   describe('getPlayerAvatarPath', () => {
@@ -45,6 +57,54 @@ describe('Avatar Utils', () => {
     it('handles null/undefined player name gracefully', () => {
       expect(() => getPlayerAvatarPath(null, 'happy')).not.toThrow();
       expect(() => getPlayerAvatarPath(undefined, 'happy')).not.toThrow();
+    });
+  });
+
+  describe('getAvatarColor', () => {
+    it('generates consistent color for same name', () => {
+      const color1 = getAvatarColor('Jonas');
+      const color2 = getAvatarColor('Jonas');
+      expect(color1).toBe(color2);
+    });
+
+    it('generates different colors for different names', () => {
+      const color1 = getAvatarColor('Jonas');
+      const color2 = getAvatarColor('Torben');
+      expect(color1).not.toBe(color2);
+    });
+
+    it('returns HSL color format', () => {
+      const color = getAvatarColor('TestName');
+      expect(color).toMatch(/^hsl\(\d+, 70%, 60%\)$/);
+    });
+
+    it('handles empty string', () => {
+      const color = getAvatarColor('');
+      expect(color).toMatch(/^hsl\(\d+, 70%, 60%\)$/);
+    });
+  });
+
+  describe('getInitials', () => {
+    it('extracts first two characters as initials', () => {
+      expect(getInitials('Jonas')).toBe('JO');
+      expect(getInitials('Torben')).toBe('TO');
+    });
+
+    it('converts to uppercase', () => {
+      expect(getInitials('jonas')).toBe('JO');
+      expect(getInitials('torben')).toBe('TO');
+    });
+
+    it('handles single character names', () => {
+      expect(getInitials('J')).toBe('J');
+    });
+
+    it('handles empty string', () => {
+      expect(getInitials('')).toBe('');
+    });
+
+    it('handles names with spaces', () => {
+      expect(getInitials('Jonas Andersen')).toBe('JO');
     });
   });
 });

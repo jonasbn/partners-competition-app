@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { getAvatarColor, getInitials } from '../utils/avatarUtils';
+import { getAvatarColor, getInitials } from '../utils/simpleAvatarUtils';
 
 const SimpleAvatarWithHover = ({
   playerName,
