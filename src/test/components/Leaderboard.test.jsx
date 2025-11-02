@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { ThemeProvider } from '../../utils/ThemeContext';
 import '../../utils/i18n';
-import Leaderboard from '../../components/Leaderboard';
+import SimpleLeaderboard from '../../components/SimpleLeaderboard';
 
 // Mock the data utils
 vi.mock('../../utils/dataUtils', () => ({
@@ -23,9 +23,9 @@ const renderWithProviders = (component) => {
   );
 };
 
-describe('Leaderboard Component', () => {
+describe('SimpleLeaderboard Component', () => {
   it('renders leaderboard title', () => {
-    renderWithProviders(<Leaderboard />);
+    renderWithProviders(<SimpleLeaderboard />);
     
     // Look for leaderboard-related content (the component might use translation keys)
     const table = screen.getByRole('table');
@@ -33,7 +33,7 @@ describe('Leaderboard Component', () => {
   });
 
   it('displays player data', () => {
-    renderWithProviders(<Leaderboard />);
+    renderWithProviders(<SimpleLeaderboard />);
     
     // Check that player names appear in the table
     expect(screen.getByText('Jonas')).toBeInTheDocument();
@@ -42,7 +42,7 @@ describe('Leaderboard Component', () => {
   });
 
   it('displays scores', () => {
-    renderWithProviders(<Leaderboard />);
+    renderWithProviders(<SimpleLeaderboard />);
     
     // Check that scores are displayed
     expect(screen.getByText('15')).toBeInTheDocument();
@@ -51,7 +51,7 @@ describe('Leaderboard Component', () => {
   });
 
   it('has table structure', () => {
-    renderWithProviders(<Leaderboard />);
+    renderWithProviders(<SimpleLeaderboard />);
     
     const table = screen.getByRole('table');
     const rows = screen.getAllByRole('row');

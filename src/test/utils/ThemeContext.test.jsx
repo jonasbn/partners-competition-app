@@ -1,12 +1,12 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { ThemeProvider } from '../../utils/ThemeContext';
-import ThemeToggle from '../../components/ThemeToggle';
+import SimpleThemeToggle from '../../components/SimpleThemeToggle';
 
 const TestComponent = () => {
   return (
     <ThemeProvider>
-      <ThemeToggle />
+      <SimpleThemeToggle />
       <div data-testid="theme-indicator">
         Theme test
       </div>

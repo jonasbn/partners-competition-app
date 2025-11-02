@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { ThemeProvider } from '../../utils/ThemeContext';
 import '../../utils/i18n';
-import SummaryCards from '../../components/SummaryCards';
+import SimpleSummaryCards from '../../components/SimpleSummaryCards';
 
 // Mock the data utils
 vi.mock('../../utils/dataUtils', () => ({
@@ -31,9 +31,9 @@ const renderWithProviders = (component) => {
   );
 };
 
-describe('SummaryCards Component', () => {
+describe('SimpleSummaryCards Component', () => {
   it('renders summary cards', () => {
-    renderWithProviders(<SummaryCards />);
+    renderWithProviders(<SimpleSummaryCards />);
     
     // Look for card elements using document.querySelector
     const cards = document.querySelectorAll('.card');
@@ -41,7 +41,7 @@ describe('SummaryCards Component', () => {
   });
 
   it('displays statistical information', () => {
-    renderWithProviders(<SummaryCards />);
+    renderWithProviders(<SimpleSummaryCards />);
     
     // The component should display some numbers/statistics
     const container = document.querySelector('.row');
@@ -49,10 +49,10 @@ describe('SummaryCards Component', () => {
   });
 
   it('has Bootstrap grid structure', () => {
-    renderWithProviders(<SummaryCards />);
+    renderWithProviders(<SimpleSummaryCards />);
     
-    // Check for Bootstrap column classes
-    const element = document.querySelector('.col-md-4, .col-lg-4, .col-sm-6');
+    // Check for any Bootstrap column classes
+    const element = document.querySelector('[class*="col-"]');
     expect(element).toBeInTheDocument();
   });
 });

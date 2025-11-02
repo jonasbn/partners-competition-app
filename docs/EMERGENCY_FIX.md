@@ -32,8 +32,8 @@ import { getGames, getLeaderboardData } from './utils/dataUtils';
 
 ```jsx
 // Add simple components one by one
-import Leaderboard from './components/Leaderboard';
-import GamesList from './components/GamesList';
+import SimpleLeaderboard from './components/SimpleLeaderboard';
+import SimpleGamesList from './components/SimpleGamesList';
 ```
 
 ### Step 4: Add Context/Providers (After Step 3)
