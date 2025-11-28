@@ -22,6 +22,11 @@ export default defineConfig({
       '**/src/test/manual/**',
       '**/src/test/development/**'
     ],
+    server: {
+      deps: {
+        inline: ['parse5']
+      }
+    }
   },
   build: {
     outDir: 'build',
