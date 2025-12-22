@@ -46,7 +46,7 @@
     "@testing-library/user-event": "^14.6.1",
     "@vitejs/plugin-react": "^4.7.0",
     "@vitejs/plugin-react-swc": "^3.11.0",
-    "@vitest/coverage-v8": "^4.0.15",
+    "@vitest/coverage-v8": "^4.0.16",
     "@vitest/ui": "^4.0.15",
     "jsdom": "^27.3.0",
     "vite": "^7.2.7",
