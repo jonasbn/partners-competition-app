@@ -14,24 +14,27 @@
 // Simple test to verify Logtail logging is working
 import { Logtail } from "@logtail/browser";
 import dotenv from "dotenv";
+import path from "path";
 
-dotenv.config();
+// Load environment-specific file based on NODE_ENV
+const envFile = process.env.NODE_ENV === 'test' ? '.env.test' : '.env';
+dotenv.config({ path: envFile });
 
 // Test the Logtail configuration
-const logtail = new Logtail(process.env.LOGTAIL_KEY || "", {
+const logtail = new Logtail(process.env.VITE_LOGTAIL_KEY || "", {
   endpoint: 'https://in.logs.betterstack.com',
 });
 
 console.log("Testing Logtail logging...");
 
 // Send a test log
-logtail.info("Test log from Partners Competition App", {
+logtail.info("Test log from Partners Competition App: " + process.env.VITE_ECHO, {
   test: true,
   timestamp: new Date().toISOString(),
   environment: "test"
 });
 
-console.log("Test log sent to Logtail");
+console.log("Test log sent to Logtail with value: " + process.env.VITE_ECHO);
 
 // Flush the logs
 logtail.flush().then(() => {
