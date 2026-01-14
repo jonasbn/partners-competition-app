@@ -49,7 +49,7 @@ function App() {
     });
 
     // Log when app component mounts
-    Logger.event('app_mounted');
+    Logger.event('app_mounted, echo: ' + import.meta.env.ECHO);
 
     // Clean up function for when component unmounts
     return () => {

@@ -2,7 +2,7 @@ import { Logtail } from "@logtail/browser";
 
 // Initialize Logtail with error handling
 let logtail;
-const token = import.meta.env.VITE_LOGTAIL_TOKEN;
+const token = import.meta.env.LOGTAIL_KEY;
 
 if (token) {
   try {

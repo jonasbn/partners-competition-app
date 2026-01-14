@@ -12,7 +12,10 @@
  */
 
 // Simple test to verify Logtail logging is working
-const { Logtail } = require("@logtail/browser");
+import { Logtail } from "@logtail/browser";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 // Test the Logtail configuration
 const logtail = new Logtail(process.env.LOGTAIL_KEY || "", {
