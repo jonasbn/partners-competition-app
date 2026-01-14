@@ -15,7 +15,7 @@
 const { Logtail } = require("@logtail/browser");
 
 // Test the Logtail configuration
-const logtail = new Logtail("gDcpojWzsEzzJVpXTyjAFsPF", {
+const logtail = new Logtail(process.env.LOGTAIL_KEY || "", {
   endpoint: 'https://in.logs.betterstack.com',
 });
 

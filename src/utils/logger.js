@@ -1,30 +1,48 @@
 import { Logtail } from "@logtail/browser";
 
-// Initialize Logtail with the provided configuration
-const logtail = new Logtail("gDcpojWzsEzzJVpXTyjAFsPF", {
-  endpoint: 'https://in.logs.betterstack.com',
-});
+// Initialize Logtail with error handling
+let logtail;
+const token = import.meta.env.VITE_LOGTAIL_TOKEN;
+
+if (token) {
+  try {
+    logtail = new Logtail(token, {
+      endpoint: 'https://in.logs.betterstack.com',
+    });
+  } catch (error) {
+    console.error('Failed to initialize Logtail:', error);
+  }
+}
+
+// Create a safe logger that works even if Logtail fails
+const safeLogtail = logtail || {
+  info: () => {},
+  warn: () => {},
+  error: () => {},
+  debug: () => {},
+  flush: () => Promise.resolve()
+};
 
 // Logger utility class to provide a clean interface
 class Logger {
   static info(message, context = {}) {
     console.log(`[INFO] ${message}`, context);
-    logtail.info(message, context);
+    safeLogtail.info(message, context);
   }
 
   static warn(message, context = {}) {
     console.warn(`[WARN] ${message}`, context);
-    logtail.warn(message, context);
+    safeLogtail.warn(message, context);
   }
 
   static error(message, error = null, context = {}) {
     console.error(`[ERROR] ${message}`, { error, ...context });
-    logtail.error(message, { error: error?.toString(), stack: error?.stack, ...context });
+    safeLogtail.error(message, { error: error?.toString(), stack: error?.stack, ...context });
   }
 
   static debug(message, context = {}) {
     console.debug(`[DEBUG] ${message}`, context);
-    logtail.debug(message, context);
+    safeLogtail.debug(message, context);
   }
 
   // Log user interactions
@@ -36,7 +54,7 @@ class Logger {
       ...details
     };
     console.log(`[USER_ACTION] ${action}`, logData);
-    logtail.info(`User action: ${action}`, logData);
+    safeLogtail.info(`User action: ${action}`, logData);
   }
 
   // Log performance metrics
@@ -49,7 +67,7 @@ class Logger {
       ...context
     };
     console.log(`[PERFORMANCE] ${metric}: ${value}`, logData);
-    logtail.info(`Performance metric: ${metric}`, logData);
+    safeLogtail.info(`Performance metric: ${metric}`, logData);
   }
 
   // Log application events
@@ -61,12 +79,12 @@ class Logger {
       ...data
     };
     console.log(`[EVENT] ${eventName}`, logData);
-    logtail.info(`Application event: ${eventName}`, logData);
+    safeLogtail.info(`Application event: ${eventName}`, logData);
   }
 
   // Ensure logs are sent before page unload
   static flush() {
-    return logtail.flush();
+    return safeLogtail.flush();
   }
 }
 
