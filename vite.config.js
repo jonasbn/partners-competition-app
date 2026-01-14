@@ -34,28 +34,30 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: (id) => {
-          // React and React DOM
-          if (id.includes('react') || id.includes('react-dom')) {
-            return 'react-vendor';
-          }
-          
-          // Bootstrap
-          if (id.includes('bootstrap')) {
-            return 'ui-framework';
-          }
-          
-          // Internationalization
-          if (id.includes('i18next') || id.includes('react-i18next')) {
-            return 'i18n';
-          }
-          
-          // Logging utilities
-          if (id.includes('@logtail/browser')) {
-            return 'logging';
-          }
-          
-          // Node modules vendor chunk for other dependencies
+          // DON'T split React and React-DOM separately
+          // They must be in the same chunk to avoid initialization issues
           if (id.includes('node_modules')) {
+            // Group all node_modules into vendor chunks by package
+            if (id.includes('react') || id.includes('react-dom') || id.includes('scheduler')) {
+              return 'react-vendor';
+            }
+            
+            // Bootstrap
+            if (id.includes('bootstrap')) {
+              return 'ui-framework';
+            }
+            
+            // Internationalization
+            if (id.includes('i18next')) {
+              return 'i18n';
+            }
+            
+            // Logging utilities
+            if (id.includes('@logtail')) {
+              return 'logging';
+            }
+            
+            // Everything else from node_modules
             return 'vendor';
           }
         }
