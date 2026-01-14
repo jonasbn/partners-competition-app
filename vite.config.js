@@ -30,34 +30,28 @@ export default defineConfig({
   },
   build: {
     outDir: 'build',
-    sourcemap: true, // Enable source maps for debugging production issues
+    sourcemap: true,
     rollupOptions: {
       output: {
         manualChunks: (id) => {
-          // DON'T split React and React-DOM separately
-          // They must be in the same chunk to avoid initialization issues
           if (id.includes('node_modules')) {
-            // Group all node_modules into vendor chunks by package
-            if (id.includes('react') || id.includes('react-dom') || id.includes('scheduler')) {
-              return 'react-vendor';
-            }
-            
             // Bootstrap
             if (id.includes('bootstrap')) {
               return 'ui-framework';
             }
             
-            // Internationalization
+            // Internationalization  
             if (id.includes('i18next')) {
               return 'i18n';
             }
             
-            // Logging utilities
+            // Logging
             if (id.includes('@logtail')) {
               return 'logging';
             }
             
-            // Everything else from node_modules
+            // Let Vite handle React automatically
+            // Everything else
             return 'vendor';
           }
         }
