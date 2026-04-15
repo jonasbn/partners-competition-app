@@ -12,9 +12,7 @@ updates:
       interval: "weekly"
   
   # Regular npm version updates: grouped into fewer PRs on a monthly schedule
-  # Security npm updates: separate group, triggered by GitHub security advisories
-  # Note: cooldown applies to version updates only; security advisory updates
-  # are triggered immediately and are not subject to cooldown
+  # Note: cooldown applies to version updates only
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
@@ -27,8 +25,4 @@ updates:
         applies-to: version-updates
         patterns:
           - "*"
-      # Security updates: individual PRs per security advisory
-      npm-security-updates:
-        applies-to: security-updates
-        patterns:
-          - "*"
+
