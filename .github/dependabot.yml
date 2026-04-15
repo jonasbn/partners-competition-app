@@ -27,8 +27,4 @@ updates:
         applies-to: version-updates
         patterns:
           - "*"
-      # Security updates: individual PRs per security advisory
-      npm-security-updates:
-        applies-to: security-updates
-        patterns:
-          - "*"
+
