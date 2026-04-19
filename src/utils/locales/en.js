@@ -303,6 +303,19 @@ export default {
       "noGames": "No recent games"
     }
   },
+  "tournament2025": {
+    "title": "Partners Tournament 2025 — Final Results",
+    "concluded": "Tournament Concluded",
+    "dateRange": "{{start}} – {{end}}",
+    "totalGames": "{{count}} games played",
+    "champion": "Champion",
+    "bestTeam": "Best Team",
+    "points": "points",
+    "wins": "wins",
+    "winRate": "win rate",
+    "gamesPlayed": "games played",
+    "noData": "No tournament data available"
+  },
   "charts": {
     "playerStats": {
       "title": "Player Statistics",
