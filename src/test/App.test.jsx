@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import { ThemeProvider } from '../utils/ThemeContext';
+import { YearProvider } from '../utils/YearContext';
 import '../utils/i18n'; // Initialize i18n
 import App from '../App';
 
@@ -37,10 +38,16 @@ vi.mock('../components/LanguageSelector', () => ({
   default: () => <select data-testid="language-selector"><option>EN</option></select>
 }));
 
+vi.mock('../components/YearSelector', () => ({
+  default: () => <div data-testid="year-selector">Year Selector</div>
+}));
+
 const renderWithProviders = (component) => {
   return render(
     <ThemeProvider>
-      {component}
+      <YearProvider>
+        {component}
+      </YearProvider>
     </ThemeProvider>
   );
 };

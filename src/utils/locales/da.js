@@ -12,6 +12,9 @@ export default {
     "en": "Engelsk",
     "da": "Dansk"
   },
+  "yearSelector": {
+    "label": "Vælg År"
+  },
   "summary": {
     "leadingPlayer": {
       "title": "Førende Spiller",

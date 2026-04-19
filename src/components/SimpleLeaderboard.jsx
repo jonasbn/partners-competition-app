@@ -5,15 +5,15 @@ import SimpleAvatarWithHover from './SimpleAvatarWithHover';
 import { getRankBasedAvatar } from '../utils/simpleAvatarUtils';
 
 // Simple Leaderboard with i18n support
-const SimpleLeaderboard = () => {
+const SimpleLeaderboard = ({ gameData }) => {
   const { t } = useTranslation();
   console.log('SimpleLeaderboard rendering...');
-  
+
   let players = [];
   let dataError = null;
 
   try {
-    const leaderboardData = getLeaderboardData();
+    const leaderboardData = getLeaderboardData(gameData);
     console.log('Leaderboard data received:', leaderboardData);
     
     if (leaderboardData && leaderboardData.players && Array.isArray(leaderboardData.players)) {

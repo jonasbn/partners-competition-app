@@ -2,13 +2,13 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { getGames } from '../utils/dataUtils';
 
-const SimpleGamesList = () => {
+const SimpleGamesList = ({ gameData }) => {
   const { t } = useTranslation();
   let games = [];
   let dataError = null;
 
   try {
-    const gamesData = getGames();
+    const gamesData = getGames(gameData);
     if (gamesData && Array.isArray(gamesData)) {
       games = gamesData;
     } else {

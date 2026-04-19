@@ -151,6 +151,25 @@ describe('Data Processing Utils', () => {
     });
   });
 
+  describe('getGamesDataForYear', () => {
+    it('should return 2025 data for year 2025', () => {
+      const data = dataUtils.getGamesDataForYear(2025);
+      expect(Array.isArray(data)).toBe(true);
+      // The mock for games.json provides 2 games, so 2025 data has 2 entries
+      expect(data).toHaveLength(2);
+    });
+
+    it('should return an array for year 2026', () => {
+      const data = dataUtils.getGamesDataForYear(2026);
+      expect(Array.isArray(data)).toBe(true);
+    });
+
+    it('should return an empty array for an unknown year', () => {
+      const data = dataUtils.getGamesDataForYear(1999);
+      expect(data).toEqual([]);
+    });
+  });
+
   describe('getTeamCombinationStatistics', () => {
     it('should return all possible team combinations', () => {
       const combinations = dataUtils.getTeamCombinationStatistics();

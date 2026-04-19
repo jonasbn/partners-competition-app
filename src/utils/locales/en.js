@@ -12,6 +12,9 @@ export default {
     "en": "English",
     "da": "Danish"
   },
+  "yearSelector": {
+    "label": "Select Year"
+  },
   "summary": {
     "leadingPlayer": {
       "title": "Leading Player",

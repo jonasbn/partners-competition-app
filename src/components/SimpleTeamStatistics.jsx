@@ -4,15 +4,15 @@ import { getTeamStatistics } from '../utils/dataUtils';
 import SimpleAvatarWithHover from './SimpleAvatarWithHover';
 import { getRankBasedAvatar } from '../utils/simpleAvatarUtils';
 
-const SimpleTeamStatistics = () => {
+const SimpleTeamStatistics = ({ gameData }) => {
   console.log('SimpleTeamStatistics rendering...');
   const { t } = useTranslation();
-  
+
   let teamStats = [];
   let dataError = null;
 
   try {
-    teamStats = getTeamStatistics() || [];
+    teamStats = getTeamStatistics(gameData) || [];
     console.log('Team statistics loaded:', teamStats.length, 'teams');
   } catch (error) {
     console.error('Error loading team statistics:', error);
