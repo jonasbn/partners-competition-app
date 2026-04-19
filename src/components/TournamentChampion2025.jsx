@@ -118,9 +118,9 @@ const TournamentChampion2025 = () => {
               </div>
               <div className="card-body d-flex flex-column align-items-center justify-content-center py-4">
                 <div className="mb-3 d-flex gap-3 justify-content-center">
-                  {bestTeam.players.map((player, idx) => (
+                  {bestTeam.players.map((player) => (
                     <SimpleAvatarWithHover
-                      key={idx}
+                      key={player}
                       playerName={player}
                       avatarSrc={getRankBasedAvatar(player, 1)}
                       size={90}
