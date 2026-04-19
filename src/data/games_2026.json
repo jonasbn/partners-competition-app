@@ -1,1 +1,50 @@
-[]
+[
+  {
+    "gameId": 1,
+    "gameDate": "2026-04-10",
+    "players": [
+      { "name": "Gitte", "score": 3 },
+      { "name": "Peter", "score": 3 },
+      { "name": "Jonas", "score": 2 },
+      { "name": "Anette", "score": 2 },
+      { "name": "Lotte", "score": 1 },
+      { "name": "Torben", "score": 1 }
+    ]
+  },
+  {
+    "gameId": 2,
+    "gameDate": "2026-04-10",
+    "players": [
+      { "name": "Anette", "score": 3 },
+      { "name": "Lotte", "score": 3 },
+      { "name": "Peter", "score": 2 },
+      { "name": "Jonas", "score": 2 },
+      { "name": "Gitte", "score": 1 },
+      { "name": "Torben", "score": 1 }
+    ]
+  },
+  {
+    "gameId": 3,
+    "gameDate": "2026-04-10",
+    "players": [
+      { "name": "Torben", "score": 3 },
+      { "name": "Jonas", "score": 3 },
+      { "name": "Peter", "score": 2 },
+      { "name": "Gitte", "score": 2 },
+      { "name": "Lotte", "score": 1 },
+      { "name": "Anette", "score": 1 }
+    ]
+  },
+  {
+    "gameId": 4,
+    "gameDate": "2026-04-10",
+    "players": [
+      { "name": "Gitte", "score": 3 },
+      { "name": "Lotte", "score": 3 },
+      { "name": "Peter", "score": 2 },
+      { "name": "Torben", "score": 2 },
+      { "name": "Jonas", "score": 1 },
+      { "name": "Anette", "score": 1 }
+    ]
+  }
+]
