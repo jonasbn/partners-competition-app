@@ -7,6 +7,7 @@ import SimpleSummaryCards from './components/SimpleSummaryCards';
 import SimpleTeamStatistics from './components/SimpleTeamStatistics';
 import SimplePlayerPerformance from './components/SimplePlayerPerformance';
 import SimpleGamesCalendar from './components/SimpleGamesCalendar';
+import TournamentChampion2025 from './components/TournamentChampion2025';
 import LanguageSelector from './components/LanguageSelector';
 import ErrorBoundary from './components/ErrorBoundary';
 import { useTranslation } from 'react-i18next';
@@ -75,6 +76,11 @@ function App() {
       </nav>
       
       <div className="container">
+        {/* Tournament 2025 Final Results */}
+        <ErrorBoundary name="TournamentChampion2025">
+          <TournamentChampion2025 />
+        </ErrorBoundary>
+
         {/* First row: Summary Cards (Current leader, Best team, Game statistics) */}
         <ErrorBoundary name="SummaryCards">
           <SimpleSummaryCards />

@@ -303,6 +303,19 @@ export default {
       "noGames": "Ingen seneste spil"
     }
   },
+  "tournament2025": {
+    "title": "Partners Turnering 2025 — Slutresultater",
+    "concluded": "Turnering Afsluttet",
+    "dateRange": "{{start}} – {{end}}",
+    "totalGames": "{{count}} spil spillet",
+    "champion": "Mester",
+    "bestTeam": "Bedste Hold",
+    "points": "point",
+    "wins": "sejre",
+    "winRate": "sejrs rate",
+    "gamesPlayed": "spil spillet",
+    "noData": "Ingen turnerings data tilgængelig"
+  },
   "charts": {
     "playerStats": {
       "title": "Spillerstatistik",
