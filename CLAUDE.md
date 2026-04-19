@@ -20,6 +20,7 @@ npm run test:coverage  # Generate coverage report
 ```
 
 Run a single test file:
+
 ```bash
 npx vitest run src/test/components/SimpleLeaderboard.test.jsx
 ```
@@ -29,9 +30,11 @@ npx vitest run src/test/components/SimpleLeaderboard.test.jsx
 **Data flow**: `src/data/games.json` → `src/utils/dataUtils.js` (processing/calculations) → components (display only).
 
 **Entry points**:
+
 - `index.html` → `src/index.jsx` (wraps app in `ThemeProvider` + i18next `Suspense`) → `src/App.jsx` (single page with all sections, each wrapped in an `ErrorBoundary`)
 
 **Key utilities**:
+
 - `src/utils/dataUtils.js` — all game data calculations (scores, rankings, team resolution)
 - `src/utils/ThemeContext.jsx` — dark/light theme context (persisted to localStorage, respects `prefers-color-scheme`)
 - `src/utils/i18n.js` — i18next setup with browser language detection, fallback: Danish (`da`)
@@ -57,6 +60,7 @@ Avatars live in `public/avatars/`. Two contexts, each with variations:
 ## UI Components
 
 All components render on a single page in this order:
+
 1. `SimpleSummaryCards` — current leader, best team, game stats
 2. `SimpleLeaderboard` — player rankings with avatars, scores, averages, win ratio
 3. `SimplePlayerPerformance` — per-player metrics across games
