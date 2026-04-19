@@ -48,8 +48,8 @@ describe('TournamentChampion2025 Component', () => {
 
   it('displays the total game count', () => {
     renderWithProviders(<TournamentChampion2025 />);
-    // The translation for totalGames renders "2 games played"
-    expect(screen.getByText(/2/)).toBeInTheDocument();
+    // The da translation for tournament2025.totalGames renders "2 spil spillet"
+    expect(screen.getByText(/2 spil spillet/)).toBeInTheDocument();
   });
 
   it('displays the champion cumulative score', () => {
