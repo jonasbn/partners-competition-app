@@ -7,29 +7,39 @@ import { getRankBasedAvatar } from '../utils/simpleAvatarUtils';
 const TournamentChampion2025 = () => {
   const { t } = useTranslation();
 
-  let champion = null;
-  let bestTeam = null;
-  let totalGames = 0;
-  let dateRange = null;
-  let dataError = null;
+  const { champion, bestTeam, totalGames, dateRange, dataError } = React.useMemo(() => {
+    try {
+      const leaderboardData = getLeaderboardData();
+      const players = leaderboardData.players || [];
+      const games = leaderboardData.games || getGames();
+      const teamStats = getTeamStatistics();
 
-  try {
-    const { players } = getLeaderboardData();
-    const games = getGames();
-    const teamStats = getTeamStatistics();
+      let computedDateRange = null;
 
-    champion = players.length > 0 ? players[0] : null;
-    bestTeam = teamStats.length > 0 ? teamStats[0] : null;
-    totalGames = games.length;
+      if (games.length > 0) {
+        const dates = games.map(g => g.gameDate).sort();
+        computedDateRange = { start: dates[0], end: dates[dates.length - 1] };
+      }
 
-    if (games.length > 0) {
-      const dates = games.map(g => g.gameDate).sort();
-      dateRange = { start: dates[0], end: dates[dates.length - 1] };
+      return {
+        champion: players.length > 0 ? players[0] : null,
+        bestTeam: teamStats.length > 0 ? teamStats[0] : null,
+        totalGames: games.length,
+        dateRange: computedDateRange,
+        dataError: null
+      };
+    } catch (error) {
+      console.error('Error loading tournament data:', error);
+
+      return {
+        champion: null,
+        bestTeam: null,
+        totalGames: 0,
+        dateRange: null,
+        dataError: error.message
+      };
     }
-  } catch (error) {
-    console.error('Error loading tournament data:', error);
-    dataError = error.message;
-  }
+  }, []);
 
   if (dataError) {
     return (
