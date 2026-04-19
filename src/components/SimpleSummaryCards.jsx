@@ -4,20 +4,20 @@ import { getLeaderboardData, getGames, getTeamStatistics } from '../utils/dataUt
 import SimpleAvatarWithHover from './SimpleAvatarWithHover';
 import { getRankBasedAvatar } from '../utils/simpleAvatarUtils';
 
-const SimpleSummaryCards = () => {
+const SimpleSummaryCards = ({ gameData }) => {
   const { t } = useTranslation();
   console.log('SimpleSummaryCards rendering...');
-  
+
   let players = [];
   let games = [];
   let teamStats = [];
   let dataError = null;
 
   try {
-    const leaderboardData = getLeaderboardData();
+    const leaderboardData = getLeaderboardData(gameData);
     players = leaderboardData?.players || [];
-    games = getGames() || [];
-    teamStats = getTeamStatistics() || [];
+    games = getGames(gameData) || [];
+    teamStats = getTeamStatistics(gameData) || [];
   } catch (error) {
     console.error('Error loading data for summary cards:', error);
     dataError = error.message;

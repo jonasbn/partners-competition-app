@@ -4,15 +4,15 @@ import { getLeaderboardData, getGames, getTeamStatistics } from '../utils/dataUt
 import SimpleAvatarWithHover from './SimpleAvatarWithHover';
 import { getRankBasedAvatar } from '../utils/simpleAvatarUtils';
 
-const TournamentChampion2025 = () => {
+const TournamentChampion2025 = ({ gameData }) => {
   const { t } = useTranslation();
 
   const { champion, bestTeam, totalGames, dateRange, dataError } = React.useMemo(() => {
     try {
-      const leaderboardData = getLeaderboardData();
+      const leaderboardData = getLeaderboardData(gameData);
       const players = leaderboardData.players || [];
-      const games = leaderboardData.games || getGames();
-      const teamStats = getTeamStatistics();
+      const games = leaderboardData.games || getGames(gameData);
+      const teamStats = getTeamStatistics(gameData);
 
       let computedDateRange = null;
 
@@ -39,7 +39,7 @@ const TournamentChampion2025 = () => {
         dataError: error.message
       };
     }
-  }, []);
+  }, [gameData]);
 
   if (dataError) {
     return (

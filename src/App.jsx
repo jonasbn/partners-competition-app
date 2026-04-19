@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import './App.css';
 import SimpleLeaderboard from './components/SimpleLeaderboard';
 import SimpleGamesList from './components/SimpleGamesList';
@@ -9,12 +9,17 @@ import SimplePlayerPerformance from './components/SimplePlayerPerformance';
 import SimpleGamesCalendar from './components/SimpleGamesCalendar';
 import TournamentChampion2025 from './components/TournamentChampion2025';
 import LanguageSelector from './components/LanguageSelector';
+import YearSelector from './components/YearSelector';
 import ErrorBoundary from './components/ErrorBoundary';
 import { useTranslation } from 'react-i18next';
 import Logger from './utils/logger';
+import { YearContext } from './utils/YearContext';
+import { getGamesDataForYear } from './utils/dataUtils';
 
 function App() {
   const { t } = useTranslation();
+  const { selectedYear } = useContext(YearContext);
+  const currentYearData = getGamesDataForYear(selectedYear);
 
   // Log application startup and lifecycle events
   useEffect(() => {
@@ -65,6 +70,9 @@ function App() {
         <div className="container">
           <span className="navbar-brand">{t('app.title')}</span>
           <div className="d-flex">
+            <ErrorBoundary name="YearSelector">
+              <YearSelector />
+            </ErrorBoundary>
             <ErrorBoundary name="LanguageSelector">
               <LanguageSelector />
             </ErrorBoundary>
@@ -76,21 +84,23 @@ function App() {
       </nav>
       
       <div className="container">
-        {/* Tournament 2025 Final Results */}
-        <ErrorBoundary name="TournamentChampion2025">
-          <TournamentChampion2025 />
-        </ErrorBoundary>
+        {/* Tournament 2025 Final Results — only shown when 2025 is selected */}
+        {selectedYear === 2025 && (
+          <ErrorBoundary name="TournamentChampion2025">
+            <TournamentChampion2025 gameData={currentYearData} />
+          </ErrorBoundary>
+        )}
 
         {/* First row: Summary Cards (Current leader, Best team, Game statistics) */}
         <ErrorBoundary name="SummaryCards">
-          <SimpleSummaryCards />
+          <SimpleSummaryCards gameData={currentYearData} />
         </ErrorBoundary>
-        
+
         {/* Second component: Leaderboard */}
         <div className="row">
           <div className="col-md-12">
             <ErrorBoundary name="Leaderboard">
-              <SimpleLeaderboard />
+              <SimpleLeaderboard gameData={currentYearData} />
             </ErrorBoundary>
           </div>
         </div>
@@ -99,34 +109,34 @@ function App() {
         <div className="row">
           <div className="col-md-12">
             <ErrorBoundary name="PlayerPerformanceAnalysis">
-              <SimplePlayerPerformance />
+              <SimplePlayerPerformance gameData={currentYearData} />
             </ErrorBoundary>
           </div>
         </div>
-        
+
         {/* Fourth component: Game Calendar */}
         <div className="row">
           <div className="col-md-12">
             <ErrorBoundary name="GamesCalendar">
-              <SimpleGamesCalendar />
+              <SimpleGamesCalendar gameData={currentYearData} />
             </ErrorBoundary>
           </div>
         </div>
-        
+
         {/* Fifth component: Team Statistics */}
         <div className="row">
           <div className="col-md-12">
             <ErrorBoundary name="TeamStatistics">
-              <SimpleTeamStatistics />
+              <SimpleTeamStatistics gameData={currentYearData} />
             </ErrorBoundary>
           </div>
         </div>
-        
+
         {/* Sixth component: Recent Game Outcomes */}
         <div className="row">
           <div className="col-md-12">
             <ErrorBoundary name="GamesList">
-              <SimpleGamesList />
+              <SimpleGamesList gameData={currentYearData} />
             </ErrorBoundary>
           </div>
         </div>

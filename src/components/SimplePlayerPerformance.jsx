@@ -4,15 +4,15 @@ import { getLeaderboardData } from '../utils/dataUtils';
 import SimpleAvatarWithHover from './SimpleAvatarWithHover';
 import { getRankBasedAvatar } from '../utils/simpleAvatarUtils';
 
-const SimplePlayerPerformance = () => {
+const SimplePlayerPerformance = ({ gameData }) => {
   console.log('SimplePlayerPerformance rendering...');
   const { t } = useTranslation();
-  
+
   let players = [];
   let dataError = null;
 
   try {
-    const leaderboardData = getLeaderboardData();
+    const leaderboardData = getLeaderboardData(gameData);
     players = leaderboardData?.players || [];
     console.log('Player performance data loaded:', players.length, 'players');
     console.log('Sample player data:', players[0]); // Debug: show first player's data

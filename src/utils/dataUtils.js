@@ -1,7 +1,15 @@
-import gamesData from '../data/games.json';
+import gamesData2025 from '../data/games.json';
+import gamesData2026 from '../data/games_2026.json';
+
+const GAMES_DATA_BY_YEAR = {
+  2025: gamesData2025,
+  2026: gamesData2026
+};
+
+export const getGamesDataForYear = (year) => GAMES_DATA_BY_YEAR[year] ?? [];
 
 // Function to process the games data and calculate leaderboard
-export const processGamesData = () => {
+export const processGamesData = (gameData = gamesData2025) => {
   // Initialize players with their data
   const players = [
     { id: 1, name: 'Jonas', cumulativeScore: 0, games: [] },
@@ -13,7 +21,7 @@ export const processGamesData = () => {
   ];
 
   // Process each game
-  const processedGames = gamesData.map(game => {
+  const processedGames = gameData.map(game => {
     const processedGame = {
       gameId: game.gameId,
       gameDate: game.gameDate,
@@ -81,24 +89,24 @@ export const processGamesData = () => {
 };
 
 // Get leaderboard data
-export const getLeaderboardData = () => {
-  return processGamesData();
+export const getLeaderboardData = (gameData) => {
+  return processGamesData(gameData);
 };
 
 // Get list of games
-export const getGames = () => {
-  return processGamesData().games;
+export const getGames = (gameData) => {
+  return processGamesData(gameData).games;
 };
 
 // Get player details by ID
-export const getPlayerById = (playerId) => {
-  const players = processGamesData().players;
+export const getPlayerById = (playerId, gameData) => {
+  const players = processGamesData(gameData).players;
   return players.find(player => player.id === parseInt(playerId, 10));
 };
 
 // Calculate team statistics - find winning teams and their performance
-export const getTeamStatistics = () => {
-  const processedGames = processGamesData().games;
+export const getTeamStatistics = (gameData) => {
+  const processedGames = processGamesData(gameData).games;
   const teamStats = {};
   
   // Process each game to find teams
@@ -150,9 +158,9 @@ export const getTeamStatistics = () => {
 };
 
 // Calculate team combination statistics - shows how many times each possible team combination has played
-export const getTeamCombinationStatistics = () => {
+export const getTeamCombinationStatistics = (gameData) => {
   const allPlayers = ['Jonas', 'Torben', 'Gitte', 'Anette', 'Lotte', 'Peter'];
-  const processedGames = processGamesData().games;
+  const processedGames = processGamesData(gameData).games;
   
   // Generate all possible team combinations (2 players each)
   const allPossibleTeams = [];
