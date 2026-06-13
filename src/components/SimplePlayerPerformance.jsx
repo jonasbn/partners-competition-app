@@ -107,9 +107,13 @@ const SimplePlayerPerformance = ({ gameData }) => {
                     </div>
 
                     <div className="progress mb-3">
-                      <div 
+                      <div
                         className={`progress-bar bg-${performance.class}`}
+                        role="progressbar"
                         style={{ width: `${progressWidth}%` }}
+                        aria-valuenow={progressWidth}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
                       />
                     </div>
 
@@ -133,9 +137,13 @@ const SimplePlayerPerformance = ({ gameData }) => {
                     {/* Enhanced Win Rate Analysis */}
                     <div className="mb-3">
                       <div className="progress" style={{height: '6px'}}>
-                        <div 
+                        <div
                           className={`progress-bar ${winRate >= 60 ? 'bg-success' : winRate >= 40 ? 'bg-warning' : 'bg-danger'}`}
+                          role="progressbar"
                           style={{ width: `${winRate}%` }}
+                          aria-valuenow={winRate}
+                          aria-valuemin={0}
+                          aria-valuemax={100}
                         />
                       </div>
                       <small className="text-muted">

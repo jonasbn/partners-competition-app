@@ -70,6 +70,7 @@ const SimpleTeamStatistics = ({ gameData }) => {
       <div className="card-body">
         <div className="table-responsive">
           <table className="table table-striped table-hover">
+            <caption className="visually-hidden">{t('teamStats.title')}</caption>
             <thead className="table-dark">
               <tr>
                 <th>{t('teamStats.rank')}</th>

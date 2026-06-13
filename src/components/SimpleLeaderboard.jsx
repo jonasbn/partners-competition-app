@@ -79,6 +79,7 @@ const SimpleLeaderboard = ({ gameData }) => {
       <div className="card-body">
         <div className="table-responsive">
           <table className="table table-striped table-hover">
+            <caption className="visually-hidden">{t('leaderboard.title')}</caption>
             <thead className="table-dark">
               <tr>
                 <th>{t('leaderboard.rank')}</th>

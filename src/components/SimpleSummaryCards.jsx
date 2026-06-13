@@ -88,9 +88,13 @@ const SimpleSummaryCards = ({ gameData }) => {
                 </div>
                 <p className="text-muted mb-1">{t('summaryCards.currentLeader.totalPoints')}</p>
                 <div className="progress mb-2">
-                  <div 
-                    className="progress-bar bg-success" 
+                  <div
+                    className="progress-bar bg-success"
+                    role="progressbar"
                     style={{ width: `${scorePercentage}%` }}
+                    aria-valuenow={scorePercentage}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
                   />
                 </div>
                 <small className="text-muted">
@@ -190,9 +194,13 @@ const SimpleSummaryCards = ({ gameData }) => {
             </p>
             
             <div className="progress mb-3">
-              <div 
-                className="progress-bar bg-info" 
+              <div
+                className="progress-bar bg-info"
+                role="progressbar"
                 style={{ width: `${completionPercentage}%` }}
+                aria-valuenow={completionPercentage}
+                aria-valuemin={0}
+                aria-valuemax={100}
               />
             </div>
             
