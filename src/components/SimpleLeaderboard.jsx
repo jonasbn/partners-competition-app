@@ -10,12 +10,13 @@ const SimpleLeaderboard = ({ gameData }) => {
   console.log('SimpleLeaderboard rendering...');
 
   let players = [];
+  let leaderboardData = null;
   let dataError = null;
 
   try {
-    const leaderboardData = getLeaderboardData(gameData);
+    leaderboardData = getLeaderboardData(gameData);
     console.log('Leaderboard data received:', leaderboardData);
-    
+
     if (leaderboardData && leaderboardData.players && Array.isArray(leaderboardData.players)) {
       players = leaderboardData.players;
       console.log('Players loaded:', players.length);
@@ -161,7 +162,7 @@ const SimpleLeaderboard = ({ gameData }) => {
             <div className="col-md-6">
               <small className="text-muted">
                 {t('leaderboard.totalPlayers')}: {players.length} | 
-                {t('leaderboard.totalGames')}: {Math.floor(players.reduce((sum, p) => sum + (p.gamesPlayed || 0), 0) / 2)}
+                {t('leaderboard.totalGames')}: {leaderboardData?.games?.length ?? 0}
               </small>
             </div>
             <div className="col-md-6 text-end">

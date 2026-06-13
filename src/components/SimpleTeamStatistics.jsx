@@ -86,7 +86,7 @@ const SimpleTeamStatistics = ({ gameData }) => {
             </thead>
             <tbody>
               {teamStats.map((team, index) => {
-                const rank = index + 1;
+                const rank = team.rank ?? index + 1;
                 const players = team.players || [];
                 const gamesPlayed = team.gamesPlayed || 0;
                 const wins = team.wins || 0;
@@ -105,7 +105,7 @@ const SimpleTeamStatistics = ({ gameData }) => {
                         {players.map((player, playerIdx) => {
                           try {
                             // Use team ranking for avatar selection (top 3 teams get better avatars)
-                            const avatarRank = rank <= 3 ? 1 : 4; // Top 3 teams get happy, others get sad
+                            const avatarRank = rank <= 3 ? 1 : rank <= 9 ? 2 : 4;
                             return (
                               <div key={`${player}-${playerIdx}`} className="d-flex align-items-center me-2">
                                 <SimpleAvatarWithHover

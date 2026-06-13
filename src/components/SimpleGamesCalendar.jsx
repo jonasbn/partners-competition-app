@@ -25,7 +25,7 @@ const SimpleGamesCalendar = ({ gameData }) => {
         </div>
         <div className="card-body">
           <div className="alert alert-danger">
-            <strong>{t('gamesList.errorLoading')}:</strong> {dataError}
+            <strong>{t('gamesCalendar.errorLoading')}:</strong> {dataError}
           </div>
         </div>
       </div>
@@ -40,8 +40,8 @@ const SimpleGamesCalendar = ({ gameData }) => {
         </div>
         <div className="card-body">
           <div className="alert alert-info">
-            <h4>{t('gamesList.noGames')}</h4>
-            <p>{t('gamesList.startPlaying')}</p>
+            <h4>{t('gamesCalendar.noGames')}</h4>
+            <p>{t('gamesCalendar.startPlaying')}</p>
           </div>
         </div>
       </div>
