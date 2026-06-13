@@ -8,9 +8,16 @@ import SimpleLeaderboard from '../../components/SimpleLeaderboard';
 vi.mock('../../utils/dataUtils', () => ({
   getLeaderboardData: () => ({
     players: [
-      { id: 1, name: 'Jonas', cumulativeScore: 15, games: [{ gameId: 1, score: 3 }] },
-      { id: 2, name: 'Torben', cumulativeScore: 12, games: [{ gameId: 1, score: 2 }] },
-      { id: 3, name: 'Gitte', cumulativeScore: 10, games: [{ gameId: 1, score: 1 }] }
+      { id: 1, name: 'Jonas', cumulativeScore: 15, gamesPlayed: 2, games: [{ gameId: 1, score: 3 }, { gameId: 2, score: 2 }] },
+      { id: 2, name: 'Torben', cumulativeScore: 12, gamesPlayed: 2, games: [{ gameId: 1, score: 2 }, { gameId: 2, score: 1 }] },
+      { id: 3, name: 'Gitte', cumulativeScore: 10, gamesPlayed: 2, games: [{ gameId: 1, score: 1 }, { gameId: 2, score: 3 }] },
+      { id: 4, name: 'Anette', cumulativeScore: 9, gamesPlayed: 2, games: [{ gameId: 1, score: 3 }, { gameId: 2, score: 1 }] },
+      { id: 5, name: 'Lotte', cumulativeScore: 8, gamesPlayed: 2, games: [{ gameId: 1, score: 2 }, { gameId: 2, score: 2 }] },
+      { id: 6, name: 'Peter', cumulativeScore: 7, gamesPlayed: 2, games: [{ gameId: 1, score: 1 }, { gameId: 2, score: 3 }] }
+    ],
+    games: [
+      { gameId: 1, gameDate: '2026-01-01' },
+      { gameId: 2, gameDate: '2026-01-08' }
     ]
   })
 }));
@@ -52,11 +59,18 @@ describe('SimpleLeaderboard Component', () => {
 
   it('has table structure', () => {
     renderWithProviders(<SimpleLeaderboard />);
-    
+
     const table = screen.getByRole('table');
     const rows = screen.getAllByRole('row');
-    
+
     expect(table).toBeInTheDocument();
     expect(rows.length).toBeGreaterThan(1); // Header + data rows
+  });
+
+  it('displays the correct total games count from games array length', () => {
+    renderWithProviders(<SimpleLeaderboard />);
+    // Mock has 2 games. The footer small element must contain "2".
+    const footer = screen.getByText(/2/, { selector: 'small' });
+    expect(footer).toBeInTheDocument();
   });
 });
