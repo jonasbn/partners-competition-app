@@ -50,6 +50,16 @@ Improvements identified from a codebase review on 2026-06-12.
 
 - [ ] **`TournamentChampion2025` is year-specific** — when a future tournament concludes, a new component would need to be created by hand. A single generic `TournamentChampion` component parameterised by year would avoid this.
 
+## Improvements to Implement
+
+- [ ] **Leaderboard UI does not look good in Darkmode, too light**
+
+- [ ] **Performance Insights UI does not look good in Darkmode, too light**
+
+- [ ] **Activity Levels and Recent Activity UI under Activity Timeline does not look good in Darkmode, too light**
+
+- [ ] **Team Statistics UI does not look good in Darkmode, too light**
+
 ## Documentation
 
 Findings from a documentation review on 2026-06-12.
