@@ -16,7 +16,6 @@ const SimpleThemeToggle = () => {
   
   const handleToggleTheme = () => {
     try {
-      const newTheme = theme === 'light' ? 'dark' : 'light';
       toggleTheme();
     } catch (error) {
       console.error('Error toggling theme:', error);
