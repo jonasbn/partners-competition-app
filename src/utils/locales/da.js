@@ -263,6 +263,9 @@ export default {
     "title": "Spil Kalender",
     "timelineTitle": "Aktivitets Tidslinje",
     "error": "Spil Kalender Fejl",
+    "errorLoading": "Fejl ved indlæsning",
+    "noGames": "Ingen spil fundet",
+    "startPlaying": "Start med at spille nogle spil for at se kalenderen her!",
     "stats": {
       "totalGames": "Samlede Spil",
       "gameDays": "Spil Dage", 

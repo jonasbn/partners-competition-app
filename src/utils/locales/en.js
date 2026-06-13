@@ -263,6 +263,9 @@ export default {
     "title": "Games Calendar",
     "timelineTitle": "Activity Timeline",
     "error": "Games Calendar Error",
+    "errorLoading": "Error loading",
+    "noGames": "No games found",
+    "startPlaying": "Start playing some games to see the calendar here!",
     "stats": {
       "totalGames": "Total Games",
       "gameDays": "Game Days", 
