@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# Partners Competition App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A single-page React application for tracking and visualising tournament statistics for a card game called **partners**.
 
-## Available Scripts
+## The Game
 
-In the project directory, you can run:
+- **6 players**: Jonas, Torben, Gitte, Anette, Lotte, Peter
+- Each game pairs the 6 players into **3 teams of 2** (all players participate in every game)
+- **Scoring**: 1st place = 3 pts, 2nd = 2 pts, 3rd = 1 pt
+- The app tracks results across multiple seasons and shows leaderboards, team statistics, and player performance
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Requires **Node v22** (see `.nvmrc`).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm install
+npm start        # Dev server on http://localhost:3000
+```
 
-### `npm test`
+## Commands
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm start              # Dev server (auto-opens browser)
+npm run build          # Production build → build/
+npm run preview        # Preview production build locally
 
-### `npm run build`
+npm test               # Run all tests once
+npm run test:watch     # Watch mode
+npm run test:ui        # Vitest UI dashboard
+npm run test:coverage  # Coverage report
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tech Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+| Tool | Version | Purpose |
+|------|---------|---------|
+| React | 18.3.1 | UI framework |
+| Vite | 8.0.14 | Build tool & dev server |
+| Bootstrap | 5.x | Responsive UI |
+| i18next | — | Internationalisation (Danish default, English) |
+| Vitest | — | Test framework |
+| React Testing Library | — | Component tests |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Deployment
 
-### `npm run eject`
+The app is hosted on **Digital Ocean App Platform** and auto-deploys on every push to `main`.
+See [docs/DEPLOYMENT_GUIDE.md](docs/DEPLOYMENT_GUIDE.md) for details.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Documentation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [docs/DEPLOYMENT_GUIDE.md](docs/DEPLOYMENT_GUIDE.md) — how to deploy
+- [docs/DATA_UPDATE.md](docs/DATA_UPDATE.md) — how to add game results or a new season
+- [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md) — branch strategy, commit style, PR conventions
+- [docs/TESTING.md](docs/TESTING.md) — test setup and conventions
+- [docs/LOGGING.md](docs/LOGGING.md) — logging configuration
+- [docs/README.md](docs/README.md) — full documentation index

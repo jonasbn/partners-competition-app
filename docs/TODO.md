@@ -52,38 +52,38 @@ Findings from a documentation review on 2026-06-12.
 
 ### Security
 
-- [ ] **`docs/LOGGING.md` contains the Logtail ingestion token in plain text** (line 7) — `gDcpojWzsEzzJVpXTyjAFsPF` is committed verbatim. Remove it from the file and rotate the token.
+- [x] **`docs/LOGGING.md` contains the Logtail ingestion token in plain text** (line 7) — `gDcpojWzsEzzJVpXTyjAFsPF` is committed verbatim. Removed from file. **Token rotation requires manual action on the BetterStack dashboard.**
 
 ### Accuracy
 
-- [ ] **Root `README.md` is entirely CRA boilerplate** — describes none of the actual project, references `npm run eject` (Vite project), and describes `npm test` as interactive watch mode. Replace with a project-specific README covering what the app does, commands, and how to deploy.
+- [x] **Root `README.md` is entirely CRA boilerplate** — replaced with a project-specific README covering what the app does, commands, and how to deploy.
 
-- [ ] **`docs/README.md` lists wrong versions** — states React 19.2.0 and Vite 6.4.1; actual versions per `package.json` are React 18.3.1 and Vite 8.x. Also lists `@nivo` as a dependency, which was removed.
+- [x] **`docs/README.md` lists wrong versions** — updated to React 18.3.1 and Vite 8.0.14; removed @nivo reference.
 
-- [ ] **`docs/README.md` index is incomplete** — `TODO.md` and `security-review-baseline-2026-06-12.md` are not listed.
+- [x] **`docs/README.md` index is incomplete** — added `TODO.md` and `security-review-baseline-2026-06-12.md` to index.
 
-- [ ] **`docs/LOGGING.md` references outdated filenames** — lists `App.js`, `ThemeToggle.js`, `AvatarWithHover.js`, `GamesList.js`; actual names are `App.jsx`, `SimpleThemeToggle.jsx`, `SimpleAvatarWithHover.jsx`, `SimpleGamesList.jsx`.
+- [x] **`docs/LOGGING.md` references outdated filenames** — updated to `App.jsx`, `SimpleThemeToggle.jsx`, `SimpleAvatarWithHover.jsx`, `SimpleGamesList.jsx`.
 
-- [ ] **`docs/Z_INDEX_DOCUMENTATION.md` references outdated filenames throughout** — `AvatarWithHover.js`, `GamesList.js`, `SummaryCards.js` should be `SimpleAvatarWithHover.jsx`, `SimpleGamesList.jsx`, `SimpleSummaryCards.jsx`. Also contains a dangling code block and references z-index `10015` without defining it in the hierarchy.
+- [x] **`docs/Z_INDEX_DOCUMENTATION.md` references outdated filenames throughout** — updated to `SimpleAvatarWithHover.jsx`, `SimpleGamesList.jsx`, `SimpleSummaryCards.jsx`. Removed dangling code block and undefined z-index 10015 references.
 
-- [ ] **`docs/TESTING.md` has minor inaccuracies** — describes `npm test` as watch mode; advises skipping @nivo tests (library was removed); example code calls `getPlayerAvatarPath` with two arguments but the function only accepts one.
+- [x] **`docs/TESTING.md` has minor inaccuracies** — rewrote to reflect current test setup: `npm test` runs once, @nivo advice removed, `getPlayerAvatarPath` example uses single argument.
 
 ### Obsolete documents
 
-- [ ] **`docs/DEPLOYMENT.md`** — documents the @nivo white-page incident, which is resolved. References components that no longer exist (`ChartErrorBoundary.jsx`, `RobustCalendarChart.jsx`, `LazyCharts.jsx`). Archive or convert to an ADR.
+- [x] **`docs/DEPLOYMENT.md`** — archived to `docs/archive/DEPLOYMENT.md`.
 
-- [ ] **`docs/DEPLOYMENT_FINAL.md`** — documents the resolution of the same @nivo incident. References non-existent components. Archive or convert to an ADR.
+- [x] **`docs/DEPLOYMENT_FINAL.md`** — archived to `docs/archive/DEPLOYMENT_FINAL.md`.
 
-- [ ] **`docs/EMERGENCY_FIX.md`** — run-book for a resolved incident. Misleads readers into thinking the app is unstable and that committing `build/` is normal practice. Remove or archive.
+- [x] **`docs/EMERGENCY_FIX.md`** — archived to `docs/archive/EMERGENCY_FIX.md`.
 
-- [ ] **`docs/TESTING_EVALUATION.md`** — recommends migrating test files that are already migrated. Content is superseded by current state. Review and either update to reflect current state or remove.
+- [x] **`docs/TESTING_EVALUATION.md`** — archived to `docs/archive/TESTING_EVALUATION.md`.
 
 ### Missing SDLC documentation
 
-- [ ] **No project README** — replace the CRA boilerplate with a README covering: what "partners" is, who the players are, the scoring rules, how to run locally, how to deploy, and how to add a new year of data.
+- [x] **No project README** — replaced CRA boilerplate with a project-specific `README.md`.
 
-- [ ] **No deployment guide** — no document describes how to deploy to Digital Ocean App Platform (build command, env vars to set, how to trigger a deploy).
+- [x] **No deployment guide** — created `docs/DEPLOYMENT_GUIDE.md`.
 
-- [ ] **No data update guide** — adding a new game result or a new tournament year requires code changes; this process is not documented anywhere.
+- [x] **No data update guide** — created `docs/DATA_UPDATE.md`.
 
-- [ ] **No contributing guide** — no PR conventions, branch strategy, commit style, or review process documented.
+- [x] **No contributing guide** — created `docs/CONTRIBUTING.md`.

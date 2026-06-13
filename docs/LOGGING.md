@@ -2,9 +2,9 @@
 
 ## Overview
 
-The Partners Competition App now has comprehensive logging using Logtail/Better Stack with the following configuration:
+The Partners Competition App has comprehensive logging using Logtail/Better Stack with the following configuration:
 
-- **Token**: `gDcpojWzsEzzJVpXTyjAFsPF`
+- **Token**: set via `VITE_LOGTAIL_KEY` environment variable (see `.env` or Digital Ocean App Platform settings)
 - **Endpoint**: `https://in.logs.betterstack.com`
 
 ## Logger Features
@@ -25,7 +25,7 @@ The Partners Competition App now has comprehensive logging using Logtail/Better 
 
 ## Logging Integration Points
 
-### Application Lifecycle (App.js)
+### Application Lifecycle (App.jsx)
 
 - App startup with system info (user agent, language, viewport)
 - Component mounting/unmounting
@@ -33,9 +33,9 @@ The Partners Competition App now has comprehensive logging using Logtail/Better 
 
 ### User Interactions
 
-- **Theme Toggle** (ThemeToggle.js): Logs theme changes (dark/light mode)
+- **Theme Toggle** (SimpleThemeToggle.jsx): Logs theme changes (dark/light mode)
 - **Language Selector** (LanguageSelector.js): Logs language changes (English/Danish)
-- **Avatar Interactions** (AvatarWithHover.js): Logs hover events with position data
+- **Avatar Interactions** (SimpleAvatarWithHover.jsx): Logs hover events with position data
 
 ### Error Handling
 
@@ -44,7 +44,7 @@ The Partners Competition App now has comprehensive logging using Logtail/Better 
 
 ### Performance Monitoring
 
-- **GamesList.js**: Logs data loading times and error states
+- **SimpleGamesList.jsx**: Logs data loading times and error states
 - Performance metrics for component render times
 
 ### Data Operations
@@ -89,15 +89,15 @@ All logs include:
 ### Core Logging Infrastructure
 
 - `/src/utils/logger.js` - Logger utility class
-- `/src/components/ErrorBoundary.js` - React error boundary
+- `/src/components/ErrorBoundary.jsx` - React error boundary
 
-### Integration Points  
+### Integration Points
 
-- `/src/App.js` - Application lifecycle logging
-- `/src/components/ThemeToggle.js` - Theme change logging
+- `/src/App.jsx` - Application lifecycle logging
+- `/src/components/SimpleThemeToggle.jsx` - Theme change logging
 - `/src/components/LanguageSelector.js` - Language change logging
-- `/src/components/AvatarWithHover.js` - Avatar interaction logging
-- `/src/components/GamesList.js` - Data loading and error logging
+- `/src/components/SimpleAvatarWithHover.jsx` - Avatar interaction logging
+- `/src/components/SimpleGamesList.jsx` - Data loading and error logging
 
 ### Dependencies
 
