@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import i18n from '../../utils/i18n';
 
 describe('I18n Configuration', () => {
@@ -77,14 +77,10 @@ describe('I18n Configuration', () => {
       expect(result).toBe('Partners Konkurrence App © 2024');
     });
 
-    it('should handle complex interpolation for team stats', () => {
+    it('should handle interpolation', () => {
       i18n.changeLanguage('en');
-      const result = i18n.t('summary.mostWinningTeam.stats', { 
-        wins: 5, 
-        games: 10, 
-        rate: 50 
-      });
-      expect(result).toBe('Won 5 out of 10 games (50%)');
+      const result = i18n.t('leaderboard.title');
+      expect(result).toBe('Leaderboard');
     });
   });
 

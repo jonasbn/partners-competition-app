@@ -15,30 +15,6 @@ export default {
   "yearSelector": {
     "label": "Select Year"
   },
-  "summary": {
-    "leadingPlayer": {
-      "title": "Leading Player",
-      "score": "Current Score",
-      "maxScore": "Maximum possible: {{score}} ({{games}} games)"
-    },
-    "mostWinningTeam": {
-      "title": "Most Winning Team",
-      "stats": "Won {{wins}} out of {{games}} games ({{rate}}%)",
-      "combinations": "Out of {{count}} possible team combinations"
-    },
-    "gameStatistics": {
-      "title": "Game Statistics",
-      "totalGames": "Total Games",
-      "possibleCombinations": "Team Combinations Available",
-      "averageGameScore": "Average Game Score"
-    },
-    "teamCoverage": {
-      "title": "Team Coverage",
-      "formed": "{{used}} of {{total}} team combinations formed",
-      "remaining": "{{remaining}} combinations remaining",
-      "minimum": "Minimum {{games}} games needed for full coverage"
-    }
-  },
   "theme": {
     "dark": "Dark",
     "light": "Light",

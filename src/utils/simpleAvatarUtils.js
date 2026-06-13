@@ -124,8 +124,3 @@ export const getRankBasedAvatar = (playerName, rank) => {
   }
 };
 
-// Legacy function for backward compatibility (now uses ranking)
-export const getPerformanceBasedAvatar = (playerName, playerStats, rank) => {
-  console.warn('getPerformanceBasedAvatar is deprecated, use getRankBasedAvatar instead');
-  return getRankBasedAvatar(playerName, rank);
-};
