@@ -11,7 +11,7 @@ A single-page React application for tracking and visualising tournament statisti
 
 ## Getting Started
 
-Requires **Node v22** (see `.nvmrc`).
+Node v22 recommended for local development (see `.nvmrc`); Node 20 and 22 are both supported (see `package.json` `engines` and CI matrix).
 
 ```bash
 npm install

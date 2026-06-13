@@ -12,7 +12,7 @@ npm run test:coverage      # Coverage report
 Run a single test file:
 
 ```bash
-npx vitest run src/test/components/SimpleLeaderboard.test.jsx
+npx vitest run src/test/components/Leaderboard.test.jsx
 ```
 
 ## Test Structure
