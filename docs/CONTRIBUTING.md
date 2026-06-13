@@ -19,7 +19,7 @@ Common branch prefixes:
 
 Use a short imperative subject line with a type prefix:
 
-```
+```text
 feat: add 2027 season data
 fix: correct win-rate calculation in SimpleLeaderboard
 docs: update DEPLOYMENT_GUIDE with doctl instructions
