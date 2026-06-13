@@ -34,6 +34,10 @@ Improvements identified from a codebase review on 2026-06-12.
 
 - [x] **`src/test/utilities.test.js` reimplements `getPlayerAvatarPath` inline** instead of importing from `simpleAvatarUtils`. It calls the reimplemented version with two arguments, which the real function does not accept, so the tests are not exercising the actual code.
 
+- [ ] **i18n language not pinned in component test files** (`src/test/components/SimpleGamesList.test.jsx`, `src/test/components/SimplePlayerPerformance.test.jsx`) — tests assert Danish strings but never explicitly set the language. If another test file changes the shared i18n instance's language first, these tests become order-dependent and may fail. Add `beforeEach(() => i18n.changeLanguage('da'))` to each file.
+
+- [ ] **`console.log` noise in `utilities.test.js`** — `getPlayerAvatarPath` emits `console.log` for both valid and invalid inputs, so the test suite produces noisy output during `vitest run`. Stub `console.log` in a `beforeEach` in that file (similar to how `console.error` is stubbed elsewhere).
+
 ## Accessibility
 
 - [ ] **Progress bars lack ARIA attributes** — `SimpleSummaryCards` and `SimplePlayerPerformance` render `<div class="progress-bar">` without `role="progressbar"`, `aria-valuenow`, `aria-valuemin`, or `aria-valuemax`. Bootstrap requires these for screen reader support.

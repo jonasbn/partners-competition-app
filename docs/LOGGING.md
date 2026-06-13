@@ -34,7 +34,7 @@ The Partners Competition App has comprehensive logging using Logtail/Better Stac
 ### User Interactions
 
 - **Theme Toggle** (SimpleThemeToggle.jsx): Logs theme changes (dark/light mode)
-- **Language Selector** (LanguageSelector.js): Logs language changes (English/Danish)
+- **Language Selector** (LanguageSelector.jsx): Logs language changes (English/Danish)
 - **Avatar Interactions** (SimpleAvatarWithHover.jsx): Logs hover events with position data
 
 ### Error Handling
@@ -95,7 +95,7 @@ All logs include:
 
 - `/src/App.jsx` - Application lifecycle logging
 - `/src/components/SimpleThemeToggle.jsx` - Theme change logging
-- `/src/components/LanguageSelector.js` - Language change logging
+- `/src/components/LanguageSelector.jsx` - Language change logging
 - `/src/components/SimpleAvatarWithHover.jsx` - Avatar interaction logging
 - `/src/components/SimpleGamesList.jsx` - Data loading and error logging
 
