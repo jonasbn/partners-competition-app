@@ -30,9 +30,9 @@ Improvements identified from a codebase review on 2026-06-12.
 
 ## Test Coverage
 
-- [ ] **Five components have no dedicated test files**: `SimpleGamesCalendar`, `SimpleGamesList`, `SimplePlayerPerformance`, `SimpleTeamStatistics`, `SimpleAvatarWithHover`.
+- [x] **Five components have no dedicated test files**: `SimpleGamesCalendar` ✓ (PR #144), `SimpleGamesList` ✓, `SimplePlayerPerformance` ✓, `SimpleTeamStatistics` ✓ (PR #144), `SimpleAvatarWithHover` ✓.
 
-- [ ] **`src/test/utilities.test.js` reimplements `getPlayerAvatarPath` inline** instead of importing from `simpleAvatarUtils`. It calls the reimplemented version with two arguments, which the real function does not accept, so the tests are not exercising the actual code.
+- [x] **`src/test/utilities.test.js` reimplements `getPlayerAvatarPath` inline** instead of importing from `simpleAvatarUtils`. It calls the reimplemented version with two arguments, which the real function does not accept, so the tests are not exercising the actual code.
 
 ## Accessibility
 
