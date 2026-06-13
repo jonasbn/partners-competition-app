@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { getLeaderboardData, getGames, getTeamStatistics } from '../utils/dataUtils';
+import { getLeaderboardData, getTeamStatistics } from '../utils/dataUtils';
 import SimpleAvatarWithHover from './SimpleAvatarWithHover';
 import { getRankBasedAvatar } from '../utils/simpleAvatarUtils';
 
@@ -11,7 +11,7 @@ const TournamentChampion2025 = ({ gameData }) => {
     try {
       const leaderboardData = getLeaderboardData(gameData);
       const players = leaderboardData.players || [];
-      const games = leaderboardData.games || getGames(gameData);
+      const games = leaderboardData.games;
       const teamStats = getTeamStatistics(gameData);
 
       let computedDateRange = null;

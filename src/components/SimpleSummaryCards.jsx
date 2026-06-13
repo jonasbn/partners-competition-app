@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { getLeaderboardData, getGames, getTeamStatistics } from '../utils/dataUtils';
+import { processGamesData, getTeamStatistics } from '../utils/dataUtils';
 import SimpleAvatarWithHover from './SimpleAvatarWithHover';
 import { getRankBasedAvatar } from '../utils/simpleAvatarUtils';
 
@@ -13,9 +13,9 @@ const SimpleSummaryCards = ({ gameData }) => {
   let dataError = null;
 
   try {
-    const leaderboardData = getLeaderboardData(gameData);
-    players = leaderboardData?.players || [];
-    games = getGames(gameData) || [];
+    const processed = processGamesData(gameData);
+    players = processed.players || [];
+    games = processed.games || [];
     teamStats = getTeamStatistics(gameData) || [];
   } catch (error) {
     console.error('Error loading data for summary cards:', error);
