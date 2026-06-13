@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { getGames } from '../utils/dataUtils';
 
 const SimpleGamesList = ({ gameData }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   let games = [];
   let dataError = null;
 
@@ -20,16 +20,16 @@ const SimpleGamesList = ({ gameData }) => {
   }
 
   const formatDate = (dateString) => {
+    if (!dateString) return t('gamesList.unknownDate');
     try {
-      if (!dateString) return t('gamesList.unknownDate');
       const date = new Date(dateString);
-      // Use simple dd/mm/yyyy format that works for both Danish and English
-      const day = date.getDate().toString().padStart(2, '0');
-      const month = (date.getMonth() + 1).toString().padStart(2, '0');
-      const year = date.getFullYear();
-      return `${day}/${month}/${year}`;
+      return date.toLocaleDateString(i18n.language, {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+      });
     } catch {
-      return dateString || t('gamesList.invalidDate');
+      return t('gamesList.invalidDate');
     }
   };
 
