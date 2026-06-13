@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { ThemeProvider } from '../../utils/ThemeContext';
-import '../../utils/i18n';
+import i18n from '../../utils/i18n';
 import SimpleGamesList from '../../components/SimpleGamesList';
 
 const mockGetGames = vi.fn();
@@ -34,6 +34,10 @@ const twoGames = [
 ];
 
 describe('SimpleGamesList – error state', () => {
+  beforeEach(() => {
+    i18n.changeLanguage('da');
+  });
+
   beforeEach(() => {
     mockGetGames.mockImplementation(() => { throw new Error('load failed'); });
   });
