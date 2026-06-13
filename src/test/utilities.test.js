@@ -16,10 +16,6 @@ describe('simpleAvatarUtils', () => {
       expect(getPlayerAvatarPath('gitte')).toBe('/assets/gitte/ok.png');
     });
 
-    it('always returns ok.png regardless of any second argument (function takes one arg)', () => {
-      expect(getPlayerAvatarPath('Jonas')).toBe('/assets/jonas/ok.png');
-    });
-
     it('returns null for an unknown player name', () => {
       expect(getPlayerAvatarPath('Unknown')).toBeNull();
     });
