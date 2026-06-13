@@ -5,7 +5,6 @@ import SimpleAvatarWithHover from './SimpleAvatarWithHover';
 import { getRankBasedAvatar } from '../utils/simpleAvatarUtils';
 
 const SimplePlayerPerformance = ({ gameData }) => {
-  console.log('SimplePlayerPerformance rendering...');
   const { t } = useTranslation();
 
   let players = [];
@@ -14,8 +13,6 @@ const SimplePlayerPerformance = ({ gameData }) => {
   try {
     const leaderboardData = getLeaderboardData(gameData);
     players = leaderboardData?.players || [];
-    console.log('Player performance data loaded:', players.length, 'players');
-    console.log('Sample player data:', players[0]); // Debug: show first player's data
   } catch (error) {
     console.error('Error loading player performance data:', error);
     dataError = error.message;

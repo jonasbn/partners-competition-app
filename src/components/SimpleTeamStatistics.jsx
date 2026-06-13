@@ -5,7 +5,6 @@ import SimpleAvatarWithHover from './SimpleAvatarWithHover';
 import { getRankBasedAvatar } from '../utils/simpleAvatarUtils';
 
 const SimpleTeamStatistics = ({ gameData }) => {
-  console.log('SimpleTeamStatistics rendering...');
   const { t } = useTranslation();
 
   let teamStats = [];
@@ -13,7 +12,6 @@ const SimpleTeamStatistics = ({ gameData }) => {
 
   try {
     teamStats = getTeamStatistics(gameData) || [];
-    console.log('Team statistics loaded:', teamStats.length, 'teams');
   } catch (error) {
     console.error('Error loading team statistics:', error);
     dataError = error.message;

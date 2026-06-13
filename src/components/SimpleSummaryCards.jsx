@@ -6,7 +6,6 @@ import { getRankBasedAvatar } from '../utils/simpleAvatarUtils';
 
 const SimpleSummaryCards = ({ gameData }) => {
   const { t } = useTranslation();
-  console.log('SimpleSummaryCards rendering...');
 
   let players = [];
   let games = [];

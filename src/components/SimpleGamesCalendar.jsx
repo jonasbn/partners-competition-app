@@ -4,14 +4,12 @@ import { getGames } from '../utils/dataUtils';
 
 const SimpleGamesCalendar = ({ gameData }) => {
   const { t } = useTranslation();
-  console.log('SimpleGamesCalendar rendering...');
 
   let games = [];
   let dataError = null;
 
   try {
     games = getGames(gameData) || [];
-    console.log('Games calendar data loaded:', games.length, 'games');
   } catch (error) {
     console.error('Error loading games calendar data:', error);
     dataError = error.message;

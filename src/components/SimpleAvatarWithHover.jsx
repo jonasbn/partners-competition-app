@@ -11,8 +11,6 @@ const SimpleAvatarWithHover = ({
   style = {},
   onClick = null
 }) => {
-  console.log('SimpleAvatarWithHover rendering for:', playerName);
-  
   const [isHovered, setIsHovered] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
@@ -32,8 +30,6 @@ const SimpleAvatarWithHover = ({
           y: rect.top + rect.height / 2
         });
       }
-      
-      console.log('Avatar hover:', playerName);
     } catch (error) {
       console.error('Error in avatar hover:', error);
     }
@@ -94,7 +90,6 @@ const SimpleAvatarWithHover = ({
   const handleClick = (e) => {
     try {
       if (onClick) {
-        console.log('Avatar clicked:', playerName);
         onClick(e);
       }
     } catch (error) {
@@ -212,7 +207,6 @@ const SimpleAvatarWithHover = ({
               alt={`${playerName} avatar`}
               style={avatarImageStyle}
               onError={(e) => {
-                console.log('Avatar image failed to load for:', playerName, 'src:', avatarSrc);
                 // Fallback to avatar circle if image fails to load
                 e.target.style.display = 'none';
                 if (e.target.nextElementSibling) {
