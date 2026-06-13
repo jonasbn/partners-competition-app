@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { getLeaderboardData, getTeamStatistics } from '../utils/dataUtils';
 import SimpleAvatarWithHover from './SimpleAvatarWithHover';
@@ -154,6 +155,10 @@ const TournamentChampion2025 = ({ gameData }) => {
       </div>
     </div>
   );
+};
+
+TournamentChampion2025.propTypes = {
+  gameData: PropTypes.object.isRequired,
 };
 
 export default TournamentChampion2025;

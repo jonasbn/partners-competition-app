@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import { getAvatarColor, getInitials } from '../utils/simpleAvatarUtils';
 
@@ -277,6 +278,16 @@ const SimpleAvatarWithHover = ({
       )}
     </>
   );
+};
+
+SimpleAvatarWithHover.propTypes = {
+  playerName: PropTypes.string.isRequired,
+  avatarSrc: PropTypes.string,
+  size: PropTypes.number,
+  borderColor: PropTypes.string,
+  className: PropTypes.string,
+  style: PropTypes.object,
+  onClick: PropTypes.func,
 };
 
 export default SimpleAvatarWithHover;

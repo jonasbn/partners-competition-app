@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { getTeamStatistics } from '../utils/dataUtils';
 import SimpleAvatarWithHover from './SimpleAvatarWithHover';
@@ -174,6 +175,10 @@ const SimpleTeamStatistics = ({ gameData }) => {
       </div>
     </div>
   );
+};
+
+SimpleTeamStatistics.propTypes = {
+  gameData: PropTypes.object.isRequired,
 };
 
 export default SimpleTeamStatistics;

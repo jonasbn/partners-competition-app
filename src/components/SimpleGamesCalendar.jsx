@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { getGames } from '../utils/dataUtils';
 
@@ -213,6 +214,10 @@ const SimpleGamesCalendar = ({ gameData }) => {
       </div>
     </div>
   );
+};
+
+SimpleGamesCalendar.propTypes = {
+  gameData: PropTypes.object.isRequired,
 };
 
 export default SimpleGamesCalendar;

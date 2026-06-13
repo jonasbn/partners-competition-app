@@ -58,7 +58,6 @@ jobs:
   lint-and-format:
     name: Lint and Format Check
     runs-on: ubuntu-latest
-    continue-on-error: true
 
     steps:
     - name: Checkout repository
@@ -73,14 +72,8 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
-    - name: Check for linting scripts
-      run: |
-        if npm run lint --dry-run 2>/dev/null; then
-          echo "✅ Linting script available"
-          npm run lint
-        else
-          echo "⚠️  No linting script found in package.json"
-        fi
+    - name: Lint
+      run: npm run lint
 
     - name: Check for formatting scripts
       run: |

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { getGames } from '../utils/dataUtils';
 
@@ -143,6 +144,10 @@ const SimpleGamesList = ({ gameData }) => {
       </div>
     </div>
   );
+};
+
+SimpleGamesList.propTypes = {
+  gameData: PropTypes.object.isRequired,
 };
 
 export default SimpleGamesList;

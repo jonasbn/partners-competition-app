@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { getLeaderboardData } from '../utils/dataUtils';
 import SimpleAvatarWithHover from './SimpleAvatarWithHover';
@@ -237,6 +238,10 @@ const SimplePlayerPerformance = ({ gameData }) => {
       </div>
     </div>
   );
+};
+
+SimplePlayerPerformance.propTypes = {
+  gameData: PropTypes.object.isRequired,
 };
 
 export default SimplePlayerPerformance;

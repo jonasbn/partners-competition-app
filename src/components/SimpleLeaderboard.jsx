@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { getLeaderboardData } from '../utils/dataUtils';
 import SimpleAvatarWithHover from './SimpleAvatarWithHover';
@@ -175,6 +176,10 @@ const SimpleLeaderboard = ({ gameData }) => {
       </div>
     </div>
   );
+};
+
+SimpleLeaderboard.propTypes = {
+  gameData: PropTypes.object.isRequired,
 };
 
 export default SimpleLeaderboard;
