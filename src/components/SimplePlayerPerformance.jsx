@@ -241,7 +241,7 @@ const SimplePlayerPerformance = ({ gameData }) => {
 };
 
 SimplePlayerPerformance.propTypes = {
-  gameData: PropTypes.object.isRequired,
+  gameData: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default SimplePlayerPerformance;

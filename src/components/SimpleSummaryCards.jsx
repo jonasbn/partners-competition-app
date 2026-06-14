@@ -221,7 +221,7 @@ const SimpleSummaryCards = ({ gameData }) => {
 };
 
 SimpleSummaryCards.propTypes = {
-  gameData: PropTypes.object.isRequired,
+  gameData: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default SimpleSummaryCards;

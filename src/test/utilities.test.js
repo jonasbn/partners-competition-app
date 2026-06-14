@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import {
   getPlayerAvatarPath,
   getAvatarColor,
@@ -6,9 +6,6 @@ import {
 } from '../utils/simpleAvatarUtils';
 
 describe('simpleAvatarUtils', () => {
-  beforeEach(() => {
-    vi.spyOn(console, 'log').mockImplementation(() => {});
-  });
 
   describe('getPlayerAvatarPath', () => {
     it('returns the ok.png path for a known player', () => {

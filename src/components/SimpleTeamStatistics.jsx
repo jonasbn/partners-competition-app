@@ -178,7 +178,7 @@ const SimpleTeamStatistics = ({ gameData }) => {
 };
 
 SimpleTeamStatistics.propTypes = {
-  gameData: PropTypes.object.isRequired,
+  gameData: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default SimpleTeamStatistics;

@@ -147,7 +147,7 @@ const SimpleGamesList = ({ gameData }) => {
 };
 
 SimpleGamesList.propTypes = {
-  gameData: PropTypes.object.isRequired,
+  gameData: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default SimpleGamesList;

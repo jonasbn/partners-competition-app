@@ -158,7 +158,7 @@ const TournamentChampion2025 = ({ gameData }) => {
 };
 
 TournamentChampion2025.propTypes = {
-  gameData: PropTypes.object.isRequired,
+  gameData: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default TournamentChampion2025;
