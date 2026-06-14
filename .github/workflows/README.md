@@ -107,11 +107,11 @@ Add these to your README.md to show CI status:
 
 ## 📋 Workflow Status
 
-| Workflow | Purpose | Node Versions | Coverage | Artifacts |
-|----------|---------|---------------|----------|-----------|
-| CI | Complete pipeline | 18, 20, 22 | ✅ | ✅ |
-| Tests | Core testing | 18, 20, 22 | ❌ | ❌ |
-| Code Quality | Quality analysis | 20 | ✅ | ✅ |
+| Workflow     | Purpose           | Node Versions | Coverage | Artifacts |
+|--------------|-------------------|---------------|----------|-----------|
+| CI           | Complete pipeline | 18, 20, 22    | ✅        | ✅        |
+| Tests        | Core testing      | 18, 20, 22    | ❌        | ❌        |
+| Code Quality | Quality analysis  | 20            | ✅        | ✅        |
 
 ## 🏃‍♂️ Local Testing
 
