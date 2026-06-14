@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import { getLeaderboardData, getGames, getTeamStatistics } from '../utils/dataUtils';
+import { getLeaderboardData, getTeamStatistics } from '../utils/dataUtils';
 import SimpleAvatarWithHover from './SimpleAvatarWithHover';
 import { getRankBasedAvatar } from '../utils/simpleAvatarUtils';
 
@@ -11,7 +12,7 @@ const TournamentChampion2025 = ({ gameData }) => {
     try {
       const leaderboardData = getLeaderboardData(gameData);
       const players = leaderboardData.players || [];
-      const games = leaderboardData.games || getGames(gameData);
+      const games = leaderboardData.games;
       const teamStats = getTeamStatistics(gameData);
 
       let computedDateRange = null;
@@ -154,6 +155,10 @@ const TournamentChampion2025 = ({ gameData }) => {
       </div>
     </div>
   );
+};
+
+TournamentChampion2025.propTypes = {
+  gameData: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default TournamentChampion2025;

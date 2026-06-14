@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { ThemeProvider } from '../../utils/ThemeContext';
-import '../../utils/i18n';
+import i18n from '../../utils/i18n';
 import SimplePlayerPerformance from '../../components/SimplePlayerPerformance';
 
 vi.mock('../../components/SimpleAvatarWithHover', () => ({
@@ -32,6 +32,10 @@ const sixPlayers = [
 ];
 
 describe('SimplePlayerPerformance – error state', () => {
+  beforeEach(() => {
+    i18n.changeLanguage('da');
+  });
+
   beforeEach(() => {
     mockGetLeaderboardData.mockImplementation(() => { throw new Error('data error'); });
   });

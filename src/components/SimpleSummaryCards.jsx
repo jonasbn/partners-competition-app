@@ -1,12 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import { getLeaderboardData, getGames, getTeamStatistics } from '../utils/dataUtils';
+import { processGamesData, getTeamStatistics } from '../utils/dataUtils';
 import SimpleAvatarWithHover from './SimpleAvatarWithHover';
 import { getRankBasedAvatar } from '../utils/simpleAvatarUtils';
 
 const SimpleSummaryCards = ({ gameData }) => {
   const { t } = useTranslation();
-  console.log('SimpleSummaryCards rendering...');
 
   let players = [];
   let games = [];
@@ -14,9 +14,9 @@ const SimpleSummaryCards = ({ gameData }) => {
   let dataError = null;
 
   try {
-    const leaderboardData = getLeaderboardData(gameData);
-    players = leaderboardData?.players || [];
-    games = getGames(gameData) || [];
+    const processed = processGamesData(gameData);
+    players = processed.players || [];
+    games = processed.games || [];
     teamStats = getTeamStatistics(gameData) || [];
   } catch (error) {
     console.error('Error loading data for summary cards:', error);
@@ -89,9 +89,13 @@ const SimpleSummaryCards = ({ gameData }) => {
                 </div>
                 <p className="text-muted mb-1">{t('summaryCards.currentLeader.totalPoints')}</p>
                 <div className="progress mb-2">
-                  <div 
-                    className="progress-bar bg-success" 
+                  <div
+                    className="progress-bar bg-success"
+                    role="progressbar"
                     style={{ width: `${scorePercentage}%` }}
+                    aria-valuenow={scorePercentage}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
                   />
                 </div>
                 <small className="text-muted">
@@ -191,9 +195,13 @@ const SimpleSummaryCards = ({ gameData }) => {
             </p>
             
             <div className="progress mb-3">
-              <div 
-                className="progress-bar bg-info" 
+              <div
+                className="progress-bar bg-info"
+                role="progressbar"
                 style={{ width: `${completionPercentage}%` }}
+                aria-valuenow={completionPercentage}
+                aria-valuemin={0}
+                aria-valuemax={100}
               />
             </div>
             
@@ -210,6 +218,10 @@ const SimpleSummaryCards = ({ gameData }) => {
       </div>
     </div>
   );
+};
+
+SimpleSummaryCards.propTypes = {
+  gameData: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default SimpleSummaryCards;

@@ -15,30 +15,6 @@ export default {
   "yearSelector": {
     "label": "Vælg År"
   },
-  "summary": {
-    "leadingPlayer": {
-      "title": "Førende Spiller",
-      "score": "Nuværende Score",
-      "maxScore": "Maksimum muligt: {{score}} ({{games}} spil)"
-    },
-    "mostWinningTeam": {
-      "title": "Mest Vindende Hold",
-      "stats": "Vandt {{wins}} ud af {{games}} spil ({{rate}}%)",
-      "combinations": "Ud af {{count}} mulige holdkombinationer"
-    },
-    "gameStatistics": {
-      "title": "Spil Statistikker",
-      "totalGames": "Samlede Spil",
-      "possibleCombinations": "Holdkombinationer Tilgængelige",
-      "averageGameScore": "Gennemsnitlig Spil Score"
-    },
-    "teamCoverage": {
-      "title": "Hold Dækning",
-      "formed": "{{used}} af {{total}} holdkombinationer dannet",
-      "remaining": "{{remaining}} kombinationer tilbage",
-      "minimum": "Minimum {{games}} spil nødvendige for fuld dækning"
-    }
-  },
   "theme": {
     "dark": "Mørk",
     "light": "Lys",

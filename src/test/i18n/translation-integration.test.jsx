@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { useTranslation } from 'react-i18next';
 import { ThemeProvider } from '../../utils/ThemeContext';
@@ -155,7 +155,7 @@ const InterpolationTestComponent = () => {
         {t('app.footer', { year: 2024 })}
       </p>
       <p data-testid="complex-interpolation">
-        {t('summary.mostWinningTeam.stats', { wins: 5, games: 10, rate: 50 })}
+        {t('teamStats.bestTeamStats', { wins: 5, games: 10, rate: 50 })}
       </p>
       <button 
         data-testid="change-language" 
@@ -209,26 +209,20 @@ describe('Translation Interpolation', () => {
 
   it('should handle complex interpolation', async () => {
     renderWithProviders(<InterpolationTestComponent />);
-    
-    // Just verify interpolation works regardless of language
+
+    // Default is Danish — verify placeholders are replaced with values
     await waitFor(() => {
       const complexText = screen.getByTestId('complex-interpolation');
-      // Should contain the interpolated numbers
-      expect(complexText.textContent).toContain('5');
-      expect(complexText.textContent).toContain('10');
-      expect(complexText.textContent).toContain('50');
+      expect(complexText.textContent).toBe('5 sejre ud af 10 spil (50% sejrs rate)');
     });
-    
-    // Change language and verify interpolation still works
+
+    // Switch to English and verify interpolation works there too
     const toggleButton = screen.getByTestId('change-language');
     fireEvent.click(toggleButton);
-    
+
     await waitFor(() => {
       const complexText = screen.getByTestId('complex-interpolation');
-      // Should still contain the interpolated numbers
-      expect(complexText.textContent).toContain('5');
-      expect(complexText.textContent).toContain('10');
-      expect(complexText.textContent).toContain('50');
+      expect(complexText.textContent).toBe('5 wins out of 10 games (50% win rate)');
     });
   });
 });

@@ -6,6 +6,7 @@ import {
 } from '../utils/simpleAvatarUtils';
 
 describe('simpleAvatarUtils', () => {
+
   describe('getPlayerAvatarPath', () => {
     it('returns the ok.png path for a known player', () => {
       expect(getPlayerAvatarPath('Jonas')).toBe('/assets/jonas/ok.png');

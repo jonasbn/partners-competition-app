@@ -1,11 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { getTeamStatistics } from '../utils/dataUtils';
 import SimpleAvatarWithHover from './SimpleAvatarWithHover';
 import { getRankBasedAvatar } from '../utils/simpleAvatarUtils';
 
 const SimpleTeamStatistics = ({ gameData }) => {
-  console.log('SimpleTeamStatistics rendering...');
   const { t } = useTranslation();
 
   let teamStats = [];
@@ -13,7 +13,6 @@ const SimpleTeamStatistics = ({ gameData }) => {
 
   try {
     teamStats = getTeamStatistics(gameData) || [];
-    console.log('Team statistics loaded:', teamStats.length, 'teams');
   } catch (error) {
     console.error('Error loading team statistics:', error);
     dataError = error.message;
@@ -72,6 +71,7 @@ const SimpleTeamStatistics = ({ gameData }) => {
       <div className="card-body">
         <div className="table-responsive">
           <table className="table table-striped table-hover">
+            <caption className="visually-hidden">{t('teamStats.title')}</caption>
             <thead className="table-dark">
               <tr>
                 <th>{t('teamStats.rank')}</th>
@@ -175,6 +175,10 @@ const SimpleTeamStatistics = ({ gameData }) => {
       </div>
     </div>
   );
+};
+
+SimpleTeamStatistics.propTypes = {
+  gameData: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default SimpleTeamStatistics;

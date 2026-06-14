@@ -1,11 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { getLeaderboardData } from '../utils/dataUtils';
 import SimpleAvatarWithHover from './SimpleAvatarWithHover';
 import { getRankBasedAvatar } from '../utils/simpleAvatarUtils';
 
 const SimplePlayerPerformance = ({ gameData }) => {
-  console.log('SimplePlayerPerformance rendering...');
   const { t } = useTranslation();
 
   let players = [];
@@ -14,8 +14,6 @@ const SimplePlayerPerformance = ({ gameData }) => {
   try {
     const leaderboardData = getLeaderboardData(gameData);
     players = leaderboardData?.players || [];
-    console.log('Player performance data loaded:', players.length, 'players');
-    console.log('Sample player data:', players[0]); // Debug: show first player's data
   } catch (error) {
     console.error('Error loading player performance data:', error);
     dataError = error.message;
@@ -110,9 +108,13 @@ const SimplePlayerPerformance = ({ gameData }) => {
                     </div>
 
                     <div className="progress mb-3">
-                      <div 
+                      <div
                         className={`progress-bar bg-${performance.class}`}
+                        role="progressbar"
                         style={{ width: `${progressWidth}%` }}
+                        aria-valuenow={progressWidth}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
                       />
                     </div>
 
@@ -136,9 +138,13 @@ const SimplePlayerPerformance = ({ gameData }) => {
                     {/* Enhanced Win Rate Analysis */}
                     <div className="mb-3">
                       <div className="progress" style={{height: '6px'}}>
-                        <div 
+                        <div
                           className={`progress-bar ${winRate >= 60 ? 'bg-success' : winRate >= 40 ? 'bg-warning' : 'bg-danger'}`}
+                          role="progressbar"
                           style={{ width: `${winRate}%` }}
+                          aria-valuenow={winRate}
+                          aria-valuemin={0}
+                          aria-valuemax={100}
                         />
                       </div>
                       <small className="text-muted">
@@ -232,6 +238,10 @@ const SimplePlayerPerformance = ({ gameData }) => {
       </div>
     </div>
   );
+};
+
+SimplePlayerPerformance.propTypes = {
+  gameData: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default SimplePlayerPerformance;

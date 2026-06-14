@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withTranslation } from 'react-i18next';
 import Logger from '../utils/logger';
 
@@ -49,5 +50,11 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
+
+ErrorBoundary.propTypes = {
+  name: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  t: PropTypes.func,
+};
 
 export default withTranslation()(ErrorBoundary);

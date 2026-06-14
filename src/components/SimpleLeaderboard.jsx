@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { getLeaderboardData } from '../utils/dataUtils';
 import SimpleAvatarWithHover from './SimpleAvatarWithHover';
@@ -7,7 +8,6 @@ import { getRankBasedAvatar } from '../utils/simpleAvatarUtils';
 // Simple Leaderboard with i18n support
 const SimpleLeaderboard = ({ gameData }) => {
   const { t } = useTranslation();
-  console.log('SimpleLeaderboard rendering...');
 
   let players = [];
   let leaderboardData = null;
@@ -15,11 +15,9 @@ const SimpleLeaderboard = ({ gameData }) => {
 
   try {
     leaderboardData = getLeaderboardData(gameData);
-    console.log('Leaderboard data received:', leaderboardData);
 
     if (leaderboardData && leaderboardData.players && Array.isArray(leaderboardData.players)) {
       players = leaderboardData.players;
-      console.log('Players loaded:', players.length);
     } else {
       throw new Error('Invalid leaderboard data structure');
     }
@@ -82,6 +80,7 @@ const SimpleLeaderboard = ({ gameData }) => {
       <div className="card-body">
         <div className="table-responsive">
           <table className="table table-striped table-hover">
+            <caption className="visually-hidden">{t('leaderboard.title')}</caption>
             <thead className="table-dark">
               <tr>
                 <th>{t('leaderboard.rank')}</th>
@@ -113,7 +112,6 @@ const SimpleLeaderboard = ({ gameData }) => {
                           try {
                             const currentRank = index + 1; // Convert 0-based index to 1-based rank
                             const avatarSrc = getRankBasedAvatar(name, currentRank);
-                            console.log('Avatar for', name, 'at rank', currentRank, ':', avatarSrc);
                             return (
                               <SimpleAvatarWithHover
                                 playerName={name}
@@ -178,6 +176,10 @@ const SimpleLeaderboard = ({ gameData }) => {
       </div>
     </div>
   );
+};
+
+SimpleLeaderboard.propTypes = {
+  gameData: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default SimpleLeaderboard;

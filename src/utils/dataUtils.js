@@ -1,6 +1,15 @@
 import gamesData2025 from '../data/games.json';
 import gamesData2026 from '../data/games_2026.json';
 
+export const PLAYERS = [
+  { id: 1, name: 'Jonas' },
+  { id: 2, name: 'Torben' },
+  { id: 3, name: 'Gitte' },
+  { id: 4, name: 'Anette' },
+  { id: 5, name: 'Lotte' },
+  { id: 6, name: 'Peter' },
+];
+
 const GAMES_DATA_BY_YEAR = {
   2025: gamesData2025,
   2026: gamesData2026
@@ -11,14 +20,7 @@ export const getGamesDataForYear = (year) => GAMES_DATA_BY_YEAR[year] ?? [];
 // Function to process the games data and calculate leaderboard
 export const processGamesData = (gameData = gamesData2025) => {
   // Initialize players with their data
-  const players = [
-    { id: 1, name: 'Jonas', cumulativeScore: 0, games: [] },
-    { id: 2, name: 'Torben', cumulativeScore: 0, games: [] },
-    { id: 3, name: 'Gitte', cumulativeScore: 0, games: [] },
-    { id: 4, name: 'Anette', cumulativeScore: 0, games: [] },
-    { id: 5, name: 'Lotte', cumulativeScore: 0, games: [] },
-    { id: 6, name: 'Peter', cumulativeScore: 0, games: [] }
-  ];
+  const players = PLAYERS.map(p => ({ ...p, cumulativeScore: 0, games: [] }));
 
   // Process each game
   const processedGames = gameData.map(game => {
@@ -159,7 +161,7 @@ export const getTeamStatistics = (gameData) => {
 
 // Calculate team combination statistics - shows how many times each possible team combination has played
 export const getTeamCombinationStatistics = (gameData) => {
-  const allPlayers = ['Jonas', 'Torben', 'Gitte', 'Anette', 'Lotte', 'Peter'];
+  const allPlayers = PLAYERS.map(p => p.name);
   const processedGames = processGamesData(gameData).games;
   
   // Generate all possible team combinations (2 players each)
@@ -211,6 +213,7 @@ export const getTeamCombinationStatistics = (gameData) => {
 
 // Export as a single default object
 const dataUtils = {
+  PLAYERS,
   getLeaderboardData,
   getGames,
   getPlayerById,

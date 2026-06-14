@@ -4,8 +4,7 @@ import { ThemeContext } from '../utils/ThemeContext';
 
 const SimpleThemeToggle = () => {
   const { t } = useTranslation();
-  console.log('SimpleThemeToggle rendering...');
-  
+
   const contextValue = React.useContext(ThemeContext);
   
   if (!contextValue) {
@@ -17,8 +16,6 @@ const SimpleThemeToggle = () => {
   
   const handleToggleTheme = () => {
     try {
-      const newTheme = theme === 'light' ? 'dark' : 'light';
-      console.log('Theme toggle clicked - switching to:', newTheme);
       toggleTheme();
     } catch (error) {
       console.error('Error toggling theme:', error);

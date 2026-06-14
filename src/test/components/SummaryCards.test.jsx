@@ -6,17 +6,17 @@ import SimpleSummaryCards from '../../components/SimpleSummaryCards';
 
 // Mock the data utils
 vi.mock('../../utils/dataUtils', () => ({
-  getLeaderboardData: () => ({
+  processGamesData: () => ({
     players: [
       { id: 1, name: 'Jonas', cumulativeScore: 15 },
       { id: 2, name: 'Torben', cumulativeScore: 12 },
       { id: 3, name: 'Gitte', cumulativeScore: 10 }
+    ],
+    games: [
+      { gameId: 1, gameDate: '2024-01-15', teams: [] },
+      { gameId: 2, gameDate: '2024-01-22', teams: [] }
     ]
   }),
-  getGames: () => [
-    { gameId: 1, gameDate: '2024-01-15', teams: [] },
-    { gameId: 2, gameDate: '2024-01-22', teams: [] }
-  ],
   getTeamStatistics: () => [
     { players: ['Jonas', 'Torben'], wins: 2, gamesPlayed: 3, winRate: 66.67 },
     { players: ['Gitte', 'Anette'], wins: 1, gamesPlayed: 2, winRate: 50.0 }
