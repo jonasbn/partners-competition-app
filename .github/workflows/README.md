@@ -8,7 +8,7 @@ This repository contains three GitHub Actions workflows to ensure code quality a
 
 **Comprehensive CI pipeline with multiple jobs**
 
-- **Test Matrix**: Tests on Node.js 18.x, 20.x, and 22.x
+- **Test Matrix**: Tests on Node.js 22.x and 24.x
 - **Security Auditing**: Runs `npm audit` to check for vulnerabilities
 - **Performance Testing**: Lighthouse CI integration (when configured)
 - **Code Coverage**: Codecov integration for coverage reporting
@@ -23,7 +23,7 @@ This repository contains three GitHub Actions workflows to ensure code quality a
 
 - **Core Testing**: Runs the complete Vitest test suite (`npm run test:run`)
 - **Build Verification**: Ensures the app builds successfully
-- **Multi-Node Testing**: Tests across Node.js versions 18.x, 20.x, 22.x
+- **Multi-Node Testing**: Tests across Node.js versions 22.x and 24.x
 - **Artifact Validation**: Verifies build output integrity
 
 **Triggers**: Push to `main`/`develop`, Pull requests to `main`
@@ -101,17 +101,17 @@ Add these to your README.md to show CI status:
 
 ### Node.js Requirements
 
-- **Minimum**: Node.js 16.0.0
-- **Tested On**: Node.js 18.x, 20.x, 22.x
-- **Package Manager**: npm 8.0.0+
+- **Minimum**: Node.js 22.0.0
+- **Tested On**: Node.js 22.x, 24.x
+- **Package Manager**: npm 10.0.0+
 
 ## 📋 Workflow Status
 
 | Workflow     | Purpose           | Node Versions | Coverage | Artifacts |
 |--------------|-------------------|---------------|----------|-----------|
-| CI           | Complete pipeline | 18, 20, 22    | ✅        | ✅        |
-| Tests        | Core testing      | 18, 20, 22    | ❌        | ❌        |
-| Code Quality | Quality analysis  | 20            | ✅        | ✅        |
+| CI           | Complete pipeline | 22, 24        | ✅        | ✅        |
+| Tests        | Core testing      | 22, 24        | ❌        | ❌        |
+| Code Quality | Quality analysis  | 22            | ✅        | ✅        |
 
 ## 🏃‍♂️ Local Testing
 
