@@ -568,5 +568,35 @@
         "score": 1
       }
     ]
+  },
+  {
+    "gameId": 20,
+    "gameDate": "2026-06-27",
+    "players": [
+      {
+        "name": "Gitte",
+        "score": 3
+      },
+      {
+        "name": "Jonas",
+        "score": 3
+      },
+      {
+        "name": "Torben",
+        "score": 2
+      },
+      {
+        "name": "Anette",
+        "score": 2
+      },
+      {
+        "name": "Peter",
+        "score": 1
+      },
+      {
+        "name": "Lotte",
+        "score": 1
+      }
+    ]
   }
 ]
