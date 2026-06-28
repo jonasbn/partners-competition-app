@@ -49,6 +49,13 @@ npx vitest run src/test/components/SimpleLeaderboard.test.jsx
 - Scoring: 1st place = 3 pts, 2nd = 2 pts, 3rd = 1 pt
 - Teams are resolved from `games.json` by grouping players with the same score per game
 
+## Game Data Files
+
+Game results are split by year — **always add new games to the correct file**:
+
+- `src/data/games.json` — 2025 season (gameIds 1–18, do not add 2026 entries here)
+- `src/data/games_2026.json` — 2026 season (gameIds use their own sequence starting at 1)
+
 ## Avatar System
 
 Avatars live in `public/avatars/`. Two contexts, each with variations:
