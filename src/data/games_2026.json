@@ -46,5 +46,29 @@
       { "name": "Jonas", "score": 1 },
       { "name": "Anette", "score": 1 }
     ]
+  },
+  {
+    "gameId": 5,
+    "gameDate": "2026-06-27",
+    "players": [
+      { "name": "Lotte", "score": 3 },
+      { "name": "Anette", "score": 3 },
+      { "name": "Gitte", "score": 2 },
+      { "name": "Peter", "score": 2 },
+      { "name": "Torben", "score": 1 },
+      { "name": "Jonas", "score": 1 }
+    ]
+  },
+  {
+    "gameId": 6,
+    "gameDate": "2026-06-27",
+    "players": [
+      { "name": "Gitte", "score": 3 },
+      { "name": "Jonas", "score": 3 },
+      { "name": "Torben", "score": 2 },
+      { "name": "Anette", "score": 2 },
+      { "name": "Peter", "score": 1 },
+      { "name": "Lotte", "score": 1 }
+    ]
   }
 ]
