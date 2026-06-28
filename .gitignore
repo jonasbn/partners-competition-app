@@ -26,3 +26,4 @@ yarn-error.log*
 app.log
 .nvmrc
 .claude
+.mcp.json
