@@ -14,9 +14,13 @@ updates:
       default-days: 7
     groups:
       major-updates:
+        patterns:
+          - "*"
         update-types:
           - "major"
       minor-and-patch:
+        patterns:
+          - "*"
         update-types:
           - "minor"
           - "patch"
