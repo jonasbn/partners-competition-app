@@ -10,7 +10,17 @@ updates:
     # Check for updates once a week
     schedule:
       interval: "weekly"
-  
+    cooldown:
+      default-days: 7
+    groups:
+      major-updates:
+        update-types:
+          - "major"
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
+
   # Regular npm version updates: grouped into fewer PRs on a monthly schedule
   # Note: cooldown applies to version updates only
   - package-ecosystem: "npm"
@@ -20,9 +30,13 @@ updates:
     cooldown:
       default-days: 4
     groups:
-      # Regular updates: bundle all version bumps into a single grouped PR
+      # Regular updates: bundle minor/patch version bumps into a single grouped PR
+      # Major bumps arrive as individual PRs (no group catches them)
       npm-regular-updates:
         applies-to: version-updates
         patterns:
           - "*"
+        update-types:
+          - "minor"
+          - "patch"
 
