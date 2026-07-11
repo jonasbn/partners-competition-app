@@ -371,6 +371,43 @@ export default {
       "totalPlayers": "Antal spillere",
       "totalGames": "Samlede spil registreret",
       "avatarLegend": "Avatar Forklaring"
+    },
+    "playerPerformance": {
+      "title": "Turnering Spillerpræstation",
+      "error": "Spillerpræstation Fejl",
+      "noData": "Ingen spillerdata tilgængelig",
+      "playGames": "Spil nogle spil for at se spillerpræstation her!",
+      "totalPoints": "Samlede Point",
+      "games": "Spil",
+      "avgPerGame": "Gns/Spil",
+      "winRate": "Sejrsprocent",
+      "performanceLevels": {
+        "excellent": "Fremragende",
+        "good": "God",
+        "average": "Gennemsnitlig",
+        "needsWork": "Kan Forbedres"
+      },
+      "winRateMessages": {
+        "excellent": "🏆 Fremragende sejrsprocent!",
+        "good": "👍 God præstation",
+        "improvement": "💪 Plads til forbedring",
+        "practice": "📈 Bliv ved med at øve!"
+      },
+      "insights": {
+        "title": "📊 Præstationsindsigt",
+        "excellentDesc": "Toppræsterer",
+        "goodDesc": "Over gennemsnittet",
+        "averageDesc": "Midterste felt",
+        "needsWorkDesc": "Plads til forbedring",
+        "winAnalysisTitle": "🏆 Sejrsprocent Analyse",
+        "championLevel": "🏆 Mester niveau",
+        "solidPerformer": "👍 Solid præsterer",
+        "developing": "💪 Under udvikling",
+        "learningPhase": "📈 Læringsfase",
+        "averageWinRate": "Gennemsnitlig Sejrsprocent",
+        "bestWinRate": "Bedste Sejrsprocent",
+        "highPerformers": "Højtpræsterende (≥60%)"
+      }
     }
   }
 };

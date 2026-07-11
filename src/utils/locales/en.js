@@ -371,6 +371,43 @@ export default {
       "totalPlayers": "Total players",
       "totalGames": "Total games tracked",
       "avatarLegend": "Avatar Legend"
+    },
+    "playerPerformance": {
+      "title": "Tournament Player Performance",
+      "error": "Player Performance Error",
+      "noData": "No player data available",
+      "playGames": "Play some games to see player performance here!",
+      "totalPoints": "Total Points",
+      "games": "Games",
+      "avgPerGame": "Avg/Game",
+      "winRate": "Win Rate",
+      "performanceLevels": {
+        "excellent": "Excellent",
+        "good": "Good",
+        "average": "Average",
+        "needsWork": "Needs Work"
+      },
+      "winRateMessages": {
+        "excellent": "🏆 Excellent win rate!",
+        "good": "👍 Good performance",
+        "improvement": "💪 Room for improvement",
+        "practice": "📈 Keep practicing!"
+      },
+      "insights": {
+        "title": "📊 Performance Insights",
+        "excellentDesc": "Top performer",
+        "goodDesc": "Above average",
+        "averageDesc": "Middle pack",
+        "needsWorkDesc": "Room to improve",
+        "winAnalysisTitle": "🏆 Win Rate Analysis",
+        "championLevel": "🏆 Champion level",
+        "solidPerformer": "👍 Solid performer",
+        "developing": "💪 Developing",
+        "learningPhase": "📈 Learning phase",
+        "averageWinRate": "Average Win Rate",
+        "bestWinRate": "Best Win Rate",
+        "highPerformers": "High Performers (≥60%)"
+      }
     }
   }
 };
