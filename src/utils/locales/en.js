@@ -459,6 +459,25 @@ export default {
       "totalGamesTracked": "Total games tracked",
       "ranking": "Ranking",
       "rankingMethod": "By total wins, then win rate"
+    },
+    "gamesList": {
+      "title": "Tournament Games History",
+      "winner": "Winner",
+      "points": {
+        "win": "1st Place",
+        "loss": "2nd Place",
+        "other": "points"
+      },
+      "gameNumber": "Game {{number}}",
+      "noGames": "No games found",
+      "errorLoading": "Error loading",
+      "startPlaying": "Start playing some tournament games to see the history here!",
+      "totalGames": "Total Games",
+      "latest": "Latest",
+      "place": "Place",
+      "showing": "Showing {{count}} games",
+      "unknownDate": "Unknown Date",
+      "invalidDate": "Invalid Date"
     }
   }
 };

@@ -459,6 +459,25 @@ export default {
       "totalGamesTracked": "Samlede spil registreret",
       "ranking": "Rangering",
       "rankingMethod": "Efter samlede sejre, derefter sejrs rate"
+    },
+    "gamesList": {
+      "title": "Turnering Spil Historie",
+      "winner": "Vinder",
+      "points": {
+        "win": "1. Plads",
+        "loss": "2. Plads",
+        "other": "point"
+      },
+      "gameNumber": "Spil {{number}}",
+      "noGames": "Ingen spil fundet",
+      "errorLoading": "Fejl ved indlæsning",
+      "startPlaying": "Start med at spille nogle turneringsspil for at se historikken her!",
+      "totalGames": "Samlede Spil",
+      "latest": "Seneste",
+      "place": "Plads",
+      "showing": "Viser {{count}} spil",
+      "unknownDate": "Ukendt Dato",
+      "invalidDate": "Ugyldig Dato"
     }
   }
 };
