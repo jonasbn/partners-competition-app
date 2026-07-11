@@ -408,6 +408,40 @@ export default {
         "bestWinRate": "Bedste Sejrsprocent",
         "highPerformers": "Højtpræsterende (≥60%)"
       }
+    },
+    "gamesCalendar": {
+      "title": "Turnering Kalender",
+      "timelineTitle": "Aktivitets Tidslinje",
+      "errorLoading": "Fejl ved indlæsning",
+      "noGames": "Ingen spil fundet",
+      "startPlaying": "Start med at spille nogle turneringsspil for at se kalenderen her!",
+      "stats": {
+        "totalGames": "Samlede Spil",
+        "activeDays": "Aktive Dage",
+        "avgPerDay": "Gns pr. Dag",
+        "maxPerDay": "Max pr. Dag"
+      },
+      "timeline": {
+        "title": "Aktivitets Tidslinje",
+        "game": "spil",
+        "games": "spil"
+      },
+      "levels": {
+        "title": "Aktivitets Niveauer",
+        "low": "Lav",
+        "lowDesc": "1-2 spil pr. dag",
+        "medium": "Gennemsnitligt",
+        "mediumDesc": "3-4 spil pr. dag",
+        "high": "Høj",
+        "highDesc": "5+ spil pr. dag"
+      },
+      "recent": {
+        "title": "Seneste Aktivitet",
+        "date": "Dato",
+        "games": "Spil",
+        "teams": "Hold",
+        "teamsPlayed": "hold spillede"
+      }
     }
   }
 };

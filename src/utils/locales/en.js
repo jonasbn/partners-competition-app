@@ -408,6 +408,40 @@ export default {
         "bestWinRate": "Best Win Rate",
         "highPerformers": "High Performers (≥60%)"
       }
+    },
+    "gamesCalendar": {
+      "title": "Tournament Calendar",
+      "timelineTitle": "Activity Timeline",
+      "errorLoading": "Error loading",
+      "noGames": "No games found",
+      "startPlaying": "Start playing some tournament games to see the calendar here!",
+      "stats": {
+        "totalGames": "Total Games",
+        "activeDays": "Active Days",
+        "avgPerDay": "Avg per Day",
+        "maxPerDay": "Max per Day"
+      },
+      "timeline": {
+        "title": "Activity Timeline",
+        "game": "game",
+        "games": "games"
+      },
+      "levels": {
+        "title": "Activity Levels",
+        "low": "Low",
+        "lowDesc": "1-2 games per day",
+        "medium": "Medium",
+        "mediumDesc": "3-4 games per day",
+        "high": "High",
+        "highDesc": "5+ games per day"
+      },
+      "recent": {
+        "title": "Recent Activity",
+        "date": "Date",
+        "games": "Games",
+        "teams": "Teams",
+        "teamsPlayed": "teams played"
+      }
     }
   }
 };
