@@ -1,7 +1,8 @@
 // English translations
 export default {
   "common": {
-    "unknownPlayer": "Unknown Player"
+    "unknownPlayer": "Unknown Player",
+    "error": "Error"
   },
   "app": {
     "title": "Partners Competition App",
@@ -442,6 +443,22 @@ export default {
         "teams": "Teams",
         "teamsPlayed": "teams played"
       }
+    },
+    "teamStats": {
+      "title": "Tournament Team Statistics",
+      "noData": "No team data available",
+      "playGames": "Play some tournament games to see team statistics",
+      "rank": "Rank",
+      "teamName": "Team Name",
+      "gamesPlayed": "Games Played",
+      "wins": "Wins",
+      "losses": "Losses",
+      "winRate": "Win Rate",
+      "totalPoints": "Total Points",
+      "totalTeams": "Total teams",
+      "totalGamesTracked": "Total games tracked",
+      "ranking": "Ranking",
+      "rankingMethod": "By total wins, then win rate"
     }
   }
 };

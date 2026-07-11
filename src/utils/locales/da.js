@@ -1,7 +1,8 @@
 // Danish translations
 export default {
   "common": {
-    "unknownPlayer": "Ukendt Spiller"
+    "unknownPlayer": "Ukendt Spiller",
+    "error": "Fejl"
   },
   "app": {
     "title": "Partners Konkurrence App",
@@ -442,6 +443,22 @@ export default {
         "teams": "Hold",
         "teamsPlayed": "hold spillede"
       }
+    },
+    "teamStats": {
+      "title": "Turnering Hold Statistikker",
+      "noData": "Ingen hold data tilgængelig",
+      "playGames": "Spil nogle turneringsspil for at se hold statistikker",
+      "rank": "Placering",
+      "teamName": "Hold Navn",
+      "gamesPlayed": "Spil Spillet",
+      "wins": "Sejre",
+      "losses": "Nederlag",
+      "winRate": "Sejrs Rate",
+      "totalPoints": "Samlede Point",
+      "totalTeams": "Samlede hold",
+      "totalGamesTracked": "Samlede spil registreret",
+      "ranking": "Rangering",
+      "rankingMethod": "Efter samlede sejre, derefter sejrs rate"
     }
   }
 };
