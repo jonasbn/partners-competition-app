@@ -15,6 +15,11 @@ export default {
   "yearSelector": {
     "label": "Vælg År"
   },
+  "nav": {
+    "label": "Vælg Visning",
+    "season": "Sæson",
+    "tournament": "Sommerturnering"
+  },
   "theme": {
     "dark": "Mørk",
     "light": "Lys",
@@ -314,6 +319,12 @@ export default {
     },
     "teamCombinations": {
       "title": "Hold Kombinationer"
+    }
+  },
+  "tournament": {
+    "comingSoon": {
+      "title": "Sommerturnering kommer snart",
+      "message": "Turneringsvisningen er under opbygning."
     }
   }
 };

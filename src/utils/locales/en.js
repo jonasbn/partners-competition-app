@@ -15,6 +15,11 @@ export default {
   "yearSelector": {
     "label": "Select Year"
   },
+  "nav": {
+    "label": "Select View",
+    "season": "Season",
+    "tournament": "Summer Tournament"
+  },
   "theme": {
     "dark": "Dark",
     "light": "Light",
@@ -314,6 +319,12 @@ export default {
     },
     "teamCombinations": {
       "title": "Team Combinations"
+    }
+  },
+  "tournament": {
+    "comingSoon": {
+      "title": "Summer Tournament coming soon",
+      "message": "The tournament view is under construction."
     }
   }
 };

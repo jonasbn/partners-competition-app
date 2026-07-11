@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import { ThemeProvider } from '../../utils/ThemeContext';
+import { ViewProvider } from '../../utils/ViewContext';
 import { YearProvider } from '../../utils/YearContext';
 import '../../utils/i18n';
 import App from '../../App';
@@ -20,9 +21,11 @@ vi.unmock('../../utils/dataUtils');
 const renderApp = () => {
   return render(
     <ThemeProvider>
-      <YearProvider>
-        <App />
-      </YearProvider>
+      <ViewProvider>
+        <YearProvider>
+          <App />
+        </YearProvider>
+      </ViewProvider>
     </ThemeProvider>
   );
 };

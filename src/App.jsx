@@ -10,15 +10,18 @@ import SimpleGamesCalendar from './components/SimpleGamesCalendar';
 import TournamentChampion2025 from './components/TournamentChampion2025';
 import LanguageSelector from './components/LanguageSelector';
 import YearSelector from './components/YearSelector';
+import ViewSelector from './components/ViewSelector';
 import ErrorBoundary from './components/ErrorBoundary';
 import { useTranslation } from 'react-i18next';
 import Logger from './utils/logger';
 import { YearContext } from './utils/YearContext';
+import { ViewContext, VIEWS } from './utils/ViewContext';
 import { getGamesDataForYear } from './utils/dataUtils';
 
 function App() {
   const { t } = useTranslation();
   const { selectedYear } = useContext(YearContext);
+  const { activeView } = useContext(ViewContext);
   const currentYearData = getGamesDataForYear(selectedYear);
 
   // Log application startup and lifecycle events
@@ -70,9 +73,14 @@ function App() {
         <div className="container">
           <span className="navbar-brand">{t('app.title')}</span>
           <div className="d-flex">
-            <ErrorBoundary name="YearSelector">
-              <YearSelector />
+            <ErrorBoundary name="ViewSelector">
+              <ViewSelector />
             </ErrorBoundary>
+            {activeView === VIEWS.SEASON && (
+              <ErrorBoundary name="YearSelector">
+                <YearSelector />
+              </ErrorBoundary>
+            )}
             <ErrorBoundary name="LanguageSelector">
               <LanguageSelector />
             </ErrorBoundary>
@@ -84,6 +92,13 @@ function App() {
       </nav>
       
       <div className="container">
+        {activeView === VIEWS.TOURNAMENT ? (
+          <div className="alert alert-info">
+            <h4>{t('tournament.comingSoon.title')}</h4>
+            <p>{t('tournament.comingSoon.message')}</p>
+          </div>
+        ) : (
+        <>
         {/* Tournament 2025 Final Results — only shown when 2025 is selected */}
         {selectedYear === 2025 && (
           <ErrorBoundary name="TournamentChampion2025">
@@ -140,6 +155,8 @@ function App() {
             </ErrorBoundary>
           </div>
         </div>
+        </>
+        )}
       </div>
       
       <footer className="bg-light text-center text-muted py-3 mt-4">

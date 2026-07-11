@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
 import { ThemeProvider } from './utils/ThemeContext';
+import { ViewProvider } from './utils/ViewContext';
 import { YearProvider } from './utils/YearContext';
 // Import i18n configuration
 import './utils/i18n';
@@ -23,9 +24,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ThemeProvider>
-      <YearProvider>
-        <App />
-      </YearProvider>
+      <ViewProvider>
+        <YearProvider>
+          <App />
+        </YearProvider>
+      </ViewProvider>
     </ThemeProvider>
   </React.StrictMode>
 );
