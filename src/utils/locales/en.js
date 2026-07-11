@@ -323,10 +323,6 @@ export default {
     }
   },
   "tournament": {
-    "comingSoon": {
-      "title": "Summer Tournament coming soon",
-      "message": "The tournament view is under construction."
-    },
     "summaryCards": {
       "error": "Error loading statistics",
       "currentLeader": {

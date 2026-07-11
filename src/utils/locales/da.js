@@ -323,10 +323,6 @@ export default {
     }
   },
   "tournament": {
-    "comingSoon": {
-      "title": "Sommerturnering kommer snart",
-      "message": "Turneringsvisningen er under opbygning."
-    },
     "summaryCards": {
       "error": "Fejl ved indlæsning af statistikker",
       "currentLeader": {

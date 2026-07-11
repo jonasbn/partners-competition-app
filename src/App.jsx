@@ -8,6 +8,12 @@ import SimpleTeamStatistics from './components/SimpleTeamStatistics';
 import SimplePlayerPerformance from './components/SimplePlayerPerformance';
 import SimpleGamesCalendar from './components/SimpleGamesCalendar';
 import TournamentChampion2025 from './components/TournamentChampion2025';
+import TournamentSummaryCards from './components/TournamentSummaryCards';
+import TournamentLeaderboard from './components/TournamentLeaderboard';
+import TournamentPlayerPerformance from './components/TournamentPlayerPerformance';
+import TournamentGamesCalendar from './components/TournamentGamesCalendar';
+import TournamentTeamStatistics from './components/TournamentTeamStatistics';
+import TournamentGamesList from './components/TournamentGamesList';
 import LanguageSelector from './components/LanguageSelector';
 import YearSelector from './components/YearSelector';
 import ViewSelector from './components/ViewSelector';
@@ -17,6 +23,7 @@ import Logger from './utils/logger';
 import { YearContext } from './utils/YearContext';
 import { ViewContext, VIEWS } from './utils/ViewContext';
 import { getGamesDataForYear } from './utils/dataUtils';
+import tournamentData2026 from './data/tournament_summer_2026.json';
 
 function App() {
   const { t } = useTranslation();
@@ -93,10 +100,51 @@ function App() {
       
       <div className="container">
         {activeView === VIEWS.TOURNAMENT ? (
-          <div className="alert alert-info">
-            <h4>{t('tournament.comingSoon.title')}</h4>
-            <p>{t('tournament.comingSoon.message')}</p>
-          </div>
+          <>
+            <ErrorBoundary name="TournamentSummaryCards">
+              <TournamentSummaryCards gameData={tournamentData2026} />
+            </ErrorBoundary>
+
+            <div className="row">
+              <div className="col-md-12">
+                <ErrorBoundary name="TournamentLeaderboard">
+                  <TournamentLeaderboard gameData={tournamentData2026} />
+                </ErrorBoundary>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col-md-12">
+                <ErrorBoundary name="TournamentPlayerPerformance">
+                  <TournamentPlayerPerformance gameData={tournamentData2026} />
+                </ErrorBoundary>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col-md-12">
+                <ErrorBoundary name="TournamentGamesCalendar">
+                  <TournamentGamesCalendar gameData={tournamentData2026} />
+                </ErrorBoundary>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col-md-12">
+                <ErrorBoundary name="TournamentTeamStatistics">
+                  <TournamentTeamStatistics gameData={tournamentData2026} />
+                </ErrorBoundary>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col-md-12">
+                <ErrorBoundary name="TournamentGamesList">
+                  <TournamentGamesList gameData={tournamentData2026} />
+                </ErrorBoundary>
+              </div>
+            </div>
+          </>
         ) : (
         <>
         {/* Tournament 2025 Final Results — only shown when 2025 is selected */}
