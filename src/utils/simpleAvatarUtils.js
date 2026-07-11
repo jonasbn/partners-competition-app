@@ -28,11 +28,13 @@ export const getPlayerAvatarPath = (playerName) => {
     // Map player names to their avatar directories
     const playerAvatarMap = {
       'jonas': 'jonas',
-      'torben': 'torben', 
+      'torben': 'torben',
       'gitte': 'gitte',
       'anette': 'anette',
       'lotte': 'lotte',
-      'peter': 'peter'
+      'peter': 'peter',
+      'malene': 'malene',
+      'kurt': 'kurt'
     };
     
     const avatarDir = playerAvatarMap[normalizedName];
@@ -61,11 +63,13 @@ export const getPlayerAvatarOptions = (playerName) => {
     const normalizedName = playerName.toLowerCase().trim();
     const playerAvatarMap = {
       'jonas': 'jonas',
-      'torben': 'torben', 
+      'torben': 'torben',
       'gitte': 'gitte',
       'anette': 'anette',
       'lotte': 'lotte',
-      'peter': 'peter'
+      'peter': 'peter',
+      'malene': 'malene',
+      'kurt': 'kurt'
     };
     
     const avatarDir = playerAvatarMap[normalizedName];
