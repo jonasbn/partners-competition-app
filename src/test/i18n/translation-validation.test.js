@@ -78,6 +78,7 @@ describe('Translation Files Validation', () => {
         'charts.playerStats.axisLabels.score', // "Score" is the same in both languages
         'gamesList.points.one', // "point" is the same
         'gamesList.points.other', // "point" is the same in Danish
+        'tournament.leaderboard.score', // "Score" is the same in both languages, as with the season leaderboard
       ];
 
       const identicalTranslations = englishKeys.filter(key => {
