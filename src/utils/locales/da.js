@@ -325,6 +325,37 @@ export default {
     "comingSoon": {
       "title": "Sommerturnering kommer snart",
       "message": "Turneringsvisningen er under opbygning."
+    },
+    "summaryCards": {
+      "error": "Fejl ved indlæsning af statistikker",
+      "currentLeader": {
+        "title": "Nuværende Leder",
+        "totalPoints": "Samlede Point",
+        "ofMaxScore": "af max score",
+        "gamesPlayed": "spil spillet",
+        "winRate": "sejrs rate",
+        "noGames": "Ingen spil spillet endnu"
+      },
+      "gameStats": {
+        "title": "Spil Statistikker",
+        "totalGames": "Samlede Spil Spillet",
+        "players": "Spillere",
+        "totalTeams": "Samlede Hold",
+        "avgGamesPerPlayer": "{{avg}} gns spil pr. spiller"
+      },
+      "bestTeam": {
+        "title": "Bedste Hold",
+        "wins": "Samlede Sejre",
+        "gamesPlayed": "spil spillet",
+        "winRate": "sejrs rate",
+        "noTeamData": "Ingen hold data tilgængelig"
+      },
+      "combinations": {
+        "title": "Hold Kombinationer",
+        "ofCombinations": "af {{total}} kombinationer",
+        "complete": "komplet",
+        "remaining": "{{count}} tilbage"
+      }
     }
   }
 };

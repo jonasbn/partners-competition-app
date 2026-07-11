@@ -325,6 +325,37 @@ export default {
     "comingSoon": {
       "title": "Summer Tournament coming soon",
       "message": "The tournament view is under construction."
+    },
+    "summaryCards": {
+      "error": "Error loading statistics",
+      "currentLeader": {
+        "title": "Current Leader",
+        "totalPoints": "Total Points",
+        "ofMaxScore": "of max score",
+        "gamesPlayed": "games played",
+        "winRate": "win rate",
+        "noGames": "No games played yet"
+      },
+      "gameStats": {
+        "title": "Game Statistics",
+        "totalGames": "Total Games Played",
+        "players": "Players",
+        "totalTeams": "Total Teams",
+        "avgGamesPerPlayer": "{{avg}} avg games per player"
+      },
+      "bestTeam": {
+        "title": "Best Team",
+        "wins": "Total Wins",
+        "gamesPlayed": "games played",
+        "winRate": "win rate",
+        "noTeamData": "No team data available"
+      },
+      "combinations": {
+        "title": "Team Combinations",
+        "ofCombinations": "of {{total}} combinations",
+        "complete": "complete",
+        "remaining": "{{count}} remaining"
+      }
     }
   }
 };
