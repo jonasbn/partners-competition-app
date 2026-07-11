@@ -2514,7 +2514,25 @@ describe('TournamentTeamStatistics', () => {
 Run: `npx vitest run src/test/components/TournamentTeamStatistics.test.jsx`
 Expected: FAIL — `Cannot find module '../../components/TournamentTeamStatistics'`
 
-- [ ] **Step 2: Add `tournament.teamStats` keys to the locale files**
+- [ ] **Step 2: Add `tournament.teamStats` keys to the locale files, and fix a pre-existing missing `common.error` key**
+
+`TournamentTeamStatistics` (Step 3 below) uses `t('common.error')` for its error-state label, mirroring `SimpleTeamStatistics`. Neither `da.js` nor `en.js` actually defines a `common.error` key today (only `common.unknownPlayer` exists) — this is a latent bug shared by the existing season component. Fix it for both by adding the key to the existing `"common"` block in `src/utils/locales/da.js`:
+
+```js
+  "common": {
+    "unknownPlayer": "Ukendt Spiller",
+    "error": "Fejl"
+  },
+```
+
+and in `src/utils/locales/en.js`:
+
+```js
+  "common": {
+    "unknownPlayer": "Unknown Player",
+    "error": "Error"
+  },
+```
 
 In `src/utils/locales/da.js`, inside the `"tournament"` object, add:
 
