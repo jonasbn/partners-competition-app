@@ -356,6 +356,21 @@ export default {
         "complete": "komplet",
         "remaining": "{{count}} tilbage"
       }
+    },
+    "leaderboard": {
+      "title": "Turnering Resultattavle",
+      "error": "Resultattavle Fejl",
+      "rank": "Placering",
+      "player": "Spiller",
+      "score": "Score",
+      "games": "Spil",
+      "avg": "Gns",
+      "winRate": "Sejrs Rate",
+      "noData": "Ingen Resultattavle Data",
+      "noPlayerData": "Ingen spillerdata tilgængelig.",
+      "totalPlayers": "Antal spillere",
+      "totalGames": "Samlede spil registreret",
+      "avatarLegend": "Avatar Forklaring"
     }
   }
 };

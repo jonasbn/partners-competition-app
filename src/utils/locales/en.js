@@ -356,6 +356,21 @@ export default {
         "complete": "complete",
         "remaining": "{{count}} remaining"
       }
+    },
+    "leaderboard": {
+      "title": "Tournament Leaderboard",
+      "error": "Leaderboard Error",
+      "rank": "Rank",
+      "player": "Player",
+      "score": "Score",
+      "games": "Games",
+      "avg": "Avg",
+      "winRate": "Win Rate",
+      "noData": "No Leaderboard Data",
+      "noPlayerData": "No player data available.",
+      "totalPlayers": "Total players",
+      "totalGames": "Total games tracked",
+      "avatarLegend": "Avatar Legend"
     }
   }
 };
