@@ -60,7 +60,7 @@ const TournamentSummaryCards = ({ gameData }) => {
 
   const completedCombinations = formedTeams.size;
   const completionPercentage = possibleTeamCombinations > 0 ?
-    Math.round((completedCombinations / possibleTeamCombinations) * 100) : 0;
+    Math.min(100, Math.max(0, Math.round((completedCombinations / possibleTeamCombinations) * 100))) : 0;
 
   return (
     <div className="row mb-4">
@@ -209,7 +209,7 @@ const TournamentSummaryCards = ({ gameData }) => {
 
             <div className="mt-3">
               <small className="text-muted">
-                {t('tournament.summaryCards.combinations.remaining', { count: possibleTeamCombinations - completedCombinations })}
+                {t('tournament.summaryCards.combinations.remaining', { count: Math.max(0, possibleTeamCombinations - completedCombinations) })}
               </small>
             </div>
           </div>
