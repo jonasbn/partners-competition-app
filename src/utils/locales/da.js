@@ -430,7 +430,7 @@ export default {
         "title": "Aktivitets Niveauer",
         "low": "Lav",
         "lowDesc": "1-2 spil pr. dag",
-        "medium": "Gennemsnitligt",
+        "medium": "Medium",
         "mediumDesc": "3-4 spil pr. dag",
         "high": "Høj",
         "highDesc": "5+ spil pr. dag"
