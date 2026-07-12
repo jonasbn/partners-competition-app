@@ -82,7 +82,7 @@ All components render on a single page in this order:
 
 ## Node Version
 
-Use Node v22 (see `.nvmrc`). CI tests against Node 20.x and 22.x.
+Use Node v24 (see `.nvmrc`). CI tests against Node 22.x and 24.x.
 
 ## Documentation
 
