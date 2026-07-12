@@ -106,7 +106,7 @@ const TournamentTeamStatistics = ({ gameData }) => {
                               <div key={`${player}-${playerIdx}`} className="d-flex align-items-center me-2">
                                 <SimpleAvatarWithHover
                                   playerName={player}
-                                  avatarSrc={getRankBasedAvatar(player, avatarRank)}
+                                  avatarSrc={getRankBasedAvatar(player, avatarRank, gamesPlayed)}
                                   size={24}
                                   className="me-1"
                                 />

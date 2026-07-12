@@ -96,7 +96,7 @@ const TournamentPlayerPerformance = ({ gameData }) => {
                     <div className="mb-3">
                       <SimpleAvatarWithHover
                         playerName={name}
-                        avatarSrc={getRankBasedAvatar(name, rank)}
+                        avatarSrc={getRankBasedAvatar(name, rank, gamesPlayed)}
                         size={50}
                       />
                     </div>

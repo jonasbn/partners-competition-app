@@ -76,7 +76,7 @@ const TournamentSummaryCards = ({ gameData }) => {
                 <div className="mb-3">
                   <SimpleAvatarWithHover
                     playerName={leadingPlayer.name}
-                    avatarSrc={getRankBasedAvatar(leadingPlayer.name, 1)}
+                    avatarSrc={getRankBasedAvatar(leadingPlayer.name, 1, leadingPlayer.gamesPlayed)}
                     size={60}
                   />
                 </div>
@@ -154,7 +154,7 @@ const TournamentSummaryCards = ({ gameData }) => {
                     <SimpleAvatarWithHover
                       key={idx}
                       playerName={player}
-                      avatarSrc={getRankBasedAvatar(player, 1)}
+                      avatarSrc={getRankBasedAvatar(player, 1, mostWinningTeam.gamesPlayed)}
                       size={30}
                       className={idx > 0 ? 'ms-1' : ''}
                     />

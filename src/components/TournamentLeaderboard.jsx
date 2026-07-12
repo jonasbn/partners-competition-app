@@ -108,7 +108,7 @@ const TournamentLeaderboard = ({ gameData }) => {
                         {(() => {
                           try {
                             const currentRank = index + 1;
-                            const avatarSrc = getRankBasedAvatar(name, currentRank);
+                            const avatarSrc = getRankBasedAvatar(name, currentRank, gamesPlayed);
                             return (
                               <SimpleAvatarWithHover
                                 playerName={name}

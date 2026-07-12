@@ -91,12 +91,20 @@ export const getPlayerAvatarOptions = (playerName) => {
   }
 };
 
-// Function to determine which avatar to show based on player ranking
-export const getRankBasedAvatar = (playerName, rank) => {
+// Function to determine which avatar to show based on player ranking.
+// gamesPlayed is optional: when explicitly 0, there's no real ranking yet
+// (e.g. a tournament that hasn't started), so every player gets the
+// neutral "ok" avatar regardless of rank position. Omitting it preserves
+// rank-only selection for existing call sites.
+export const getRankBasedAvatar = (playerName, rank, gamesPlayed) => {
   try {
     const options = getPlayerAvatarOptions(playerName);
     if (options.length === 0) {
       return null;
+    }
+
+    if (gamesPlayed === 0) {
+      return options.find(opt => opt.name === 'ok')?.path || options[0].path;
     }
 
     // Choose avatar based on ranking position
