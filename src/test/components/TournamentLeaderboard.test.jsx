@@ -28,6 +28,24 @@ describe('TournamentLeaderboard', () => {
     });
   });
 
+  describe('players exist but no games played yet (real tournamentUtils always returns all 8 players)', () => {
+    beforeEach(() => {
+      mockGetTournamentLeaderboardData.mockReturnValue({
+        players: [
+          { id: 1, name: 'Jonas', cumulativeScore: 0, gamesPlayed: 0, winRate: 0 },
+          { id: 2, name: 'Torben', cumulativeScore: 0, gamesPlayed: 0, winRate: 0 }
+        ],
+        games: []
+      });
+    });
+
+    it('shows "no game data available" instead of the player table', () => {
+      renderWithProviders(<TournamentLeaderboard gameData={[]} />);
+      expect(screen.getByText('Ingen spildata tilgængelig')).toBeInTheDocument();
+      expect(screen.queryByText('Jonas')).not.toBeInTheDocument();
+    });
+  });
+
   describe('happy path', () => {
     beforeEach(() => {
       mockGetTournamentLeaderboardData.mockReturnValue({

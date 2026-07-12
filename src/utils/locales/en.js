@@ -365,6 +365,7 @@ export default {
       "winRate": "Win Rate",
       "noData": "No Leaderboard Data",
       "noPlayerData": "No player data available.",
+      "noGameData": "No game data available",
       "totalPlayers": "Total players",
       "totalGames": "Total games tracked",
       "avatarLegend": "Avatar Legend"

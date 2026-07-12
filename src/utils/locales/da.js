@@ -365,6 +365,7 @@ export default {
       "winRate": "Sejrs Rate",
       "noData": "Ingen Resultattavle Data",
       "noPlayerData": "Ingen spillerdata tilgængelig.",
+      "noGameData": "Ingen spildata tilgængelig",
       "totalPlayers": "Antal spillere",
       "totalGames": "Samlede spil registreret",
       "avatarLegend": "Avatar Forklaring"

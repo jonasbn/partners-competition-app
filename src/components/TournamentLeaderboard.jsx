@@ -70,6 +70,23 @@ const TournamentLeaderboard = ({ gameData }) => {
     );
   }
 
+  // processTournamentData always returns all 8 players even before any
+  // game is played, so the table would otherwise render everyone tied at
+  // 0 - show an explicit "no game data" message instead.
+  const totalGames = leaderboardData?.games?.length ?? 0;
+  if (totalGames === 0) {
+    return (
+      <div className="card">
+        <div className="card-header bg-warning text-dark">
+          <h2>⚠️ {t('tournament.leaderboard.noData')}</h2>
+        </div>
+        <div className="card-body">
+          <p>{t('tournament.leaderboard.noGameData')}</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="card">
       <div className="card-header bg-primary text-white">
