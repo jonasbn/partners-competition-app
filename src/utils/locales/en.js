@@ -331,7 +331,7 @@ export default {
         "ofMaxScore": "of max score",
         "gamesPlayed": "games played",
         "winRate": "win rate",
-        "noGames": "No games played yet"
+        "noGames": "No leader data available"
       },
       "gameStats": {
         "title": "Game Statistics",

@@ -31,9 +31,12 @@ const TournamentSummaryCards = ({ gameData }) => {
     );
   }
 
-  const leadingPlayer = players.length > 0 ? players[0] : null;
   const totalGames = games.length;
   const totalPlayers = players.length;
+  // A "leader" only means something once at least one game has been played -
+  // processTournamentData always returns all 8 players (tied at 0), so
+  // players[0] would otherwise be an arbitrary array-order pick, not a leader.
+  const leadingPlayer = totalGames > 0 && players.length > 0 ? players[0] : null;
 
   // Max possible score is based on the leading player's own games played
   // (not totalGames), since tournament players don't all play every game.

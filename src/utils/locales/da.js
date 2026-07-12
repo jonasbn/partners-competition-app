@@ -331,7 +331,7 @@ export default {
         "ofMaxScore": "af max score",
         "gamesPlayed": "spil spillet",
         "winRate": "sejrs rate",
-        "noGames": "Ingen spil spillet endnu"
+        "noGames": "Ingen lederdata tilgængelig"
       },
       "gameStats": {
         "title": "Spil Statistikker",

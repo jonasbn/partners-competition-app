@@ -30,6 +30,29 @@ describe('TournamentSummaryCards', () => {
     });
   });
 
+  describe('no games played yet (real tournamentUtils always returns all 8 players, even at 0 games)', () => {
+    beforeEach(() => {
+      mockProcessTournamentData.mockReturnValue({
+        players: [
+          { id: 1, name: 'Jonas', cumulativeScore: 0, gamesPlayed: 0, winRate: 0 },
+          { id: 2, name: 'Torben', cumulativeScore: 0, gamesPlayed: 0, winRate: 0 }
+        ],
+        games: []
+      });
+      mockGetTournamentTeamStatistics.mockReturnValue([]);
+    });
+
+    it('does not show a player name as the leader', () => {
+      renderWithProviders(<TournamentSummaryCards gameData={[]} />);
+      expect(screen.queryByText('Jonas')).not.toBeInTheDocument();
+    });
+
+    it('shows "no leader data" instead', () => {
+      renderWithProviders(<TournamentSummaryCards gameData={[]} />);
+      expect(screen.getByText('Ingen lederdata tilgængelig')).toBeInTheDocument();
+    });
+  });
+
   describe('happy path', () => {
     beforeEach(() => {
       mockProcessTournamentData.mockReturnValue({
