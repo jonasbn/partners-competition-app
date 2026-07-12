@@ -28,6 +28,33 @@ describe('TournamentPlayerPerformance', () => {
     });
   });
 
+  describe('no games played yet (all players tied at 0, no real ranking)', () => {
+    beforeEach(() => {
+      mockGetTournamentLeaderboardData.mockReturnValue({
+        players: [
+          { id: 1, name: 'Jonas', cumulativeScore: 0, gamesPlayed: 0, winRate: 0, avgScore: 0 },
+          { id: 2, name: 'Torben', cumulativeScore: 0, gamesPlayed: 0, winRate: 0, avgScore: 0 }
+        ]
+      });
+    });
+
+    it('shows the crossed-fingers icon instead of a tier icon', () => {
+      renderWithProviders(<TournamentPlayerPerformance gameData={[]} />);
+      expect(screen.getAllByText('🤞').length).toBe(2);
+    });
+
+    it('shows "Afventer" (Awaiting) instead of a performance-level badge', () => {
+      renderWithProviders(<TournamentPlayerPerformance gameData={[]} />);
+      expect(screen.getAllByText('Afventer').length).toBe(2);
+    });
+
+    it('uses the gray (secondary) card styling for every player', () => {
+      renderWithProviders(<TournamentPlayerPerformance gameData={[]} />);
+      const cards = document.querySelectorAll('.card.border-secondary');
+      expect(cards.length).toBe(2);
+    });
+  });
+
   describe('happy path', () => {
     beforeEach(() => {
       mockGetTournamentLeaderboardData.mockReturnValue({

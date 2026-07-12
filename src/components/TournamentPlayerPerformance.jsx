@@ -52,7 +52,10 @@ const TournamentPlayerPerformance = ({ gameData }) => {
 
   const sortedPlayers = [...players].sort((a, b) => b.cumulativeScore - a.cumulativeScore);
 
-  const getPerformanceLevel = (rank, totalPlayers) => {
+  const getPerformanceLevel = (rank, totalPlayers, gamesPlayed) => {
+    if (gamesPlayed === 0) {
+      return { level: t('tournament.playerPerformance.performanceLevels.awaiting'), class: 'secondary', icon: '🤞' };
+    }
     if (rank === 1) return { level: t('tournament.playerPerformance.performanceLevels.excellent'), class: 'success', icon: '🔥' };
     if (rank <= Math.ceil(totalPlayers * 0.33)) return { level: t('tournament.playerPerformance.performanceLevels.good'), class: 'warning', icon: '👍' };
     if (rank <= Math.ceil(totalPlayers * 0.67)) return { level: t('tournament.playerPerformance.performanceLevels.average'), class: 'info', icon: '👌' };
@@ -80,7 +83,7 @@ const TournamentPlayerPerformance = ({ gameData }) => {
             const winRate = player.winRate || 0;
             const avgScore = player.avgScore ? player.avgScore.toFixed(1) : '0.0';
 
-            const performance = getPerformanceLevel(rank, sortedPlayers.length);
+            const performance = getPerformanceLevel(rank, sortedPlayers.length, gamesPlayed);
             const progressWidth = getProgressBarWidth(score, maxScore);
 
             return (

@@ -382,7 +382,8 @@ export default {
         "excellent": "Excellent",
         "good": "Good",
         "average": "Average",
-        "needsWork": "Needs Work"
+        "needsWork": "Needs Work",
+        "awaiting": "Awaiting"
       },
       "winRateMessages": {
         "excellent": "🏆 Excellent win rate!",

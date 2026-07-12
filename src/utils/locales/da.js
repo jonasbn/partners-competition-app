@@ -382,7 +382,8 @@ export default {
         "excellent": "Fremragende",
         "good": "God",
         "average": "Gennemsnitlig",
-        "needsWork": "Kan Forbedres"
+        "needsWork": "Kan Forbedres",
+        "awaiting": "Afventer"
       },
       "winRateMessages": {
         "excellent": "🏆 Fremragende sejrsprocent!",
