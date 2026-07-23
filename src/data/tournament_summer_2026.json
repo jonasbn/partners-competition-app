@@ -58,5 +58,15 @@
       { "name": "Kurt", "score": 1 },
       { "name": "Jonas", "score": 1 }
     ]
+  },
+  {
+    "gameId": 7,
+    "gameDate": "2026-07-23",
+    "players": [
+      { "name": "Torben", "score": 2 },
+      { "name": "Kurt", "score": 2 },
+      { "name": "Lotte", "score": 1 },
+      { "name": "Anette", "score": 1 }
+    ]
   }
 ]
