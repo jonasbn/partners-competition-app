@@ -55,6 +55,9 @@ Game results are split by year — **always add new games to the correct file**:
 
 - `src/data/games.json` — 2025 season (gameIds 1–18, do not add 2026 entries here)
 - `src/data/games_2026.json` — 2026 season (gameIds use their own sequence starting at 1)
+- `src/data/tournament_summer_2026.json` — 2026 summer tournament (8 players, teams of 2, gameIds start at 1)
+
+When adding a new game/match entry to any of these files, set `gameDate` to the actual date the result is being reported for (use the current date unless the user states otherwise) — never copy the `gameDate` from the previous entry.
 
 ## Avatar System
 
