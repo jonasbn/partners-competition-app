@@ -101,7 +101,7 @@
   },
   {
     "gameId": 11,
-    "gameDate": "2026-07-23",
+    "gameDate": "2026-07-24",
     "players": [
       { "name": "Gitte", "score": 2 },
       { "name": "Lotte", "score": 2 },
@@ -111,7 +111,7 @@
   },
   {
     "gameId": 12,
-    "gameDate": "2026-07-23",
+    "gameDate": "2026-07-24",
     "players": [
       { "name": "Torben", "score": 2 },
       { "name": "Jonas", "score": 2 },
@@ -121,7 +121,7 @@
   },
   {
     "gameId": 13,
-    "gameDate": "2026-07-23",
+    "gameDate": "2026-07-24",
     "players": [
       { "name": "Lotte", "score": 2 },
       { "name": "Jonas", "score": 2 },
@@ -131,7 +131,7 @@
   },
   {
     "gameId": 14,
-    "gameDate": "2026-07-23",
+    "gameDate": "2026-07-24",
     "players": [
       { "name": "Anette", "score": 2 },
       { "name": "Torben", "score": 2 },
@@ -141,7 +141,7 @@
   },
   {
     "gameId": 15,
-    "gameDate": "2026-07-23",
+    "gameDate": "2026-07-24",
     "players": [
       { "name": "Lotte", "score": 2 },
       { "name": "Torben", "score": 2 },
@@ -151,7 +151,7 @@
   },
   {
     "gameId": 16,
-    "gameDate": "2026-07-23",
+    "gameDate": "2026-07-24",
     "players": [
       { "name": "Gitte", "score": 2 },
       { "name": "Anette", "score": 2 },
@@ -161,7 +161,7 @@
   },
   {
     "gameId": 17,
-    "gameDate": "2026-07-23",
+    "gameDate": "2026-07-24",
     "players": [
       { "name": "Lotte", "score": 2 },
       { "name": "Peter", "score": 2 },
@@ -171,7 +171,7 @@
   },
   {
     "gameId": 18,
-    "gameDate": "2026-07-23",
+    "gameDate": "2026-07-24",
     "players": [
       { "name": "Malene", "score": 2 },
       { "name": "Torben", "score": 2 },
@@ -181,7 +181,7 @@
   },
   {
     "gameId": 19,
-    "gameDate": "2026-07-23",
+    "gameDate": "2026-07-25",
     "players": [
       { "name": "Anette", "score": 2 },
       { "name": "Malene", "score": 2 },
@@ -191,7 +191,7 @@
   },
   {
     "gameId": 20,
-    "gameDate": "2026-07-23",
+    "gameDate": "2026-07-25",
     "players": [
       { "name": "Peter", "score": 2 },
       { "name": "Jonas", "score": 2 },
@@ -201,7 +201,7 @@
   },
   {
     "gameId": 21,
-    "gameDate": "2026-07-23",
+    "gameDate": "2026-07-25",
     "players": [
       { "name": "Torben", "score": 2 },
       { "name": "Lotte", "score": 2 },
@@ -211,7 +211,7 @@
   },
   {
     "gameId": 22,
-    "gameDate": "2026-07-23",
+    "gameDate": "2026-07-25",
     "players": [
       { "name": "Gitte", "score": 2 },
       { "name": "Kurt", "score": 2 },
@@ -221,7 +221,7 @@
   },
   {
     "gameId": 23,
-    "gameDate": "2026-07-23",
+    "gameDate": "2026-07-25",
     "players": [
       { "name": "Lotte", "score": 2 },
       { "name": "Torben", "score": 2 },
@@ -231,7 +231,7 @@
   },
   {
     "gameId": 24,
-    "gameDate": "2026-07-23",
+    "gameDate": "2026-07-25",
     "players": [
       { "name": "Kurt", "score": 2 },
       { "name": "Malene", "score": 2 },
@@ -241,7 +241,7 @@
   },
   {
     "gameId": 25,
-    "gameDate": "2026-07-23",
+    "gameDate": "2026-07-25",
     "players": [
       { "name": "Gitte", "score": 2 },
       { "name": "Lotte", "score": 2 },
@@ -251,7 +251,7 @@
   },
   {
     "gameId": 26,
-    "gameDate": "2026-07-23",
+    "gameDate": "2026-07-25",
     "players": [
       { "name": "Kurt", "score": 2 },
       { "name": "Peter", "score": 2 },
