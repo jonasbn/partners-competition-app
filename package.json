@@ -61,6 +61,7 @@
   "overrides": {
     "parse5": "^7.2.3",
     "flatted": "^3.4.2",
-    "@exodus/bytes": "1.15.0"
+    "@exodus/bytes": "1.15.0",
+    "minimatch": "^10.2.6"
   }
 }
