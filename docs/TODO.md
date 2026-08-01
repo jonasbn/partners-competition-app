@@ -135,3 +135,19 @@ push access.
   is already red for the same reason. Comment left on the PR explaining
   this. Re-trigger once `eslint-plugin-react` ships support, e.g. by
   commenting `@dependabot recreate` on the PR.
+
+- [ ] **Cut a release covering the security fix and this session's
+  maintenance PRs** — spans the brace-expansion DoS fix (PR #165, merged
+  2026-07-30) through the Dependabot bumps merged this session: #166
+  (npm-regular-updates group: react-i18next, @vitejs/plugin-react-swc,
+  globals, vite), #167 (jsdom 29→30), and #169
+  (@testing-library/jest-dom 6→7). Latest existing tag is `1.2.0`; next
+  would be `1.3.0` per the repo's semver tagging convention.
+
+  ```bash
+  git tag 1.3.0
+  git push origin 1.3.0
+  ```
+
+  Then draft a GitHub release from the tag summarizing the security fix and
+  dependency bumps.
