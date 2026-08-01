@@ -101,3 +101,37 @@ Findings from a documentation review on 2026-06-12.
 - [x] **No data update guide** — created `docs/DATA_UPDATE.md`.
 
 - [x] **No contributing guide** — created `docs/CONTRIBUTING.md`.
+
+## Session Follow-ups (2026-08-01)
+
+Outstanding items from a Dependabot PR review/merge session. The session's
+git proxy blocks tag pushes and branch deletion, so these need a human with
+push access.
+
+- [ ] **Push the summer-tournament-2026 tag** — marks the commit that
+  concluded the 2026 summer tournament (finalized dates for games 35-40,
+  last edit to `tournament_summer_2026.json`).
+
+  ```bash
+  git tag summer-tournament-2026 501f404350b6a74aa709bec2aae01d58ab83e430
+  git push origin summer-tournament-2026
+  ```
+
+- [ ] **Delete stray branch `probe-test-delete-me`** — created while probing
+  push permissions on the git proxy; not needed.
+
+  ```bash
+  git push origin --delete probe-test-delete-me
+  ```
+
+- [ ] **PR #168 blocked: eslint 9.39.5 → 10.8.0**
+  (<https://github.com/jonasbn/partners-competition-app/pull/168>) — ESLint
+  10 removed `context.getFilename()` from the rule API.
+  `eslint-plugin-react@7.37.5` (latest published) still depends on it and
+  caps its peer dependency at `eslint: ^9.7`; no ESLint-10-compatible
+  release exists yet. Reproduced locally (`npm run lint` throws
+  `TypeError: contextOrFilename.getFilename is not a function` in
+  `src/App.jsx`); the PR's own CI (`Lint and Format Check`, `test (24.x)`)
+  is already red for the same reason. Comment left on the PR explaining
+  this. Re-trigger once `eslint-plugin-react` ships support, e.g. by
+  commenting `@dependabot recreate` on the PR.
