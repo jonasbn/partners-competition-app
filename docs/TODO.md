@@ -151,3 +151,13 @@ push access.
 
   Then draft a GitHub release from the tag summarizing the security fix and
   dependency bumps.
+
+- [ ] **Push the tenerife-tournament-2025 tag** — marks the commit that
+  concluded the 2025 season/Tenerife tournament in `games.json` (games
+  12-18, last game dated 2025-11-21). Named to match the
+  `summer-tournament-2026` convention (`<name>-tournament-<year>`).
+
+  ```bash
+  git tag tenerife-tournament-2025 4b0f4e88d53ce1c65728a5bf715aa61a1dfceaf9
+  git push origin tenerife-tournament-2025
+  ```
