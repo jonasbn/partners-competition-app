@@ -26,7 +26,7 @@ Improvements identified from a codebase review on 2026-06-12.
 
 - [ ] **`summary.*` i18n namespace is orphaned** — both locale files define a `summary` top-level namespace (`leadingPlayer`, `mostWinningTeam`, `teamCoverage`, etc.) that no component uses; components use `summaryCards.*` instead. These keys are only referenced in two test files. Rename to match component usage or remove.
 
-- [ ] **No ESLint configuration** — the quality CI workflow already acknowledges the gap. Adding `eslint` with `eslint-plugin-react` and `eslint-plugin-react-hooks` would catch most of the issues above automatically.
+- [x] **No ESLint configuration** — added (`eslint.config.js`, `eslint-plugin-react`, `eslint-plugin-react-hooks`); this note was stale.
 
 ## Test Coverage
 
@@ -101,3 +101,40 @@ Findings from a documentation review on 2026-06-12.
 - [x] **No data update guide** — created `docs/DATA_UPDATE.md`.
 
 - [x] **No contributing guide** — created `docs/CONTRIBUTING.md`.
+
+## Session Follow-ups (2026-08-01)
+
+Outstanding items from a Dependabot PR review/merge session. The session's
+git proxy blocks tag pushes and branch deletion, so these need a human with
+push access. Resolved 2026-08-09.
+
+- [x] **Push the summer-tournament-2026 tag** — marks the commit that
+  concluded the 2026 summer tournament (finalized dates for games 35-40,
+  last edit to `tournament_summer_2026.json`). Pushed 2026-08-09, pointing
+  at `501f404`.
+
+- [x] **Delete stray branch `probe-test-delete-me`** — created while probing
+  push permissions on the git proxy; not needed. Deleted 2026-08-09.
+
+- [x] **PR #168 blocked: eslint 9.39.5 → 10.8.0**
+  (<https://github.com/jonasbn/partners-competition-app/pull/168>) — ESLint
+  10 removed `context.getFilename()` from the rule API.
+  `eslint-plugin-react@7.37.5` (latest published) still depends on it and
+  caps its peer dependency at `eslint: ^9.7`; no ESLint-10-compatible
+  release exists yet, confirmed against the upstream tracking issue
+  ([jsx-eslint/eslint-plugin-react#3977](https://github.com/jsx-eslint/eslint-plugin-react/issues/3977)).
+  Closed 2026-08-09 with `@dependabot ignore this major version` so it
+  won't keep reopening; re-trigger once `eslint-plugin-react` ships
+  ESLint 10 support.
+
+- [x] **Cut a release covering the security fix and this session's
+  maintenance PRs** — released as `1.3.0` (draft) on 2026-08-09. Notes were
+  expanded beyond the security fix (PR #165) and Dependabot bumps
+  (#166, #167, #169) to also cover everything else merged since `1.2.0`:
+  the full Summer Tournament 2026 feature and the Node.js 24 upgrade.
+
+- [x] **Push the tenerife-tournament-2025 tag** — marks the commit that
+  concluded the 2025 season/Tenerife tournament in `games.json` (games
+  12-18, last game dated 2025-11-21). Named to match the
+  `summer-tournament-2026` convention (`<name>-tournament-<year>`). Pushed
+  2026-08-09, pointing at `4b0f4e88`.
