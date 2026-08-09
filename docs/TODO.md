@@ -133,8 +133,10 @@ push access. Resolved 2026-08-09.
   (#166, #167, #169) to also cover everything else merged since `1.2.0`:
   the full Summer Tournament 2026 feature and the Node.js 24 upgrade.
 
-- [x] **Push the tenerife-tournament-2025 tag** — marks the commit that
+- [x] **Push the annual-tournament-2025 tag** — marks the commit that
   concluded the 2025 season/Tenerife tournament in `games.json` (games
-  12-18, last game dated 2025-11-21). Named to match the
-  `summer-tournament-2026` convention (`<name>-tournament-<year>`). Pushed
-  2026-08-09, pointing at `4b0f4e88`.
+  12-18, last game dated 2025-11-21). Pushed 2026-08-09 as
+  `tenerife-tournament-2025`, pointing at `4b0f4e88`, then renamed to
+  `annual-tournament-2025` the same day — the regular yearly tournament
+  is `annual-tournament-<year>`; `summer-tournament-<year>` is reserved
+  for the separate special summer tournament (e.g. `summer-tournament-2026`).
