@@ -18,7 +18,7 @@ const SimpleAvatarWithHover = ({
   const avatarRef = useRef(null);
 
   // Handle mouse enter
-  const handleMouseEnter = (e) => {
+  const handleMouseEnter = () => {
     try {
       setIsHovered(true);
       setShowPopup(true);

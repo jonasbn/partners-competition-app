@@ -16,8 +16,6 @@
  */
 
 // Test script to verify getTeamCombinationStatistics function
-const fs = require('fs');
-const path = require('path');
 
 // Mock the games data similar to what the app uses
 const mockGamesData = [

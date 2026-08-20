@@ -150,7 +150,6 @@ describe('Translation Files Validation', () => {
         
         interpolationKeys.forEach(item => {
           // Check that all interpolations are properly wrapped with double braces
-          const interpolations = item.value.match(/\{\{[^}]+\}\}/g) || [];
           const singleBraces = item.value.match(/\{[^{][^}]*\}(?!\})/g) || [];
           
           if (singleBraces.length > 0) {
@@ -261,7 +260,7 @@ describe('Translation Files Validation', () => {
         'score': { en: 'Score', da: 'Score' }
       };
 
-      Object.entries(terminology).forEach(([term, translations]) => {
+      Object.entries(terminology).forEach(([, translations]) => {
         // This is a basic check - in a real app you might want more sophisticated terminology checking
         const englishKeys = getAllKeys(enTranslations);
         

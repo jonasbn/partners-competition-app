@@ -86,24 +86,6 @@ const renderWithProviders = (component) => {
   );
 };
 
-// Helper component to test language switching on real components
-const ComponentWithLanguageToggle = ({ component: Component }) => {
-  const { useTranslation } = require('react-i18next');
-  const { i18n } = useTranslation();
-  
-  return (
-    <div>
-      <button 
-        data-testid="toggle-language"
-        onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'da' : 'en')}
-      >
-        Toggle Language
-      </button>
-      <Component />
-    </div>
-  );
-};
-
 describe('Real Component Translation Integration', () => {
   describe('SimpleLeaderboard Component', () => {
     test('should display translated leaderboard information in English', async () => {
