@@ -17,6 +17,10 @@ npm test           # Watch mode (interactive)
 npm run test:run   # Run tests once
 npm run test:ui    # Vitest UI dashboard
 npm run test:coverage  # Generate coverage report
+
+npm run lint        # eslint on src (React/hooks rules, no-console, no-unused-vars)
+npm run oxlint       # oxlint on the whole repo (fast, broader default rule set)
+npm run lint:fix     # oxlint --fix (only auto-fixable rules; e.g. no-unused-vars is not one)
 ```
 
 Run a single test file:
@@ -31,7 +35,7 @@ npx vitest run src/test/components/SimpleLeaderboard.test.jsx
 
 **Entry points**:
 
-- `index.html` → `src/index.jsx` (wraps app in `ThemeProvider` + i18next `Suspense`) → `src/App.jsx` (single page with all sections, each wrapped in an `ErrorBoundary`)
+- `index.html` → `src/index.jsx` (wraps app in `ThemeProvider`) → `src/App.jsx` (single page with all sections, each wrapped in an `ErrorBoundary`)
 
 **Key utilities**:
 
@@ -41,6 +45,15 @@ npx vitest run src/test/components/SimpleLeaderboard.test.jsx
 - `src/utils/logger.js` — Logtail wrapper (fails gracefully if `VITE_LOGTAIL_KEY` is absent)
 
 **Test setup** (`src/test/setup.js`) mocks: `window.matchMedia`, logger, `IntersectionObserver`, `ResizeObserver`. Tests in `src/test/development/` and `src/test/manual/` are excluded from the test runner.
+
+## Linting
+
+Two linters run side by side, not redundantly:
+
+- `eslint` (`eslint.config.js`) — scoped to `src/**/*.{js,jsx}`, excludes `src/test/**`, `build/**`, `coverage/**`. Owns React/hooks rules (`eslint-plugin-react`, `eslint-plugin-react-hooks`) and project-specific rule tuning (`no-console` allows `error`/`warn`/`debug`/`log`, matching `src/utils/logger.js`).
+- `oxlint` (`.oxlintrc.json`) — runs repo-wide including `src/test/**`. Enables the `react`, `jsx-a11y`, and `vitest` plugins on top of its defaults (`typescript`, `unicorn`, `oxc`) — none of those three are on by default upstream, despite this being a React + Vitest app. It has caught real bugs eslint's config missed, e.g. a silently-shadowed duplicate `place` key in the locale files. Both `npm run lint` and `npm run oxlint` run in CI (`.github/workflows/quality.yml`).
+
+When adding a new eslint rule already covered by oxlint's defaults, expect oxlint to report violations too — fix in place rather than suppressing, since both linters are treated as authoritative here. Known deferred oxlint findings (a11y/vitest, kept at `warning` so CI stays green) are tracked in `docs/TODO.md`.
 
 ## Game Domain Model
 

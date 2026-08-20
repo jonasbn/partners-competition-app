@@ -133,11 +133,6 @@ export default {
     "sort": "Sort",
     "team": "Team",
     "teamsScores": "Teams & Scores",
-    "place": {
-      "1st": "1st",
-      "2nd": "2nd", 
-      "3rd": "3rd"
-    },
     "points": {
       "one": "point",
       "other": "points",

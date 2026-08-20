@@ -4,7 +4,7 @@ import reactHooksPlugin from 'eslint-plugin-react-hooks';
 
 export default [
   {
-    ignores: ['src/test/**'],
+    ignores: ['src/test/**', 'build/**', 'coverage/**'],
   },
   {
     files: ['src/**/*.{js,jsx}'],
@@ -24,7 +24,8 @@ export default [
       ...reactPlugin.configs.recommended.rules,
       ...reactHooksPlugin.configs.recommended.rules,
       'react/react-in-jsx-scope': 'off',
-      'no-console': 'warn',
+      'no-console': ['warn', { allow: ['error', 'warn', 'debug', 'log'] }],
+      'no-unused-vars': 'warn',
     },
     settings: {
       react: { version: 'detect' },

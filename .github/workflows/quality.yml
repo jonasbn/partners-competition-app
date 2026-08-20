@@ -75,6 +75,9 @@ jobs:
     - name: Lint
       run: npm run lint
 
+    - name: Lint (oxlint)
+      run: npm run oxlint
+
     - name: Check for formatting scripts
       run: |
         if npm run format:check --dry-run 2>/dev/null; then

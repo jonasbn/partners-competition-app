@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { ThemeProvider } from '../../utils/ThemeContext';
 import '../../utils/i18n';
 import SimpleSummaryCards from '../../components/SimpleSummaryCards';

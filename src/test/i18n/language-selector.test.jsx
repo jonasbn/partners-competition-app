@@ -62,7 +62,7 @@ describe('LanguageSelector Component', () => {
 
 // Test component that displays multiple translated elements
 const MultiTranslationComponent = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   
   return (
     <div>

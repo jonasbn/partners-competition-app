@@ -102,6 +102,16 @@ Findings from a documentation review on 2026-06-12.
 
 - [x] **No contributing guide** — created `docs/CONTRIBUTING.md`.
 
+## Linting (2026-08-20)
+
+`oxlint`'s `react`, `jsx-a11y`, and `vitest` plugins were enabled
+(`.oxlintrc.json`), surfacing findings deliberately left unfixed for now
+(kept at `warning` severity so CI stays green):
+
+- [ ] **Non-interactive click handler lacks keyboard support** (`src/components/SimpleAvatarWithHover.jsx:196`) — `jsx-a11y/click-events-have-key-events` and `jsx-a11y/no-static-element-interactions`; needs a keyboard event listener or a semantic interactive element/role.
+- [ ] **`role="progressbar"`/`role="group"` instead of semantic tags** (`SimplePlayerPerformance.jsx`, `SimpleSummaryCards.jsx`, `TournamentPlayerPerformance.jsx`, `TournamentSummaryCards.jsx`, `LanguageSelector.jsx`, `YearSelector.jsx`, `ViewSelector.jsx`) — `jsx-a11y/prefer-tag-over-role`; overlaps with the existing "Progress bars lack ARIA attributes" item above but now has exact locations.
+- [ ] **Conditional `expect()` calls** (`src/test/dataUtils.test.js:145,148`, `src/test/i18n/translation-validation.test.js:141,274`) — `vitest/no-conditional-expect`; an assertion inside an `if` can silently never run.
+
 ## Session Follow-ups (2026-08-01)
 
 Outstanding items from a Dependabot PR review/merge session. The session's

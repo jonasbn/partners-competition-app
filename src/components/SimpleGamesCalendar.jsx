@@ -60,10 +60,6 @@ const SimpleGamesCalendar = ({ gameData }) => {
   // Sort dates
   const sortedDates = Object.keys(gamesByDate).sort((a, b) => new Date(a) - new Date(b));
 
-  // Get date range for display
-  const firstDate = sortedDates[0] ? new Date(sortedDates[0]) : new Date();
-  const lastDate = sortedDates[sortedDates.length - 1] ? new Date(sortedDates[sortedDates.length - 1]) : new Date();
-  
   const formatDate = (dateStr) => {
     try {
       const date = new Date(dateStr);
@@ -136,7 +132,7 @@ const SimpleGamesCalendar = ({ gameData }) => {
         <div className="mb-4">
           <h5>📊 {t('gamesCalendar.timeline.title')}</h5>
           <div className="row">
-            {sortedDates.map((date, index) => {
+            {sortedDates.map((date) => {
               const dayGames = gamesByDate[date];
               const intensity = getGameIntensity(dayGames.length);
               const intensityClass = getIntensityClass(intensity);

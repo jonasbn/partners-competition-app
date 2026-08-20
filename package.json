@@ -28,7 +28,9 @@
     "test:run": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "lint": "eslint src --ext .js,.jsx"
+    "lint": "eslint src",
+    "oxlint": "oxlint",
+    "lint:fix": "oxlint --fix"
   },
   "browserslist": {
     "production": [
@@ -55,6 +57,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "globals": "^17.8.0",
     "jsdom": "^30.0.0",
+    "oxlint": "^1.79.0",
     "vite": "^8.1.5",
     "vitest": "^4.1.9"
   },

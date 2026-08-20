@@ -133,11 +133,6 @@ export default {
     "sort": "Sortér",
     "team": "Hold",
     "teamsScores": "Hold & Score",
-    "place": {
-      "1st": "1.",
-      "2nd": "2.", 
-      "3rd": "3."
-    },
     "points": {
       "one": "point",
       "other": "point",

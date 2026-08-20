@@ -14,7 +14,6 @@
 // Simple test to verify Logtail logging is working
 import { Logtail } from "@logtail/browser";
 import dotenv from "dotenv";
-import path from "path";
 
 // Load environment-specific file based on NODE_ENV
 const envFile = process.env.NODE_ENV === 'test' ? '.env.test' : '.env';
