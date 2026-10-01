@@ -1,12 +1,10 @@
 # Introduction
 
-This application is an experimental frontend built with React and Create React App. It is intended to demonstrate the structure and setup of a React application using Bootstrap for styling.
-
-The application has been ported to Vite for improved performance and development experience.
+This application is an experimental frontend built with React and Vite. It is intended to demonstrate the structure and setup of a React application using Bootstrap for styling.
 
 The application visualizes gaming statistics for a game called "partners", including a leaderboard and game outcomes.
 
-The game data is stored in a JSON file named `games.json`, which contains information about players, teams, scores, and game details.
+Game data is stored in JSON files under `src/data/` (`games.json` for 2025, `games_2026.json` for 2026, `tournament_summer_2026.json` for the summer tournament), containing players, teams, scores, and game details.
 
 The application should support the following features:
 
@@ -20,7 +18,7 @@ The application should support the following features:
 - The avatar can be rendered in 3 variations based on context, the context being:
   - ranking
   - game outcome
-- The avatar assets should be stored in the `public/avatars` directory
+- The avatar assets should be stored in `public/assets/<player>/` (`happy.png`, `ok.png`, `sad.png`)
 - The avatar variations are as follows:
   - For ranking, there are 3 variations:
     - Good ranking (1st place): happy avatar
@@ -30,8 +28,6 @@ The application should support the following features:
     - Win or first place: happy avatar
     - second place: neutral avatar
     - Loss or 3rd place: sad avatar
-
-The tournament game data is stored in a JSON file named `games.json`, which contains information about players, teams, scores, and game details.
 
 The game and tournament rules are as follows:
 
@@ -43,7 +39,7 @@ The game and tournament rules are as follows:
 - each game will have a date and time
 - each game will have an unique id
 - each player will have a name
-- There are 6 players in total
+- There are 6 players per season game (the summer tournament has 8)
 - the players are named:
   - Jonas
   - Torben
@@ -63,7 +59,7 @@ The game and tournament rules are as follows:
 - teams can be resolved based on the scores in the respective game, since team members have the same score in a game
 - teams can be resolved based on the scores in the respective game, since team members have the same score in a game
 
-The application UI should present the following components all on a single page:
+The season view of the application presents the following components on a single page (the tournament view uses the `Tournament*` counterparts, see `CLAUDE.md`):
 
 - First row of components in the form of cards with highlights:
   - Current leader
@@ -120,8 +116,6 @@ The application UI should present the following components all on a single page:
   - Game outcome (which team won, second place, third place)
   - No avatars needed here
 
-- All other visual components should be removed, focusing solely on the above requirements.
-
 ## Application requirements
 
 - The application should be built using React and Bootstrap
@@ -133,13 +127,13 @@ The application UI should present the following components all on a single page:
 
 ## Repository Structure
 
-- `public/`: Static assets including avatar images
+- `public/`: Static assets; avatar images are in `public/assets/<player>/`
 - `src/`: Source code for the React application
   - `components/`: React components for various UI parts
   - `utils/`: Utility functions for data processing and other logic
-  - `i18n/`: Localization files for different languages
+  - `utils/locales/`: Localization files (`en.js`, `da.js`) loaded by `utils/i18n.js`
   - `test/`: Unit tests for the application
-  - `data/games.json`: JSON file containing game and player data
+  - `data/`: JSON files with game and player data (season and tournament)
 
   - `docs/`: Documentation files
 

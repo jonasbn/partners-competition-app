@@ -13,7 +13,8 @@ npm start          # Dev server on port 3000 (auto-opens browser)
 npm run build      # Production build to /build
 npm run preview    # Preview production build locally
 
-npm test           # Watch mode (interactive)
+npm test           # Run tests once
+npm run test:watch # Watch mode (interactive)
 npm run test:run   # Run tests once
 npm run test:ui    # Vitest UI dashboard
 npm run test:coverage  # Generate coverage report
@@ -26,7 +27,7 @@ npm run lint:fix     # oxlint --fix (only auto-fixable rules; e.g. no-unused-var
 Run a single test file:
 
 ```bash
-npx vitest run src/test/components/SimpleLeaderboard.test.jsx
+npx vitest run src/test/components/Leaderboard.test.jsx
 ```
 
 ## Architecture
@@ -74,7 +75,7 @@ When adding a new game/match entry to any of these files, set `gameDate` to the 
 
 ## Avatar System
 
-Avatars live in `public/avatars/`. Two contexts, each with variations:
+Avatars live in `public/assets/<player>/` as `happy.png`, `ok.png` (neutral) and `sad.png`; paths are built in `src/utils/simpleAvatarUtils.js`. Two contexts, each with variations:
 
 - **Ranking context** (3 variations): happy (1st), neutral (2nd–3rd), sad (4th+)
 - **Game outcome context** (2 variations): happy (win/1st), neutral (2nd), sad (loss/3rd)
