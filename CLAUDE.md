@@ -42,7 +42,7 @@ npx vitest run src/test/components/Leaderboard.test.jsx
 
 - `src/utils/dataUtils.js` — all game data calculations (scores, rankings, team resolution)
 - `src/utils/ThemeContext.jsx` — dark/light theme context (persisted to localStorage, respects `prefers-color-scheme`)
-- `src/utils/i18n.js` — i18next setup with browser language detection, fallback: Danish (`da`)
+- `src/utils/i18n.js` — i18next setup; initial language is hardcoded to Danish (`lng: 'da'`, fallback `da`), so the registered `LanguageDetector` is bypassed
 - `src/utils/logger.js` — Logtail wrapper (fails gracefully if `VITE_LOGTAIL_KEY` is absent)
 
 **Test setup** (`src/test/setup.js`) mocks: `window.matchMedia`, logger, `IntersectionObserver`, `ResizeObserver`. Tests in `src/test/development/` and `src/test/manual/` are excluded from the test runner.
@@ -78,12 +78,12 @@ When adding a new game/match entry to any of these files, set `gameDate` to the 
 Avatars live in `public/assets/<player>/` as `happy.png`, `ok.png` (neutral) and `sad.png`; paths are built in `src/utils/simpleAvatarUtils.js`. Two contexts, each with variations:
 
 - **Ranking context** (3 variations): happy (1st), neutral (2nd–3rd), sad (4th+)
-- **Game outcome context** (2 variations): happy (win/1st), neutral (2nd), sad (loss/3rd)
+- **Game outcome context** (3 variations): happy (win/1st), neutral (2nd), sad (loss/3rd)
 - **Team statistics**: happy (1st–3rd), neutral (4th–9th), sad (10th+)
 
 ## UI Components
 
-All components render on a single page in this order:
+The season view (year chosen via `YearSelector`) renders these components in this order. The tournament view renders the `Tournament*` counterparts from `tournament_summer_2026.json` (see `src/App.jsx`):
 
 1. `SimpleSummaryCards` — current leader, best team, game stats
 2. `SimpleLeaderboard` — player rankings with avatars, scores, averages, win ratio

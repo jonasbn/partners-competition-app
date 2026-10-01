@@ -24,7 +24,7 @@ The application should support the following features:
     - Good ranking (1st place): happy avatar
     - Average ranking (2nd-3rd place): neutral avatar
     - Poor ranking (4th place and below): sad avatar
-  - For game outcome, there are 2 variations:
+  - For game outcome, there are 3 variations:
     - Win or first place: happy avatar
     - second place: neutral avatar
     - Loss or 3rd place: sad avatar
@@ -56,7 +56,6 @@ The game and tournament rules are as follows:
 
 - All players are participating in every game, forming different teams each time
 - A player can only be in one team per game
-- teams can be resolved based on the scores in the respective game, since team members have the same score in a game
 - teams can be resolved based on the scores in the respective game, since team members have the same score in a game
 
 The season view of the application presents the following components on a single page (the tournament view uses the `Tournament*` counterparts, see `CLAUDE.md`):
@@ -136,8 +135,6 @@ The season view of the application presents the following components on a single
   - `data/`: JSON files with game and player data (season and tournament)
 
   - `docs/`: Documentation files
-
-  When generating code, ensure to follow best practices for React development, including component modularity, state management, and proper use of hooks where applicable.
 
   When generating documentation please create it in the `docs/` directory, so the root directory remains clean and uncluttered.
 
