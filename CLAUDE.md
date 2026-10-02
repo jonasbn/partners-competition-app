@@ -33,7 +33,7 @@ npx vitest run src/test/components/Leaderboard.test.jsx
 ## Dependencies and coverage
 
 - `vitest`, `@vitest/coverage-v8` and `@vitest/ui` must share a major version; a mismatch fails `test:coverage` with `Expected string coverage payload, received object`. Dependabot groups them (`vitest` group in `.github/dependabot.yml`), so merge them as one PR.
-- No coverage thresholds are configured, and the CI coverage step is `continue-on-error`, so coverage never fails a build. `docs/TESTING.md` holds soft targets only.
+- No coverage thresholds are configured, so low coverage never fails CI, but a crashing `test:coverage` does (the `code-quality` jobs in `quality.yml` and `ci.yml` run it without `continue-on-error`; only the matrix step and the Codecov upload tolerate errors). `docs/TESTING.md` holds soft targets only.
 - After merging a Dependabot PR that touches `package-lock.json`, the other open ones conflict; comment `@dependabot rebase` instead of resolving by hand.
 
 ## Architecture
