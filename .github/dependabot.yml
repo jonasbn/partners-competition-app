@@ -34,6 +34,14 @@ updates:
     cooldown:
       default-days: 4
     groups:
+      # vitest packages must share a major version (a mismatch breaks coverage),
+      # so bump them together, majors included.
+      # Listed first: a dependency joins the first group it matches.
+      vitest:
+        applies-to: version-updates
+        patterns:
+          - "vitest"
+          - "@vitest/*"
       # Regular updates: bundle minor/patch version bumps into a single grouped PR
       # Major bumps arrive as individual PRs (no group catches them)
       npm-regular-updates:
