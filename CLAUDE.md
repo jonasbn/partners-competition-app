@@ -30,6 +30,12 @@ Run a single test file:
 npx vitest run src/test/components/Leaderboard.test.jsx
 ```
 
+## Dependencies and coverage
+
+- `vitest`, `@vitest/coverage-v8` and `@vitest/ui` must share a major version; a mismatch fails `test:coverage` with `Expected string coverage payload, received object`. Dependabot groups them (`vitest` group in `.github/dependabot.yml`), so merge them as one PR.
+- No coverage thresholds are configured, and the CI coverage step is `continue-on-error`, so coverage never fails a build. `docs/TESTING.md` holds soft targets only.
+- After merging a Dependabot PR that touches `package-lock.json`, the other open ones conflict; comment `@dependabot rebase` instead of resolving by hand.
+
 ## Architecture
 
 **Data flow**: `src/data/games.json` → `src/utils/dataUtils.js` (processing/calculations) → components (display only).
