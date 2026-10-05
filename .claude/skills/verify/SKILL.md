@@ -23,6 +23,7 @@ Stop with `lsof -ti tcp:4173 | xargs kill`. Use Node 24 (`.nvmrc`).
 - Header controls: `Season`/`Summer Tournament`, `2025`/`2026` (season view only), `EN`/`DA`, theme toggle.
 - Expected data: 2026 = 11 games, leader Gitte 26; 2025 = 18 games, leader Gitte 39, plus a "Final Results" champion banner; tournament = 8 players, 40 games, leader Lotte 32.
 - Default language is Danish, default year 2026.
+- **Click `EN` first.** The Danish UI works but is harder to read in screenshots and `find` results (`Resultattavle`, `Sommerturnering`, `Skift Tema`). English labels are `Season`/`Summer Tournament`, `Leaderboard`, `Toggle Theme`. The language resets to Danish on every page load, while the theme choice persists in `localStorage`, so repeat the click after each navigation or reload.
 
 ## Gotchas
 
