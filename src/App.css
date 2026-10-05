@@ -409,6 +409,13 @@ footer.bg-light {
   border-color: #4d3b02;
 }
 
+/* alert-light is a fixed light variant (used by the performance insights card) */
+.dark-theme .alert-light {
+  background-color: #1e1e1e;
+  color: var(--text-color);
+  border-color: #2d2d2d;
+}
+
 /* Ensure buttons have proper contrast in dark mode */
 .dark-theme .btn-outline-secondary {
   color: #adb5bd;
