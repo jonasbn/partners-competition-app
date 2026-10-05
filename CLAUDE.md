@@ -36,6 +36,10 @@ npx vitest run src/test/components/Leaderboard.test.jsx
 - No coverage thresholds are configured, so low coverage never fails CI, but a crashing `test:coverage` does (the `code-quality` jobs in `quality.yml` and `ci.yml` run it without `continue-on-error`; only the matrix step and the Codecov upload tolerate errors). `docs/TESTING.md` holds soft targets only.
 - After merging a Dependabot PR that touches `package-lock.json`, the other open ones conflict; comment `@dependabot rebase` instead of resolving by hand.
 
+## Branch cleanup
+
+PRs are squash-merged, so `git branch -d` refuses on merged branches and `git cherry` can show merged commits as unmerged. Confirm the PR state with `gh pr list --head <branch> --state all` and that the local tip equals the PR head, then use `git branch -D`. Branches pushed by Claude sessions are not auto-deleted on merge, so remove the remote copy with `git push origin --delete <branch>`.
+
 ## Architecture
 
 **Data flow**: `src/data/games.json` → `src/utils/dataUtils.js` (processing/calculations) → components (display only).
@@ -61,6 +65,10 @@ Two linters run side by side, not redundantly:
 - `oxlint` (`.oxlintrc.json`) — runs repo-wide including `src/test/**`. Enables the `react`, `jsx-a11y`, and `vitest` plugins on top of its defaults (`typescript`, `unicorn`, `oxc`) — none of those three are on by default upstream, despite this being a React + Vitest app. It has caught real bugs eslint's config missed, e.g. a silently-shadowed duplicate `place` key in the locale files. Both `npm run lint` and `npm run oxlint` run in CI (`.github/workflows/quality.yml`).
 
 When adding a new eslint rule already covered by oxlint's defaults, expect oxlint to report violations too — fix in place rather than suppressing, since both linters are treated as authoritative here. Known deferred oxlint findings (a11y/vitest, kept at `warning` so CI stays green) are tracked in `docs/TODO.md`.
+
+## Dark theme styling
+
+Dark mode is the `dark-theme` class on `body`, styled in `src/App.css`. Bootstrap redeclares its `--bs-*` variables on component classes such as `.table`, so variables set on `body.dark-theme` never reach them. Override at `.dark-theme .<component>` level. Fixed-light variants such as `alert-light` need an explicit `.dark-theme` rule too. Check both the season and tournament views, since they use separate components.
 
 ## Game Domain Model
 
