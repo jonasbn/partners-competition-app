@@ -26,3 +26,4 @@ yarn-error.log*
 app.log
 .claude/settings.local.json
 .mcp.json
+.mcp.json.lock
