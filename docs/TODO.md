@@ -156,9 +156,10 @@ push access. Resolved 2026-08-09.
 - [ ] **Remove the `minimatch` override in `package.json`** — pinned to
   `^11.0.1` in PR #204 to clear GHSA-g3hv-75wg-m249 (minimatch DoS via
   globparts amplification), which failed the `security` CI job. `eslint`,
-  `@eslint/config-array`, `@eslint/eslintrc` and `eslint-plugin-react` all
-  request `^10`, so the override forces them onto a major they were not
-  built against (lint, tests and build pass). Dependabot will not flag it as
+  `@eslint/config-array` and `@eslint/eslintrc` request `^3.1.5` and
+  `eslint-plugin-react` requests `^3.1.2`, so the override forces them
+  from major 3 to major 11, which they were not built against (lint, tests
+  and build pass). Dependabot will not flag it as
   stale. Drop the override once those packages depend on a patched minimatch
   themselves, or once ESLint 10 support lands (see PR #168 above), then run
   `npm install` and confirm `npm audit --audit-level=moderate` stays clean.
