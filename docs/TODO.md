@@ -150,3 +150,15 @@ push access. Resolved 2026-08-09.
   `annual-tournament-2025` the same day — the regular yearly tournament
   is `annual-tournament-<year>`; `summer-tournament-<year>` is reserved
   for the separate special summer tournament (e.g. `summer-tournament-2026`).
+
+## Dependency Workarounds (2026-11-02)
+
+- [ ] **Remove the `minimatch` override in `package.json`** — pinned to
+  `^11.0.1` in PR #204 to clear GHSA-g3hv-75wg-m249 (minimatch DoS via
+  globparts amplification), which failed the `security` CI job. `eslint`,
+  `@eslint/config-array`, `@eslint/eslintrc` and `eslint-plugin-react` all
+  request `^10`, so the override forces them onto a major they were not
+  built against (lint, tests and build pass). Dependabot will not flag it as
+  stale. Drop the override once those packages depend on a patched minimatch
+  themselves, or once ESLint 10 support lands (see PR #168 above), then run
+  `npm install` and confirm `npm audit --audit-level=moderate` stays clean.
