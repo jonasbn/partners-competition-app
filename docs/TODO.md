@@ -158,8 +158,8 @@ push access. Resolved 2026-08-09.
   globparts amplification), which failed the `security` CI job. `eslint`,
   `@eslint/config-array` and `@eslint/eslintrc` request `^3.1.5` and
   `eslint-plugin-react` requests `^3.1.2`, so the override forces them
-  across two majors (3 → 11) they were not built against (lint, tests and
-  build pass). Dependabot will not flag it as
+  from major 3 to major 11, which they were not built against (lint, tests
+  and build pass). Dependabot will not flag it as
   stale. Drop the override once those packages depend on a patched minimatch
   themselves, or once ESLint 10 support lands (see PR #168 above), then run
   `npm install` and confirm `npm audit --audit-level=moderate` stays clean.
