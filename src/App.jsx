@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import './App.css';
 import SimpleLeaderboard from './components/SimpleLeaderboard';
 import SimpleGamesList from './components/SimpleGamesList';
@@ -30,6 +30,7 @@ function App() {
   const { selectedYear } = useContext(YearContext);
   const { activeView } = useContext(ViewContext);
   const currentYearData = getGamesDataForYear(selectedYear);
+  const [navOpen, setNavOpen] = useState(false);
 
   // Log application startup and lifecycle events
   useEffect(() => {
@@ -79,7 +80,21 @@ function App() {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
         <div className="container">
           <span className="navbar-brand">{t('app.title')}</span>
-          <div className="d-flex">
+          <button
+            className="navbar-toggler"
+            type="button"
+            aria-controls="main-navbar"
+            aria-expanded={navOpen}
+            aria-label={t('nav.menu')}
+            onClick={() => setNavOpen((open) => !open)}
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div
+            id="main-navbar"
+            className={`collapse navbar-collapse justify-content-lg-end${navOpen ? ' show' : ''}`}
+          >
+            <div className="d-flex flex-wrap align-items-center gap-2 py-2 py-lg-0">
             <ErrorBoundary name="ViewSelector">
               <ViewSelector />
             </ErrorBoundary>
@@ -94,6 +109,7 @@ function App() {
             <ErrorBoundary name="ThemeToggle">
               <SimpleThemeToggle />
             </ErrorBoundary>
+            </div>
           </div>
         </div>
       </nav>

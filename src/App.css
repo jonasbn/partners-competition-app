@@ -551,14 +551,10 @@ footer.bg-light {
   overflow: visible !important;
 }
 
-/* Make sure table containers allow popup overflow */
-.table-responsive {
-  overflow: visible !important;
-}
-
-.table-responsive .table {
-  overflow: visible !important;
-}
+/* Table containers must stay scrollable (Bootstrap's overflow-x: auto).
+   Forcing overflow: visible here made wide tables stretch the whole page on
+   phones. Avatar popups are portal-rendered with position: fixed, so a scroll
+   container cannot clip them. */
 
 /* Fix for flex alignment in table cells to ensure proper popup positioning */
 .table td .d-flex.align-items-center {
