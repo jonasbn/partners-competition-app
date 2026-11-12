@@ -18,6 +18,7 @@ export default {
   },
   "nav": {
     "label": "Vælg Visning",
+    "menu": "Skift navigation",
     "season": "Sæson",
     "tournament": "Sommerturnering"
   },

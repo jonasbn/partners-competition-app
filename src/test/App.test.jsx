@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import { ThemeProvider } from '../utils/ThemeContext';
 import { ViewProvider } from '../utils/ViewContext';
 import { YearProvider } from '../utils/YearContext';
@@ -84,6 +84,45 @@ describe('App Component', () => {
     
     expect(screen.getByTestId('theme-toggle')).toBeInTheDocument();
     expect(screen.getByTestId('language-selector')).toBeInTheDocument();
+  });
+
+  describe('mobile navbar', () => {
+    const getToggler = (container) => container.querySelector('.navbar-toggler');
+    const getCollapse = (container) => container.querySelector('.navbar-collapse');
+
+    it('renders a hamburger toggler that starts collapsed', () => {
+      const { container } = renderWithProviders(<App />);
+
+      const toggler = getToggler(container);
+      expect(toggler).toBeInTheDocument();
+      expect(toggler).toHaveAttribute('aria-expanded', 'false');
+      expect(toggler).toHaveAttribute('aria-controls', getCollapse(container).id);
+      expect(toggler).toHaveAccessibleName();
+      expect(getCollapse(container)).not.toHaveClass('show');
+    });
+
+    it('expands and collapses the menu when the toggler is clicked', () => {
+      const { container } = renderWithProviders(<App />);
+      const toggler = getToggler(container);
+
+      fireEvent.click(toggler);
+      expect(toggler).toHaveAttribute('aria-expanded', 'true');
+      expect(getCollapse(container)).toHaveClass('show');
+
+      fireEvent.click(toggler);
+      expect(toggler).toHaveAttribute('aria-expanded', 'false');
+      expect(getCollapse(container)).not.toHaveClass('show');
+    });
+
+    it('keeps every navbar control inside the collapsible area', () => {
+      const { container } = renderWithProviders(<App />);
+      const collapse = getCollapse(container);
+
+      expect(collapse).toContainElement(screen.getByTestId('view-selector'));
+      expect(collapse).toContainElement(screen.getByTestId('year-selector'));
+      expect(collapse).toContainElement(screen.getByTestId('language-selector'));
+      expect(collapse).toContainElement(screen.getByTestId('theme-toggle'));
+    });
   });
 
   it('renders all required components', async () => {

@@ -18,6 +18,7 @@ export default {
   },
   "nav": {
     "label": "Select View",
+    "menu": "Toggle navigation",
     "season": "Season",
     "tournament": "Summer Tournament"
   },
